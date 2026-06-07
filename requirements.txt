@@ -1,0 +1,2 @@
+# Google GenAI SDK for Gemini
+google-genai
