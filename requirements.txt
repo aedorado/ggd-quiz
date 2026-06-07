@@ -1,2 +1,2 @@
-# Google GenAI SDK for Gemini
+python-dotenv
 google-genai
