@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ThemeToggle from "../components/ThemeToggle";
+import ThemeToggleInline from "./ThemeToggleInline";
 
 export const metadata: Metadata = {
   title: "Tattva Darpaṇa — Gauḍīya Vaiṣṇava Study",
@@ -45,7 +45,7 @@ export default function RootLayout({
         <div className="main-container">
           {children}
         </div>
-        <ThemeToggle />
+        <ThemeToggleInline />
       </body>
     </html>
   );
