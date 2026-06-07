@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaura Gaṇoddeśa Dīpikā — Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron:     #c8722a;
+    --saffron-lt:  #e8954a;
+    --gold:        #d4a843;
+    --gold-pale:   #f5e9c8;
+    --ivory:       #fdf6e8;
+    --parchment:   #f0e6cc;
+    --ink:         #1e1408;
+    --ink-mid:     #3d2b10;
+    --ink-soft:    #6b4e26;
+    --lotus:       #8b3a5a;
+    --lotus-pale:  #f5e8ef;
+    --correct-bg:  #e8f5e0;
+    --correct:     #3a7a2a;
+    --wrong-bg:    #fae8e8;
+    --wrong:       #8a2a2a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background-color: var(--ivory);
+    color: var(--ink);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 20px;
+    line-height: 1.65;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image:
+      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(212,168,67,0.12) 0%, transparent 70%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8722a' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    width: 100%;
+    text-align: center;
+    padding: 2.5rem 1rem 0;
+  }
+  .site-header .om {
+    font-size: 2rem;
+    color: var(--saffron);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 0.25rem;
+    opacity: 0.7;
+  }
+  .site-header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--ink-mid);
+    text-transform: uppercase;
+  }
+  .site-header .subtitle {
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    margin-top: 0.2rem;
+  }
+  .divider {
+    width: 120px;
+    height: 2px;
+    margin: 1rem auto;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--parchment);
+    border: 1px solid rgba(212,168,67,0.35);
+    border-radius: 4px;
+    box-shadow:
+      0 2px 12px rgba(30,20,8,0.08),
+      inset 0 1px 0 rgba(255,255,255,0.6);
+    width: min(680px, 94vw);
+    padding: 2.5rem 2.8rem;
+    margin: 0 auto 3rem;
+  }
+
+  /* ── SCREENS ── */
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* ── LANDING ── */
+  #screen-landing { text-align: center; }
+  #screen-landing h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.3rem, 4vw, 1.9rem);
+    font-weight: 600;
+    color: var(--ink-mid);
+    margin-bottom: 0.6rem;
+  }
+  #screen-landing p {
+    color: var(--ink-soft);
+    font-size: 1rem;
+    max-width: 480px;
+    margin: 0 auto 1.8rem;
+  }
+  .verse-box {
+    background: rgba(255,255,255,0.5);
+    border-left: 3px solid var(--gold);
+    padding: 1rem 1.4rem;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink-mid);
+    text-align: left;
+    margin-bottom: 2rem;
+    border-radius: 0 3px 3px 0;
+  }
+
+  /* ── BUTTONS ── */
+  .btn {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+  }
+  .btn-primary {
+    background: var(--saffron);
+    color: #fff;
+    padding: 0.75rem 2.4rem;
+    box-shadow: 0 2px 8px rgba(200,114,42,0.3);
+  }
+  .btn-primary:hover {
+    background: var(--saffron-lt);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(200,114,42,0.35);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--saffron);
+    border: 1.5px solid var(--saffron);
+    padding: 0.6rem 1.8rem;
+  }
+  .btn-secondary:hover {
+    background: rgba(200,114,42,0.07);
+  }
+
+  /* ── PROGRESS ── */
+  .progress-bar-wrap {
+    height: 4px;
+    background: rgba(30,20,8,0.1);
+    border-radius: 2px;
+    margin-bottom: 1.8rem;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--saffron), var(--gold));
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+  .progress-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    margin-bottom: 0.5rem;
+    text-align: right;
+  }
+
+  /* ── QUESTION ── */
+  .question-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .tag {
+    font-size: 0.72rem;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.08em;
+    padding: 0.15rem 0.6rem;
+    border-radius: 2px;
+    background: rgba(212,168,67,0.18);
+    color: var(--ink-soft);
+    border: 1px solid rgba(212,168,67,0.3);
+    text-transform: uppercase;
+  }
+  .difficulty-easy   { background: rgba(58,122,42,0.1);  color: #3a7a2a; border-color: rgba(58,122,42,0.25); }
+  .difficulty-medium { background: rgba(200,114,42,0.1); color: #8a5a10; border-color: rgba(200,114,42,0.25); }
+  .difficulty-hard   { background: rgba(138,58,90,0.1);  color: var(--lotus); border-color: rgba(138,58,90,0.25); }
+
+  .question-text {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 1.6rem;
+    line-height: 1.6;
+  }
+
+  /* ── OPTIONS ── */
+  .options { display: flex; flex-direction: column; gap: 0.75rem; }
+  .option {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    padding: 0.85rem 1.1rem;
+    border: 1.5px solid rgba(212,168,67,0.3);
+    border-radius: 3px;
+    background: rgba(255,255,255,0.45);
+    cursor: pointer;
+    transition: all 0.18s ease;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: left;
+  }
+  .option:hover:not(.disabled) {
+    border-color: var(--saffron);
+    background: rgba(200,114,42,0.06);
+  }
+  .option .opt-letter {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--saffron);
+    min-width: 1.4rem;
+    padding-top: 0.1rem;
+  }
+  .option.selected {
+    border-color: var(--gold);
+    background: rgba(212,168,67,0.12);
+  }
+  .option.correct {
+    border-color: var(--correct);
+    background: var(--correct-bg);
+  }
+  .option.wrong {
+    border-color: var(--wrong);
+    background: var(--wrong-bg);
+  }
+  .option.disabled { cursor: default; }
+
+  /* ── RESULTS ── */
+  .result-summary {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .result-score {
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--saffron);
+    line-height: 1;
+  }
+  .result-score span {
+    font-size: 1.3rem;
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+  .result-label {
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-top: 0.4rem;
+  }
+
+  .result-item {
+    border: 1px solid rgba(212,168,67,0.25);
+    border-radius: 3px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  .result-item-header {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.8rem 1rem;
+    background: rgba(255,255,255,0.4);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+  }
+  .result-item-header:hover { background: rgba(255,255,255,0.6); }
+  .result-status {
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .result-q-text { flex: 1; line-height: 1.4; }
+  .result-chevron {
+    font-size: 0.7rem;
+    color: var(--ink-soft);
+    transition: transform 0.2s;
+  }
+  .result-item.open .result-chevron { transform: rotate(180deg); }
+  .result-body {
+    display: none;
+    padding: 1rem 1.1rem 1.1rem;
+    border-top: 1px solid rgba(212,168,67,0.2);
+    font-size: 0.95rem;
+  }
+  .result-item.open .result-body { display: block; }
+  .result-answer-line {
+    margin-bottom: 0.5rem;
+  }
+  .result-answer-line strong { color: var(--ink-mid); }
+  .result-explanation {
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-top: 0.6rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid rgba(212,168,67,0.2);
+    font-size: 0.9rem;
+  }
+
+  .results-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .result-verse-box {
+    background: rgba(255, 255, 255, 0.35);
+    border-left: 2px solid var(--gold);
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    color: var(--ink-mid);
+    margin-top: 0.8rem;
+    border-radius: 0 3px 3px 0;
+    line-height: 1.5;
+}
+
+  /* ── TRANSITIONS ── */
+  .fade-in { animation: fadeIn 0.35s ease both; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 520px) {
+    .card { padding: 1.6rem 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <span class="om">ॐ</span>
+  <h1>Vraja Vilāsa Stava</h1>
+  <p class="subtitle">Identifying the Associates of Śrī Kṛṣṇa</p>
+  <div class="divider"></div>
+</header>
+
+<main style="width:100%; display:flex; flex-direction:column; align-items:center; padding: 0 0.5rem;">
+
+  <!-- LANDING -->
+  <div id="screen-landing" class="card screen active fade-in">
+    <h2>Test Your Knowledge</h2>
+    <p>Five questions drawn from the verses and teachings of Vraja Vilāsa Stava. Study the identities, relationships, and pastimes of the Lord and His associates.</p>
+    <div class="verse-box">
+      "By tasting a single drop of the memory of the transcendental nectar ocean of the sweetness of the divine couple my heart has become restless. I bow down before the land and people of Vraja. I yearn to see my two masters. "
+    </div>
+    <button class="btn btn-primary" onclick="startQuiz()">Begin Quiz</button>
+  </div>
+
+  <!-- QUESTION -->
+  <div id="screen-question" class="card screen fade-in" style="display:none;">
+    <div class="progress-label" id="progress-label">Question 1 of 10</div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progress-bar" style="width:10%"></div>
+    </div>
+    <div class="question-tags" id="question-tags"></div>
+    <div class="question-text" id="question-text"></div>
+    <div class="options" id="options-list"></div>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="screen-results" class="card screen" style="display:none;">
+    <div class="result-summary">
+      <div class="result-score" id="score-display">0 <span>/ 10</span></div>
+      <div class="result-label" id="score-label"></div>
+    </div>
+    <div class="divider"></div>
+    <div id="results-list"></div>
+    <div class="results-actions">
+      <button class="btn btn-primary" onclick="startQuiz()">Try Again</button>
+      <button class="btn btn-secondary" onclick="showLanding()">Home</button>
+    </div>
+  </div>
+
+</main>
+
+<script>
+// ─────────────────────────────────────────────
+//  DATA & INITIALIZATION
+// ─────────────────────────────────────────────
+let ALL_QUESTIONS = [];
+
+window.addEventListener('DOMContentLoaded', () => {
+  fetch('./questions.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP status error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Object.entries lets us grab both the Key (e.g., "Verse 17") and the Value (section data)
+      ALL_QUESTIONS = Object.entries(data).flatMap(([verseKey, section]) =>
+        section.questions.map(q => ({
+          question: q.question,
+          options: q.options,
+          correct: q.correct_answer,
+          explanation: q.explanation,
+          difficulty: q.difficulty || "medium",
+          tags: q.tags || [],
+          verse_text: section.verse_text,
+          verse_number: verseKey // <-- Captures "Verse 17", "Verse 168", etc.
+        }))
+      );
+      console.log("Questions successfully loaded with verse references.");
+    })
+    .catch(error => {
+      console.error("Failed to parse or load questions.json:", error);
+      alert("Error loading quiz questions.");
+    });
+});
+
+// ─────────────────────────────────────────────
+//  STATE
+// ─────────────────────────────────────────────
+let quizQuestions = [];
+let currentIndex  = 0;
+let userAnswers   = [];      
+let answered      = false;
+
+// ─────────────────────────────────────────────
+//  HELPERS
+// ─────────────────────────────────────────────
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => {
+    s.style.display = 'none';
+    s.classList.remove('active');
+  });
+  const el = document.getElementById(id);
+  el.style.display = 'block';
+  el.classList.add('active');
+  el.classList.remove('fade-in');
+  void el.offsetWidth;
+  el.classList.add('fade-in');
+}
+
+const LETTERS = ['A', 'B', 'C', 'D'];
+
+// ─────────────────────────────────────────────
+//  QUIZ FLOW
+// ─────────────────────────────────────────────
+function startQuiz() {
+  // Guard check in case data is still downloading
+  if (ALL_QUESTIONS.length === 0) {
+    alert("The quiz data is currently loading. Please wait a second and try again!");
+    return;
+  }
+
+  quizQuestions = shuffle(ALL_QUESTIONS).slice(0, 5);
+  currentIndex  = 0;
+  userAnswers   = [];
+  answered      = false;
+  showQuestion();
+}
+
+function showLanding() {
+  showScreen('screen-landing');
+}
+
+function showQuestion() {
+  answered = false;
+  const q   = quizQuestions[currentIndex];
+  const num = currentIndex + 1;
+  const total = quizQuestions.length;
+
+  document.getElementById('progress-label').textContent = `Question ${num} of ${total}`;
+  document.getElementById('progress-bar').style.width = `${(num / total) * 100}%`;
+
+  // tags
+  const tagsEl = document.getElementById('question-tags');
+  tagsEl.innerHTML = '';
+  q.tags.forEach(t => {
+    const span = document.createElement('span');
+    span.className = 'tag';
+    span.textContent = t;
+    tagsEl.appendChild(span);
+  });
+  const diffSpan = document.createElement('span');
+  diffSpan.className = `tag difficulty-${q.difficulty}`;
+  diffSpan.textContent = q.difficulty;
+  tagsEl.appendChild(diffSpan);
+
+  document.getElementById('question-text').textContent = q.question;
+
+  // shuffle options
+  const shuffled = shuffle(q.options);
+  const listEl = document.getElementById('options-list');
+  listEl.innerHTML = '';
+  shuffled.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.innerHTML = `<span class="opt-letter">${LETTERS[i]}</span><span>${opt}</span>`;
+    btn.addEventListener('click', () => selectOption(opt, btn, listEl, q));
+    listEl.appendChild(btn);
+  });
+
+  showScreen('screen-question');
+}
+
+function selectOption(selected, btnEl, listEl, q) {
+  if (answered) return;
+  answered = true;
+
+  const isCorrect = selected === q.correct;
+  userAnswers.push({
+    question:    q.question,
+    selected,
+    correct:     q.correct,
+    options:     q.options,
+    explanation: q.explanation,
+    tags:        q.tags,
+    difficulty:  q.difficulty,
+    verse_text:  q.verse_text,
+    verse_number: q.verse_number, // <-- Save it here
+    isCorrect
+  });
+
+  // highlight all options
+  listEl.querySelectorAll('.option').forEach(btn => {
+    const text = btn.querySelector('span:last-child').textContent;
+    btn.classList.add('disabled');
+    if (text === q.correct) btn.classList.add('correct');
+    else if (text === selected && !isCorrect) btn.classList.add('wrong');
+  });
+
+  // auto-advance
+  setTimeout(() => {
+    currentIndex++;
+    if (currentIndex < quizQuestions.length) {
+      showQuestion();
+    } else {
+      showResults();
+    }
+  }, isCorrect ? 900 : 1400);
+}
+
+// ─────────────────────────────────────────────
+//  RESULTS
+// ─────────────────────────────────────────────
+function showResults() {
+  const score = userAnswers.filter(a => a.isCorrect).length;
+  const total = userAnswers.length;
+
+  document.getElementById('score-display').innerHTML =
+    `${score} <span>/ ${total}</span>`;
+
+  const pct = score / total;
+  let label;
+  if (pct === 1)        label = "Perfect — all glories to your study!";
+  else if (pct >= 0.8)  label = "Excellent — very well done!";
+  else if (pct >= 0.6)  label = "Good effort — keep deepening your study.";
+  else if (pct >= 0.4)  label = "A beginning — continue to hear and contemplate.";
+  else                  label = "Keep reading — the nectar awaits within.";
+  document.getElementById('score-label').textContent = label;
+
+  const listEl = document.getElementById('results-list');
+  listEl.innerHTML = '';
+  userAnswers.forEach((a, i) => {
+    const item = document.createElement('div');
+    item.className = 'result-item';
+
+    const icon = a.isCorrect ? '✓' : '✗';
+    const iconColor = a.isCorrect ? 'color:var(--correct)' : 'color:var(--wrong)';
+
+    item.innerHTML = `
+      <div class="result-item-header" onclick="toggleResult(this)">
+        <span class="result-status" style="${iconColor}">${icon}</span>
+        <span class="result-q-text">${i + 1}. ${a.question}</span>
+        <span class="result-chevron">▼</span>
+      </div>
+      <div class="result-body">
+        <div class="result-answer-line"><strong>Your answer:</strong> ${a.selected}</div>
+        ${!a.isCorrect ? `<div class="result-answer-line"><strong>Correct answer:</strong> ${a.correct}</div>` : ''}
+        
+        ${a.verse_text ? `
+          <div class="result-verse-box">
+            <strong>Reference — ${a.verse_number}:</strong><br>
+            ${a.verse_text.replace(/\n/g, '<br>')}
+          </div>
+        ` : ''}
+
+        <div class="result-explanation">${a.explanation}</div>
+      </div>
+    `;
+    listEl.appendChild(item);
+  });
+
+  showScreen('screen-results');
+}
+
+
+function toggleResult(headerEl) {
+  const item = headerEl.closest('.result-item');
+  item.classList.toggle('open');
+}
+</script>
+</body>
+</html>
