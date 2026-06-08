@@ -31,7 +31,21 @@
     "quiz_desc": "Five questions drawn from the verses and teachings of Rādhā Kṛṣṇa Gaṇoddeśa Dīpikā. Study the identities, lineages, and groupings of the associates in Vṛndāvana.",
     "verse": "\"I offer my respectful obeisances to the two lotus feet of Srimati Radharani. I offer my respectful obeisances to Lord Nandanandana, who is surrounded by the gopis and enchants the minds of the residents of Vrndavana.\"",
     "input_file": "public/rkgd/rkgd.json",
-    "output_file": "public/rkgd/questions.json"
+    "output_file": "public/rkgd/questions.json",
+    "parts": [
+      {
+        "id": "brihad",
+        "name": "Bṛhad Bhāga (Part 1)",
+        "desc": "Associates, lineages, and groupings of the residents of Vṛndāvana.",
+        "filter_prefix": "1."
+      },
+      {
+        "id": "laghu",
+        "name": "Laghu Bhāga (Part 2)",
+        "desc": "Kṛṣṇa's form, garments, flute, attributes, and characteristics.",
+        "filter_prefix": "2."
+      }
+    ]
   },
   "vvs": {
     "title": "Vraja Vilāsa Stava",

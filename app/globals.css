@@ -1155,3 +1155,440 @@ footer .foot-copy {
   background: var(--gold);
   border-color: var(--gold);
 }
+
+/* ── QUIZ SCOPE SELECTOR ── */
+.scope-selector {
+  margin: 1.5rem 0 2.2rem;
+  text-align: left;
+}
+
+.scope-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.9rem;
+  text-align: center;
+}
+
+.scope-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.scope-option {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--border);
+  padding: 0.9rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  text-align: left;
+}
+
+.scope-option:hover {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: var(--saffron-lt);
+  transform: translateY(-1px);
+}
+
+.scope-option.selected {
+  background: var(--parchment-dk);
+  border-color: var(--saffron);
+  box-shadow: 0 0 0 1px var(--saffron);
+}
+
+[data-theme="shyama"] .scope-option {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="shyama"] .scope-option:hover {
+  background: rgba(0, 0, 0, 0.35);
+  border-color: var(--gold);
+}
+
+[data-theme="shyama"] .scope-option.selected {
+  background: var(--parchment-dk);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold);
+}
+
+.scope-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink-mid);
+}
+
+.scope-desc {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+
+/* ── KRISHNA PREMA IMMERSION ADDITIONS ── */
+
+/* Divine Halo Auras */
+.divine-aura {
+  animation: auraPulseGauri 3s ease-in-out infinite alternate;
+  position: relative;
+}
+
+[data-theme="shyama"] .divine-aura {
+  animation: auraPulseShyama 3s ease-in-out infinite alternate;
+}
+
+@keyframes auraPulseGauri {
+  0% {
+    box-shadow: 0 4px 15px rgba(200, 114, 42, 0.1), 0 0 10px rgba(212, 168, 67, 0.05);
+    border-color: rgba(212, 168, 67, 0.35);
+  }
+
+  100% {
+    box-shadow: 0 8px 30px rgba(200, 114, 42, 0.25), 0 0 20px rgba(212, 168, 67, 0.2);
+    border-color: var(--saffron-lt);
+  }
+}
+
+@keyframes auraPulseShyama {
+  0% {
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.1), 0 0 10px rgba(251, 191, 36, 0.05);
+    border-color: rgba(16, 185, 129, 0.3);
+  }
+
+  100% {
+    box-shadow: 0 8px 30px rgba(16, 185, 129, 0.25), 0 0 20px rgba(251, 191, 36, 0.15);
+    border-color: var(--saffron);
+  }
+}
+
+/* Floating Particle Styles */
+.particle-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.puspa-particle {
+  position: absolute;
+  top: -40px;
+  pointer-events: none;
+  user-select: none;
+  animation: fallAndRotate 4s linear forwards;
+}
+
+@keyframes fallAndRotate {
+  0% {
+    transform: translateY(0) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.8;
+  }
+
+  35% {
+    opacity: 0.6;
+  }
+
+  70%,
+  100% {
+    transform: translateY(40vh) rotate(120deg) translateX(15px);
+    opacity: 0;
+  }
+}
+
+/* Audio Controls */
+.sound-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.sound-toggle-btn {
+  background: transparent;
+  border: 1px dashed var(--border);
+  color: var(--ink-soft);
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  border-radius: 2px;
+  letter-spacing: 0.08em;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.sound-toggle-btn:hover,
+.sound-toggle-btn.active {
+  border-style: solid;
+  border-color: var(--saffron);
+  color: var(--saffron);
+}
+
+[data-theme="shyama"] .sound-toggle-btn:hover,
+[data-theme="shyama"] .sound-toggle-btn.active {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* Streak Badge */
+.streak-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(200, 114, 42, 0.08);
+  border: 1px solid rgba(200, 114, 42, 0.2);
+  color: var(--saffron);
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+[data-theme="shyama"] .streak-badge {
+  background: rgba(251, 191, 36, 0.08);
+  border-color: rgba(251, 191, 36, 0.25);
+  color: var(--gold);
+}
+
+.streak-badge:hover {
+  transform: scale(1.05);
+}
+
+/* Nectar Drops widget styles */
+.nectar-widget-container {
+  margin-top: 4.5rem;
+  padding: 2.5rem 1rem 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  max-width: 720px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.nectar-card-box {
+  background: var(--parchment);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2.5rem 2rem;
+  margin: 1.5rem auto 0;
+  box-shadow: 0 8px 24px rgba(30, 18, 8, 0.05);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: cardIn 0.5s ease both;
+  max-width: 680px;
+}
+
+[data-theme="shyama"] .nectar-card-box {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.nectar-card-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--saffron);
+}
+
+[data-theme="shyama"] .nectar-card-box::before {
+  background: var(--gold);
+}
+
+.nectar-card-verse {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--ink-mid);
+  margin-bottom: 1rem;
+}
+
+.nectar-card-translation {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 580px;
+  margin-bottom: 1.2rem;
+}
+
+.nectar-card-source {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--saffron);
+}
+
+[data-theme="shyama"] .nectar-card-source {
+  color: var(--gold);
+}
+
+/* Bhakti Sopana Badge & Details */
+.bhakti-sopana-box {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.5rem 1.8rem;
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+[data-theme="shyama"] .bhakti-sopana-box {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.bhakti-sopana-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--saffron);
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+[data-theme="shyama"] .bhakti-sopana-title {
+  color: var(--gold);
+}
+
+.bhakti-sopana-desc {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+/* Palm-leaf Manuscript styling */
+.manuscript-verse-card {
+  background: #fdfaf2;
+  border-top: 1px solid rgba(200, 114, 42, 0.2);
+  border-bottom: 1px solid rgba(200, 114, 42, 0.2);
+  border-left: 3.5px solid var(--saffron);
+  border-right: 3.5px solid var(--saffron);
+  padding: 1.4rem 2.2rem;
+  margin: 1.25rem 0;
+  position: relative;
+  border-radius: 1px;
+  box-shadow: inset 0 0 8px rgba(200, 114, 42, 0.03);
+}
+
+[data-theme="shyama"] .manuscript-verse-card {
+  background: #0f1422;
+  border-top: 1px solid rgba(251, 191, 36, 0.15);
+  border-bottom: 1px solid rgba(251, 191, 36, 0.15);
+  border-left-color: var(--gold);
+  border-right-color: var(--gold);
+  box-shadow: inset 0 0 8px rgba(251, 191, 36, 0.03);
+}
+
+.manuscript-verse-card::before,
+.manuscript-verse-card::after {
+  content: '❋';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--saffron);
+  font-size: 0.75rem;
+  opacity: 0.45;
+}
+
+.manuscript-verse-card::before {
+  left: 0.6rem;
+}
+
+.manuscript-verse-card::after {
+  right: 0.6rem;
+}
+
+[data-theme="shyama"] .manuscript-verse-card::before,
+[data-theme="shyama"] .manuscript-verse-card::after {
+  color: var(--gold);
+}
+
+/* Bhakti Rank Badge */
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(139, 58, 90, 0.07);
+  border: 1px solid rgba(139, 58, 90, 0.18);
+  color: var(--lotus);
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+[data-theme="shyama"] .rank-badge {
+  background: rgba(244, 63, 94, 0.07);
+  border-color: rgba(244, 63, 94, 0.22);
+  color: var(--lotus);
+}
+
+.rank-badge:hover {
+  transform: scale(1.04);
+}
+
+/* Lotus Dividers */
+.lotus-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 1.5rem auto;
+  color: var(--gold);
+  opacity: 0.85;
+}
+
+.lotus-divider::before,
+.lotus-divider::after {
+  content: '';
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.lotus-divider::after {
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.lotus-svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  display: inline-block;
+}
