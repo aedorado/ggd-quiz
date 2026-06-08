@@ -450,16 +450,16 @@ export default function QuizClient({ bookId }: QuizClientProps) {
         if (typeof window !== "undefined") {
           const currentXp = parseInt(localStorage.getItem("bhakti_xp") || "0", 10);
           const currentTaken = parseInt(localStorage.getItem("bhakti_quizzes_taken") || "0", 10);
-          
+
           const finalAnswers = [...userAnswers, answerRecord];
           const correctCount = finalAnswers.filter((a) => a.isCorrect).length;
-          
+
           const newXp = currentXp + correctCount;
           const newTaken = currentTaken + 1;
-          
+
           localStorage.setItem("bhakti_xp", newXp.toString());
           localStorage.setItem("bhakti_quizzes_taken", newTaken.toString());
-          
+
           setBhaktiXp(newXp);
           setQuizzesTaken(newTaken);
         }

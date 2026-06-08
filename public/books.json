@@ -13,7 +13,7 @@
     "subtitle": "Identifying the Associates of Śrī Caitanya Mahāprabhu",
     "quiz_desc": "Five questions drawn from the verses and teachings of Gaura Gaṇoddeśa Dīpikā. Study the identities, relationships, and pastimes of the Lord and His associates.",
     "verse": "\"Dark-complexioned Lord Kṛṣṇa, whose form is eternal, blissful, and full of knowledge, formerly danced with the golden-complexioned gopīs in Vṛndāvana…\"",
-    "input_file": "public/ggd/gaura_ganodesha_dipika.txt",
+    "input_file": "public/ggd/ggd.json",
     "output_file": "public/ggd/questions.json"
   },
   "rkgd": {
@@ -232,5 +232,21 @@
     "desc": "\"The Moonlight of Loving Devotion\" — essential instructions on raganuga-bhakti and serving in the mood of the gopīs.",
     "accent": "#800000",
     "status": "soon"
+  },
+  "bs": {
+    "title": "Śrī Brahma-saṁhitā",
+    "devanagari": "श्री ब्रह्मसंहिता",
+    "author": "Lord Brahmā / Śrī Caitanya Mahāprabhu (Discovered)",
+    "author_id": "brahma",
+    "category": "philosophy",
+    "desc": "The prayers of Lord Brahmā glorifying Lord Kṛṣṇa (Govinda) as the primeval Lord of Goloka.",
+    "accent": "#006064",
+    "status": "ready",
+    "href": "/quiz/bs",
+    "subtitle": "Prayers of Lord Brahmā",
+    "quiz_desc": "Five questions drawn from the verses and teachings of Śrī Brahma-saṁhitā. Study the prayers of Lord Brahmā glorifying Lord Kṛṣṇa (Govinda) as the primeval Lord of Goloka.",
+    "verse": "\"īśvaraḥ paramaḥ kṛṣṇaḥ sac-cid-ānanda-vigrahaḥ anādir ādir govindaḥ sarva-kāraṇa-kāraṇam\"",
+    "input_file": "public/bs/bs.json",
+    "output_file": "public/bs/questions.json"
   }
 }

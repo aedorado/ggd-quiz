@@ -116,17 +116,25 @@ def parse_json_verses(data):
     return parsed
 
 def load_verses(file_path):
+    with open(file_path, 'r', encoding='utf-8') as f:
+        text = f.read().strip()
+        
+    if text.startswith('{') or text.startswith('['):
+        try:
+            data = json.loads(text)
+            return parse_json_verses(data)
+        except json.JSONDecodeError:
+            pass
+
     suffix = Path(file_path).suffix.lower()
     if suffix == '.txt':
-        with open(file_path, 'r', encoding='utf-8') as f:
-            text = f.read()
         return parse_txt_verses(text)
     elif suffix == '.json':
-        with open(file_path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = json.loads(text)
         return parse_json_verses(data)
     else:
         raise ValueError(f"Unsupported file format: {suffix}")
+
 
 # ============================================================
 # SAFE SAVE UTILITY
@@ -267,7 +275,7 @@ def main():
     delay_between_requests = 60.0 / args.rpm
 
     print(f"Starting generation loop (RPM: {args.rpm}, Delay: {delay_between_requests:.1f}s)...")
-    for idx, verse in enumerate(verses):
+    for idx, verse in enumerate(verses[:]):
         verse_id = verse["verse_number"]
         if verse_id in completed:
             continue
