@@ -529,7 +529,7 @@ export default function CrosswordPOC() {
     pushStateToHistory(newGrid);
 
     // Auto-tab to the next incomplete word if current word is completed and correct
-    if (selectedClue && isWordCorrectWithGrid(selectedClue, newGrid)) {
+    if (selectedClue && layout && isWordCorrectWithGrid(selectedClue, newGrid)) {
       const nextWord = layout.placedWords
         .sort((a, b) => a.number - b.number)
         .find((w) => !isWordCorrectWithGrid(w, newGrid));
