@@ -73,9 +73,3 @@ pnpm-debug.log*
 *.bak
 *.old
 books.json.old
-
-.venv/
-graphify-out/
-
-tsconfig.tsbuildinfo
-.agents/

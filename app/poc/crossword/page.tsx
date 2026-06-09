@@ -387,7 +387,7 @@ export default function CrosswordPOC() {
     }
 
     // Fill the rest of the pool with normal words up to a total of 15 clues
-    const remainingSlots = 15 - selectedPool.length;
+    const remainingSlots = 12 - selectedPool.length;
     selectedPool.push(...normalWords.slice(0, remainingSlots));
 
     // Run layout generator (uses improved scoring and placement attempts)
