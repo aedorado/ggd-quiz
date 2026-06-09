@@ -120,6 +120,7 @@ export default function DragDrop({
   const [draggedItem, setDraggedItem] = useState<DragItem | null>(null);
   const [selectedPrevItem, setSelectedPrevItem] = useState<DragItem | null>(null);
   const [matchedVersePopup, setMatchedVersePopup] = useState<IdentityMapping | null>(null);
+  const [dragOverTargetName, setDragOverTargetName] = useState<string | null>(null);
 
   // Fetch identities on mount
   useEffect(() => {
@@ -201,6 +202,7 @@ export default function DragDrop({
     setDragDropMoves(0);
     setMatchedVersePopup(null);
     setSelectedPrevItem(null);
+    setDragOverTargetName(null);
   };
 
   const handleDragStart = (e: React.DragEvent, item: DragItem) => {
@@ -212,8 +214,27 @@ export default function DragDrop({
     e.preventDefault();
   };
 
+  const handleDragEnter = (e: React.DragEvent, targetName: string) => {
+    e.preventDefault();
+    if (!dragDropActive) return;
+    const target = dragTargets.find(t => t.gaura_name === targetName);
+    if (target && !target.isMatched) {
+      setDragOverTargetName(targetName);
+    }
+  };
+
+  const handleDragLeave = () => {
+    setDragOverTargetName(null);
+  };
+
+  const handleDragEnd = () => {
+    setDraggedItem(null);
+    setDragOverTargetName(null);
+  };
+
   const handleDrop = (e: React.DragEvent, targetName: string) => {
     e.preventDefault();
+    setDragOverTargetName(null);
     if (!draggedItem || !dragDropActive) return;
 
     setDragDropMoves((prev) => prev + 1);
@@ -328,37 +349,50 @@ export default function DragDrop({
         {/* Left Column: Targets (Gaura associates) */}
         <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
           <div style={{ fontWeight: "700", color: "var(--accent)", borderBottom: "1px solid var(--border-color)", paddingBottom: "0.4rem" }}>Gaura Associates</div>
-          {dragTargets.map((target) => (
-            <div
-              key={target.gaura_name}
-              onDragOver={handleDragOver}
-              onDrop={(e) => handleDrop(e, target.gaura_name)}
-              onClick={() => handleTargetClick(target.gaura_name)}
-              style={{
-                padding: "0.8rem",
-                backgroundColor: target.isMatched ? "var(--correct-bg)" : "var(--ivory)",
-                border: target.isMatched ? "2px solid var(--correct)" : "2px dashed var(--border)",
-                borderRadius: "8px",
-                minHeight: "75px",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                cursor: target.isMatched ? "default" : "pointer",
-                transition: "all 0.3s"
-              }}
-            >
-              <span style={{ fontWeight: "600", fontSize: "0.9rem" }}>{target.gaura_name}</span>
-              {target.isMatched ? (
-                <span style={{ fontSize: "0.8rem", color: "var(--correct)", marginTop: "0.2rem" }}>
-                  Matched with: <strong>{target.matched_prev_form}</strong>
-                </span>
-              ) : (
-                <span style={{ fontSize: "0.75rem", color: "var(--ink-soft)", marginTop: "0.2rem" }}>
-                  Drop matching previous form here
-                </span>
-              )}
-            </div>
-          ))}
+          {dragTargets.map((target) => {
+            const isDragOver = dragOverTargetName === target.gaura_name;
+            return (
+              <div
+                key={target.gaura_name}
+                onDragOver={handleDragOver}
+                onDragEnter={(e) => handleDragEnter(e, target.gaura_name)}
+                onDragLeave={handleDragLeave}
+                onDrop={(e) => handleDrop(e, target.gaura_name)}
+                onClick={() => handleTargetClick(target.gaura_name)}
+                style={{
+                  padding: "0.8rem",
+                  backgroundColor: target.isMatched 
+                    ? "var(--correct-bg)" 
+                    : isDragOver 
+                      ? "var(--gold-pale)" 
+                      : "var(--ivory)",
+                  border: target.isMatched 
+                    ? "2px solid var(--correct)" 
+                    : isDragOver
+                      ? "2px solid var(--saffron)"
+                      : "2px dashed var(--border)",
+                  borderRadius: "8px",
+                  minHeight: "75px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  cursor: target.isMatched ? "default" : "pointer",
+                  transition: "all 0.25s"
+                }}
+              >
+                <span style={{ fontWeight: "600", fontSize: "0.9rem", pointerEvents: "none" }}>{target.gaura_name}</span>
+                {target.isMatched ? (
+                  <span style={{ fontSize: "0.8rem", color: "var(--correct)", marginTop: "0.2rem", pointerEvents: "none" }}>
+                    Matched with: <strong style={{ pointerEvents: "none" }}>{target.matched_prev_form}</strong>
+                  </span>
+                ) : (
+                  <span style={{ fontSize: "0.75rem", color: "var(--ink-soft)", marginTop: "0.2rem", pointerEvents: "none" }}>
+                    Drop matching previous form here
+                  </span>
+                )}
+              </div>
+            );
+          })}
         </div>
 
         {/* Right Column: Draggable Previous Forms */}
@@ -371,6 +405,7 @@ export default function DragDrop({
                 key={item.text}
                 draggable={!item.isMatched}
                 onDragStart={(e) => handleDragStart(e, item)}
+                onDragEnd={handleDragEnd}
                 onClick={() => handleItemClick(item)}
                 style={{
                   padding: "0.8rem",

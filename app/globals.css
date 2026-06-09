@@ -26,6 +26,8 @@
   --header-bg: rgba(255, 255, 255, 0.45);
   --header-bg-hover: rgba(255, 255, 255, 0.65);
   --nav-h: 64px;
+  --accent: #bf6a1f;
+  --accent-tint: #fef6ec;
 }
 
 /* ── ŚYĀMA THEME TOKENS (KRISHNA) ── */
@@ -67,6 +69,8 @@
   --lotus: #f43f5e;
   /* Lotus rose eyes/lips */
   --lotus-pale: #4c0519;
+  --accent: #10b981;
+  --accent-tint: #1e293b;
 }
 
 /* ── RESET & BASE ── */

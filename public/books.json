@@ -63,6 +63,22 @@
     "input_file": "public/vvs/vvs.json",
     "output_file": "public/vvs/questions.json"
   },
+  "bs": {
+    "title": "Śrī Brahma-saṁhitā",
+    "devanagari": "श्री ब्रह्मसंहिता",
+    "author": "Lord Brahmā / Śrī Caitanya Mahāprabhu (Discovered)",
+    "author_id": "brahma",
+    "category": "philosophy",
+    "desc": "The prayers of Lord Brahmā glorifying Lord Kṛṣṇa (Govinda) as the primeval Lord of Goloka.",
+    "accent": "#006064",
+    "status": "ready",
+    "href": "/quiz/bs",
+    "subtitle": "Prayers of Lord Brahmā",
+    "quiz_desc": "Five questions drawn from the verses and teachings of Śrī Brahma-saṁhitā. Study the prayers of Lord Brahmā glorifying Lord Kṛṣṇa (Govinda) as the primeval Lord of Goloka.",
+    "verse": "\"īśvaraḥ paramaḥ kṛṣṇaḥ\nsac-cid-ānanda-vigrahaḥ\nanādir ādir govindaḥ\nsarva-kāraṇa-kāraṇam\"",
+    "input_file": "public/bs/bs.json",
+    "output_file": "public/bs/questions.json"
+  },
   "bb": {
     "title": "Bṛhad-Bhāgavatāmṛta",
     "devanagari": "बृहद् भागवतामृत",
