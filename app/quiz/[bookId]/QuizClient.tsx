@@ -1,12 +1,16 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import StandardQuiz from "./components/StandardQuiz";
 import QuizResults from "./components/QuizResults";
 import MemoryMatch from "./components/MemoryMatch";
 import DragDrop from "./components/DragDrop";
-import CrosswordPOC from "../../poc/crossword/page";
+import Crossword from "./components/Crossword";
+import { useBhaktiProgress } from "../../utils/bhaktiProgress";
+import { GAMIFICATION_CONFIG, isGameModeUnlocked } from "../../utils/gamificationConfig";
+import SadhanaDashboard from "../../components/SadhanaDashboard";
+import LevelUpModal from "../../components/LevelUpModal";
 
 interface QuizClientProps {
   bookId: string;
@@ -95,31 +99,23 @@ export default function QuizClient({ bookId }: QuizClientProps) {
   const [particles, setParticles] = useState<Particle[]>([]);
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [ambientEnabled, setAmbientEnabled] = useState(false);
-  const [sadhanaStreak, setSadhanaStreak] = useState(0);
-  const [bhaktiXp, setBhaktiXp] = useState(0);
-  const [quizzesTaken, setQuizzesTaken] = useState(0);
 
-  const getBhaktiRank = (xp: number, taken: number) => {
-    if (taken < 3) return "Jijñāsu";
-    const avg = xp / taken;
-    if (avg >= 6.0) return "Upāsaka";
-    if (avg >= 4.0) return "Svādhyāya-rati";
-    if (avg >= 2.0) return "Tattva-vit";
-    return "Jijñāsu";
-  };
+  // Hook-based progress tracking
+  const { 
+    isMounted, 
+    stats, 
+    currentRank, 
+    pendingLevelUp, 
+    clearLevelUp, 
+    addXp, 
+    resetProgress 
+  } = useBhaktiProgress();
+
+  const [dashboardOpen, setDashboardOpen] = useState(false);
 
   // Load stats on mount
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const streak = parseInt(localStorage.getItem("sadhana_streak") || "0", 10);
-      setSadhanaStreak(streak);
-
-      const xp = parseInt(localStorage.getItem("bhakti_xp") || "0", 10);
-      setBhaktiXp(xp);
-
-      const taken = parseInt(localStorage.getItem("bhakti_quizzes_taken") || "0", 10);
-      setQuizzesTaken(taken);
-
       const sound = localStorage.getItem("quiz_sound_enabled") === "true";
       setSoundEnabled(sound);
     }
@@ -262,7 +258,7 @@ export default function QuizClient({ bookId }: QuizClientProps) {
   }, [ambientEnabled]);
 
   // Puṣpa Vṛṣṭi: Flower and Peacock Feather Rain Generator
-  const triggerParticles = () => {
+  const triggerParticles = useCallback(() => {
     const chars = ["🌸", "🪷", "🌹", "💮", "🦚"];
     const colors = ["#e8954a", "#8b3a5a", "#d4a843", "#ffffff", "#10b981"];
     const newParticles: Particle[] = Array.from({ length: 32 }).map((_, i) => {
@@ -289,41 +285,9 @@ export default function QuizClient({ bookId }: QuizClientProps) {
     setTimeout(() => {
       setParticles([]);
     }, 5500);
-  };
+  }, []);
 
-  const updateSadhanaStreak = () => {
-    if (typeof window === "undefined") return;
-    try {
-      const todayStr = new Date().toDateString();
-      const lastDate = localStorage.getItem("sadhana_last_date");
-      let currentStreak = parseInt(localStorage.getItem("sadhana_streak") || "0", 10);
 
-      if (lastDate === todayStr) {
-        return;
-      }
-
-      if (lastDate) {
-        const lastDateObj = new Date(lastDate);
-        const todayObj = new Date(todayStr);
-        const diffTime = Math.abs(todayObj.getTime() - lastDateObj.getTime());
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-        if (diffDays === 1) {
-          currentStreak += 1;
-        } else {
-          currentStreak = 1;
-        }
-      } else {
-        currentStreak = 1;
-      }
-
-      localStorage.setItem("sadhana_streak", currentStreak.toString());
-      localStorage.setItem("sadhana_last_date", todayStr);
-      setSadhanaStreak(currentStreak);
-    } catch (e) {
-      console.error(e);
-    }
-  };
 
   // Load Metadata and Questions
   useEffect(() => {
@@ -384,7 +348,7 @@ export default function QuizClient({ bookId }: QuizClientProps) {
       }
     }
 
-    const shuffled = shuffle(targetQuestions).slice(0, Math.min(7, targetQuestions.length));
+    const shuffled = shuffle(targetQuestions).slice(0, Math.min(GAMIFICATION_CONFIG.gameUnlocks.quiz.questionsCount || 7, targetQuestions.length));
     setQuizQuestions(shuffled);
     setUserAnswers([]);
     setScreen("quiz");
@@ -392,33 +356,60 @@ export default function QuizClient({ bookId }: QuizClientProps) {
 
   const handleQuizComplete = (answers: UserAnswer[]) => {
     setUserAnswers(answers);
-    updateSadhanaStreak();
 
-    if (typeof window !== "undefined") {
-      const currentXp = parseInt(localStorage.getItem("bhakti_xp") || "0", 10);
-      const currentTaken = parseInt(localStorage.getItem("bhakti_quizzes_taken") || "0", 10);
+    const correctCount = answers.filter((a) => a.isCorrect).length;
+    const isPerfect = correctCount === answers.length && answers.length > 0;
+    
+    // +XP per correct answer from config
+    const baseXP = correctCount * GAMIFICATION_CONFIG.xpRewards.quizCorrectAnswer;
+    // Perfect bonus from config
+    const perfectBonus = isPerfect ? GAMIFICATION_CONFIG.xpRewards.quizPerfectScoreBonus : 0;
+    const totalXP = baseXP + perfectBonus;
 
-      const correctCount = answers.filter((a) => a.isCorrect).length;
-      const newXp = currentXp + correctCount;
-      const newTaken = currentTaken + 1;
+    let description = `Completed ${meta?.title || "Quiz"}: scored ${correctCount}/${answers.length}`;
+    if (isPerfect) description += " (Perfect Score Bonus!)";
 
-      localStorage.setItem("bhakti_xp", newXp.toString());
-      localStorage.setItem("bhakti_quizzes_taken", newTaken.toString());
+    addXp(totalXP, "quiz", description, { 
+      isPerfect,
+      bookCount: 1
+    });
 
-      setBhaktiXp(newXp);
-      setQuizzesTaken(newTaken);
-    }
     setScreen("results");
   };
 
-  const handleGameComplete = (xpEarned: number) => {
-    updateSadhanaStreak();
-    if (typeof window !== "undefined") {
-      const currentXp = parseInt(localStorage.getItem("bhakti_xp") || "0", 10);
-      const newXp = currentXp + xpEarned;
-      localStorage.setItem("bhakti_xp", newXp.toString());
-      setBhaktiXp(newXp);
+  const handleGameComplete = (xpEarned: number, moves: number, seconds: number) => {
+    let gameType = "Game";
+    let extraData: any = {};
+    
+    if (screen === "memory") {
+      gameType = "Memory Match";
+      extraData = { memoryTurns: moves };
+      // Base and efficiency bonuses from config
+      let bonus = 0;
+      if (moves <= 15) {
+        bonus = GAMIFICATION_CONFIG.xpRewards.memoryMatchSpeedBonusUnder15Turns;
+      } else if (moves <= 22) {
+        bonus = GAMIFICATION_CONFIG.xpRewards.memoryMatchSpeedBonusUnder22Turns;
+      }
+      xpEarned = GAMIFICATION_CONFIG.xpRewards.memoryMatchBase + bonus;
+    } else if (screen === "drag-drop") {
+      gameType = "Drag & Drop";
+      // Base and accuracy bonuses from config
+      let bonus = 0;
+      const accuracy = moves === 6 ? 100 : Math.round((6 / moves) * 100);
+      if (accuracy === 100) {
+        bonus = GAMIFICATION_CONFIG.xpRewards.dragDropPerfectBonus;
+      }
+      extraData = { dragAccuracy: accuracy };
+      xpEarned = GAMIFICATION_CONFIG.xpRewards.dragDropBase + bonus;
+    } else if (screen === "crossword") {
+      gameType = "Crossword";
+      extraData = { crosswordHints: moves };
+      // Trust the letter-based XP calculated and passed from the CrosswordPOC component
     }
+
+    let description = `Completed ${gameType} for ${meta?.title || "Book"}`;
+    addXp(xpEarned, "game", description, extraData);
   };
 
   const toggleSound = () => {
@@ -505,13 +496,21 @@ export default function QuizClient({ bookId }: QuizClientProps) {
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-          <span className="rank-badge" title="Your scriptural study rank!">
-            📜 {getBhaktiRank(bhaktiXp, quizzesTaken)} ({bhaktiXp} XP)
-          </span>
-          {sadhanaStreak > 0 && (
-            <span className="streak-badge" title="Daily study streak!">
-              🔥 {sadhanaStreak} Day Streak
-            </span>
+          {isMounted && (
+            <>
+              <span 
+                className="rank-badge interactive" 
+                title="Click to view Devotional Dashboard!"
+                onClick={() => setDashboardOpen(true)}
+              >
+                📜 {currentRank.title} (Lvl {stats.level})
+              </span>
+              {stats.streak > 0 && (
+                <span className="streak-badge" title="Daily study streak!">
+                  🔥 {stats.streak} Day Streak
+                </span>
+              )}
+            </>
           )}
           {screen !== "quiz" && screen !== "memory" && screen !== "drag-drop" && screen !== "crossword" && (
             <Link href="/" className="nav-back-btn">← Back</Link>
@@ -579,49 +578,55 @@ export default function QuizClient({ bookId }: QuizClientProps) {
               </div>
             )}
 
-            {bookId === "ggd" && (
-              <div className="game-mode-selector" style={{ marginTop: "1.5rem", width: "100%" }}>
-                <div className="scope-title" style={{ marginBottom: "0.8rem", textAlign: "center" }}>Select Game Mode</div>
-                <div style={{ display: "flex", gap: "0.8rem", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.5rem" }}>
-                  <button
-                    className={`btn ${selectedSubMode === "quiz" ? "btn-primary active" : "btn-secondary"}`}
-                    onClick={() => setSelectedSubMode("quiz")}
-                    style={{ minWidth: "120px", display: "flex", flexDirection: "column", gap: "0.2rem", padding: "0.8rem" }}
-                  >
-                    <span style={{ fontWeight: "600", fontSize: "0.95rem" }}>📖 Standard Quiz</span>
-                    <span style={{ fontSize: "0.7rem", opacity: 0.8 }}>7 Multiple Choice</span>
-                  </button>
-                  <button
-                    className={`btn ${selectedSubMode === "memory" ? "btn-primary active" : "btn-secondary"}`}
-                    onClick={() => setSelectedSubMode("memory")}
-                    style={{ minWidth: "120px", display: "flex", flexDirection: "column", gap: "0.2rem", padding: "0.8rem" }}
-                  >
-                    <span style={{ fontWeight: "600", fontSize: "0.95rem" }}>🧠 Memory Match</span>
-                    <span style={{ fontSize: "0.7rem", opacity: 0.8 }}>Match 10 Card Pairs</span>
-                  </button>
-                  <button
-                    className={`btn ${selectedSubMode === "drag-drop" ? "btn-primary active" : "btn-secondary"}`}
-                    onClick={() => setSelectedSubMode("drag-drop")}
-                    style={{ minWidth: "120px", display: "flex", flexDirection: "column", gap: "0.2rem", padding: "0.8rem" }}
-                  >
-                    <span style={{ fontWeight: "600", fontSize: "0.95rem" }}>🤝 Drag & Drop</span>
-                    <span style={{ fontSize: "0.7rem", opacity: 0.8 }}>Match 10 Associations</span>
-                  </button>
-                  <button
-                    className={`btn ${selectedSubMode === "crossword" ? "btn-primary active" : "btn-secondary"}`}
-                    onClick={() => setSelectedSubMode("crossword")}
-                    style={{ minWidth: "120px", display: "flex", flexDirection: "column", gap: "0.2rem", padding: "0.8rem" }}
-                  >
-                    <span style={{ fontWeight: "600", fontSize: "0.95rem" }}>🧩 Crossword</span>
-                    <span style={{ fontSize: "0.7rem", opacity: 0.8 }}>Interactive Puzzle</span>
-                  </button>
+            {(() => {
+              const modes = bookId === "ggd" 
+                ? ["quiz", "memory", "drag-drop", "crossword"] 
+                : ["quiz", "crossword"];
+              
+              return (
+                <div className="game-mode-selector" style={{ marginTop: "1.5rem", width: "100%" }}>
+                  <div className="scope-title" style={{ marginBottom: "0.8rem", textAlign: "center" }}>Select Game Mode</div>
+                  <div style={{ display: "flex", gap: "0.8rem", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.5rem" }}>
+                    {modes.map((m) => {
+                      const cfg = GAMIFICATION_CONFIG.gameUnlocks[m as "quiz" | "memory" | "drag-drop" | "crossword"];
+                      const isUnlocked = stats.level >= cfg.unlockLevel;
+                      const isSelected = selectedSubMode === m;
+                      
+                      return (
+                        <button
+                          key={m}
+                          className={`btn game-mode-btn ${isSelected ? "btn-primary active" : "btn-secondary"} ${!isUnlocked ? "locked-mode" : ""}`}
+                          disabled={!isUnlocked}
+                          onClick={() => isUnlocked && setSelectedSubMode(m as any)}
+                          style={{ 
+                            minWidth: "140px", 
+                            display: "flex", 
+                            flexDirection: "column", 
+                            gap: "0.2rem", 
+                            padding: "0.8rem",
+                            opacity: isUnlocked ? 1 : 0.55,
+                            cursor: isUnlocked ? "pointer" : "not-allowed"
+                          }}
+                          title={isUnlocked ? cfg.description : `Unlocks at Level ${cfg.unlockLevel}`}
+                        >
+                          <span style={{ fontWeight: "600", fontSize: "0.95rem" }}>
+                            {cfg.emoji} {cfg.displayName}
+                          </span>
+                          <span style={{ fontSize: "0.7rem", opacity: 0.8 }}>
+                            {isUnlocked ? cfg.description : `🔒 Level ${cfg.unlockLevel}`}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            )}
+              );
+            })()}
 
             <div className="landing-actions" style={{ display: "flex", gap: "1rem", justifyContent: "center", marginTop: "1.5rem" }}>
               <button
                 className="btn btn-primary"
+                disabled={!isGameModeUnlocked(selectedSubMode, stats.level)}
                 onClick={() => {
                   if (selectedSubMode === "quiz") startQuiz();
                   else if (selectedSubMode === "memory") setScreen("memory");
@@ -679,8 +684,37 @@ export default function QuizClient({ bookId }: QuizClientProps) {
           />
         )}
 
-        {screen === "crossword" && <CrosswordPOC />}
+        {screen === "crossword" && (
+          <Crossword 
+            bookId={bookId}
+            bookTitle={meta.title}
+            onClose={() => setScreen("landing")}
+            onComplete={(xp, moves, secs) => handleGameComplete(xp, moves, secs)}
+          />
+        )}
       </div>
+
+      {/* ── MODALS & CELEBRATIONS ── */}
+      {isMounted && (
+        <>
+          <SadhanaDashboard
+            isOpen={dashboardOpen}
+            onClose={() => setDashboardOpen(false)}
+            stats={stats}
+            resetProgress={resetProgress}
+          />
+          <LevelUpModal
+            isOpen={!!pendingLevelUp}
+            onClose={clearLevelUp}
+            oldLevel={pendingLevelUp?.oldLevel || 1}
+            newLevel={pendingLevelUp?.newLevel || 2}
+            rankTitle={pendingLevelUp?.rankTitle || ""}
+            newBadges={pendingLevelUp?.newBadges || []}
+            triggerParticles={triggerParticles}
+            soundEnabled={soundEnabled}
+          />
+        </>
+      )}
     </>
   );
 }

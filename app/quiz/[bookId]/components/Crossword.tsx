@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { useBhaktiProgress } from "../../utils/bhaktiProgress";
-import { GAMIFICATION_CONFIG } from "../../utils/gamificationConfig";
+import { useBhaktiProgress } from "../../../utils/bhaktiProgress";
+import { GAMIFICATION_CONFIG } from "../../../utils/gamificationConfig";
 
 interface WordItem {
   word: string;
@@ -306,19 +306,19 @@ function generateCrosswordLayout(words: WordItem[], isMobile: boolean): LayoutRe
   return { grid: {}, placedWords: [], rows: 0, cols: 0 };
 }
 
-interface CrosswordPOCProps {
+interface CrosswordProps {
   bookId?: string;
   bookTitle?: string;
   onClose?: () => void;
   onComplete?: (xpEarned: number, moves: number, seconds: number) => void;
 }
 
-export default function CrosswordPOC({
+export default function Crossword({
   bookId = "ggd",
   bookTitle = "Gaura Gaṇoddeśa Dīpikā",
   onClose,
   onComplete
-}: CrosswordPOCProps = {}) {
+}: CrosswordProps = {}) {
   const [layout, setLayout] = useState<LayoutResult | null>(null);
   const [userAnswers, setUserAnswers] = useState<Record<string, string>>({});
   const [selectedClue, setSelectedClue] = useState<PlacedWord | null>(null);

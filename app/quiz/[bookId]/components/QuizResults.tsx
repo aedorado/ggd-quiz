@@ -98,6 +98,9 @@ export default function QuizResults({ userAnswers, onRetry }: QuizResultsProps) 
       <div className="result-summary">
         <div className="result-score">
           {scoreCount} <span>/ {totalCount}</span>
+          <div style={{ fontSize: "0.85rem", marginTop: "0.4rem", fontFamily: "Cinzel, serif", fontWeight: 600, color: "var(--saffron)" }}>
+            🏆 +{scoreCount * 5 + (scoreCount === totalCount && totalCount > 0 ? 15 : 0)} XP
+          </div>
         </div>
 
         {/* Bhakti Sopana details */}

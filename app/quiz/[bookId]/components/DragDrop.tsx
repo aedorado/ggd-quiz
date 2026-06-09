@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { GAMIFICATION_CONFIG } from "../../../utils/gamificationConfig";
 
 interface IdentityMapping {
   gaura_name: string;
@@ -29,7 +30,7 @@ interface DragDropProps {
   playWrongSound: () => void;
   triggerParticles: () => void;
   onClose: () => void;
-  onComplete: (xpEarned: number) => void;
+  onComplete: (xpEarned: number, moves: number, seconds: number) => void;
 }
 
 const FALLBACK_IDENTITIES: IdentityMapping[] = [
@@ -171,7 +172,8 @@ export default function DragDrop({
 
   const setupGame = (activeIdentities: IdentityMapping[]) => {
     const shuffledIdentities = shuffle(activeIdentities);
-    const selected = shuffledIdentities.slice(0, Math.min(6, shuffledIdentities.length));
+    const targetCount = GAMIFICATION_CONFIG.gameUnlocks["drag-drop"].pairsCount || 6;
+    const selected = shuffledIdentities.slice(0, Math.min(targetCount, shuffledIdentities.length));
 
     const targets: DragTarget[] = [];
     const items: DragItem[] = [];
@@ -268,7 +270,7 @@ export default function DragDrop({
       const allMatched = updatedTargets.every(t => t.isMatched);
       if (allMatched) {
         setDragDropActive(false);
-        onComplete(5); // Award 5 XP
+        onComplete(15, dragDropMoves, dragDropTime); // Base 15 XP
       }
     } else {
       playWrongSound();
@@ -319,7 +321,7 @@ export default function DragDrop({
       const allMatched = updatedTargets.every(t => t.isMatched);
       if (allMatched) {
         setDragDropActive(false);
-        onComplete(5); // Award 5 XP
+        onComplete(15, dragDropMoves, dragDropTime); // Base 15 XP
       }
     } else {
       playWrongSound();
@@ -333,7 +335,7 @@ export default function DragDrop({
       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "1rem", color: "var(--ink-mid)", fontSize: "0.9rem" }}>
         <span>Moves: <strong>{dragDropMoves}</strong></span>
         <span>Time: <strong>{Math.floor(dragDropTime / 60)}:{(dragDropTime % 60).toString().padStart(2, '0')}</strong></span>
-        <span>Completion: <strong>{Math.round((dragTargets.filter(t => t.isMatched).length / 6) * 100)}%</strong></span>
+        <span>Completion: <strong>{Math.round((dragTargets.filter(t => t.isMatched).length / (GAMIFICATION_CONFIG.gameUnlocks["drag-drop"].pairsCount || 6)) * 100)}%</strong></span>
       </div>
 
       <p style={{ color: "var(--ink-soft)", fontSize: "0.85rem", fontStyle: "italic", marginBottom: "1rem", textAlign: "center" }}>
@@ -432,7 +434,7 @@ export default function DragDrop({
         <div style={{ textAlign: "center", padding: "1rem" }}>
           <h3 style={{ color: "#2e7d32", marginBottom: "0.5rem" }}>🎉 All Mappings Locked!</h3>
           <p style={{ color: "var(--ink-soft)", fontSize: "0.9rem", marginBottom: "1.5rem" }}>
-            Completed in {dragDropMoves} moves and {Math.floor(dragDropTime / 60)}m {dragDropTime % 60}s. You earned 5 XP!
+            Completed in {dragDropMoves} moves and {Math.floor(dragDropTime / 60)}m {dragDropTime % 60}s. You earned scriptural study XP!
           </p>
           <div style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
             <button className="btn btn-primary" onClick={() => setupGame(identities)}>

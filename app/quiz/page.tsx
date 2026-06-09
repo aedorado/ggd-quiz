@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { GAMIFICATION_CONFIG } from "../utils/gamificationConfig";
 
 interface Book {
   id: string;
@@ -158,7 +159,7 @@ export default function Home() {
           <span className="stat-lbl">Sacred texts</span>
         </div>
         <div className="stat-item">
-          <span className="stat-num">5</span>
+          <span className="stat-num">{GAMIFICATION_CONFIG.gameUnlocks.quiz.questionsCount}</span>
           <span className="stat-lbl">Questions per round</span>
         </div>
         <div className="stat-item">

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { GAMIFICATION_CONFIG } from "../../../utils/gamificationConfig";
 
 interface IdentityMapping {
   gaura_name: string;
@@ -23,10 +24,10 @@ interface MemoryMatchProps {
   playWrongSound: () => void;
   triggerParticles: () => void;
   onClose: () => void;
-  onComplete: (xpEarned: number) => void;
+  onComplete: (xpEarned: number, turns: number, seconds: number) => void;
 }
 
-const MAX_SHOW_IN_GAME = 10;
+const MAX_SHOW_IN_GAME = GAMIFICATION_CONFIG.gameUnlocks.memory.cardsCount || 10;
 
 const FALLBACK_IDENTITIES: IdentityMapping[] = [
   {
@@ -240,7 +241,7 @@ export default function MemoryMatch({
           const allMatched = matchedCards.every(c => c.isMatched);
           if (allMatched) {
             setMemoryActive(false);
-            onComplete(5); // Award 5 XP
+            onComplete(15, memoryMoves, memoryTime); // Base 15 XP
           }
         }, 500);
       } else {
@@ -371,7 +372,7 @@ export default function MemoryMatch({
         <div style={{ textAlign: "center", padding: "1rem" }}>
           <h3 style={{ color: "#2e7d32", marginBottom: "0.5rem" }}>🎉 All Matches Found!</h3>
           <p style={{ color: "var(--ink-soft)", fontSize: "0.9rem", marginBottom: "1.5rem" }}>
-            Completed in {memoryMoves} moves and {Math.floor(memoryTime / 60)}m {memoryTime % 60}s. You earned 5 XP!
+            Completed in {memoryMoves} moves and {Math.floor(memoryTime / 60)}m {memoryTime % 60}s. You earned scriptural study XP!
           </p>
           <div style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
             <button className="btn btn-primary" onClick={() => setupGame(identities)}>

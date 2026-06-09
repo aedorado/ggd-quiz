@@ -1,7 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import { useBhaktiProgress } from "./utils/bhaktiProgress";
+import { GAMIFICATION_CONFIG } from "./utils/gamificationConfig";
+import SadhanaDashboard from "./components/SadhanaDashboard";
+import LevelUpModal from "./components/LevelUpModal";
 
 interface Book {
   id: string;
@@ -63,23 +67,61 @@ const LotusDivider = () => (
   </div>
 );
 
-const getBhaktiRank = (xp: number, taken: number) => {
-  if (taken < 3) return "Jijñāsu";
-  const avg = xp / taken;
-  if (avg >= 6.0) return "Upāsaka";
-  if (avg >= 4.0) return "Svādhyāya-rati";
-  if (avg >= 2.0) return "Tattva-vit";
-  return "Jijñāsu";
-};
-
 export default function Home() {
   const [books, setBooks] = useState<Book[]>([]);
   const [activeFilter, setActiveFilter] = useState("all");
   const [uniqueAuthors, setUniqueAuthors] = useState<{ id: string; label: string }[]>([]);
-  const [sadhanaStreak, setSadhanaStreak] = useState(0);
-  const [bhaktiXp, setBhaktiXp] = useState(0);
-  const [quizzesTaken, setQuizzesTaken] = useState(0);
   const [nectarCard, setNectarCard] = useState<{ verse: string; translation: string; source: string } | null>(null);
+
+  // Hook-based progress tracking
+  const { 
+    isMounted, 
+    stats, 
+    currentRank, 
+    pendingLevelUp, 
+    clearLevelUp, 
+    claimDailyNectar, 
+    resetProgress 
+  } = useBhaktiProgress();
+
+  const [dashboardOpen, setDashboardOpen] = useState(false);
+  const [particles, setParticles] = useState<any[]>([]);
+  const [soundEnabled, setSoundEnabled] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setSoundEnabled(localStorage.getItem("quiz_sound_enabled") === "true");
+    }
+  }, []);
+
+  const triggerParticles = useCallback(() => {
+    const chars = ["🌸", "🪷", "🌹", "💮", "🦚"];
+    const colors = ["#e8954a", "#8b3a5a", "#d4a843", "#ffffff", "#10b981"];
+    const newParticles = Array.from({ length: 32 }).map((_, i) => {
+      const rand = Math.random();
+      let xPos = 0;
+      if (rand < 0.4) {
+        xPos = Math.random() * 18;
+      } else if (rand < 0.8) {
+        xPos = 82 + Math.random() * 18;
+      } else {
+        xPos = 18 + Math.random() * 64;
+      }
+      return {
+        id: Date.now() + i,
+        x: xPos,
+        char: chars[Math.floor(Math.random() * chars.length)],
+        color: colors[Math.floor(Math.random() * colors.length)],
+        size: 16 + Math.random() * 24,
+        delay: Math.random() * 1.8,
+      };
+    });
+    setParticles(newParticles);
+
+    setTimeout(() => {
+      setParticles([]);
+    }, 5500);
+  }, []);
 
   const NECTAR_POOL = [
     {
@@ -116,15 +158,10 @@ export default function Home() {
       next = NECTAR_POOL[Math.floor(Math.random() * NECTAR_POOL.length)];
     }
     setNectarCard(next);
-  };
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setSadhanaStreak(parseInt(localStorage.getItem("sadhana_streak") || "0", 10));
-      setBhaktiXp(parseInt(localStorage.getItem("bhakti_xp") || "0", 10));
-      setQuizzesTaken(parseInt(localStorage.getItem("bhakti_quizzes_taken") || "0", 10));
-    }
-  }, []);
+    // Auto-claim daily nectar XP reward when reading
+    claimDailyNectar();
+  };
 
   useEffect(() => {
     async function loadBooks() {
@@ -182,6 +219,26 @@ export default function Home() {
 
   return (
     <>
+      {/* ── PUṢPA VRISṬI PARTICLES ── */}
+      {particles.length > 0 && (
+        <div className="particle-container">
+          {particles.map((p) => (
+            <span
+              key={p.id}
+              className="puspa-particle"
+              style={{
+                left: `${p.x}%`,
+                color: p.color,
+                fontSize: `${p.size}px`,
+                animationDelay: `${p.delay}s`,
+              }}
+            >
+              {p.char}
+            </span>
+          ))}
+        </div>
+      )}
+
       {/* ── NAV ── */}
       <nav>
         <div className="nav-brand">
@@ -191,13 +248,21 @@ export default function Home() {
           </Link>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
-          <span className="rank-badge" title="Your scriptural study rank!">
-            📜 {getBhaktiRank(bhaktiXp, quizzesTaken)} ({bhaktiXp} XP)
-          </span>
-          {sadhanaStreak > 0 && (
-            <span className="streak-badge" title="Daily study streak!">
-              🔥 {sadhanaStreak} Day Streak
-            </span>
+          {isMounted && (
+            <>
+              <span 
+                className="rank-badge interactive" 
+                title="Click to view Devotional Dashboard!"
+                onClick={() => setDashboardOpen(true)}
+              >
+                📜 {currentRank.title} (Lvl {stats.level})
+              </span>
+              {stats.streak > 0 && (
+                <span className="streak-badge" title="Daily study streak!">
+                  🔥 {stats.streak} Day Streak
+                </span>
+              )}
+            </>
           )}
           <ul className="nav-links" style={{ display: "flex", gap: "1.5rem", listStyle: "none" }}>
             <li>
@@ -231,7 +296,7 @@ export default function Home() {
           <span className="stat-lbl">Sacred texts</span>
         </div>
         <div className="stat-item">
-          <span className="stat-num">7</span>
+          <span className="stat-num">{GAMIFICATION_CONFIG.gameUnlocks.quiz.questionsCount}</span>
           <span className="stat-lbl">Questions per round</span>
         </div>
         <div className="stat-item">
@@ -268,8 +333,11 @@ export default function Home() {
         {/* GRID */}
         <div className="books-grid">
           {filteredBooks.map((b, i) => {
+            const requiredLevel = GAMIFICATION_CONFIG.bookUnlocks[b.id] || 1;
+            const isUnlocked = isMounted ? (stats.level >= requiredLevel) : true;
             const isReady = b.status === "ready";
-            const cardClass = `book-card ${isReady ? "available" : "coming-soon"} ${b.featured ? "featured" : ""
+            const isAvailable = isReady && isUnlocked;
+            const cardClass = `book-card ${isAvailable ? "available" : isReady ? "locked" : "coming-soon"} ${b.featured ? "featured" : ""
               }`;
 
             const CardContent = (
@@ -288,23 +356,23 @@ export default function Home() {
                   <div className="card-desc">{b.desc}</div>
                   <div className="card-footer">
                     <span
-                      className={`status-badge ${isReady ? "badge-ready" : "badge-soon"
+                      className={`status-badge ${isAvailable ? "badge-ready" : isReady ? "badge-locked" : "badge-soon"
                         }`}
                     >
-                      {isReady ? "Ready" : "Coming soon"}
+                      {isAvailable ? "Ready" : isReady ? `🔒 Lvl ${requiredLevel} Req` : "Coming soon"}
                     </span>
                     {b.questions && (
                       <span className="card-qcount">
                         {b.questions} questions
                       </span>
                     )}
-                    {isReady && <span className="card-arrow">→</span>}
+                    {isAvailable && <span className="card-arrow">→</span>}
                   </div>
                 </div>
               </>
             );
 
-            if (isReady && b.href) {
+            if (isAvailable && b.href) {
               return (
                 <Link
                   key={b.id}
@@ -325,7 +393,10 @@ export default function Home() {
               <div
                 key={b.id}
                 className={cardClass}
-                style={{ animationDelay: `${i * 0.045}s` }}
+                style={{ 
+                  animationDelay: `${i * 0.045}s`,
+                  cursor: isReady ? "not-allowed" : "default"
+                }}
               >
                 {CardContent}
               </div>
@@ -393,6 +464,28 @@ export default function Home() {
         <p className="foot-trinity">Śravaṇam · Mananam · Nididhyāsanam · Vandanam</p>
         <p className="foot-copy">In service of the Gauḍīya Vaiṣṇava paramparā</p>
       </footer>
+
+      {/* ── MODALS & CELEBRATIONS ── */}
+      {isMounted && (
+        <>
+          <SadhanaDashboard
+            isOpen={dashboardOpen}
+            onClose={() => setDashboardOpen(false)}
+            stats={stats}
+            resetProgress={resetProgress}
+          />
+          <LevelUpModal
+            isOpen={!!pendingLevelUp}
+            onClose={clearLevelUp}
+            oldLevel={pendingLevelUp?.oldLevel || 1}
+            newLevel={pendingLevelUp?.newLevel || 2}
+            rankTitle={pendingLevelUp?.rankTitle || ""}
+            newBadges={pendingLevelUp?.newBadges || []}
+            triggerParticles={triggerParticles}
+            soundEnabled={soundEnabled}
+          />
+        </>
+      )}
     </>
   );
 }
