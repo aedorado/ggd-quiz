@@ -1,0 +1,4577 @@
+{
+  "1": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "celebrated as the enemy of the Agha demon"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "The highwaymen lust, greed and anger have captured me and bound me with the ropes of the desire for fame. I pray that the heroic devotees of Lord Krishna, the enemy of the Agha demon, may defeat my captors and cut the ropes that bind me."
+  },
+  "2": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "bestower of the nectarean potion of pure love for Him",
+          "the Divine Lord to whom the speaker prays for devotional service"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "I am scorched by the blazing forest fire of old age, deeply bitten by the poisonous snake of blindness, pierced by the sharp arrows of forced dependence on others, and surrounded by the lions of anger, lust, and greed. O Lord Krishna, please give me the nectarean potion of pure love for You, which will make me strong and heroic enough to resist all the enemies and engage in Your devotional service without deviation."
+  },
+  "3": {
+    "entities": [
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "possessors of a transcendental nectar ocean of sweetness"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vraja",
+        "display_name": "Vraja-dhāma",
+        "type": "location",
+        "attributes": [
+          "sacred land that is the abode of the divine couple"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "By tasting a single drop of the memory of the transcendental nectar ocean of the sweetness of the divine couple my heart has become restless. I bow down before the land and people of Vraja. I yearn to see my two masters."
+  },
+  "4": {
+    "entities": [
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "crowning garlands of all charming couples",
+          "objects of the narrator's longing to lovingly gaze upon",
+          "their sight provides nectar continuously tasted by the demigod cupid"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vraja",
+        "display_name": "Vraja-dhāma",
+        "type": "location",
+        "attributes": [
+          "land eternally illuminated by the disembodied demigod cupid",
+          "site of a jubilant festival of Lord Kṛṣṇa's transcendental amorous pastimes"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "His transcendental amorous pastimes constitute a jubilant festival in Vraja"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "The disembodied demigod cupid, who attained a body by continually tasting the nectar of the sight of the divine couple, eternally illuminates this entire land of Vraja, with a jubilant festival of Lord Krsna’s transcendental amorous pastimes. When shall I lovingly gaze on Sri Sri Gandharva-Giridhari (Sri Sri Radha-Krsna), the crowning garlands of all charming couples."
+  },
+  "5": {
+    "entities": [
+      {
+        "canonical_id": "dvaraka",
+        "display_name": "Dvārakā",
+        "type": "location",
+        "attributes": [
+          "city where the brother and sons of the Lord reside",
+          "place where the Lord enjoys pastimes with a multitude of queens",
+          "city dearer even than the spiritual realm of Vaikuntha"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "Lord who enjoys transcendental pastimes with a multitude of queens",
+          "the Lord whose birth occurred in the city of Mathura"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "mathura",
+        "display_name": "Mathurā",
+        "type": "location",
+        "attributes": [
+          "the abode of transcendental love dearer than Dvaraka",
+          "the sacred place of Lord Krsna's transcendental birth",
+          "eternal object of the narrator's worship"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vraja",
+        "display_name": "Vraja-dhāma",
+        "type": "location",
+        "attributes": [
+          "land splendidly manifest within the district of Mathura"
+        ],
+        "relations": [
+          {
+            "type": "located_in",
+            "target_id": "mathura"
+          }
+        ]
+      }
+    ],
+    "verse_text": "The city of Dvaraka, where the brother and sons of the Lord reside, and where the lord enjoys transcendental pastimes with a great multitude of queens, each eclipsing many hundreds of goddesses of fortune, is dearer even than Vaikuntha. Because it is the place of Lord Krsna’s birth, Mathura, the abode of transcendental love, is even more dear than Dvaraka. Within the district of Mathura , the land of Sri Vraja is splendidly manifest. I eternally worship the land of Mathura."
+  },
+  "6": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "enjoys the very sweet nectar of transcendental pastimes",
+          "herds the cows with His brother and many dear friends",
+          "affectionate personality who engages in pastimes in Vraja"
+        ],
+        "relations": [
+          {
+            "type": "brother_of",
+            "target_id": "balarama"
+          }
+        ]
+      },
+      {
+        "canonical_id": "balarama",
+        "display_name": "Lord Balarāma",
+        "type": "personality",
+        "attributes": [
+          "brother of Śrī Kṛṣṇa who herds cows with Him"
+        ],
+        "relations": [
+          {
+            "type": "brother_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "vraja",
+        "display_name": "Vraja-dhāma",
+        "type": "location",
+        "attributes": [
+          "place where nectar of transcendental pastimes is enjoyed",
+          "place that is more dear even than the city of Mathura"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "mathura",
+        "display_name": "Mathura",
+        "type": "location",
+        "attributes": [
+          "city less dear than the holy land of Vraja"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Even today affectionate Lord Krsna enjoys the very sweet nectar of transcendental pastimes there, herding the cows with His brother and His many dear friends. A wonderful sweetness becomes manifest in the heart of they who understand the nectar of this place. Of Vraja, which is more dear even than the city of Mathura, I take shelter."
+  },
+  "7": {
+    "entities": [
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "youthful pair surrounded by their witty gopi friends",
+          "enjoys many kinds of transcendental pastimes in Vṛndāvana",
+          "leaves the scent of their lotus feet upon the forest"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vrndavana",
+        "display_name": "Vṛndāvana forest",
+        "type": "location",
+        "attributes": [
+          "delightful with the scent of the divine couple's lotus feet",
+          "contains groves, mountain caves, and blossoming vines for pastimes"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Surrounded by their witty gopi friends, the youthful divine couple enjoys many kinds of transcendental pastimes within the groves and mountain caves and among the blossoming vines of Vrndavana forest. I worship Vrndavana forest, which is delightful with the scent of their lotus feet."
+  },
+  "8": {
+    "entities": [
+      {
+        "canonical_id": "nandisvara",
+        "display_name": "Nandisvara",
+        "type": "location",
+        "attributes": [
+          "town in Vṛndāvana where the goddess of fortune always walks",
+          "place where the great mystic perfections are eternally present",
+          "sacred town where the cows of Vraja are protected",
+          "home of the people of Vraja and the king of Vraja",
+          "most important town in the land of Vraja",
+          "abode where Lord Kṛṣṇa enjoys transcendental pastimes under parental protection"
+        ],
+        "relations": [
+          {
+            "type": "located_in",
+            "target_id": "vrndavana"
+          },
+          {
+            "type": "home_of",
+            "target_id": "nanda_maharaja"
+          }
+        ]
+      },
+      {
+        "canonical_id": "vrndavana",
+        "display_name": "Vṛndāvana",
+        "type": "location",
+        "attributes": [
+          "sacred forest region containing the town of Nandisvara"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "enjoys transcendental pastimes under the loving protection of His parents"
+        ],
+        "relations": [
+          {
+            "type": "son_of",
+            "target_id": "nanda_maharaja"
+          }
+        ]
+      },
+      {
+        "canonical_id": "nanda_maharaja",
+        "display_name": "Nanda Mahārāja",
+        "type": "personality",
+        "attributes": [
+          "king of Vraja residing in the town of Nandisvara"
+        ],
+        "relations": [
+          {
+            "type": "father_of",
+            "target_id": "krsna"
+          }
+        ]
+      }
+    ],
+    "verse_text": "In Vrndavana is the town of Nandisvara, where the goddess of fortune always walks, where the great mystic perfections are eternally present, where the cows are protected, where the people of Vraja live, and where Lord Krsna happily enjoys transcendental pastimes of under the loving protection of His parents. I worship this town of Nandisvara, the home of the king of Vraja and the most important of the land of Vraja."
+  },
+  "9": {
+    "entities": [
+      {
+        "canonical_id": "nanda_maharaja",
+        "display_name": "Nanda Mahārāja",
+        "type": "personality",
+        "attributes": [
+          "king of Gokula who celebrated the birth of his son",
+          "gave charity to brahmanas including palatable foods and nectar beverages",
+          "gave in charity transcendental cows decorated with many jewels",
+          "satisfied brahmanas day after day with valuable presentations",
+          "repeatedly begged brahmanas for blessings on his infant boy",
+          "always absorbed in thoughts of his son"
+        ],
+        "relations": [
+          {
+            "type": "father_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "infant boy whose birth was celebrated by the King of Gokula",
+          "son of the King of Gokula for whom blessings were begged"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "To celebrate his son’s birth, the King of Gokula respectively gave in charity to the brahmanas palatable foods, nectar beverages, and transcendental cows decorated with many jewels. Day after day he satisfied the brahmanas with these valuable presentations, and he repeatedly begged for their blessings on his infant boy. I worship the king of Gokula, who is always absorbed in thoughts of his son."
+  },
+  "10": {
+    "entities": [
+      {
+        "canonical_id": "yasoda",
+        "display_name": "Yaśodā-devī",
+        "type": "personality",
+        "attributes": [
+          "queen of Vraja whose breasts continually trickle milk out of maternal love",
+          "prepared to give her life millions of times to protect her son",
+          "deeply attached to her son Kṛṣṇa",
+          "cries like a cow frightened for her newborn calf if she cannot see her son"
+        ],
+        "relations": [
+          {
+            "type": "mother_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "son of Yaśodā-devī who is the object of her intense maternal affection"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "May the queen of Vraja, whose breasts continually trickle milk out of maternal love for her son, who is prepared to give her life many millions of times to protect him from even a single drop of perspiration, and who is so attached to Him that if she cannot for a moment see Him she cries like a cow frightened for her new born calf, protect us."
+  },
+  "11": {
+    "entities": [
+      {
+        "canonical_id": "rohini",
+        "display_name": "Rohiṇī-devī",
+        "type": "personality",
+        "attributes": [
+          "showers her love upon Lord Kṛṣṇa due to son's intimate friendship",
+          "expert cook who provides delicious culinary preparations",
+          "delights the king and queen of Vraja with sincere friendship",
+          "possesses many saintly qualities"
+        ],
+        "relations": [
+          {
+            "type": "mother_of",
+            "target_id": "balarama"
+          }
+        ]
+      },
+      {
+        "canonical_id": "balarama",
+        "display_name": "Lord Balarāma",
+        "type": "personality",
+        "attributes": [
+          "shares an intimate friendship with Lord Kṛṣṇa"
+        ],
+        "relations": [
+          {
+            "type": "son_of",
+            "target_id": "rohini"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "recipient of the love showered by Rohiṇī-devī",
+          "intimate friend of Lord Balarāma"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "nanda_maharaja",
+        "display_name": "Nanda Mahārāja",
+        "type": "personality",
+        "attributes": [
+          "king of Vraja delighted by the friendship and saintly qualities of Rohiṇī-devī"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "yasoda",
+        "display_name": "Yaśodā-devī",
+        "type": "personality",
+        "attributes": [
+          "queen of Vraja delighted by the friendship and saintly qualities of Rohiṇī-devī"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Because of her own son Balarama’s intimate friendship with Him, Rohini-devi showers her love upon Lord Krsna. She is an expert cook and she delights the king and queen of Vraja with her sincere friendship and saintly qualities."
+  },
+  "12": {
+    "entities": [
+      {
+        "canonical_id": "balarama",
+        "display_name": "Lord Balarāma",
+        "type": "personality",
+        "attributes": [
+          "splendour of transcendental form eclipses millions of glistening rising moons",
+          "possesses boundless strength sufficient to destroy many armies of demons",
+          "never leaves Kṛṣṇa alone in the forest for even a moment out of love",
+          "worshiped by prayers and known as the enemy of Dhenukasura"
+        ],
+        "relations": [
+          {
+            "type": "brother_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "younger brother of Balarāma possessing great supernatural power"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "The splendour of Lord Balarama’s transcendental form eclipses many millions of glistening rising moons, and the slightest scent of His boundless strength is sufficient to destroy many armies of demons. Although He knows the supernatural power of his younger brother, Krsna, still, out of love for Him, He never leaves Him alone in the forest for even a moment. I offer my prayers to Lord Balarama, the enemy of Dhenukasura."
+  },
+  "13": {
+    "entities": [
+      {
+        "canonical_id": "parjanya_maharaja",
+        "display_name": "Parjanya Mahārāja",
+        "type": "personality",
+        "attributes": [
+          "speaks with a voice that mocks the roaring of hundreds of thousands of thunderclouds",
+          "expresses deep pride in having such a wonderful grandson",
+          "expert at delighting his grandson by speaking many joking words into His ear"
+        ],
+        "relations": [
+          {
+            "type": "grandfather_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "grandson of Parjanya Maharaja who is delighted by his grandfather's joking words"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Speaking with a voice that seems to mock the roaring of hundreds of thousands of thunderclouds, Parjanya Maharaja expresses his pride in having such a wonderful grandson. I offer my respectful obeisances to Parjanya, Krsna’s grandfather, who is expert at delighting his grandson by speaking into His ear many joking words."
+  },
+  "14": {
+    "entities": [
+      {
+        "canonical_id": "variyasi_devi",
+        "display_name": "Variyasi-devī",
+        "type": "personality",
+        "attributes": [
+          "paternal grandmother of Kṛṣṇa",
+          "worships Kṛṣṇa with merry joking words",
+          "calls Kṛṣṇa the moon of grandsons",
+          "happy and proud of her grandson",
+          "feet no longer touch the ground when she walks due to happiness"
+        ],
+        "relations": [
+          {
+            "type": "grandmother_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "grandson of Variyasi-devī",
+          "addressed by his grandmother as the moon of grandsons"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "I offer my respectful obeisances to Variyasi-devi, Krsna’s grandmother. With merry joking words she worships Krsna, calling Him the moon of grandsons. Happy and proud of her grandson her feet no longer touch the ground when she walks."
+  },
+  "15": {
+    "entities": [
+      {
+        "canonical_id": "upananda",
+        "display_name": "Upananda",
+        "type": "personality",
+        "attributes": [
+          "handsome face with a great white beard",
+          "has a dark complexion",
+          "pious individual serving as the respected prime minister in the council of the King of Vraja",
+          "considers his nephew Kṛṣṇa millions of times more dear than his own life",
+          "constantly delights his nephew Kṛṣṇa"
+        ],
+        "relations": [
+          {
+            "type": "uncle_of",
+            "target_id": "krsna"
+          },
+          {
+            "type": "prime_minister_of",
+            "target_id": "nanda_maharaja"
+          }
+        ]
+      },
+      {
+        "canonical_id": "nanda_maharaja",
+        "display_name": "Nanda Mahārāja",
+        "type": "personality",
+        "attributes": [
+          "King of Vraja who maintains a council chamber for his ministers"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "nephew of Upananda who is held dearer than life itself"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vraja",
+        "display_name": "Vraja-dhāma",
+        "type": "location",
+        "attributes": [
+          "land protected by the service of Upananda"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "His face handsome with a great white beard, and his complexion dark, pious Upananda is the respected prime minister in the council chambers of the King of Vraja. Considering Him millions of times more dear than his own life, Upananda delights his nephew Krsna. I pray that Upananda may always stay in the government council and protect the land of Vraja."
+  },
+  "16": {
+    "entities": [
+      {
+        "canonical_id": "sannanda",
+        "display_name": "Sannanda",
+        "type": "personality",
+        "attributes": [
+          "very gentle, affectionate, and generous younger brother of Nanda Maharaja",
+          "has a fair complexion and a black beard",
+          "very devoted to his elder brother Nanda Maharaja",
+          "father of Sunanda-gopi",
+          "pleases Krsna by giving Him palatable dishes made with buffalo yoghurt",
+          "worships Krsna with every breath",
+          "master of a great herd of buffalo"
+        ],
+        "relations": [
+          {
+            "type": "brother_of",
+            "target_id": "nanda_maharaja"
+          },
+          {
+            "type": "uncle_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "nanda_maharaja",
+        "display_name": "Nanda Mahārāja",
+        "type": "personality",
+        "attributes": [
+          "elder brother of Sannanda"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "nephew of Sannanda who is pleased by his buffalo yoghurt dishes"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Nanda Maharaj’s younger brother Sannanda is very gentle, affectionate and generous. His complexion is fair and his beard black. He is very devoted to his elder brother and he is the father of Sunanda-gopi. He pleases Krsna by giving Him palatable dishes made with buffalo yoghurt. He worships Krsna with every breath. May Lord Krsna’s uncle Sannanda, the master of a great herd of buffalo, always protect us."
+  },
+  "17": {
+    "entities": [
+      {
+        "canonical_id": "subhadra",
+        "display_name": "Subhadra",
+        "type": "personality",
+        "attributes": [
+          "dark complexioned, youthful, handsome, and intelligent son of Upananda",
+          "best of astrologers who has defeated even Brhaspati with his scholarship",
+          "stays at the left hand of the king of Vraja",
+          "protects Lord Krsna with good advice",
+          "considers Lord Krsna millions of times more dear than his own life"
+        ],
+        "relations": [
+          {
+            "type": "son_of",
+            "target_id": "upananda"
+          },
+          {
+            "type": "attendant_of",
+            "target_id": "nanda_maharaja"
+          }
+        ]
+      },
+      {
+        "canonical_id": "upananda",
+        "display_name": "Upananda",
+        "type": "personality",
+        "attributes": [
+          "father of the astrologer Subhadra"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "nanda_maharaja",
+        "display_name": "Nanda Mahārāja",
+        "type": "personality",
+        "attributes": [
+          "king of Vraja who has Subhadra at his left hand"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "protected by the good advice of Subhadra"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Upananda’s son Subhadra is dark complexioned, youthful, handsome, and intelligent. He is the best of astrologers. With his vast scholarship he has defeated even Brhaspati. He stays at the left hand of the king of Vraja. With good advice he protects Lord Krsna, who is millions of times more dear to him than his own life. With great pleasure let us glorify, offer our respectful obeisances to Subhadra."
+  },
+  "18": {
+    "entities": [
+      {
+        "canonical_id": "ambika",
+        "display_name": "Ambikā",
+        "type": "personality",
+        "attributes": [
+          "frightened that delicate Kṛṣṇa may be hurt by demons",
+          "performed severe austerities for many days to please Goddess Durgā",
+          "nurse of Lord Kṛṣṇa"
+        ],
+        "relations": [
+          {
+            "type": "mother_of",
+            "target_id": "vijaya"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "delicate child who Ambikā fears will be hurt by demons"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vijaya",
+        "display_name": "Vijaya",
+        "type": "personality",
+        "attributes": [
+          "son of Ambikā",
+          "powerful hero able to kill many demons by the grace of a boon"
+        ],
+        "relations": [
+          {
+            "type": "son_of",
+            "target_id": "ambika"
+          }
+        ]
+      },
+      {
+        "canonical_id": "durga",
+        "display_name": "Goddess Durgā",
+        "type": "personality",
+        "attributes": [
+          "pleased by the severe austerities of Ambikā",
+          "granted a boon that allowed Vijaya to become a powerful hero"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Frightened that delicate Krsna may be hurt by the demons, Ambika performed severe austerities for many days to please the goddess Durga, who granted her a boon that her son Vijaya would become a powerful hero able to kill many demons. May Ambika, Lord Krsna’s nurse, protect us."
+  },
+  "19": {
+    "entities": [
+      {
+        "canonical_id": "vijaya",
+        "display_name": "Vijaya",
+        "type": "personality",
+        "attributes": [
+          "calls out with a voice heard in millions of spiritual universes",
+          "declares he will easily shorten the lives of demons",
+          "son of Kṛṣṇa's nurse",
+          "instructed by his mother to always stay near and protect child Kṛṣṇa"
+        ],
+        "relations": [
+          {
+            "type": "son_of",
+            "target_id": "ambika"
+          }
+        ]
+      },
+      {
+        "canonical_id": "ambika",
+        "display_name": "Ambikā",
+        "type": "personality",
+        "attributes": [
+          "feels maternal affection for Kṛṣṇa",
+          "nurse of Kṛṣṇa",
+          "instructed her son to protect child Kṛṣṇa from demons"
+        ],
+        "relations": [
+          {
+            "type": "mother_of",
+            "target_id": "vijaya"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "child protected by Vijaya",
+          "object of Ambikā's maternal affection"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Saying “Where are the demons? With ease I shall shorten their lives,” Vijaya calls so loudly his words are heard in millions of spiritual universes. Out of maternal affection for Krsna, Ambika instructed her son Vijaya to always stay near child Krsna and protect Him from the demons. I worship Vijaya, the son of Krsna’s nurse."
+  },
+  "20": {
+    "entities": [
+      {
+        "canonical_id": "bhaguri_muni",
+        "display_name": "Bhaguri Muni",
+        "type": "personality",
+        "attributes": [
+          "learned chief priest of Vraja-pura and personification of all the Vedas",
+          "best of the sages who chants mantras for the protection of Kṛṣṇa's limbs",
+          "smells Kṛṣṇa's head everyday",
+          "offers Kṛṣṇa many benedictions everyday"
+        ],
+        "relations": [
+          {
+            "type": "priest_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "recipient of mantras chanted for the protection of His limbs",
+          "has His head smelled by Bhaguri Muni everyday",
+          "recipient of many benedictions offered by Bhaguri Muni"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vraja",
+        "display_name": "Vraja-dhāma",
+        "type": "location",
+        "attributes": [
+          "abode where Bhaguri Muni serves as the chief priest"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Bhaguri Muni, the learned chief priest of Vraja-pura, is the personification of all the Vedas. Everyday He chants mantras for the protection of each of Krsna’s limbs. Everyday he smells Krsna’s head. Everyday he offers Krsna many benedictions. I bow down and offer my respectful obeisances to Bhaguri Muni, the best of the sages."
+  },
+  "21": {
+    "entities": [
+      {
+        "canonical_id": "sridama",
+        "display_name": "Śrīdāmā",
+        "type": "personality",
+        "attributes": [
+          "most expert and clever of the cowherd boys",
+          "abode of intense love for Lord Kṛṣṇa",
+          "has a dark complexion",
+          "proud that his qualities, age, clothing, and features resemble Kṛṣṇa",
+          "trembles with anxiety if he cannot see Kṛṣṇa for a single moment",
+          "constant companion of Lord Kṛṣṇa"
+        ],
+        "relations": [
+          {
+            "type": "friend_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "object of the intense love of Śrīdāmā",
+          "friend whose qualities, age, and features Śrīdāmā resembles",
+          "constant companion of Śrīdāmā"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Sridama is the most expert and clever of the cowherd boys, and he is the abode of intense love for Lord Krsna. His complexion is dark, and he is proud that his qualities, age, clothing and handsome features closely resemble that of Lord Krsna. If for a single moment he cannot see Lord Krsna, he trembles with anxiety. I completely take shelter of Sridama, the constant companion of Lord Krsna."
+  },
+  "22": {
+    "entities": [
+      {
+        "canonical_id": "subala",
+        "display_name": "Subala",
+        "type": "personality",
+        "attributes": [
+          "filled with deep love for Śrī Kṛṣṇa and anxious about separation",
+          "never lets go of Kṛṣṇa's hand even in a dream",
+          "heart sprinkled with the waters of the swiftly moving mountain stream of devotion to Śrīmatī Rādhārāṇī",
+          "possesses a body that trembles with love for Śrī Śrī Rādhā-Kṛṣṇa"
+        ],
+        "relations": [
+          {
+            "type": "friend_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "known as the moon of Gokula",
+          "hand held by Subala in deep love and anxiety"
+        ],
+        "relations": [
+          {
+            "type": "member_of",
+            "target_id": "divine_couple"
+          }
+        ]
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "object of Subala's swiftly moving mountain stream of devotion"
+        ],
+        "relations": [
+          {
+            "type": "member_of",
+            "target_id": "divine_couple"
+          }
+        ]
+      },
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "objects of Subala's love that causes his body to tremble"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Filled with deep love for him, and anxious that they may be separated, Subala never, even in dream, lets go of the hand of Sri Krsna, the moon of Gokula. Subala’s heart is sprinkled with the waters of the swiftly moving mountain stream of devotion to Srimati Radhika. I offer my respectful obeisances to Subala whose body trembles with love for Sri Sri Radha-Krsna."
+  },
+  "23": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "Lord whose presence inspires play and joking in His friends",
+          "transcendental object whose presence causes the removal of awe and reverence",
+          "Lord at whose feet the cowherd boys have placed their hearts, lives, and property"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "cowherd_boys",
+        "display_name": "Cowherd Boys",
+        "type": "personality",
+        "attributes": [
+          "friends of Kṛṣṇa who assemble the surabhi cows in one place",
+          "play and joke together holding hands in the presence of Kṛṣṇa",
+          "possessors of pure love that washes away the mud of awe and reverence",
+          "devotees whose hearts, lives, and property are all placed at Kṛṣṇa’s feet"
+        ],
+        "relations": [
+          {
+            "type": "friend_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "surabhi_cows",
+        "display_name": "Surabhi Cows",
+        "type": "animal",
+        "attributes": [
+          "sacred cows assembled in one place by Kṛṣṇa's friends"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Assembling the surabhi cows in one place, hand in hand, Krsna’s friends play and joke. For them the ocean of pure love has washed away the mud of awe and reverence in Krsna’s presence. Let us take shelter of these boys, whose hearts, lives, and property are all placed at Lord Krsna’s feet."
+  },
+  "24": {
+    "entities": [
+      {
+        "canonical_id": "madhumangala",
+        "display_name": "Madhumangala",
+        "type": "personality",
+        "attributes": [
+          "personified mellow of comedy who is pure-hearted and eternally hungry",
+          "jubilant friend who daily induces laughter with comic speeches and gestures",
+          "joking friend of Lord Kṛṣṇa who is the moon of Vṛndāvana"
+        ],
+        "relations": [
+          {
+            "type": "friend_of",
+            "target_id": "krsna"
+          },
+          {
+            "type": "friend_of",
+            "target_id": "radharani"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "the moon of Vṛndāvana who is a friend of Madhumangala"
+        ],
+        "relations": [
+          {
+            "type": "friend_of",
+            "target_id": "madhumangala"
+          }
+        ]
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "friend of Madhumangala whose laughter is induced by his comic gestures"
+        ],
+        "relations": [
+          {
+            "type": "friend_of",
+            "target_id": "madhumangala"
+          }
+        ]
+      }
+    ],
+    "verse_text": "The personified mellows of comedy, pure-hearted, eternally hungry, jubilant, and splendid Madhumangala daily induces the laughter of his two friends (Sri Sri Radha-Krsna) with a host of comic speeches and gestures. With great devotion let us at once bow down to offer our respect to Madhumangala, the joking friend of Lord Krsna, the moon of Vrndavana."
+  },
+  "25": {
+    "entities": [
+      {
+        "canonical_id": "paurnamasi",
+        "display_name": "Paurṇamāsī",
+        "type": "personality",
+        "attributes": [
+          "noble and auspicious personality who is worshipped with deep devotion",
+          "daily arranges the secret rendezvous of the divine couple",
+          "accompanied by an expert gopi friend while arranging meetings",
+          "tastes the nectar happiness of seeing divine pastimes at every moment"
+        ],
+        "relations": [
+          {
+            "type": "facilitator_of",
+            "target_id": "divine_couple"
+          }
+        ]
+      },
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "expert divine couple whose secret rendezvous are arranged daily",
+          "whose pastimes provide nectar happiness to Paurnamasi"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Accompanied by an expert gopi friend, Paurnamasi daily arranges the secret rendezvous of expert Sri Sri Radha and Krsna. I worship noble and auspicious Paurnamasi, who at every moment tastes the nectar happiness of seeing the pastimes of the divine couple."
+  },
+  "26": {
+    "entities": [
+      {
+        "canonical_id": "vrsabhanu",
+        "display_name": "King Vṛṣabhānu",
+        "type": "personality",
+        "attributes": [
+          "noble, generous, learned, and intelligent ruler",
+          "has a fair complexion and a neatly clipped beard",
+          "is a fifty-year-old monarch of Vraja",
+          "considers Śrī Rādhā dearer than his eldest child Śrīdāmā",
+          "close friend of the Vraja-king Nanda Mahārāja"
+        ],
+        "relations": [
+          {
+            "type": "friend_of",
+            "target_id": "nanda_maharaja"
+          },
+          {
+            "type": "father_of",
+            "target_id": "radharani"
+          },
+          {
+            "type": "father_of",
+            "target_id": "sridama"
+          }
+        ]
+      },
+      {
+        "canonical_id": "nanda_maharaja",
+        "display_name": "Nanda Mahārāja",
+        "type": "personality",
+        "attributes": [
+          "king of Vraja and close friend of King Vṛṣabhānu"
+        ],
+        "relations": [
+          {
+            "type": "friend_of",
+            "target_id": "vrsabhanu"
+          }
+        ]
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "daughter of King Vṛṣabhānu who is dearer to him than Śrīdāmā"
+        ],
+        "relations": [
+          {
+            "type": "child_of",
+            "target_id": "vrsabhanu"
+          }
+        ]
+      },
+      {
+        "canonical_id": "sridama",
+        "display_name": "Śrīdāmā",
+        "type": "personality",
+        "attributes": [
+          "eldest child of King Vṛṣabhānu"
+        ],
+        "relations": [
+          {
+            "type": "child_of",
+            "target_id": "vrsabhanu"
+          }
+        ]
+      }
+    ],
+    "verse_text": "Noble, generous, learned, intelligent, fair complexion, fifty-year-old King Vrsabhanu wears a neatly clipped beard. He is the close friend of Nanda, the king of Vraja. To him, Sri Radha is even dearer than his eldest child Sridama. I constantly worship famous King Vrsabhanu."
+  },
+  "27": {
+    "entities": [
+      {
+        "canonical_id": "kirtida_devi",
+        "display_name": "Kīrtidā-devī",
+        "type": "personality",
+        "attributes": [
+          "mind overwhelmed with a flood of love",
+          "daily sends her two unmarried daughters to gather news of Radharani",
+          "mother of Śrīmatī Rādhārāṇī"
+        ],
+        "relations": [
+          {
+            "type": "mother_of",
+            "target_id": "radharani"
+          }
+        ]
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "daughter of Kirtida-devi whose recent activities are being monitored"
+        ],
+        "relations": [
+          {
+            "type": "daughter_of",
+            "target_id": "kirtida_devi"
+          }
+        ]
+      }
+    ],
+    "verse_text": "Her mind overwhelmed with a flood of love, Kirtida-devi daily sends her two unmarried daughters to diligently gather all news of Srimati Radharani’s recent activities. May Kirtida-devi, the mother of Srimati Radharani protect us all."
+  },
+  "28": {
+    "entities": [
+      {
+        "canonical_id": "mukhara_devi",
+        "display_name": "Mukhara-devī",
+        "type": "personality",
+        "attributes": [
+          "elderly grandmother who angrily places obstacles to stop the amorous pastimes of Radha and Krsna",
+          "increases the transcendental happiness of her two young grandchildren through her opposition"
+        ],
+        "relations": [
+          {
+            "type": "grandmother_of",
+            "target_id": "radharani"
+          },
+          {
+            "type": "grandmother_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "young granddaughter of Mukhara-devi whose amorous pastimes are hindered",
+          "enjoys transcendental happiness increased by the obstacles of Mukhara-devi"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "young grandson of Mukhara-devi whose amorous pastimes are hindered",
+          "enjoys transcendental happiness increased by the obstacles of Mukhara-devi"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Angrily placing many obstacles to stop Their amorous pastimes, Mukhara-devi only increases the transcendental happiness of her two young grandchildren, Sri Sri Radha and Krsna. I respectfully bow down before elderly Mukhara-devi, and I place her lotus feet upon my head."
+  },
+  "29": {
+    "entities": [
+      {
+        "canonical_id": "lalita_devi",
+        "display_name": "Lalita-devī",
+        "type": "personality",
+        "attributes": [
+          "flooded with the nectar of intense love for Sri Sri Radha-Krsna",
+          "regards Sri Sri Radha-Krsna as more dear than her own life",
+          "affectionately arrogant in the presence of Sri Sri Radha-Krsna",
+          "daily arranges the rendezvous of Sri Sri Radha-Krsna",
+          "expertly teaches Radharani the art of jealous anger"
+        ],
+        "relations": [
+          {
+            "type": "friend_of",
+            "target_id": "divine_couple"
+          },
+          {
+            "type": "friend_of",
+            "target_id": "radharani"
+          }
+        ]
+      },
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "dearer to Lalita-devi than her own life",
+          "friends who receive the affectionate service of Lalita-devi",
+          "engage in daily rendezvous arranged by Lalita-devi"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "friend of Lalita-devi who is taught the art of jealous anger"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Flooded with the nectar of intense love for her two friends (Sri Sri Radha-Krsna), who more dear to her than her own life, affectionately arrogant in their presence, and daily arranging their rendezvous, Lalita-devi expertly teaches her friend Radha the art of jealous anger. I pray Lalita-devi will one day accept me as one of her associates."
+  },
+  "30": {
+    "entities": [
+      {
+        "canonical_id": "visakha_devi",
+        "display_name": "Visākhā-devī",
+        "type": "personality",
+        "attributes": [
+          "place where youthful divine couple enjoys affectionate and playful joking pastimes",
+          "possesses sweet transcendental singing that eclipses the voices of cuckoos"
+        ],
+        "relations": [
+          {
+            "type": "associate_of",
+            "target_id": "divine_couple"
+          }
+        ]
+      },
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "youthful couple who enjoys affectionate and playful joking pastimes"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Visakha-devi is the place where youthful divine couple enjoys affectionate and playful joking pastimes. Her sweet transcendental singing eclipses the voices of the cuckoos. I pray that Vishaka-devi may become pleased with me and accept me as her student."
+  },
+  "31": {
+    "entities": [
+      {
+        "canonical_id": "vrnda_devi",
+        "display_name": "Vṛndā-devī",
+        "type": "personality",
+        "attributes": [
+          "filled with a great flood of love",
+          "decorating the ever-blossoming groves of Vrndavana with many fragrant flowers",
+          "creates a festive atmosphere for the transcendental pastimes of the divine couple"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vrndavana",
+        "display_name": "Vṛndāvana",
+        "type": "location",
+        "attributes": [
+          "abode of ever-blossoming groves decorated with many fragrant flowers"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "enjoy transcendental pastimes with their dear friends in Vrndavana"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Filled with a great flood of love and decorating the ever-blossoming groves of Vrndavana with many fragrant flowers, Vrnda-devi creates a festive atmosphere for Sri Sri Radha-Krsna to enjoy transcendental pastimes with Their dear friends. Let me surrender to Vrnda-devi."
+  },
+  "32": {
+    "entities": [
+      {
+        "canonical_id": "kundalata_devi",
+        "display_name": "Kundalata-devī",
+        "type": "personality",
+        "attributes": [
+          "requested by the queen of Vraja to bring Srimati Radharani to cook",
+          "narrates the latest news of Lord Krsna to Srimati Radharani",
+          "glows with friendship and auspicious playfulness",
+          "becomes filled with happiness while walking on the path"
+        ],
+        "relations": [
+          {
+            "type": "friend_of",
+            "target_id": "radharani"
+          }
+        ]
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "brought by Kundalata-devi to cook by the order of the queen of Vraja",
+          "walks together with Kundalata-devi while hearing news of Krsna"
+        ],
+        "relations": [
+          {
+            "type": "friend_of",
+            "target_id": "kundalata_devi"
+          }
+        ]
+      },
+      {
+        "canonical_id": "yasoda",
+        "display_name": "Yaśodā-devī",
+        "type": "personality",
+        "attributes": [
+          "queen of Vraja who ordered Kundalata-devi to bring Srimati Radharani to cook"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "subject of the latest news narrated by Kundalata-devi"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Bringing Srimati Radharani to cook by the order of the queen of Vraja, and, as they both walked together on the path pleasing her by affectionately and continually narrating the latest news of Lord Krsna charming Kundalata-devi, glowing with friendship and auspicious playfulness became filled with happiness. I worship Kundalata-devi."
+  },
+  "33": {
+    "entities": [
+      {
+        "canonical_id": "dhanistha_devi",
+        "display_name": "Dhaniṣṭhā-devī",
+        "type": "personality",
+        "attributes": [
+          "brought by the queen of Vraja to cook many palatable dishes",
+          "affectionate personality who uses many clever tricks",
+          "happily arranged for Srimati Radharani to meet her lover Krsna",
+          "considers her friend Radha to be more dear than life"
+        ],
+        "relations": [
+          {
+            "type": "friend_of",
+            "target_id": "radharani"
+          }
+        ]
+      },
+      {
+        "canonical_id": "yasoda",
+        "display_name": "Yaśodā-devī",
+        "type": "personality",
+        "attributes": [
+          "queen of Vraja who brings Dhanistha-devi to cook palatable dishes"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "friend of Dhanistha-devi who is more dear than life",
+          "lover of Krsna who meets Him in the forest groves"
+        ],
+        "relations": [
+          {
+            "type": "lover_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "lover of Srimati Radharani meeting in the forest groves"
+        ],
+        "relations": [
+          {
+            "type": "lover_of",
+            "target_id": "radharani"
+          }
+        ]
+      },
+      {
+        "canonical_id": "nandisvara_hill",
+        "display_name": "Nandīśvara Hill",
+        "type": "location",
+        "attributes": [
+          "location of the forest groves where the divine couple meets"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Brought by the queen of Vraja to cook many palatable dishes of her own accord affectionate Dhanistha-devi, using many clever tricks, happily arranged for Srimati Radharani to meet her lover, Krsna, in the forest groves of Nandisvara Hill. I worship Dhanistha-devi, for whom her friend Radha is more dear than life."
+  },
+  "34": {
+    "entities": [
+      {
+        "canonical_id": "nandimukhi_devi",
+        "display_name": "Nandimukhī-devī",
+        "type": "personality",
+        "attributes": [
+          "heart enchanted by repeatedly hearing the glories of the divine couple",
+          "longing to meet the divine couple",
+          "left Avantipura and went to the land of Vraja",
+          "eternally increases the happiness of Sri Sri Radha and Krsna’s splendid and nectarean pastimes"
+        ],
+        "relations": [
+          {
+            "type": "servant_of",
+            "target_id": "divine_couple"
+          }
+        ]
+      },
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "subjects of nectarean and splendid pastimes in Vraja",
+          "recipients of the increased happiness provided by Nandimukhi-devi"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vraja",
+        "display_name": "Vraja-dhāma",
+        "type": "location",
+        "attributes": [
+          "land to which Nandimukhi-devi traveled to serve the divine couple"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Her heart enchanted by repeatedly hearing the glories of the divine couple and longing to meet Them, Nandimukhi-devi left Avantipura and went to the land of Vraja, where she eternally increases the happiness of Sri Sri Radha and Krsna’s splendid and nectarean pastimes. I eternally offer my respectful obeisances to Nandimukhi-devi."
+  },
+  "35": {
+    "entities": [
+      {
+        "canonical_id": "jamuna_river",
+        "display_name": "Yamunā River",
+        "type": "location",
+        "attributes": [
+          "waters filled with musk and saffron fallen from the divine couple",
+          "happily smiles at the divine couple with her foam",
+          "splashes the divine couple with the beautiful hands of her waves",
+          "brings transcendental happiness to those who pray to her"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "engaged in many nectar water-pastimes in the Yamuna River",
+          "adorned with musk and saffron that fell into the river waters"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Her waters filled with musk and saffron fallen from Sri Sri Radha-Krsna as they enjoy many nectar water-pastimes, the Jamuna river happily smiles at Them with her foam and splashes Them with the beautiful hands of her waves. I pray the Jamuna river may bring transcendental happiness to us."
+  },
+  "36": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "supremely blissful personality who appeals to the gopis",
+          "enjoys transcendental pastimes with Śrīmatī Rādhārāṇī"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "more dear to the gopis than their own life breath",
+          "enjoys transcendental pastimes with Lord Kṛṣṇa"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "gopis",
+        "display_name": "Gopīs",
+        "type": "personality",
+        "attributes": [
+          "spontaneously and angrily rebuke Śrīmatī Rādhārāṇī moved by Kṛṣṇa's appeal",
+          "encourage Śrīmatī Rādhārāṇī to again enjoy pastimes with Kṛṣṇa",
+          "dear friends of Śrīmatī Rādhārāṇī who arrange her transcendental pastimes"
+        ],
+        "relations": [
+          {
+            "type": "friend_of",
+            "target_id": "radharani"
+          }
+        ]
+      }
+    ],
+    "verse_text": "Moved by the appeal of supremely blissful Lord Krsna, the gopis spontaneously and angrily rebuke Srimati Radharani, who is more dear to them than their own life’s breath and encourage her to again enjoy the pastimes with Krsna. Bowing my head I take shelter of these dear friends of Srimati Radharani, who daily arranged for her to enjoy transcendental pastimes with Lord Krsna."
+  },
+  "37": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "served by servants who possess great love, enthusiasm, and respect",
+          "receives service from his servants who act like friends",
+          "pleased by servants bringing the flute, vina, water, and betel nuts"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna_servants",
+        "display_name": "Servants of Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "serve Kṛṣṇa with great love, enthusiasm, and respect",
+          "act much like the friends of Kṛṣṇa",
+          "please Kṛṣṇa by bringing the flute, vina, water, and betel nuts",
+          "led by the personality known as Patri"
+        ],
+        "relations": [
+          {
+            "type": "servant_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "patri",
+        "display_name": "Patri",
+        "type": "personality",
+        "attributes": [
+          "leader of the servants of Kṛṣṇa"
+        ],
+        "relations": [
+          {
+            "type": "leader_of",
+            "target_id": "krsna_servants"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna_flute",
+        "display_name": "Vraja Flute",
+        "type": "object",
+        "attributes": [
+          "brought to Kṛṣṇa by his loving servants"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "With great love, enthusiasm, and respect, Krsna’s servants, who are much like his friends, serve Him in many ways and please Him by bringing the flute, vina, water, betel nuts, and other articles. I worship Krsna’s servants who have Patri as their leader."
+  },
+  "38": {
+    "entities": [
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "great queen of the Vrndavana forest",
+          "dearer than life to the great gopis",
+          "receives services of betel nuts, foot massages, and water from maidservants",
+          "participates in intimate pastimes with Lord Kṛṣṇa"
+        ],
+        "relations": [
+          {
+            "type": "partner_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "enjoys intimate pastimes with Śrīmatī Rādhārāṇī",
+          "meets with Śrīmatī Rādhārāṇī through the arrangements of maidservants"
+        ],
+        "relations": [
+          {
+            "type": "partner_of",
+            "target_id": "radharani"
+          }
+        ]
+      },
+      {
+        "canonical_id": "rupa_manjari",
+        "display_name": "Rūpa-mañjarī",
+        "type": "personality",
+        "attributes": [
+          "leader of the gopi maidservants who serve Śrīmatī Rādhārāṇī"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "gopi_maidservants",
+        "display_name": "Gopi Maidservants",
+        "type": "personality",
+        "attributes": [
+          "affectionately please Śrīmatī Rādhārāṇī through various menial services",
+          "not at all shy even in the presence of great gopis",
+          "perform services including offering betel nuts and massaging feet",
+          "arrange secret meetings between the Divine Couple"
+        ],
+        "relations": [
+          {
+            "type": "led_by",
+            "target_id": "rupa_manjari"
+          }
+        ]
+      }
+    ],
+    "verse_text": "By offering her betel nuts, by massaging her feet, by bringing her water, by arranging for her meetings with Lord Krsna, and by performing many other services, many gopi maidservants affectionately please Sri Radha, the great queen of Vrndavana forest. When the Divine Couple enjoy Their pastimes, these maidservants are not at all shy, even in the presence of the great gopis for whom Sri Radha is more dear than life. I take shelter of these gopi maidservants, who have Srimati Rupa-manjari as their leader."
+  },
+  "39": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "enemy of the Mura demon",
+          "husband of the goddess of fortune",
+          "source of happiness for his personal associates"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "personal_associates_of_krsna",
+        "display_name": "Personal Associates of Lord Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "consider the expanded ocean of their own happiness insignificant as a blade of grass",
+          "filled with pure love for Lord Kṛṣṇa",
+          "strive to make Lord Kṛṣṇa always happy",
+          "fortunate associates worshipped for their devotion"
+        ],
+        "relations": [
+          {
+            "type": "associate_of",
+            "target_id": "krsna"
+          }
+        ]
+      }
+    ],
+    "verse_text": "Considering the expanded ocean of their own happiness to be as insignificant as a blade of grass and filled with pure love for Lord Krsna, the enemy of the Mura demon, the Lord’s personal associates strive to make him always happy. I worship these fortunate associates of Lord Krsna, the husband of the goddess of fortune."
+  },
+  "40": {
+    "entities": [
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "source of happiness for her personal associates",
+          "beloved more than their own lives by her personal associates"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "radharani_associates",
+        "display_name": "Personal Associates of Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "pleased when Śrīmatī Rādhārāṇī becomes happy",
+          "distraught to the point of appearing dead if they cannot see Rādhārāṇī",
+          "possessors of an auspicious condition attained through previous pious activities",
+          "love Śrīmatī Rādhārāṇī more than their own lives"
+        ],
+        "relations": [
+          {
+            "type": "associate_of",
+            "target_id": "radharani"
+          }
+        ]
+      }
+    ],
+    "verse_text": "Let me worship the personal associates of Srimati Radharani. When Radharani becomes happy, they are pleased. If for a moment they cannot see Radharani, they become so distraught that they appear almost dead. They must have performed some pious activities in their previous births in order to obtain this auspicious condition where they love Srimati Radharani more than their own lives."
+  },
+  "41": {
+    "entities": [
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "sometimes becomes proud of her own good fortune",
+          "possesses a splendid and nectarean jealous love increased by Kṛṣṇa"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "briefly enjoys pastimes with other gopis to increase Rādhārāṇī's jealous love"
+        ],
+        "relations": [
+          {
+            "type": "partner_in_pastimes_with",
+            "target_id": "other_gopis"
+          }
+        ]
+      },
+      {
+        "canonical_id": "other_gopis",
+        "display_name": "Other Gopīs",
+        "type": "personality",
+        "attributes": [
+          "blossom with many amorous desires",
+          "must have performed many great pious activities to play this role"
+        ],
+        "relations": [
+          {
+            "type": "participate_in_pastimes_with",
+            "target_id": "krsna"
+          }
+        ]
+      }
+    ],
+    "verse_text": "In order to increase the splendid and nectarean jealous love of Srimati Radharani, who sometimes becomes proud of her own good fortune, Lord Krsna briefly enjoys pastimes with other gopis, who blossom with many amorous desires. Let us offer our respectful obeisances to these gopis, who must have performed many great pious activities in order to play this role in the Lord’s pastimes."
+  },
+  "42": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "affectionately protects the cowherd boys of Vraja",
+          "possessor of handsome lotus toenails from which dust particles fall"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "gopas",
+        "display_name": "Cowherd Boys",
+        "type": "personality",
+        "attributes": [
+          "affectionately protected by the personality of Śrī Kṛṣṇa",
+          "hearts are rapt in meditation on the dust from Kṛṣṇa's toenails",
+          "experience happiness greater than that of many millions of universes"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Affectionately protected by Krsna, and their hearts rapt in meditation on the particles of dust falling from the tip of his handsome lotus toenails, the gopas experience a happiness greater than the happiness of many millions of universes. I worship these exalted gopas."
+  },
+  "43": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "worshipped by elderly gopis who consider Him dearer than their own lives",
+          "has lotus feet from which a drop of perspiration is worshipped",
+          "has a head decorated with handsome locks of hair"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "elderly_gopis",
+        "display_name": "Elderly Gopis",
+        "type": "personality",
+        "attributes": [
+          "consider Kṛṣṇa dearer than their own lives out of parental love",
+          "worship a drop of perspiration from the lotus feet of Kṛṣṇa",
+          "kiss the head of Kṛṣṇa which is decorated with handsome locks of hair"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Considering Him dearer than their own lives out of parental love, the elderly gopis worship even a drop of perspiration of Krsna’s lotus feet, and for a long time they kiss his head, decorated with handsome locks of hair. I worship the dust of these gopis’ feet."
+  },
+  "44": {
+    "entities": [
+      {
+        "canonical_id": "surabhi_cows",
+        "display_name": "Surabhi cows",
+        "type": "animal",
+        "attributes": [
+          "surabhi cows of Śrī Kṛṣṇa with hooves decorated with sapphires",
+          "possessors of horns studded with gold",
+          "possessors of white cheeks that have crippled the pride of snow-capped mountain peaks"
+        ],
+        "relations": [
+          {
+            "type": "pet_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "owner of the surabhi cows"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "The hooves of Sri Krsna’s surabhi cows are decorate with sapphires, their horns are studded with gold, and their white cheeks have crippled the pride of the snow-capped mountain peaks. I pray these surabhi cows may protect us."
+  },
+  "45": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "prince of Vraja who daily enjoys a great festival of protecting and milking cows",
+          "has a body splendidly covered with dust raised by the hooves of cows",
+          "eagerly enjoys pastimes with friends in the great forests, grand hills, and river banks of Vraja"
+        ],
+        "relations": [
+          {
+            "type": "friend_of",
+            "target_id": "balarama"
+          }
+        ]
+      },
+      {
+        "canonical_id": "balarama",
+        "display_name": "Lord Balarāma",
+        "type": "personality",
+        "attributes": [
+          "companion of the prince of Vraja during cow herding pastimes"
+        ],
+        "relations": [
+          {
+            "type": "friend_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "surabhi_cows",
+        "display_name": "Surabhi Cows",
+        "type": "animal",
+        "attributes": [
+          "cows whose hooves raise dust that covers the body of the prince of Vraja",
+          "objects of the daily festival of protection and milking by the prince of Vraja"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vraja",
+        "display_name": "Vraja-dhāma",
+        "type": "location",
+        "attributes": [
+          "sacred land featuring great forests, grand hills, and river banks where pastimes occur"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "In the company of Balarama and His other friends, and His own body splendidly covered with the dust raised by their hooves, the prince of Vraja daily enjoys a great festival of protecting and milking the cows. With great happiness He eagerly enjoys pastimes with them in the great forests and on the grand hills and river banks of Vraja. Let me worship these surabhi cows."
+  },
+  "46": {
+    "entities": [
+      {
+        "canonical_id": "padmagandha_bull",
+        "display_name": "Padmagandha (bull)",
+        "type": "animal",
+        "attributes": [
+          "pet bull of Lord Kṛṣṇa",
+          "has handsome horns covered with gold and studded with jewels",
+          "has hooves splendidly decorated with sapphires",
+          "has a splendid neck decorated with a swinging garland of reddish flowers"
+        ],
+        "relations": [
+          {
+            "type": "pet_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "owner of the pet bull Padmagandha"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "All glories to Lord Krsna’s pet bull Padmagandha, whose handsome horns are covered with gold and studded with jewels, whose hooves are splendidly decorated with sapphires, and whose splendid neck is decorated with a swinging garland of reddish flowers."
+  },
+  "47": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "earnestly feeds calves by placing tender fresh grass in their mouths",
+          "very carefully massages the limbs of the calves",
+          "owner of the calves that jump and frolic in Vṛndāvana"
+        ],
+        "relations": [
+          {
+            "type": "caretaker_of",
+            "target_id": "calves"
+          }
+        ]
+      },
+      {
+        "canonical_id": "calves",
+        "display_name": "Calves of Vraja",
+        "type": "animal",
+        "attributes": [
+          "fed with bunches of tender fresh grass by Lord Kṛṣṇa",
+          "receive careful massages from Lord Kṛṣṇa",
+          "jump and frolic in the forest of Vṛndāvana"
+        ],
+        "relations": [
+          {
+            "type": "pet_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "vrndavana",
+        "display_name": "Vṛndāvana",
+        "type": "location",
+        "attributes": [
+          "sacred forest where Kṛṣṇa's calves jump and frolic"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Sometimes Lord Krsna feeds the calves earnestly placing small bunches of tender fresh grass in their mouths, and sometimes He very carefully massages their limbs. I yearn to one day see these calves of Lord Krsna jumping and frolicking in Vrndavana."
+  },
+  "48": {
+    "entities": [
+      {
+        "canonical_id": "krsna_flute",
+        "display_name": "Vraja Flute",
+        "type": "object",
+        "attributes": [
+          "fortunate flute that deeply drinks the nectar of Lord Kṛṣṇa's lips day and night",
+          "weakens the pride of Śrīmatī Rādhikā with its transcendental music"
+        ],
+        "relations": [
+          {
+            "type": "instrument_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "possessor of lips whose nectar is drunk by His flute day and night"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "whose pride is weakened by the transcendental music of Kṛṣṇa's flute"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "The fortunate flute deeply drinks the nectar of Lord Krsna’s lips day and night. I offer my respectful obeisances to this flute, which, with it’s transcendental music, weakens the pride of Srimati Radhika."
+  },
+  "49": {
+    "entities": [
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "possesses proud jealous anger residing within her heart",
+          "remains unmoved by the flattering cajoling words of gopi messengers",
+          "remains unmoved by the hints and joking instructions of cowherd friends",
+          "remains unmoved even by Kṛṣṇa falling at her feet begging for forgiveness",
+          "remains unmoved by the harsh criticisms of her intimate friends"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "personally fell at the feet of Rādhārāṇī begging her to forgive Him",
+          "owner of the flute which easily chases away Rādhārāṇī's jealous anger"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna_flute",
+        "display_name": "Vraja Flute",
+        "type": "object",
+        "attributes": [
+          "exalted and powerful friend of Lord Kṛṣṇa",
+          "disdains all previous useless attempts to appease Rādhārāṇī",
+          "able to very easily chase away the proud jealous anger of Rādhārāṇī"
+        ],
+        "relations": [
+          {
+            "type": "friend_of",
+            "target_id": "krsna"
+          }
+        ]
+      }
+    ],
+    "verse_text": "Neither the flattering cajoling words spoken by Krsna’s gopi messengers nor the many hints, allegorises, and joking instructions spoken by Krsna’s cowherd friends nor Krsna’s personally falling at her feet and begging Hr to forgive Him nor even the harsh criticisms spoken by her intimate friends who are able to rout the proud jealous anger residing in Srimati Radha’s heart. Only Lord Krsna’s flute, disdaining all previous useless attempts, was able to very easily chase away that jealous anger. Let us glorify Lord Krsna’s exalted and powerful friend, His flute."
+  },
+  "50": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "Lord whose flute music pleases the best of the peacocks",
+          "delights in enjoying transcendental pastimes in the forest"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "peacock_king",
+        "display_name": "King of the peacocks",
+        "type": "animal",
+        "attributes": [
+          "best of the peacocks who performs a great festival of dancing",
+          "dances in the forest by the shore of a lake",
+          "subject of the narrator's ardent yearning to see"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Pleased by the music of Lord Krsna’s flute, the best of the peacocks perform a great festival of dancing in the forest by the shore of a lake. Gracefully moving he delights enjoying transcendental pastimes in the forest. Meditating on this, we ardently yearn to see that dancing king of the peacocks."
+  },
+  "51": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "full of love for the residents of Vraja",
+          "eager to protect the residents of Vraja",
+          "respectfully lifted Govardhana Hill for seven days with His graceful hand"
+        ],
+        "relations": [
+          {
+            "type": "partner_of",
+            "target_id": "radharani"
+          }
+        ]
+      },
+      {
+        "canonical_id": "govardhana_hill",
+        "display_name": "Govardhana Hill",
+        "type": "location",
+        "attributes": [
+          "lifted by Śrī Kṛṣṇa for seven days using His graceful hand",
+          "caves are splendidly decorated with kunkuma particles from Radha-Krsna's pastimes",
+          "studded with many beautiful jewels"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "enjoyed transcendental pastimes with Kṛṣṇa in the caves of Govardhana Hill"
+        ],
+        "relations": [
+          {
+            "type": "partner_of",
+            "target_id": "krsna"
+          }
+        ]
+      }
+    ],
+    "verse_text": "Full of love for the residents of Vraja, and eager to protect Him, Lord Krsna respectfully lifted Govardhana Hill for seven days with His graceful hand. The caves of Govardhana Hill are splendidly decorated with kunkuma particles left when Sri Sri Radha-Krsna enjoyed transcendental pastimes. May Govardhana Hill, which is studded with many beautiful jewels, protect you all."
+  },
+  "52": {
+    "entities": [
+      {
+        "canonical_id": "radha_kunda",
+        "display_name": "Rādhā-kunda",
+        "type": "location",
+        "attributes": [
+          "area filled with champaka, asoka, mango, kesanagara, and bakula trees",
+          "area decorated with lavanga creepers and madhavi creepers",
+          "very beautiful and pleasing to the heart",
+          "favourite pastime place of the divine couple"
+        ],
+        "relations": [
+          {
+            "type": "adjacent_to",
+            "target_id": "syama_kunda"
+          }
+        ]
+      },
+      {
+        "canonical_id": "syama_kunda",
+        "display_name": "Śyāma-kunda",
+        "type": "location",
+        "attributes": [
+          "area filled with champaka, asoka, mango, kesanagara, and bakula trees",
+          "area decorated with lavanga creepers and madhavi creepers",
+          "very beautiful and pleasing to the heart",
+          "favourite pastime place of the divine couple"
+        ],
+        "relations": [
+          {
+            "type": "adjacent_to",
+            "target_id": "radha_kunda"
+          }
+        ]
+      },
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "possess favourite pastime places at Rādhā-kunda and Śyāma-kunda"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Filled with many champaka trees, beautiful young asoka trees, mango trees, kesanagara trees, bakula trees, lavanga creepers, and madhavi creepers, the area around Radha-kunda and Syama-kunda is very beautiful and pleasing to the heart, and it is the favourite pastime place of Sri Sri Radha-Krsna. Let me take shelter of these two lakes : Radha-kunda and Syama-kunda."
+  },
+  "53": {
+    "entities": [
+      {
+        "canonical_id": "vrndavana",
+        "display_name": "Vṛndāvana",
+        "type": "location",
+        "attributes": [
+          "delightful forest described as beautiful and sacred",
+          "not equal to even a single particle of Radha-kunda and Syama-kunda"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "govardhana_hill",
+        "display_name": "Govardhana Hill",
+        "type": "location",
+        "attributes": [
+          "beautiful hill which is not equal to even a single particle of Radha-kunda and Syama-kunda"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "radha_kunda",
+        "display_name": "Rādhā-kunda",
+        "type": "location",
+        "attributes": [
+          "sacred lake more dear to Lord Kṛṣṇa than His own life's breath",
+          "surpasses the splendor of the delightful forest of Vṛndāvana and Govardhana Hill"
+        ],
+        "relations": [
+          {
+            "type": "adjacent_to",
+            "target_id": "syama_kunda"
+          }
+        ]
+      },
+      {
+        "canonical_id": "syama_kunda",
+        "display_name": "Śyāma-kunda",
+        "type": "location",
+        "attributes": [
+          "sacred lake more dear to Lord Kṛṣṇa than His own life's breath",
+          "surpasses the splendor of the delightful forest of Vṛndāvana and Govardhana Hill"
+        ],
+        "relations": [
+          {
+            "type": "adjacent_to",
+            "target_id": "radha_kunda"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "holds Radha-kunda and Syama-kunda more dear than His own life's breath"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "The delightful forest of Vrndavana, beautiful Govardhana Hill and the nectarean area of the rasa dance, what to speak of other places are not equal to even a single particle of Radha-kunda and Syama-kunda. Let me take shelter of these two lakes, which are more dear to Lord Krsna than His own life’s breath."
+  },
+  "54": {
+    "entities": [
+      {
+        "canonical_id": "radha_kunda",
+        "display_name": "Rādhā-kunda",
+        "type": "location",
+        "attributes": [
+          "sacred place with a shore containing a grand pavilion made of gold, pearls and precious gems",
+          "site of a splendid grove worshiped by the devotees"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "reside in a grand pavilion by the shore of Rādhā-kunda",
+          "consider everything else unimportant while enjoying transcendental pastimes",
+          "serve as the two prime ministers of the deity of transcendental love",
+          "happily anoint the kingdom of love with the sandal paste of Their pastimes"
+        ],
+        "relations": [
+          {
+            "type": "adjacent_to",
+            "target_id": "radha_kunda"
+          }
+        ]
+      }
+    ],
+    "verse_text": "By the shore of Radha-kunda is a grand pavilion made of gold, pearls and precious gems. In that pavilion, Sri Sri Radha and Krsna, considering everything else unimportant, enjoy transcendental pastimes as the two prime ministers of the deity of transcendental love, and They happily anoint that kingdom of love with the sandal paste of Their pastimes. I eternally worship the splendid grove by the shore of Radha-kunda."
+  },
+  "55": {
+    "entities": [
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "splendidly reflected on the shore of the lake of each other’s heart",
+          "necklaces lovingly worn by each other",
+          "blessed with all good fortune by the creator Lord Brahmā",
+          "the resting place of all good opulences in the three worlds",
+          "composed of one fair and one dark personality"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "The divine couple is splendidly reflected on the shore of the lake of each other’s heart. They are necklaces lovingly worn by each other. The creator Brahma has blessed Them with all good fortune. They are the resting place of all good opulences in the three worlds. When will I be able to directly worship the fair and dark divine couple."
+  },
+  "56": {
+    "entities": [
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "youthful divine couple who affectionately fulfil each other's transcendental desires",
+          "two splendid monarchs of ujjvala-rasa",
+          "engage in restless sidelong glances and movements of Their shoulders",
+          "possess the nectar of gentle smiles and nectar-like lips",
+          "exchange kisses and firm embraces with one another"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "With restless sidelong glances, with movements of Their shoulders, with the nectar of gentle smiles, with kissing each other’s nectar lips, and with firm embraces, the youthful divine couple affectionately fulfils each other’s transcendental desires. Let us offer our respectful obeisances to Them, the two splendid monarchs of ujjvala-rasa."
+  },
+  "57": {
+    "entities": [
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "have eyes of great length with crookedness in the corners",
+          "possess largeness in Their chests and breasts",
+          "possess charming crookedness in Their gentle words",
+          "possess broadness in Their hips",
+          "have extraordinary sweetness manifest in all Their limbs",
+          "are the eternal splendour eternally worshipped by the narrator"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "In Their eyes is great length, in the corners of Their eyes crookedness, in Their chest and breasts largeness, in Their gentle word charming crookedness, in Their hips broadness, and in all Their limbs extraordinary sweetness. I eternally worship the eternal splendour of Sri Sri Radha-Krsna."
+  },
+  "58": {
+    "entities": [
+      {
+        "canonical_id": "arista_kunda",
+        "display_name": "Ariṣṭa-kuṇḍa",
+        "type": "location",
+        "attributes": [
+          "great lake filled with nectar and surrounded by staircases",
+          "sprang from the lotus foot of Lord Kṛṣṇa",
+          "favourite lake of Śrīmatī Rādhārāṇī",
+          "embraces the name of Rādhā-kuṇḍa"
+        ],
+        "relations": [
+          {
+            "type": "adjacent_to",
+            "target_id": "radha_kunda"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "slayer of the demon Ariṣṭāsura",
+          "origin point of the nectar-filled lake Ariṣṭa-kuṇḍa"
+        ],
+        "relations": [
+          {
+            "type": "slayer_of",
+            "target_id": "aristasura"
+          }
+        ]
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "the beloved personality for whom Ariṣṭa-kuṇḍa is a favourite"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "radha_kunda",
+        "display_name": "Rādhā-kuṇḍa",
+        "type": "location",
+        "attributes": [
+          "sacred lake whose name is embraced by Ariṣṭa-kuṇḍa"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "aristasura",
+        "display_name": "Ariṣṭāsura",
+        "type": "personality",
+        "attributes": [
+          "demon slain by Lord Kṛṣṇa"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "When the demon Arista was slain, a great lake named Arista-kunda, filled with nectar and surrounded with staircases, sprang from Lord Krsna’s lotus foot. Because it is the favourite of Sri Radha, this name embraces the name Radha-kunda. I eternally worship Radha-kunda."
+  },
+  "59": {
+    "entities": [
+      {
+        "canonical_id": "pavana_sarovara",
+        "display_name": "Pavana-sarovara",
+        "type": "location",
+        "attributes": [
+          "lake filled with many kadamba trees",
+          "place resonating with pleasant humming sounds of many bees",
+          "meeting place for the gopis and Lord Kṛṣṇa"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "gopis",
+        "display_name": "Gopīs",
+        "type": "personality",
+        "attributes": [
+          "lotus-eyed devotees who meet Kṛṣṇa with great happiness and love",
+          "go to the lake on the pretext of fetching clear water"
+        ],
+        "relations": [
+          {
+            "type": "meet_with",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "meets the gopis again and again at Pavana-sarovara"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "On the pretext of going to fetch clear water the lotus-eyed gopis again and again meet Lord Krsna with great happiness and love at Pavana-sarovara lake, which is filled with many kadamba trees and the pleasant humming sounds of many bees. May Pavana-sarovara lake protect us."
+  },
+  "60": {
+    "entities": [
+      {
+        "canonical_id": "parjanya_maharaja",
+        "display_name": "Parjanya Mahārāja",
+        "type": "personality",
+        "attributes": [
+          "grandfather of Śrī Kṛṣṇa",
+          "fasted and performed austerities to attain a worthy grandson",
+          "worshipped Lord Nārāyaṇa to attain a worthy grandson"
+        ],
+        "relations": [
+          {
+            "type": "grandfather_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "reservoir of all transcendental virtues",
+          "lifter of Govardhana Hill",
+          "appeared as the son of Nanda Mahārāja",
+          "grandson of Parjanya Mahārāja"
+        ],
+        "relations": [
+          {
+            "type": "son_of",
+            "target_id": "nanda_maharaja"
+          },
+          {
+            "type": "grandson_of",
+            "target_id": "parjanya_maharaja"
+          }
+        ]
+      },
+      {
+        "canonical_id": "nanda_maharaja",
+        "display_name": "Nanda Mahārāja",
+        "type": "personality",
+        "attributes": [
+          "king of Vraja-dhāma",
+          "father of Śrī Kṛṣṇa"
+        ],
+        "relations": [
+          {
+            "type": "father_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "ksunnahara_sarovara",
+        "display_name": "Ksunnahara-sarovara",
+        "type": "location",
+        "attributes": [
+          "lake where Parjanya Mahārāja fasted and performed austerities",
+          "sacred place famous in this world as the lake of fasting"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "narayana",
+        "display_name": "Lord Nārāyaṇa",
+        "type": "personality",
+        "attributes": [
+          "worshipped by Parjanya Mahārāja for a worthy grandson"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Going to the shore of a certain lake, Parjanya Maharaja, who was to become Krsna’s grandfather, fasted, performed austerities, and worshipped Lord Narayana in order to attain a worthy grandson. Partly for this reason Sri Krsna, who is the reservoir of all transcendental virtues and the lifter of Govardhana Hill, appeared as the son of Nanda, the king of Vraja, and the grandson of Parjanya Maharaja. The place where Parjanya Maharaja fasted is famous in this world as Ksunnahara-sarovara (the lake of fasting). I pray that I may take shelter of this sacred place."
+  },
+  "61": {
+    "entities": [
+      {
+        "canonical_id": "paurnamasi_devi",
+        "display_name": "Paurṇamāsī-devī",
+        "type": "personality",
+        "attributes": [
+          "crowned Śrīmatī Rādhārāṇī queen of the beautiful forest of Vṛndāvana",
+          "acted upon the order of Brahmā who spoke from the sky",
+          "sprinkled waters of Mānasa-gaṅgā and other rivers upon Rādhārāṇī's head"
+        ],
+        "relations": [
+          {
+            "type": "crowned",
+            "target_id": "radharani"
+          }
+        ]
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "crowned queen of the beautiful forest of Vṛndāvana",
+          "had sacred waters sprinkled upon Her head by Paurṇamāsī-devī",
+          "became overwhelmed with happiness at Unmatta-rādhāsthalī"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vrndavana",
+        "display_name": "Vṛndāvana",
+        "type": "location",
+        "attributes": [
+          "beautiful forest where Śrīmatī Rādhārāṇī was crowned queen"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "manasa_ganga",
+        "display_name": "Mānasa-gaṅgā",
+        "type": "location",
+        "attributes": [
+          "sacred river whose waters were sprinkled for the coronation"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "savitri_devi",
+        "display_name": "Sāvitrī-devī",
+        "type": "personality",
+        "attributes": [
+          "delighted demigoddess present at the coronation of Rādhārāṇī"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "unmatta_radhasthali",
+        "display_name": "Unmatta-rādhāsthalī",
+        "type": "location",
+        "attributes": [
+          "place where Śrīmatī Rādhārāṇī became overwhelmed with happiness"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Ordered by Brahma, who spoke from the sky, Paurnamasi-devi crowned Srimati Radharani queen of the beautiful forest of Vrndavana, by jubilantly sprinkling the waters of the Manasa-ganga and other sacred rivers upon Her head in the company of Savitri-devi and other delighted demigoddesses. I pray that sacred place, known as Unmatta-radhasthali (the place where Srimati Radharani became overwhelmed with happiness) may sprinkle some transcendental happiness on me."
+  },
+  "62": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "enjoys many pastimes joking and playing with His friends",
+          "possesses feet that anoint the pavilion with transcendental fragrance"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "nandisvara_hill",
+        "display_name": "Nandisvara Hill",
+        "type": "location",
+        "attributes": [
+          "location containing a small stone pavilion built by expert architects"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "stone_pavilion",
+        "display_name": "Stone Pavilion",
+        "type": "object",
+        "attributes": [
+          "small stone structure built by expert architects",
+          "anointed with the transcendental fragrance of Lord Kṛṣṇa’s feet",
+          "site where Lord Kṛṣṇa enjoyed many pastimes with His friends"
+        ],
+        "relations": [
+          {
+            "type": "located_at",
+            "target_id": "nandisvara_hill"
+          }
+        ]
+      }
+    ],
+    "verse_text": "Joking and playing, Lord Krsna enjoyed many pastimes with His friends in a small stone pavilion built by expert architects on Nandisvara Hill. Let me take shelter of that pavilion, which is anointed with the transcendental fragrance of Lord Krsna’s feet."
+  },
+  "63": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "danced with the intelligent, graceful, and splendidly beautiful gopis",
+          "suddenly left the company of the gopis for a secluded place",
+          "lovingly decorated Śrīmatī Rādhārāṇī with many flower ornaments",
+          "performed the sacred rasa dance at a secluded location"
+        ],
+        "relations": [
+          {
+            "type": "partner_of",
+            "target_id": "radharani"
+          }
+        ]
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "accompanied Śrī Kṛṣṇa to a secluded place",
+          "decorated with many flower ornaments by Śrī Kṛṣṇa"
+        ],
+        "relations": [
+          {
+            "type": "partner_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "gopis",
+        "display_name": "Gopīs",
+        "type": "personality",
+        "attributes": [
+          "intelligent, graceful, and splendidly beautiful companions of Śrī Kṛṣṇa",
+          "participated in the rasa dance with Śrī Kṛṣṇa"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "secluded_place",
+        "display_name": "Secluded Place",
+        "type": "location",
+        "attributes": [
+          "place where Śrī Kṛṣṇa decorated Śrīmatī Rādhārāṇī with flowers",
+          "sweetness of this place astonishes residents of all three worlds",
+          "sacred place where Lord Kṛṣṇa performed the rasa dance"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "As he was dancing with the intelligent, graceful, and splendidly beautiful gopis, Sri Krsna suddenly left their company and went with Srimati Radharani to a secluded place and lovingly decorated Her with many flower ornaments. The sweetness of this place astonishes the residents of all the three worlds. I pray that this sacred place, where Lord Krsna performed the rasa dance, may give me shelter."
+  },
+  "64": {
+    "entities": [
+      {
+        "canonical_id": "manasa_ganga",
+        "display_name": "Mānasa-gaṅgā River",
+        "type": "location",
+        "attributes": [
+          "flows so swiftly on the side of Govardhana Hill",
+          "has waves that push the splendid rocks lining its shores",
+          "site where the divine couple enjoy jubilant boating pastimes"
+        ],
+        "relations": [
+          {
+            "type": "adjacent_to",
+            "target_id": "govardhana_hill"
+          }
+        ]
+      },
+      {
+        "canonical_id": "govardhana_hill",
+        "display_name": "Govardhana Hill",
+        "type": "location",
+        "attributes": [
+          "has the Manasa-ganga River flowing on its side"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "engage in jubilant boating pastimes on the Manasa-ganga River"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "The Manasa-ganga River flows so swiftly on the side of Govardhana Hill that it’s waves push the splendid rocks lining it’s shores. I pray the Manasa-ganga River, where Sri Sri Gandharvika-Muravimardana (Sri Sri Radha-Krsna) enjoy jubilant boating pastimes, may give me shelter."
+  },
+  "65": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "decorated with colourful mineral pigments found in the hills of Vraja",
+          "enjoys pastimes in the hills of Vraja with a great festival of joking words",
+          "enjoys many pastimes in the caves of the hills with Śrīmatī Rādhārāṇī"
+        ],
+        "relations": [
+          {
+            "type": "friend_of",
+            "target_id": "vraja_cowherd_friends"
+          }
+        ]
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "enjoys many pastimes in the caves of the hills with Lord Kṛṣṇa"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vraja_cowherd_friends",
+        "display_name": "Cowherd friends of Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "affectionate friends of Lord Kṛṣṇa",
+          "decorated with colourful mineral pigments found in the hills of Vraja",
+          "enjoy pastimes in the hills of Vraja with a great festival of joking words"
+        ],
+        "relations": [
+          {
+            "type": "friend_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "vraja_hills",
+        "display_name": "Hills of Vraja",
+        "type": "location",
+        "attributes": [
+          "source of colourful mineral pigments used for decoration",
+          "site where Lord Kṛṣṇa and His friends enjoy pastimes",
+          "location of caves where Lord Kṛṣṇa and Śrīmatī Rādhārāṇī enjoy pastimes",
+          "best of all hills worthy of worship"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "All of Them decorated with the colourful mineral pigments found there, Lord Krsna and His affectionate friends enjoy pastimes in the hills of Vraja with a great festival of joking words. In the caves of those same hills, Lord Krsna also enjoys many pastimes with Srimati Radharani. Let me worship these, the best of all hills."
+  },
+  "66": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "transcendental son of the king of the gopas",
+          "jubilantly enjoys water sports while tending the cows in summer",
+          "affectionately sprinkles His charming friends with water",
+          "eager for victory in water sports with His friends"
+        ],
+        "relations": [
+          {
+            "type": "son_of",
+            "target_id": "nanda_maharaja"
+          }
+        ]
+      },
+      {
+        "canonical_id": "nanda_maharaja",
+        "display_name": "Nanda Mahārāja",
+        "type": "personality",
+        "attributes": [
+          "king of the gopas and father of Śrī Kṛṣṇa"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vraja",
+        "display_name": "Vraja-dhāma",
+        "type": "location",
+        "attributes": [
+          "abode containing broad lakes and streams used for water sports"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "While tending the cows in the summer season, Sri Krsna, the transcendental son of the king of the gopas , jubilantly enjoys water sports. Both sides eager for victory, He affectionately sprinkles His charming friends in the broad lakes and streams of Vraja. I eternally worship these transcendental lakes and streams."
+  },
+  "67": {
+    "entities": [
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "brilliantly playing duets on the vina and flute",
+          "objects of the deer community's love"
+        ],
+        "relations": [
+          {
+            "type": "partner_of",
+            "target_id": "radharani"
+          },
+          {
+            "type": "partner_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "brilliantly playing the vina in a duet with Kṛṣṇa"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "brilliantly playing the flute in a duet with Rādhārāṇī"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "deer",
+        "display_name": "Deer community of Vraja",
+        "type": "animal",
+        "attributes": [
+          "stunned with transcendental happiness upon hearing divine music",
+          "stand still with grass half-falling from their mouths",
+          "full of love for the divine couple"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Hearing the sound of Srimati Radharani and Krsna brilliantly playing duets on the vina and flute, the leaders of the deer community become stunned with transcendental happiness and stand still the grass they were formerly chewing now half-falling from their mouths. I pray that those deer who are full of love for the divine couple, may grant transcendental happiness to me."
+  },
+  "68": {
+    "entities": [
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "their hearts are pleased by the rising waves of madhura-rasa",
+          "youthful couple enjoying transcendental pastimes in the beautiful groves of Vraja"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vraja",
+        "display_name": "Vraja-dhāma",
+        "type": "location",
+        "attributes": [
+          "possesses beautiful groves aromatic with many pleasant flowers",
+          "forest groves filled with many humming bees"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Their hearts pleased by the rising waves of madhura-rasa, the youthful divine couple enjoys transcendental pastimes in the beautiful groves of Vraja, aromatic with many pleasant flowers and filled with many humming bees. Let us sweep these forest groves with our long hair."
+  },
+  "69": {
+    "entities": [
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "youthful divine couple enjoying transcendental pastimes in the forest",
+          "seated on a throne glistening with fallen pollen",
+          "served by splendid bees carrying drops of honey"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "trees_of_vraja",
+        "display_name": "Trees of Vraja",
+        "type": "object",
+        "attributes": [
+          "provide a very cool and pleasant shade",
+          "surround the throne where the divine couple enjoys pastimes"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "In the very cool and pleasant shade of the trees, on a throne glistening with fallen pollen and served by splendid bees carrying drops of honey, the youthful divine couple enjoy transcendental pastimes. I pray these trees may always protect me."
+  },
+  "70": {
+    "entities": [
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "gently smiling lovers who engage in playful quarrels",
+          "transcendental couple seen picking flowers together",
+          "participants in eternally new and fresh transcendental pastimes"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "gopis",
+        "display_name": "Gopī friends",
+        "type": "personality",
+        "attributes": [
+          "friends who smile upon seeing the couple's fresh transcendental pastimes"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vraja_creepers",
+        "display_name": "Creepers of Vraja",
+        "type": "object",
+        "attributes": [
+          "creepers that smile and laugh on the pretext of pushing forth new blossoms"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "As They pick flowers, the gently smiling lovers, Sri Sri Gandharva-Muravairi (Sri Sri Radha-Krsna), playfully quarrel. Seeing these eternally new and fresh transcendental pastimes, Their gopi friends begin to smile, and the creepers of Vraja, on the pretext of pushing forth new blossoms, also smile and laugh. May I serve these transcendental creepers with great love and devotion."
+  },
+  "71": {
+    "entities": [
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "youthful couple residing in the land of Vraja",
+          "delighted by the sweet singing of birds"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "birds_of_vraja",
+        "display_name": "Birds of Vraja",
+        "type": "animal",
+        "attributes": [
+          "plunged into the nectar mellows of pure devotion",
+          "delight the youthful couple with very sweet singing",
+          "dear to the divine couple"
+        ],
+        "relations": [
+          {
+            "type": "servant_of",
+            "target_id": "divine_couple"
+          }
+        ]
+      },
+      {
+        "canonical_id": "vraja",
+        "display_name": "Vraja-dhāma",
+        "type": "location",
+        "attributes": [
+          "land where the divine couple and singing birds reside"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Plunged into the nectar mellows of pure devotion, with very sweet singing the birds delight the nearby youthful couple in the land of Vraja. I pray that these birds, so dear to the divine couple, may delight me with their glance."
+  },
+  "72": {
+    "entities": [
+      {
+        "canonical_id": "bumblebees_of_vraja",
+        "display_name": "Bumblebees of Vraja",
+        "type": "animal",
+        "attributes": [
+          "delight the divine couple by softly buzzing and gracefully wandering",
+          "wander among the mango, kadamba, bakula, and other trees",
+          "wander through the madhavis and other flowering vines"
+        ],
+        "relations": [
+          {
+            "type": "servant_of",
+            "target_id": "divine_couple"
+          }
+        ]
+      },
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "delighted by the soft buzzing and wandering of the bumblebees"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "By softly buzzing and gracefully wandering among the mango, kadamba, bakula, and other trees, as well as through the madhavis and other flowering vines, the bumblebees of Vraja delight the divine couple. Let us offer our respectful obeisances to these bees."
+  },
+  "73": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "forest king blossoming with happiness",
+          "completely captivated by the sidelong glances of Śrīmatī Rādhārāṇī",
+          "decorates Śrīmatī Rādhārāṇī with many blossoming flowers"
+        ],
+        "relations": [
+          {
+            "type": "partner_of",
+            "target_id": "radharani"
+          }
+        ]
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "forest-queen blossoming with happiness",
+          "casts captivating sidelong glances at the forest king Kṛṣṇa",
+          "decorated by Kṛṣṇa with many blossoming kadamba flowers"
+        ],
+        "relations": [
+          {
+            "type": "partner_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "kadamba_tree",
+        "display_name": "King of Kadamba Trees",
+        "type": "object",
+        "attributes": [
+          "king of kadamba trees providing many blossoming flowers",
+          "supremely opulent tree capable of granting transcendental happiness"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Blossoming with happiness, the forest king Krsna became completely captivated by the sidelong glances of the forest-queen Srimati Radharani, who was also blossoming with happiness as He decorated Her with many blossoming flowers from the king of kadamba trees. I pray that supremely opulent king of kadamba trees may appear before me and grant transcendental happiness to my eyes."
+  },
+  "74": {
+    "entities": [
+      {
+        "canonical_id": "indra",
+        "display_name": "Indra",
+        "type": "personality",
+        "attributes": [
+          "king of the demigods who was humbled by great fear",
+          "grasped the lotus feet of Lord Kṛṣṇa",
+          "performed the coronation festival of bathing Kṛṣṇa’s feet",
+          "accompanied by a surabhi cow during the coronation festival"
+        ],
+        "relations": [
+          {
+            "type": "offerer_of_service_to",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "possessor of lotus feet bathed by the king of demigods",
+          "whose kingship over the cows became splendidly manifest"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "govinda_kunda",
+        "display_name": "Govinda-kunda",
+        "type": "location",
+        "attributes": [
+          "lake created by the ceremonial bath of Lord Kṛṣṇa’s feet"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Humbled by great fear, Indra, the king of the demigods, grasped Lord Krsna’s lotus feet and, accompanied by a surabhi cow, performed the coronation festival of bathing them with the water of the celestial Ganges. In this way Lord Krsna’s kingship over the cows became splendidly manifest. I pray that Govinda-kunda, the lake created by that ceremonial bath, may eternally appear before my eyes."
+  },
+  "75": {
+    "entities": [
+      {
+        "canonical_id": "nanda_maharaja",
+        "display_name": "Nanda Mahārāja",
+        "type": "personality",
+        "attributes": [
+          "king of Vraja who offered a great quantity of food to Govardhana Hill"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "govardhana_hill",
+        "display_name": "Govardhana Hill",
+        "type": "location",
+        "attributes": [
+          "recipient of a great quantity of foodstuff from Vraja's king"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "known as the enemy of the Aghasura demon",
+          "assumed a gigantic form to proclaim identity as Govardhana Hill",
+          "invited everyone in Vraja to ask for various boons",
+          "tricked even Śrīmatī Rādhārāṇī while eating all the offered food",
+          "enjoyed transcendental pastimes during the anna-kuta festival"
+        ],
+        "relations": [
+          {
+            "type": "associate_of",
+            "target_id": "radharani"
+          }
+        ]
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "fooled by Kṛṣṇa during the eating of the offered food"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "annakuta_festival",
+        "display_name": "Anna-kūṭa festival",
+        "type": "object",
+        "attributes": [
+          "festival where Lord Kṛṣṇa performed pastimes of eating food offerings"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "When Vraja’s king offered a great quantity of foodstuff to Govardhana Hill, Krsna, the enemy of Aghasura, assumed a gigantic form, proclaimed that He was actually Govardhana Hill, invited everyone to ask boons from Him, and, fooling even Srimati Radharani, ate all the offered food. Let me take shelter of the anna-kuta festival, when Lord Krsna enjoyed these pastimes."
+  },
+  "76": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "charming and handsome personality enjoying transcendental pastimes",
+          "eternally enjoying the pleasures of a transcendental king",
+          "enjoys transcendental pastimes on the summit of Govardhana Hill"
+        ],
+        "relations": [
+          {
+            "type": "adjacent_to",
+            "target_id": "govardhana_hill"
+          }
+        ]
+      },
+      {
+        "canonical_id": "govardhana_hill",
+        "display_name": "Govardhana Hill",
+        "type": "location",
+        "attributes": [
+          "known as the king of mountains",
+          "summit is the site of Lord Kṛṣṇa's transcendental pastimes",
+          "sacred place where Lord Kṛṣṇa enjoys transcendental pastimes"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Charming and handsome Lord Krsna enjoys transcendental pastimes on the summit of Govardhana Hill, the king of mountains. There He splendidly manifest, eternally enjoying the pleasures of a transcendental king. With great love and devotion I worship Govardhana Hill, where Lord Krsna enjoys transcendental pastimes."
+  },
+  "77": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "youthful king of amorous heroes eager to enjoy dana-keli pastime",
+          "blocked the path and forbade Srimati Radharani to pass",
+          "proclaimed Himself a toll collector appointed by the king of love",
+          "demanded a toll of milk products from Srimati Radharani"
+        ],
+        "relations": [
+          {
+            "type": "associated_with",
+            "target_id": "radharani"
+          }
+        ]
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "carrying milk products while being blocked on the path"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna_vedi",
+        "display_name": "Kṛṣṇa-vedī",
+        "type": "location",
+        "attributes": [
+          "place where the Lord enjoyed the dana-keli pastimes"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "One day Lord Krsna, the youthful king of amorous heroes, became eager at heart to enjoy the dana-keli pastime. Blocking the path, He forbade Srimati Radharani to pass, proclaimed Himself a toll collector appointed by the king of love, and demanded that she pay a toll of the milk products She was carrying. I sing the glories of Sri Krsna-vedi, the place where the Lord enjoyed these pastimes."
+  },
+  "78": {
+    "entities": [
+      {
+        "canonical_id": "dana_sarovara",
+        "display_name": "Dāna-sarovara",
+        "type": "location",
+        "attributes": [
+          "lake where Lord Kṛṣṇa enjoyed the dāna-kelī pastime",
+          "place where the narrator desires to reside",
+          "secluded place where Kṛṣṇa enjoyed a secret pastime"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "enjoyed the dāna-kelī pastime in a secluded place",
+          "the subject whose pastimes define the significance of the lake"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Because Sri Krsna enjoyed the dana-keli pastime in a secluded place by the shore of this lake, it has become known as Dana-sarovara. The truth of this hill remains hidden to persons averse to the mellows of pure devotional service. Only the devotees have the power to understand it. I pray that I may reside at Dana-sarovara, the place where Lord Krsna enjoyed the dana-keli pastime."
+  },
+  "79": {
+    "entities": [
+      {
+        "canonical_id": "govardhana_hill",
+        "display_name": "Govardhana Hill",
+        "type": "location",
+        "attributes": [
+          "divine hill surrounded by a circle of many beautiful transcendental lakes"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "sri_sarovara",
+        "display_name": "Śrī-sarovara",
+        "type": "location",
+        "attributes": [
+          "transcendental lake manifested as a beautiful jewel around Govardhana Hill"
+        ],
+        "relations": [
+          {
+            "type": "adjacent_to",
+            "target_id": "govardhana_hill"
+          }
+        ]
+      },
+      {
+        "canonical_id": "brahma_sarovara",
+        "display_name": "Brahma-sarovara",
+        "type": "location",
+        "attributes": [
+          "transcendental lake manifested as a beautiful jewel around Govardhana Hill"
+        ],
+        "relations": [
+          {
+            "type": "adjacent_to",
+            "target_id": "govardhana_hill"
+          }
+        ]
+      },
+      {
+        "canonical_id": "kadambakhanda_sarovara",
+        "display_name": "Kadambakhaṇḍa-sarovara",
+        "type": "location",
+        "attributes": [
+          "transcendental lake manifested as a beautiful jewel around Govardhana Hill"
+        ],
+        "relations": [
+          {
+            "type": "adjacent_to",
+            "target_id": "govardhana_hill"
+          }
+        ]
+      },
+      {
+        "canonical_id": "sumanah_sarovara",
+        "display_name": "Sumanah-sarovara",
+        "type": "location",
+        "attributes": [
+          "transcendental lake manifested as a beautiful jewel around Govardhana Hill"
+        ],
+        "relations": [
+          {
+            "type": "adjacent_to",
+            "target_id": "govardhana_hill"
+          }
+        ]
+      },
+      {
+        "canonical_id": "rudra_sarovara",
+        "display_name": "Rudra-sarovara",
+        "type": "location",
+        "attributes": [
+          "transcendental lake manifested as a beautiful jewel around Govardhana Hill"
+        ],
+        "relations": [
+          {
+            "type": "adjacent_to",
+            "target_id": "govardhana_hill"
+          }
+        ]
+      },
+      {
+        "canonical_id": "apsarah_sarovara",
+        "display_name": "Apsarah-sarovara",
+        "type": "location",
+        "attributes": [
+          "transcendental lake manifested as a beautiful jewel around Govardhana Hill"
+        ],
+        "relations": [
+          {
+            "type": "adjacent_to",
+            "target_id": "govardhana_hill"
+          }
+        ]
+      },
+      {
+        "canonical_id": "gaurika_sarovara",
+        "display_name": "Gaurika-sarovara",
+        "type": "location",
+        "attributes": [
+          "transcendental lake manifested as a beautiful jewel around Govardhana Hill"
+        ],
+        "relations": [
+          {
+            "type": "adjacent_to",
+            "target_id": "govardhana_hill"
+          }
+        ]
+      },
+      {
+        "canonical_id": "jyotsnamoksana_sarovara",
+        "display_name": "Jyotsnamokṣaṇa-sarovara",
+        "type": "location",
+        "attributes": [
+          "transcendental lake manifested as a beautiful jewel around Govardhana Hill"
+        ],
+        "relations": [
+          {
+            "type": "adjacent_to",
+            "target_id": "govardhana_hill"
+          }
+        ]
+      },
+      {
+        "canonical_id": "malyahara_sarovara",
+        "display_name": "Malyahara-sarovara",
+        "type": "location",
+        "attributes": [
+          "transcendental lake manifested as a beautiful jewel around Govardhana Hill"
+        ],
+        "relations": [
+          {
+            "type": "adjacent_to",
+            "target_id": "govardhana_hill"
+          }
+        ]
+      },
+      {
+        "canonical_id": "vibudhari_sarovara",
+        "display_name": "Vibudhari-sarovara",
+        "type": "location",
+        "attributes": [
+          "transcendental lake manifested as a beautiful jewel around Govardhana Hill"
+        ],
+        "relations": [
+          {
+            "type": "adjacent_to",
+            "target_id": "govardhana_hill"
+          }
+        ]
+      },
+      {
+        "canonical_id": "indradhvaja_sarovara",
+        "display_name": "Indradhvaja-sarovara",
+        "type": "location",
+        "attributes": [
+          "transcendental lake manifested as a beautiful jewel around Govardhana Hill"
+        ],
+        "relations": [
+          {
+            "type": "adjacent_to",
+            "target_id": "govardhana_hill"
+          }
+        ]
+      }
+    ],
+    "verse_text": "Sri-sarovara, Brahma-sarovara, Kadambakhanda-sarovara, Sumanah-sarovara, Rudra-sarovara, Apsarah-sarovara, Gaurika-sarovara, Jyotsnamoksana-sarovara, Malyahara-sarovara, Vibudhari-sarovara, Indradhvaja-sarovara, and many other beautiful lakes are splendidly manifested as so many beautiful jewels in a circle around divine Govardhana Hill. Let me glorify these transcendental lakes."
+  },
+  "80": {
+    "entities": [
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "faces blossom with happiness by tasting nectar of swing pastimes",
+          "enjoy swing pastimes during the spring season",
+          "moved on a swing by the gopis"
+        ],
+        "relations": [
+          {
+            "type": "adjacent_to",
+            "target_id": "govinda_sthala"
+          }
+        ]
+      },
+      {
+        "canonical_id": "govinda_sthala",
+        "display_name": "Govinda-sthala",
+        "type": "location",
+        "attributes": [
+          "famous place where the divine couple enjoys swing pastimes"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "During the spring season the gopis move Sri Sri Gandharva-Giridhari (Sri Sri Radha-Krsna) on a swing. The faces of the divine couple blossom with happiness by tasting the nectar of these swing pastimes. I worship Govinda-sthala, the famous place where the divine couple enjoys these pastimes."
+  },
+  "81": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "punished the Kaliya serpent for offending His friends",
+          "danced on and kicked the Kaliya serpent with the soles of His feet",
+          "performed pastimes at the Kaliya-hrada lake"
+        ],
+        "relations": [
+          {
+            "type": "punished",
+            "target_id": "kaliya_serpent"
+          }
+        ]
+      },
+      {
+        "canonical_id": "kaliya_serpent",
+        "display_name": "Kāliya serpent",
+        "type": "personality",
+        "attributes": [
+          "offended the dear friends of Śrī Kṛṣṇa",
+          "punished by Śrī Kṛṣṇa through dancing and kicking"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "kaliya_hrada",
+        "display_name": "Kāliya-hrada",
+        "type": "location",
+        "attributes": [
+          "lake where Śrī Kṛṣṇa performed pastimes of punishing the serpent"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "When the Kaliya serpent offended His friends for whom he is more dear than life, Lord Krsna punished him, dancing on him and kicking him with the soles of His feet. I worship Kaliya-hrada, the lake where Lord Krsna performed these pastimes."
+  },
+  "82": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "supremely opulent, noble, and magnanimous Lord of Vraja",
+          "felt very uncomfortable in the biting winter cold",
+          "warmed with great devotion by twelve suns at Dvadasasurya-tirtha"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "dvadasasurya_tirtha",
+        "display_name": "Dvādaśāditya-tīrtha",
+        "type": "location",
+        "attributes": [
+          "sacred place where twelve suns appeared to warm Kṛṣṇa",
+          "bears the name of the place of the twelve suns"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Once, accompanied by the gopas, gopis, and lowing surabhi cows, the supremely opulent, noble, and magnanimous Lord Krsna felt very uncomfortable in the winter cold. Twelve suns then appeared at that place, and with great devotion warmed the Lord with their intense shining. I eternally take shelter of this sacred place, which bears the name Dvadasasurya-tirtha (the place of the twelve suns)."
+  },
+  "83": {
+    "entities": [
+      {
+        "canonical_id": "praskandahana_sarovara",
+        "display_name": "Praskandahana-sarovara",
+        "type": "location",
+        "attributes": [
+          "charming, splendid, and clear lake created from the perspiration of Lord Kṛṣṇa",
+          "bears the sweet fragrance of Lord Kṛṣṇa’s delicate, supremely handsome, and supremely opulent transcendental limbs",
+          "worshiped by the narrator with bows"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "possessed of a transcendental body that perspired under the heat of the twelve suns",
+          "possessor of delicate, supremely handsome, and supremely opulent transcendental limbs"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "When the twelve sums shone from every direction, perspiration fell from Lord Krsna’s transcendental body, and from this perspiration came a charming, splendid, clear lake bearing the sweet fragrance of the Lord’s delicate, supremely handsome, and supremely opulent transcendental limbs. Bowing down, I worship this lake, known as Praskandahana-sarovara."
+  },
+  "84": {
+    "entities": [
+      {
+        "canonical_id": "jamuna_river",
+        "display_name": "Yamunā River",
+        "type": "location",
+        "attributes": [
+          "possesses clear waters used by the girls of Vraja",
+          "site of the incomparable worship of goddess Katyayani"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "smiling and clever stealer of the Vraja gopis garments",
+          "climbed a kadamba tree to observe the Vraja gopis",
+          "embarrassed the girls by speaking many splendid joking words",
+          "returned the garments to the girls of Vraja",
+          "enjoyed intimate pastimes at the shore of Ciraghatta"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "ciraghatta",
+        "display_name": "Ciraghatta",
+        "type": "location",
+        "attributes": [
+          "shoreline location where the Lord enjoyed stealing garments",
+          "sacred place providing shelter to the aspiring devotee"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vraja_gopis",
+        "display_name": "Girls of Vraja",
+        "type": "personality",
+        "attributes": [
+          "left their garments on the shore of the Yamuna",
+          "engaged in the incomparable worship of goddess Katyayani",
+          "embarrassed by the joking words of clever Kṛṣṇa"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Entering the clear waters of the Yamuna to prepare for the incomparable worship of goddess Katyayani, the girls of Vraja left their garments on the shore. Smiling and clever Krsna stole those garments, climbed a kadamba tree, embarrassed the girls by speaking many splendid joking words, and eventually returned the garments. I take shelter of Ciraghatta, where the Lord enjoyed these pastimes."
+  },
+  "85": {
+    "entities": [
+      {
+        "canonical_id": "kesi",
+        "display_name": "Keśī",
+        "type": "personality",
+        "attributes": [
+          "demon who made the three worlds tremble with mad neighing",
+          "demon who set the entire universe on flames with wild rolling eyes"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "killed the demon Keśī as easily as splitting a blade of grass",
+          "washed the demon's blood from His hands at Keśī-tīrtha"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "kesi_tirtha",
+        "display_name": "Keśī-tīrtha",
+        "type": "location",
+        "attributes": [
+          "sacred place where Kṛṣṇa washed blood from His hands",
+          "named after the demon Keśī who was killed by Kṛṣṇa"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "With his mad neighing, Kesi made the three worlds tremble, and with the wild rolling of his eyes he set the entire universe on flames. Krsna killed this demon as easily as one splits a blade of grass and then washed the blood from His hands at a place now known as Kesi-tirtha. I worship that sacred place."
+  },
+  "86": {
+    "entities": [
+      {
+        "canonical_id": "yajnika_brahmana_wives",
+        "display_name": "Wives of the Yājñika-brāhmaṇas",
+        "type": "personality",
+        "attributes": [
+          "beautiful, wealthy, and learned women who reside in Vraja",
+          "voluntarily, happily, and devotedly fed Kṛṣṇa and His friends",
+          "prepared many varieties of four kinds of foodstuff",
+          "created dishes that rebuke the very taste of nectar"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "enjoyed the pastime of being fed by the wives of the Yājñika-brāhmaṇas",
+          "fed many varieties of four kinds of foodstuff with His friends"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "balarama",
+        "display_name": "Lord Balarāma",
+        "type": "personality",
+        "attributes": [
+          "fed many varieties of four kinds of foodstuff with Kṛṣṇa and friends"
+        ],
+        "relations": [
+          {
+            "type": "brother_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "vraja_pastime_site",
+        "display_name": "Pastime site of the Yājñika-brāhmaṇa wives",
+        "type": "location",
+        "attributes": [
+          "sacred place where Lord Kṛṣṇa enjoyed the pastime of being fed"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "The beautiful, wealthy and learned wives of the yajnika-brahmanas voluntarily, happily and devoted fed Krsna, Balarama, and all their affectionate friends many varieties of the four kinds of foodstuff, each dish rebuking the taste of nectar. We bow down to offer our respects to the place where Lord Krsna enjoyed this pastime."
+  },
+  "87": {
+    "entities": [
+      {
+        "canonical_id": "gopis",
+        "display_name": "Gopīs",
+        "type": "personality",
+        "attributes": [
+          "splendid and affectionate maidens desiring to attain the treasure of Kṛṣṇa's embraces",
+          "devotedly and happily worshipped Lord Śiva on the bank of the Yamunā"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "possessor of the treasure of embraces desired by the gopīs"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "siva",
+        "display_name": "Lord Śiva",
+        "type": "personality",
+        "attributes": [
+          "worshipped by the gopīs on the bank of the Yamunā"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "jamuna_river",
+        "display_name": "Yamunā River",
+        "type": "location",
+        "attributes": [
+          "location where the gopīs worshipped Lord Śiva"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "gopisvara_tirtha",
+        "display_name": "Gopīśvara-tīrtha",
+        "type": "location",
+        "attributes": [
+          "sacred place where the gopīs performed their worship"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Desiring to quickly attain the treasure of the embraces of Lord Krsna, the splendid and affectionate gopis devotedly and happily worshipped Lord Siva on the bank of the Jamuna. I daily worship Gopisvara-tirtha, where the gopis performed their worship."
+  },
+  "88": {
+    "entities": [
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "earnestly worshipped Suryadeva in the secluded place of Santanupada",
+          "worshipped Suryadeva to attain Kṛṣṇa as Her chosen husband",
+          "observed Her father worshipping Suryadeva out of fear of Kamsa"
+        ],
+        "relations": [
+          {
+            "type": "daughter_of",
+            "target_id": "vrsabhanu"
+          }
+        ]
+      },
+      {
+        "canonical_id": "suryadeva",
+        "display_name": "Sūryadeva",
+        "type": "personality",
+        "attributes": [
+          "worshipped by Vṛṣabhānu out of fear of Kamsa",
+          "earnestly worshipped by Rādhārāṇī to obtain Kṛṣṇa as a husband",
+          "deity who hears prayers for protection"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vrsabhanu",
+        "display_name": "King Vṛṣabhānu",
+        "type": "personality",
+        "attributes": [
+          "father of Rādhārāṇī who worships Sūryadeva out of fear of Kamsa"
+        ],
+        "relations": [
+          {
+            "type": "father_of",
+            "target_id": "radharani"
+          }
+        ]
+      },
+      {
+        "canonical_id": "santanupada",
+        "display_name": "Santanupada",
+        "type": "location",
+        "attributes": [
+          "secluded place where Rādhārāṇī earnestly worshipped Sūryadeva"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "youth whose complexion is as dark as a host of monsoon clouds",
+          "sought as a husband by Rādhārāṇī through worship of Sūryadeva"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Seeing Her father worship Suryadeva out of far of the nearby Kamsa, Srimati Radharani, in the secluded place known as Santanupada, also earnestly worshipped Suryadeva to attain a certain youth, whose complexion is as dark as a host of monsoon clouds, as Her chosen husband. I pray that Suryadeva may protect us."
+  },
+  "89": {
+    "entities": [
+      {
+        "canonical_id": "nanda_maharaja",
+        "display_name": "Nanda Mahārāja",
+        "type": "personality",
+        "attributes": [
+          "king of Vraja who gave charity during the birth festival",
+          "respectfully gave brahmanas a mountain of glittering jewel ornaments",
+          "gave brahmanas a mountain of grains even greater than the jewels",
+          "gave brahmanas 200,000 young cows decorated with gold and pearls"
+        ],
+        "relations": [
+          {
+            "type": "father_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "Lord whose birth festival was celebrated with great charity"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "mahavana",
+        "display_name": "Mahāvana",
+        "type": "location",
+        "attributes": [
+          "place where the king of Vraja gave his great charity"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "During the great festival of Lord Krsna’s birth, the king of Vraja respectfully gave to the brahmanas a mountain of glittering jewel ornaments, an even greater mountain of grains, and 200,000 young cows, all beautifully decorated with gold and necklaces of large pearls. I offer my respectful obeisances to Mahavana, the place where the king gave his charity."
+  },
+  "90": {
+    "entities": [
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "precious jewel who took birth in the womb of Kīrtidā-devī",
+          "born in the city of Mukhyeravali"
+        ],
+        "relations": [
+          {
+            "type": "daughter_of",
+            "target_id": "kirtida_devi"
+          },
+          {
+            "type": "daughter_of",
+            "target_id": "vrsabhanu_maharaja"
+          }
+        ]
+      },
+      {
+        "canonical_id": "kirtida_devi",
+        "display_name": "Kīrtidā-devī",
+        "type": "personality",
+        "attributes": [
+          "mother of Srimati Radharani whose womb is glorified by jubilant demigods, sages and human beings"
+        ],
+        "relations": [
+          {
+            "type": "mother_of",
+            "target_id": "radharani"
+          }
+        ]
+      },
+      {
+        "canonical_id": "vrsabhanu_maharaja",
+        "display_name": "King Vṛṣabhānu",
+        "type": "personality",
+        "attributes": [
+          "king whose capitol city is Mukhyeravali-pura"
+        ],
+        "relations": [
+          {
+            "type": "father_of",
+            "target_id": "radharani"
+          }
+        ]
+      },
+      {
+        "canonical_id": "mukhyeravali",
+        "display_name": "Mukhyeravali",
+        "type": "location",
+        "attributes": [
+          "city where Srimati Radharani took birth",
+          "capitol city of King Vrsabhanu",
+          "populated with many gopas, gopis, and surabhi cows"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "In the city of Mukhyeravali the precious jewel known as Srimati Radharani took birth in the mine of Kirtida-devi’s womb, which is glorified by jubilant demigods, sages and human beings. I pray that when I enter King Vrshabhanu’s capitol city of Mukhyeravali-pura, populated with many gopas, gopis, and surabhi cows, I may become drowned in great flood of transcendental bliss and love."
+  },
+  "91": {
+    "entities": [
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "yearns for her own happiness to place Kṛṣṇa's lotus feet on her breasts",
+          "reluctant to place Kṛṣṇa's lotus feet on her breasts out of fear",
+          "possesses a delicate body but fears her breasts are too hard"
+        ],
+        "relations": [
+          {
+            "type": "lover_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "possesses handsome and delicate lotus feet",
+          "places his lotus feet on the hood of Ananta Śeṣa",
+          "lord of the land of Vraja"
+        ],
+        "relations": [
+          {
+            "type": "lover_of",
+            "target_id": "radharani"
+          }
+        ]
+      },
+      {
+        "canonical_id": "ananta_sesa",
+        "display_name": "Ananta Śeṣa",
+        "type": "personality",
+        "attributes": [
+          "receives the lotus feet of Śrī Kṛṣṇa on his hood"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vraja",
+        "display_name": "Vraja-dhāma",
+        "type": "location",
+        "attributes": [
+          "the land of Śrī Kṛṣṇa where one seeks to reside"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Although for Her own happiness She yearns to place Lord Krsna’s handsome and delicate lotus feet on her breasts, Srimati Radharani is reluctant to do so, fearing that, even though Her body is very delicate, her breasts are very hard. I pray that Lord Krsna, who also places his lotus feet on the hood of Ananta Sesa, will permit me to reside in His land of Vraja."
+  },
+  "92": {
+    "entities": [
+      {
+        "canonical_id": "kamyavana",
+        "display_name": "Kāmyavana",
+        "type": "location",
+        "attributes": [
+          "forest that is very dear to Śrī Śrī Rādhā-Kṛṣṇa",
+          "contains the beautiful Kama-sarovara lake"
+        ],
+        "relations": [
+          {
+            "type": "contains",
+            "target_id": "kama_sarovara"
+          }
+        ]
+      },
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "very dear to the forest of Kāmyavana"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "kama_sarovara",
+        "display_name": "Kāma-sarovara",
+        "type": "location",
+        "attributes": [
+          "lake where the gopis enjoy many transcendental pastimes"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Let me worship the forest of Kamyavana. It is very dear to Sri Sri Radha-Krsna, and it contains the Kama-sarovara lake, where the gopis enjoy many transcendental pastimes."
+  },
+  "93": {
+    "entities": [
+      {
+        "canonical_id": "bandiravana",
+        "display_name": "Bandiravana",
+        "type": "location",
+        "attributes": [
+          "forest where a wrestling competition occurred among close friends",
+          "sacred place worthy of worship by the narrator"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "beautiful queen who is proud",
+          "started a wrestling competition among Her closest friends",
+          "eagerly wrestled with Lord Kṛṣṇa",
+          "brought great happiness to the god of love through wrestling"
+        ],
+        "relations": [
+          {
+            "type": "wrestled_with",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "engaged in an eager wrestling match with Śrīmatī Rādhārāṇī"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "In the forest of Bandiravana, my beautiful queen, proud Sri Radha, started a wrestling competition among Her closest friends. When She eagerly wrestled with Lord Krsna, She brought great happiness to the god of love. Let me worship that forest of Bandiravana."
+  },
+  "94": {
+    "entities": [
+      {
+        "canonical_id": "balarama",
+        "display_name": "Lord Balarāma",
+        "type": "personality",
+        "attributes": [
+          "angry lord who began to drag the Yamuna river",
+          "wielder of a plough used to drag the river",
+          "possessor of divine power to command the Yamuna river"
+        ],
+        "relations": [
+          {
+            "type": "commanded",
+            "target_id": "jamuna_river"
+          }
+        ]
+      },
+      {
+        "canonical_id": "jamuna_river",
+        "display_name": "Yamunā River",
+        "type": "location",
+        "attributes": [
+          "river that would not come according to Balarama's order",
+          "river dragged toward the ocean by Balarama's plough"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "rama_ghatta",
+        "display_name": "Rama-ghatta",
+        "type": "location",
+        "attributes": [
+          "wonderful site where marks of the dragging river remain",
+          "place where men may see marks of Balarama's pastime"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "When the Yamuna river would not come according to His order, angry Lord Balarama began to drag it toward the ocean with the edge of His plough. I devotedly offer my respects to the wonderful Rama-ghatta, where even today all men may see the marks where Balarama began to drag the Yamuna."
+  },
+  "95": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "dearer than life to His group of cowherd friends",
+          "entered the belly of Aghasura to rescue His friends",
+          "slayer of the demon Aghasura",
+          "enjoyed transcendental pastimes in the place called Sarpasthali"
+        ],
+        "relations": [
+          {
+            "type": "friend_of",
+            "target_id": "cowherd_boys"
+          }
+        ]
+      },
+      {
+        "canonical_id": "aghasura",
+        "display_name": "Aghasura",
+        "type": "personality",
+        "attributes": [
+          "demon whose belly burned with a great forest fire of most violent poison"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "cowherd_boys",
+        "display_name": "Cowherd boys",
+        "type": "personality",
+        "attributes": [
+          "friends of Kṛṣṇa for whom He is more dear than life",
+          "victims who entered the sinful Aghasura's belly",
+          "rescued from the demon by Lord Kṛṣṇa"
+        ],
+        "relations": [
+          {
+            "type": "friend_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "sarpasthali",
+        "display_name": "Sarpasthali",
+        "type": "location",
+        "attributes": [
+          "place where the Lord enjoyed the pastime of killing Aghasura"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Seeing His friends, for whom He is more dear than life, enter the sinful Aghasura’s belly, which burned with a great forest fire of the most violent poison, Lord Krsna also entered the demon, killed it, and rescued His friends. I pray that Sarpasthali, the place where the Lord enjoyed these pastimes, may protect me."
+  },
+  "96": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "pleased the mothers of the boys and calves by assuming the forms of their sons",
+          "enjoyed the pastime of stealing cowherd boys and calves by Brahma at Vatsaharasthali"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "brahma",
+        "display_name": "Brahmā",
+        "type": "personality",
+        "attributes": [
+          "creator who stole the cowherd boys and calves",
+          "eager to see the glory of the Lord"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vatsaharasthali",
+        "display_name": "Vatsaharasthali",
+        "type": "location",
+        "attributes": [
+          "place where the Lord enjoyed the pastime of stealing cowherd boys and calves"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "When, eager to see his master’s glory, the creator Brahma stole the cowherd boys and calves, Lord Krsna pleased the mothers of the boys and calves by assuming the forms of their sons. I worship Vatsaharasthali, where the Lord enjoyed this pastime."
+  },
+  "97": {
+    "entities": [
+      {
+        "canonical_id": "brahma",
+        "display_name": "Brahmā",
+        "type": "personality",
+        "attributes": [
+          "afraid of having committed a grave offence by stealing cowherd boys and calves",
+          "fell down on the ground with tears in his eyes",
+          "spoke many wonderful and unprecedented prayers of glorification",
+          "frightened seeker of forgiveness through offering prayers to the Lord"
+        ],
+        "relations": [
+          {
+            "type": "worshiper_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "gently smiling Lord who is the giver of liberation",
+          "wonderful cowherd son of the king of Vraja"
+        ],
+        "relations": [
+          {
+            "type": "son_of",
+            "target_id": "nanda_maharaja"
+          }
+        ]
+      },
+      {
+        "canonical_id": "nanda_maharaja",
+        "display_name": "Nanda Mahārāja",
+        "type": "personality",
+        "attributes": [
+          "king of Vraja and father of the cowherd son Kṛṣṇa"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "sesabhirucaturmukha",
+        "display_name": "Śeṣabhirucaturmukha",
+        "type": "location",
+        "attributes": [
+          "sacred place where frightened Brahmā offered prayers to the Lord"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Afraid that he had committed a grave offence by stealing the cowherd boys and calves, Brahma fell down on the ground, and, with tears in his eyes, spoke many wonderful and unprecedented prayers glorifying gently smiling Lord Krsna, who is both the giver of liberation and the wonderful cowherd son of the king of Vraja. Let us glorify this sacred place, Sesabhirucaturmukha, where frightened Brahma offered prayers to the Lord."
+  },
+  "98": {
+    "entities": [
+      {
+        "canonical_id": "vrndavana",
+        "display_name": "Vṛndāvana",
+        "type": "location",
+        "attributes": [
+          "twelve forests filled with many large lakes, hills, and rivers",
+          "adorned with many desire trees and desire creepers",
+          "filled with flowers invaded by a great army of intoxicated bumblebees",
+          "splendidly beautiful and very dear to Lord Kṛṣṇa"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "the one to whom the twelve forests of Vṛndāvana are very dear"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Filled with many large lakes, hills, and rivers, with many desire trees and desire creepers, and with many flowers invaded by a great army of bumblebees intoxicated by the sweet aroma, the twelve forests of Vrndavana are splendidly beautiful. I bow down to offer my respects at every moment to these twelve forests, which are very dear to Lord Krsna."
+  },
+  "99": {
+    "entities": [
+      {
+        "canonical_id": "uddhava",
+        "display_name": "Uddhava",
+        "type": "personality",
+        "attributes": [
+          "eternally filled with the nectar of pure devotional love",
+          "happily stayed in Vraja for ten months",
+          "brought the residents of Vraja back to life by describing Kṛṣṇa's pastimes",
+          "considers Kṛṣṇa's lotus feet millions of times more dear than his own life's breath",
+          "joyfully proclaimed to the residents of Vraja that Kṛṣṇa had returned"
+        ],
+        "relations": [
+          {
+            "type": "devotee_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "possessor of lotus feet which are the object of Uddhava's deepest love",
+          "whose pastimes were described by Uddhava to revive the Vrajavāsīs"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vraja",
+        "display_name": "Vraja-dhāma",
+        "type": "location",
+        "attributes": [
+          "place where Uddhava happily resided for ten months",
+          "abode of residents who were revived by hearing of Kṛṣṇa's pastimes"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Leaving behind Lord Krsna’s lotus feet, which are millions of times more dear to him than his own life’s breath, Uddhava, eternally filled with the nectar of pure devotional love, happily stayed in Vraja for ten months. Moment by moment he brought the residents of Vraja back to life by describing Lord Krsna’s pastimes. He said to them, “Look! Krsna has returned!” I carry Uddhava’s feet upon my head."
+  },
+  "100": {
+    "entities": [
+      {
+        "canonical_id": "vraja_devotees",
+        "display_name": "Devotees of the Lord in Vraja",
+        "type": "personality",
+        "attributes": [
+          "supremely pious dear devotees of the Lord residing in Vraja"
+        ],
+        "relations": [
+          {
+            "type": "resident_of",
+            "target_id": "vraja"
+          }
+        ]
+      },
+      {
+        "canonical_id": "brahma",
+        "display_name": "Brahmā",
+        "type": "personality",
+        "attributes": [
+          "great demigod entrusted with many weighty duties",
+          "sincerely yearns to take birth among the bushes and grass in Vraja"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vraja",
+        "display_name": "Vraja-dhāma",
+        "type": "location",
+        "attributes": [
+          "sacred abode where devotees of the Lord reside",
+          "holy place where even Lord Brahma yearns to be born as grass"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "With great humbleness let me offer my respectful obeisances to the supremely pious dear devotees of the Lord who reside in Vraja. Even though Brahma is a great demigod entrusted with many weighty duties, he sincerely yearns to take birth among the bushes and blades of grass in Vraja."
+  },
+  "101": {
+    "entities": [
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "possess beautiful lotus feet worshipped with eternally fresh sweetness of pure transcendental love"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "radha_kunda",
+        "display_name": "Rādhā-kunda",
+        "type": "location",
+        "attributes": [
+          "favourite lake of Queen Rādhārāṇī",
+          "sacred shore where great souls reside because of previous worship"
+        ],
+        "relations": [
+          {
+            "type": "owned_by",
+            "target_id": "radharani"
+          }
+        ]
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "queen who considers Rādhā-kunda to be her favourite lake"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Because of having previously worshipped the beautiful lotus feet of Sri Sri Gandharva-Acyuta (Sri Sri Radha-Krsna) with the eternally fresh sweetness of pure transcendental love, some great souls are able to reside on the shore of Queen Radha’s favourite lake (Radha-kunda). These great devotees are my life and soul."
+  },
+  "102": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "Lord who holds all creatures in Vraja very dear",
+          "Lord who is assisted in His pastimes by creatures of Vraja"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vraja",
+        "display_name": "Vraja-dhāma",
+        "type": "location",
+        "attributes": [
+          "residence requested by Brahmā and other exalted personalities",
+          "sacred place inhabited by creatures full of transcendental bliss"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vraja_creatures",
+        "display_name": "Creatures of Vraja",
+        "type": "animal",
+        "attributes": [
+          "grass, bushes, insects, and other creatures very dear to Kṛṣṇa",
+          "assistants to the Lord in His transcendental pastimes",
+          "beings full of eternal transcendental bliss"
+        ],
+        "relations": [
+          {
+            "type": "resident_of",
+            "target_id": "vraja"
+          }
+        ]
+      }
+    ],
+    "verse_text": "The grass, bushes, insects, and other creatures in Vraja are all very dear to Lord Krsna. They assist the Lord in His pastimes. They are full of transcendental bliss. Again and again the scriptures recount the earnest request of Brahma and others to reside in Vraja. For these reasons I bow to offer my respects to all the creatures who reside in Vraja."
+  },
+  "103": {
+    "entities": [
+      {
+        "canonical_id": "govardhana_hill",
+        "display_name": "Govardhana Hill",
+        "type": "location",
+        "attributes": [
+          "place where the divine couple wanders aimlessly",
+          "site of the Lord's transcendental pastimes"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "divine personality called out to by name during pastimes at Govardhana"
+        ],
+        "relations": [
+          {
+            "type": "partner_of",
+            "target_id": "krsna"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "divine personality called out to by name during pastimes at Govardhana",
+          "possessor of divine pastimes performed upon Govardhana Hill"
+        ],
+        "relations": [
+          {
+            "type": "partner_of",
+            "target_id": "radharani"
+          }
+        ]
+      }
+    ],
+    "verse_text": "When, aimlessly wandering around Govardhana Hill, madly calling out “O Radha! O Krsna!” again and again, and stumbling as I walk, will I sprinkle the places of the Lord’s pastimes with tears from my eyes?"
+  },
+  "104": {
+    "entities": [
+      {
+        "canonical_id": "vraja",
+        "display_name": "Vraja-dhāma",
+        "type": "location",
+        "attributes": [
+          "land whose sweetness cannot be properly or completely understood",
+          "transcendental land whose glory is impossible to describe"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "balarama",
+        "display_name": "Lord Balarāma",
+        "type": "personality",
+        "attributes": [
+          "filled with transcendental love for the land of Vraja",
+          "capable of understanding the sweetness of the land of Vraja"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "rohini",
+        "display_name": "Rohiṇī-devī",
+        "type": "personality",
+        "attributes": [
+          "filled with transcendental love for the land of Vraja",
+          "capable of understanding the sweetness of the land of Vraja"
+        ],
+        "relations": [
+          {
+            "type": "mother_of",
+            "target_id": "balarama"
+          }
+        ]
+      }
+    ],
+    "verse_text": "Neither Brahma, Narada, Siva, or the great devotees with pure love of Krsna are able to properly or completely understand the sweetness of the land of Vraja. Only Lord Balarama and His mother Rohini, who are both filled with transcendental love, are able to understand the land of Vraja. How is it possible to describe the land of Vraja?"
+  },
+  "105": {
+    "entities": [
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "infallible Supreme Personality of Godhead who is the source of pure love"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vraja",
+        "display_name": "Vraja-dhāma",
+        "type": "location",
+        "attributes": [
+          "sacred place where the narrator desires to reside eternally",
+          "home of residents who might appear ordinary or gossip"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "Even if I have the opportunity to bathe in the nectarean ocean of pure love of Krsna, and even if I have the pure devotees of the infallible Supreme Personality of Godhead as my associates, I will not consent to live, even for a single moment, in any sacred place other than Vrajabhumi. Even if the residents of Vraja appear to be ordinary, and even if they fill my ears with useless gossip, I pray that I may remain among them, eternally residing here in Vraja."
+  },
+  "106": {
+    "entities": [
+      {
+        "canonical_id": "rupa_manjari",
+        "display_name": "Rūpa-mañjarī",
+        "type": "personality",
+        "attributes": [
+          "full of love for Lord Kṛṣṇa",
+          "expertly worships Śrīmatī Rādhārāṇī",
+          "possessor of feet that are the only goal of life"
+        ],
+        "relations": [
+          {
+            "type": "servant_of",
+            "target_id": "radharani"
+          }
+        ]
+      },
+      {
+        "canonical_id": "krsna",
+        "display_name": "Śrī Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "Lord who is the object of Rūpa-mañjarī's love"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "radharani",
+        "display_name": "Śrīmatī Rādhārāṇī",
+        "type": "personality",
+        "attributes": [
+          "expertly worshipped by Rūpa-mañjarī"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "The two feet of Srimati Rupa-manjari, who is full of love for Lord Krsna, and who expertly worships Srimati Radharani, are the only goal of my life."
+  },
+  "107": {
+    "entities": [
+      {
+        "canonical_id": "divine_couple",
+        "display_name": "Śrī Śrī Rādhā-Kṛṣṇa",
+        "type": "personality",
+        "attributes": [
+          "reside in the land of Vraja surrounded by Their associates",
+          "directly seen by those who regularly read these verses with respect"
+        ],
+        "relations": []
+      },
+      {
+        "canonical_id": "vraja",
+        "display_name": "Vraja-dhāma",
+        "type": "location",
+        "attributes": [
+          "land where the divine couple resides with Their associates",
+          "filled with the splendid and charming sweetness of its residents"
+        ],
+        "relations": []
+      }
+    ],
+    "verse_text": "These verses, which bear the title Vraja-vilasa-stava, are very graceful and beautiful, filled with the splendid and charming sweetness of the residents of Vraja. They who regularly read these verses with great respect and greedy enthusiasm will be able to directly see the divine couple surrounded by Their associates in this land of Vraja."
+  }
+}
