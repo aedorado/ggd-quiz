@@ -26,6 +26,7 @@ interface DragItem {
 }
 
 interface DragDropProps {
+  bookId: string;
   playCorrectSound: () => void;
   playWrongSound: () => void;
   triggerParticles: () => void;
@@ -106,6 +107,7 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 export default function DragDrop({
+  bookId,
   playCorrectSound,
   playWrongSound,
   triggerParticles,
@@ -127,22 +129,54 @@ export default function DragDrop({
   useEffect(() => {
     async function loadIdentities() {
       try {
-        const res = await fetch("/ggd/identities.json");
+        const res = await fetch(`/${bookId}/identities.json`);
         if (res.ok) {
           const idData = await res.json();
           const flatIdentities: IdentityMapping[] = [];
-          Object.entries(idData).forEach(([verseRef, val]: [string, any]) => {
-            if (val && Array.isArray(val.identities)) {
-              val.identities.forEach((id: any) => {
+          
+          if (bookId === "vvs") {
+            if (idData.entities) {
+              Object.entries(idData.entities).forEach(([entityId, entity]: [string, any]) => {
+                const firstVerseRef = entity.mentioned_in && entity.mentioned_in.length > 0 ? entity.mentioned_in[0] : "";
+                const rawVerse = idData.verses ? idData.verses[firstVerseRef] : null;
+                const verseText = rawVerse ? rawVerse.text : "";
+                
+                const descriptors: string[] = [...(entity.attributes || [])];
+                
+                if (entity.relations) {
+                  Object.entries(entity.relations).forEach(([relType, targetId]: [string, any]) => {
+                    const targetEntity = idData.entities[targetId];
+                    const targetName = targetEntity ? targetEntity.name : targetId;
+                    const formattedRel = relType.replace(/_/g, " ");
+                    const capitalizedRel = formattedRel.charAt(0).toUpperCase() + formattedRel.slice(1);
+                    descriptors.push(`${capitalizedRel}: ${targetName}`);
+                  });
+                }
+                
                 flatIdentities.push({
-                  gaura_name: id.gaura_name,
-                  previous_forms: id.previous_forms,
-                  verse_ref: verseRef,
-                  verse_text: val.verse_text || ""
+                  gaura_name: entity.name,
+                  previous_forms: descriptors.length > 0 ? descriptors : [entity.type || "Vraja Entity"],
+                  verse_ref: entity.mentioned_in ? entity.mentioned_in.join(", ") : "",
+                  verse_text: verseText
                 });
               });
             }
-          });
+          } else {
+            // Default GGD parsing
+            Object.entries(idData).forEach(([verseRef, val]: [string, any]) => {
+              if (val && Array.isArray(val.identities)) {
+                val.identities.forEach((id: any) => {
+                  flatIdentities.push({
+                    gaura_name: id.gaura_name,
+                    previous_forms: id.previous_forms,
+                    verse_ref: verseRef,
+                    verse_text: val.verse_text || ""
+                  });
+                });
+              }
+            });
+          }
+          
           const loaded = flatIdentities.length > 0 ? flatIdentities : FALLBACK_IDENTITIES;
           setIdentities(loaded);
           setupGame(loaded);
@@ -151,13 +185,13 @@ export default function DragDrop({
           setupGame(FALLBACK_IDENTITIES);
         }
       } catch (e) {
-        console.warn("Failed to load GGD identities, using fallbacks:", e);
+        console.warn(`Failed to load ${bookId} identities, using fallbacks:`, e);
         setIdentities(FALLBACK_IDENTITIES);
         setupGame(FALLBACK_IDENTITIES);
       }
     }
     loadIdentities();
-  }, []);
+  }, [bookId]);
 
   // Timer Effect
   useEffect(() => {
@@ -339,7 +373,9 @@ export default function DragDrop({
       </div>
 
       <p style={{ color: "var(--ink-soft)", fontSize: "0.85rem", fontStyle: "italic", marginBottom: "1rem", textAlign: "center" }}>
-        Drag previous forms onto the Caitanya associates, or tap a form then tap an associate to match them!
+        {bookId === "vvs"
+          ? "Drag attributes/relations onto the entities, or tap an attribute then tap an entity to match them!"
+          : "Drag previous forms onto the Caitanya associates, or tap a form then tap an associate to match them!"}
       </p>
 
       <div style={{
@@ -350,7 +386,9 @@ export default function DragDrop({
       }}>
         {/* Left Column: Targets (Gaura associates) */}
         <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-          <div style={{ fontWeight: "700", color: "var(--accent)", borderBottom: "1px solid var(--border-color)", paddingBottom: "0.4rem" }}>Gaura Associates</div>
+          <div style={{ fontWeight: "700", color: "var(--accent)", borderBottom: "1px solid var(--border-color)", paddingBottom: "0.4rem" }}>
+            {bookId === "vvs" ? "Vraja Entities" : "Gaura Associates"}
+          </div>
           {dragTargets.map((target) => {
             const isDragOver = dragOverTargetName === target.gaura_name;
             return (
@@ -389,7 +427,7 @@ export default function DragDrop({
                   </span>
                 ) : (
                   <span style={{ fontSize: "0.75rem", color: "var(--ink-soft)", marginTop: "0.2rem", pointerEvents: "none" }}>
-                    Drop matching previous form here
+                    {bookId === "vvs" ? "Drop matching attribute / relation here" : "Drop matching previous form here"}
                   </span>
                 )}
               </div>
@@ -399,7 +437,9 @@ export default function DragDrop({
 
         {/* Right Column: Draggable Previous Forms */}
         <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-          <div style={{ fontWeight: "700", color: "var(--accent)", borderBottom: "1px solid var(--border-color)", paddingBottom: "0.4rem" }}>Previous Forms</div>
+          <div style={{ fontWeight: "700", color: "var(--accent)", borderBottom: "1px solid var(--border-color)", paddingBottom: "0.4rem" }}>
+            {bookId === "vvs" ? "Attributes / Relations" : "Previous Forms"}
+          </div>
           {dragItems.map((item) => {
             const isSelected = selectedPrevItem?.text === item.text;
             return (

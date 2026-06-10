@@ -1,0 +1,258 @@
+import os
+import sys
+import json
+import time
+from pathlib import Path
+from dotenv import load_dotenv
+from google import genai
+
+# Load environment variables
+load_dotenv()
+
+SINGLE_ENTITY_SCHEMA = {
+    "type": "OBJECT",
+    "required": ["canonical_id", "display_name", "type", "attributes", "relations"],
+    "properties": {
+        "canonical_id": {
+            "type": "STRING",
+            "description": "Standardised lowercase snake_case ID (e.g. 'krsna', 'balarama', 'radha_kunda', 'nanda_maharaja', 'yasoda', 'padmagandha_bull')."
+        },
+        "display_name": {
+            "type": "STRING",
+            "description": "Formatted English name with proper diacritics where appropriate (e.g. 'Śrī Kṛṣṇa', 'Lord Balarāma', 'Rādhā-kunda', 'Yaśodā-devī')."
+        },
+        "type": {
+            "type": "STRING",
+            "enum": ["personality", "location", "animal", "object"],
+            "description": "Category: personality, location, animal, or object."
+        },
+        "attributes": {
+            "type": "ARRAY",
+            "items": {"type": "STRING"},
+            "description": "Visual, emotional, or pastime attributes specifically described in this verse."
+        },
+        "relations": {
+            "type": "ARRAY",
+            "items": {
+                "type": "OBJECT",
+                "required": ["type", "target_id"],
+                "properties": {
+                    "type": {
+                        "type": "STRING",
+                        "description": "Relationship type in lowercase snake_case (e.g. 'brother_of', 'mother_of', 'friend_of', 'adjacent_to', 'pet_of', 'uncle_of')."
+                    },
+                    "target_id": {
+                        "type": "STRING",
+                        "description": "The canonical_id of the target entity in Vraja (e.g. 'krsna', 'radharani', 'syama_kunda')."
+                    }
+                }
+            },
+            "description": "Explicit relationships stated in this verse."
+        }
+    }
+}
+
+RESPONSE_SCHEMA = {
+    "type": "OBJECT",
+    "required": ["entities"],
+    "properties": {
+        "entities": {
+            "type": "ARRAY",
+            "items": SINGLE_ENTITY_SCHEMA
+        }
+    }
+}
+
+def load_verses(file_path):
+    with open(file_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    verses = data.get("vraja_vilasa_stava", [])
+    parsed = []
+    for item in verses:
+        parsed.append({
+            "verse_number": str(item.get("text_number", "")),
+            "verse_text": item.get("content", "")
+        })
+    return parsed
+
+def extract_identities(client, model, prompt_template, current_verse):
+    prompt = prompt_template.replace(
+        "{verse_number}", current_verse["verse_number"]
+    ).replace(
+        "{verse_text}", current_verse["verse_text"]
+    )
+
+    response = client.models.generate_content(
+        model=model,
+        contents=prompt,
+        config={
+            "response_mime_type": "application/json",
+            "response_schema": RESPONSE_SCHEMA
+        }
+    )
+    return json.loads(response.text).get("entities", [])
+
+def extract_with_retry(client, model, prompt_template, current_verse, max_retries=5):
+    for attempt in range(max_retries):
+        try:
+            return extract_identities(client, model, prompt_template, current_verse)
+        except Exception as e:
+            if attempt == max_retries - 1:
+                raise
+            wait_time = min(5 * (2 ** attempt), 60)
+            print(f"  [Retry {attempt + 1}/{max_retries}] Waiting {wait_time}s | Error: {e}")
+            time.sleep(wait_time)
+
+def main():
+    model = "gemini-3.1-flash-lite"
+    input_file = "public/vvs/vvs.json"
+    raw_extractions_file = "public/vvs/raw_extractions.json"
+    output_file = "public/vvs/identities.json"
+    prompt_file = "public/vvs/graph_prompt.txt"
+
+    if not Path(prompt_file).exists():
+        print(f"Error: Prompt file not found at {prompt_file}")
+        sys.exit(1)
+        
+    with open(prompt_file, "r", encoding="utf-8") as f:
+        prompt_template = f.read()
+
+    api_key = os.getenv("GEMINI_API_KEYS") or os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        print("Error: GEMINI_API_KEYS or GEMINI_API_KEY environment variable is not set.")
+        sys.exit(1)
+        
+    client = genai.Client(api_key=api_key)
+
+    print(f"Parsing verses from: {input_file}...")
+    verses = load_verses(input_file)
+    print(f"Found {len(verses)} verses.")
+
+    raw_extractions = {}
+    completed_verses = set()
+    raw_path = Path(raw_extractions_file)
+    
+    if raw_path.exists():
+        try:
+            with open(raw_path, "r", encoding="utf-8") as f:
+                raw_extractions = json.load(f)
+            completed_verses = set(raw_extractions.keys())
+            print(f"Loaded {len(raw_extractions)} raw extractions from existing file.")
+        except Exception as e:
+            print(f"Warning: Could not load raw extractions file: {e}. Starting fresh.")
+
+    # RPM limit delay
+    delay_between_requests = 15.0
+
+    print("Starting extraction loop...")
+    for idx, verse in enumerate(verses):
+        verse_id = verse["verse_number"]
+        if verse_id in completed_verses:
+            continue
+
+        print(f"[{idx+1}/{len(verses)}] Extracting entities for Verse {verse_id}...")
+        try:
+            extracted_entities = extract_with_retry(
+                client, 
+                model, 
+                prompt_template, 
+                verse,
+                max_retries=3
+            )
+            
+            raw_extractions[verse_id] = {
+                "entities": extracted_entities,
+                "verse_text": verse["verse_text"]
+            }
+            print(f"  ✓ Extracted {len(extracted_entities)} entities.")
+
+            # Save progress incrementally
+            with open(raw_extractions_file, 'w', encoding='utf-8') as f:
+                json.dump(raw_extractions, f, indent=2, ensure_ascii=False)
+
+        except Exception as e:
+            print(f"  ✗ Failed Verse {verse_id}: {e}")
+            
+        time.sleep(delay_between_requests)
+
+    print("\nExtraction finished. Normalising and merging entities...")
+    
+    # ── AGGREGATION AND DEDUPLICATION ──
+    normalized_entities = {}
+    normalized_verses = {}
+    
+    for verse_id, data in raw_extractions.items():
+        verse_num = int(verse_id)
+        normalized_verses[verse_id] = {
+            "text": data["verse_text"],
+            "entities": []
+        }
+        
+        entities_list = data.get("entities", [])
+        for ent in entities_list:
+            cid = ent["canonical_id"].strip().lower()
+            if not cid:
+                continue
+                
+            display_name = ent.get("display_name", "").strip()
+            ent_type = ent.get("type", "personality")
+            
+            # Skip if this is an empty list or invalid
+            if not display_name:
+                display_name = cid.replace("_", " ").title()
+                
+            if cid not in normalized_entities:
+                normalized_entities[cid] = {
+                    "type": ent_type,
+                    "name": display_name,
+                    "attributes": [],
+                    "relations": {},
+                    "mentioned_in": []
+                }
+            
+            # Choose the most descriptive name (e.g. with diacritics)
+            current_name = normalized_entities[cid]["name"]
+            # Prefer names with diacritics (letters like Ś, ś, Ā, ā, Ṛ, ṛ, Ṇ, ṇ, Ṭ, ṭ, Ī, ī, Ū, ū)
+            diacritical_chars = set("āīūṛḷṅñṭḍṇśṣhḥṁ")
+            has_diacritics = lambda s: any(c in diacritical_chars for c in s.lower())
+            
+            if len(display_name) > len(current_name) or (has_diacritics(display_name) and not has_diacritics(current_name)):
+                normalized_entities[cid]["name"] = display_name
+                
+            # Add attributes
+            for attr in ent.get("attributes", []):
+                attr_clean = attr.strip()
+                if attr_clean and attr_clean not in normalized_entities[cid]["attributes"]:
+                    normalized_entities[cid]["attributes"].append(attr_clean)
+                    
+            # Add relations
+            for rel in ent.get("relations", []):
+                rel_type = rel["type"].strip().lower().replace(" ", "_")
+                target_id = rel["target_id"].strip().lower()
+                if rel_type and target_id:
+                    normalized_entities[cid]["relations"][rel_type] = target_id
+                    
+            # Add mention
+            if verse_num not in normalized_entities[cid]["mentioned_in"]:
+                normalized_entities[cid]["mentioned_in"].append(verse_num)
+                
+            # Link entity to verse
+            if cid not in normalized_verses[verse_id]["entities"]:
+                normalized_verses[verse_id]["entities"].append(cid)
+                
+    # Sort mentioned_in lists
+    for cid in normalized_entities:
+        normalized_entities[cid]["mentioned_in"].sort()
+        
+    final_graph = {
+        "entities": normalized_entities,
+        "verses": normalized_verses
+    }
+    
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(final_graph, f, indent=2, ensure_ascii=False)
+        
+    print(f"Graph compiling complete. Saved {len(normalized_entities)} entities to {output_file}.")
+
+if __name__ == "__main__":
+    main()

@@ -9,6 +9,8 @@ export interface XpRewardConfig {
   crosswordBasePerLetter: number;
   crosswordNoHintsBonus: number;
   crosswordSpeedBonus: number;
+  recallBase: number;
+  recallPerfectBonus: number;
   dailyNectarBase: number;
   dailyNectarStreakMultiplier: number;
   dailyNectarMaxStreakBonus: number;
@@ -16,7 +18,7 @@ export interface XpRewardConfig {
 }
 
 export interface GameUnlockConfig {
-  modeId: "quiz" | "memory" | "drag-drop" | "crossword";
+  modeId: "quiz" | "memory" | "drag-drop" | "crossword" | "recall";
   unlockLevel: number;
   displayName: string;
   emoji: string;
@@ -44,6 +46,8 @@ export const GAMIFICATION_CONFIG: GamificationConfig = {
     crosswordBasePerLetter: 1, // 1 XP per letter placed
     crosswordNoHintsBonus: 15,
     crosswordSpeedBonus: 10, // solved under 5 minutes (300 seconds)
+    recallBase: 15,
+    recallPerfectBonus: 10,
     dailyNectarBase: 10,
     dailyNectarStreakMultiplier: 5, // +5 XP per day of streak
     dailyNectarMaxStreakBonus: 25,
@@ -51,9 +55,9 @@ export const GAMIFICATION_CONFIG: GamificationConfig = {
   },
   bookUnlocks: {
     ggd: 1,   // Gaura Gaṇoddeśa Dīpikā
-    rkgd: 3,  // Rādhā Kṛṣṇa Gaṇoddeśa Dīpikā
-    vvs: 6,   // Vraja Vilāsa Stava
-    bs: 10,  // Śrī Brahma-saṁhitā
+    rkgd: 4,  // Rādhā Kṛṣṇa Gaṇoddeśa Dīpikā
+    vvs: 8,   // Vraja Vilāsa Stava
+    bs: 12,  // Śrī Brahma-saṁhitā
   },
   gameUnlocks: {
     quiz: {
@@ -74,15 +78,22 @@ export const GAMIFICATION_CONFIG: GamificationConfig = {
     },
     "drag-drop": {
       modeId: "drag-drop",
-      unlockLevel: 3,
+      unlockLevel: 4,
       displayName: "Drag & Drop",
       emoji: "🤝",
       description: "Match 10 Associations",
       pairsCount: 10,
     },
+    recall: {
+      modeId: "recall",
+      unlockLevel: 7,
+      displayName: "Bhakti Recall",
+      emoji: "🎴",
+      description: "Active Flashcard Study",
+    },
     crossword: {
       modeId: "crossword",
-      unlockLevel: 5,
+      unlockLevel: 10,
       displayName: "Crossword",
       emoji: "🧩",
       description: "Interactive Puzzle",

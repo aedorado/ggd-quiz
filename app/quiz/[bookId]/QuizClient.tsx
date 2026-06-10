@@ -7,6 +7,7 @@ import QuizResults from "./components/QuizResults";
 import MemoryMatch from "./components/MemoryMatch";
 import DragDrop from "./components/DragDrop";
 import Crossword from "./components/Crossword";
+import BhaktiRecall from "./components/BhaktiRecall";
 import { useBhaktiProgress } from "../../utils/bhaktiProgress";
 import { GAMIFICATION_CONFIG, isGameModeUnlocked } from "../../utils/gamificationConfig";
 import SadhanaDashboard from "../../components/SadhanaDashboard";
@@ -85,7 +86,7 @@ function shuffle<T>(arr: T[]): T[] {
 
 export default function QuizClient({ bookId }: QuizClientProps) {
   // Screen and Config States
-  const [screen, setScreen] = useState<"loading" | "error" | "landing" | "quiz" | "results" | "memory" | "drag-drop" | "crossword">("loading");
+  const [screen, setScreen] = useState<"loading" | "error" | "landing" | "quiz" | "results" | "memory" | "drag-drop" | "crossword" | "recall">("loading");
   const [meta, setMeta] = useState<BookMeta | null>(null);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [quizQuestions, setQuizQuestions] = useState<Question[]>([]);
@@ -93,7 +94,7 @@ export default function QuizClient({ bookId }: QuizClientProps) {
   const [selectedPartId, setSelectedPartId] = useState<string>("all");
 
   // Game sub-modes
-  const [selectedSubMode, setSelectedSubMode] = useState<"quiz" | "memory" | "drag-drop" | "crossword">("quiz");
+  const [selectedSubMode, setSelectedSubMode] = useState<"quiz" | "memory" | "drag-drop" | "crossword" | "recall">("quiz");
 
   // Krishna Prema Additions State
   const [particles, setParticles] = useState<Particle[]>([]);
@@ -406,6 +407,11 @@ export default function QuizClient({ bookId }: QuizClientProps) {
       gameType = "Crossword";
       extraData = { crosswordHints: moves };
       // Trust the letter-based XP calculated and passed from the CrosswordPOC component
+    } else if (screen === "recall") {
+      gameType = "Bhakti Recall";
+      extraData = { recallRetries: moves };
+      let bonus = moves === 0 ? GAMIFICATION_CONFIG.xpRewards.recallPerfectBonus : 0;
+      xpEarned = GAMIFICATION_CONFIG.xpRewards.recallBase + bonus;
     }
 
     let description = `Completed ${gameType} for ${meta?.title || "Book"}`;
@@ -579,16 +585,16 @@ export default function QuizClient({ bookId }: QuizClientProps) {
             )}
 
             {(() => {
-              const modes = bookId === "ggd" 
-                ? ["quiz", "memory", "drag-drop", "crossword"] 
-                : ["quiz", "crossword"];
+              const modes = (bookId === "ggd" || bookId === "vvs")
+                ? ["quiz", "memory", "drag-drop", "recall", "crossword"] 
+                : ["quiz", "recall", "crossword"];
               
               return (
                 <div className="game-mode-selector" style={{ marginTop: "1.5rem", width: "100%" }}>
                   <div className="scope-title" style={{ marginBottom: "0.8rem", textAlign: "center" }}>Select Game Mode</div>
                   <div style={{ display: "flex", gap: "0.8rem", justifyContent: "center", flexWrap: "wrap", marginBottom: "1.5rem" }}>
                     {modes.map((m) => {
-                      const cfg = GAMIFICATION_CONFIG.gameUnlocks[m as "quiz" | "memory" | "drag-drop" | "crossword"];
+                      const cfg = GAMIFICATION_CONFIG.gameUnlocks[m as "quiz" | "memory" | "drag-drop" | "crossword" | "recall"];
                       const isUnlocked = stats.level >= cfg.unlockLevel;
                       const isSelected = selectedSubMode === m;
                       
@@ -632,6 +638,7 @@ export default function QuizClient({ bookId }: QuizClientProps) {
                   else if (selectedSubMode === "memory") setScreen("memory");
                   else if (selectedSubMode === "drag-drop") setScreen("drag-drop");
                   else if (selectedSubMode === "crossword") setScreen("crossword");
+                  else if (selectedSubMode === "recall") setScreen("recall");
                 }}
               >
                 {selectedSubMode === "quiz" ? "Begin Quiz" : "Start Game"}
@@ -665,6 +672,7 @@ export default function QuizClient({ bookId }: QuizClientProps) {
         {/* ── MEMORY MATCH GAME ── */}
         {screen === "memory" && (
           <MemoryMatch
+            bookId={bookId}
             playCorrectSound={playCorrectSound}
             playWrongSound={playWrongSound}
             triggerParticles={triggerParticles}
@@ -676,6 +684,7 @@ export default function QuizClient({ bookId }: QuizClientProps) {
         {/* ── DRAG AND DROP MATCHING ── */}
         {screen === "drag-drop" && (
           <DragDrop
+            bookId={bookId}
             playCorrectSound={playCorrectSound}
             playWrongSound={playWrongSound}
             triggerParticles={triggerParticles}
@@ -690,6 +699,17 @@ export default function QuizClient({ bookId }: QuizClientProps) {
             bookTitle={meta.title}
             onClose={() => setScreen("landing")}
             onComplete={(xp, moves, secs) => handleGameComplete(xp, moves, secs)}
+          />
+        )}
+
+        {screen === "recall" && (
+          <BhaktiRecall
+            bookId={bookId}
+            playCorrectSound={playCorrectSound}
+            playWrongSound={playWrongSound}
+            triggerParticles={triggerParticles}
+            onClose={() => setScreen("landing")}
+            onComplete={(xp, retries, secs) => handleGameComplete(xp, retries, secs)}
           />
         )}
       </div>

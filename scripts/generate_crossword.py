@@ -16,8 +16,7 @@ Output format (per book, e.g. public/bs/crosswords.json):
 }
 
 Usage:
-  ./venv/bin/python generate_crossword.py --book bs --rpm 10
-  ./venv/bin/python generate_crossword.py --book bs --rpm 10
+  ./venv/bin/python scripts/generate_crossword.py --book bs --rpm 10
 """
 
 import os
