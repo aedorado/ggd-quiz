@@ -46,27 +46,27 @@ export default function SadhanaDashboard({ isOpen, onClose, stats, resetProgress
               </div>
             </div>
             <p className="rank-description">{currentRank.desc}</p>
-            
+
             {/* XP progress bar */}
             <div className="dashboard-xp-container">
               <div className="dashboard-xp-header">
                 <span>Level {stats.level}</span>
-                <span>{stats.xpCurrent} / {stats.xpNeeded} XP</span>
+                <span>{stats.xpCurrent} / {stats.xpNeeded} GB</span>
               </div>
               <div className="dashboard-xp-bar-wrap">
-                <div 
-                  className="dashboard-xp-bar-fill" 
+                <div
+                  className="dashboard-xp-bar-fill"
                   style={{ width: `${xpPercent}%` }}
                 ></div>
               </div>
-              <span className="dashboard-xp-total">Total study XP accrued: {stats.xpTotal}</span>
+              <span className="dashboard-xp-total">Total Gunja Berries accrued: {stats.xpTotal}</span>
             </div>
           </div>
 
           {/* Quick Stats Grid */}
           <div className="dashboard-stats-grid">
             <div className="dash-stat-card">
-              <span className="dash-stat-icon">🔥</span>
+              <span className="dash-stat-icon">🏺</span>
               <div className="dash-stat-values">
                 <span className="dash-stat-num">{stats.streak} Days</span>
                 <span className="dash-stat-label">Daily Sadhana Streak</span>
@@ -131,7 +131,7 @@ export default function SadhanaDashboard({ isOpen, onClose, stats, resetProgress
                 <p className="badge-detail-desc">{selectedBadge.desc}</p>
                 <div className="badge-detail-status">
                   {stats.badges.includes(selectedBadge.id) ? (
-                    <span className="status-unlocked-text">✓ Unlocked & Active (+50 XP Claimed)</span>
+                    <span className="status-unlocked-text">✓ Unlocked & Active (+50 GB Claimed)</span>
                   ) : (
                     <span className="status-locked-text">🔒 Locked (Complete requirements to unlock)</span>
                   )}
@@ -168,7 +168,7 @@ export default function SadhanaDashboard({ isOpen, onClose, stats, resetProgress
                           </span>
                         </div>
                         {log.xpEarned > 0 && (
-                          <span className="activity-log-xp">+{log.xpEarned} XP</span>
+                          <span className="activity-log-xp">+{log.xpEarned} GB</span>
                         )}
                       </div>
                     );
@@ -187,8 +187,8 @@ export default function SadhanaDashboard({ isOpen, onClose, stats, resetProgress
                   const isActive = stats.level >= r.minLevel;
                   const isCurrent = currentRank.minLevel === r.minLevel;
                   return (
-                    <div 
-                      key={r.minLevel} 
+                    <div
+                      key={r.minLevel}
                       className={`ranks-guide-item ${isActive ? "active" : "inactive"} ${isCurrent ? "current" : ""}`}
                     >
                       <span className="ranks-guide-emoji">{r.emoji}</span>

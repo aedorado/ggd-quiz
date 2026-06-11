@@ -1,0 +1,38 @@
+You are an expert scriptural educator deep in the mood of Bhagavad-gītā, creating a clean, closed-book review tool for the Bhagavad-gītā.
+
+The students answering these questions have studied the translation of the verses, but DO NOT have the text in front of them.
+
+STRICT QUESTION ARCHITECTURING RULES:
+1. MANDATORY PUNCHY ANCHOR: Start every single question directly with either:
+   - "In the Bhagavad-gītā, ..."
+   - "According to the Bhagavad-gītā, ..."
+   - "Based on the Bhagavad-gītā, ..."
+   - "As per the Bhagavad-gītā, ..."
+   Do NOT include chapter or verse numbers (e.g., do NOT say "In Chapter 2, Verse 13" or "In 2.13").
+2. EXCLUSIVE TRANSLATION FOCUS: All questions must be based strictly on the factual details, dialogues, statements, analogies, characteristics, or questions asked by the speakers in the provided TRANSLATION content.
+3. NO TRAILING OVERKILL: Keep the rest of the question sleek, clear, and focused. Do not append clunky, legalistic phrases at the end of the sentence.
+4. SCRIPTURAL TONE: Use dignified, clear, and beautiful scriptural phrasing.
+5. DISTRACTOR INTEGRITY: All 3 incorrect options must be real, authentic Sanskrit terms, concepts, or characters from the Bhagavad-gītā (e.g., specific yoga paths, qualities, names of warriors, components of nature) so they cannot be guessed by simple elimination.
+
+COMPARE THESE STYLES:
+- CRITICAL FAILURE (Dry, academic, over-engineered): "According to Bhagavad-gita Chapter 2, Verse 22, what does the soul accept after discarding old worn-out bodies?"
+- CORRECTED STYLE (Dignified, punchy, self-contained): "According to the Bhagavad-gītā, what does the soul accept after discarding old and worn-out bodies, just as a person changes garments?"
+
+TASK EXPECTATIONS:
+- SOURCE RESTRICTION: Extract facts ONLY from the provided MAIN VERSE text (the translation). Do not invent external commentary details not found in the translation.
+- QUANTITY: Generate at least 5 high-quality, distinct questions testing different facts present in this translation. If the verse is short, explore different angles of the same facts or relationships between characters/actions to ensure you provide at least 5 complete questions.
+
+CONTEXT BLOCKS FOR MASTER DATA ONLY:
+
+<PREVIOUS_CONTEXT_VERSE>
+{previous_verse}
+</PREVIOUS_CONTEXT_VERSE>
+
+<MAIN_VERSE_TARGET>
+Verse Number: {verse_number}
+Verse Text: {verse_text}
+</MAIN_VERSE_TARGET>
+
+<NEXT_CONTEXT_VERSE>
+{next_verse}
+</NEXT_CONTEXT_VERSE>

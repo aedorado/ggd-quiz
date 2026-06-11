@@ -14,6 +14,303 @@
     "quiz_desc": "Five questions drawn from the verses and teachings of Gaura Gaṇoddeśa Dīpikā. Study the identities, relationships, and pastimes of the Lord and His associates.",
     "verse": "\"Dark-complexioned Lord Kṛṣṇa, whose form is eternal, blissful, and full of knowledge, formerly danced with the golden-complexioned gopīs in Vṛndāvana…\"",
     "input_file": "public/ggd/ggd.json",
+    "output_file": "public/ggd/questions.json",
+    "enabled_modes": [
+      "quiz",
+      "memory",
+      "drag-drop",
+      "recall",
+      "crossword"
+    ]
+  },
+  "bg": {
+    "title": "Bhagavad-gītā",
+    "devanagari": "भगवद्गीता",
+    "author": "Vyāsadeva / Viśvanātha Cakravartī Ṭhākura (Commentary)",
+    "author_id": "vyasadeva",
+    "category": "philosophy",
+    "desc": "The song of God, mapping out karma, jnana, and the supreme path of pure devotion (Bhakti).",
+    "accent": "#8B4513",
+    "status": "ready",
+    "featured": true,
+    "href": "/quiz/bg",
+    "input_file": "public/bg/gita.json",
+    "output_file": "public/bg/questions.json",
+    "enabled_modes": [
+      "builder"
+    ]
+  },
+  "rkgd": {
+    "title": "Rādhā Kṛṣṇa Gaṇoddeśa Dīpikā",
+    "devanagari": "राधा कृष्ण गणोद्देश दीपिका",
+    "author": "Rūpa Gosvāmī",
+    "author_id": "rupa",
+    "category": "identities",
+    "desc": "Reveals the eternal identities, lineages, and groupings of the associates in Vṛndāvana.",
+    "accent": "#b24f5a",
+    "status": "ready",
+    "href": "/quiz/rkgd",
+    "featured": true,
+    "subtitle": "Identifying the Associates of Śrī Rādhā-Kṛṣṇa",
+    "quiz_desc": "Five questions drawn from the verses and teachings of Rādhā Kṛṣṇa Gaṇoddeśa Dīpikā. Study the identities, lineages, and groupings of the associates in Vṛndāvana.",
+    "verse": "\"I offer my respectful obeisances to the two lotus feet of Srimati Radharani. I offer my respectful obeisances to Lord Nandanandana, who is surrounded by the gopis and enchants the minds of the residents of Vrndavana.\"",
+    "input_file": "public/rkgd/rkgd.json",
+    "output_file": "public/rkgd/questions.json",
+    "parts": [
+      {
+        "id": "brihad",
+        "name": "Bṛhad Bhāga (Part 1)",
+        "desc": "Associates, lineages, and groupings of the residents of Vṛndāvana.",
+        "filter_prefix": "1."
+      },
+      {
+        "id": "laghu",
+        "name": "Laghu Bhāga (Part 2)",
+        "desc": "Kṛṣṇa's form, garments, flute, attributes, and characteristics.",
+        "filter_prefix": "2."
+      }
+    ]
+  },
+  "vvs": {
+    "title": "Vraja Vilāsa Stava",
+    "devanagari": "व्रज विलास स्तव",
+    "author": "Raghunātha Dāsa Gosvāmī",
+    "author_id": "raghunatha",
+    "category": "vraja",
+    "desc": "Prayerful glorification of the residents of Vraja — the gopīs, gopas, and eternal associates.",
+    "accent": "#2e7a6a",
+    "status": "ready",
+    "href": "/quiz/vvs",
+    "subtitle": "Identifying the Associates of Śrī Kṛṣṇa",
+    "quiz_desc": "Five questions drawn from the verses and teachings of Vraja Vilāsa Stava. Study the identities, relationships, and pastimes of the Lord and His associates.",
+    "verse": "\"By tasting a single drop of the memory of the transcendental nectar ocean of the sweetness of the divine couple my heart has become restless. I bow down before the land and people of Vraja. I yearn to see my two masters.\"",
+    "input_file": "public/vvs/vvs.json",
+    "output_file": "public/vvs/questions.json",
+    "enabled_modes": [
+      "quiz",
+      "memory",
+      "drag-drop",
+      "recall",
+      "crossword"
+    ]
+  },
+  "bs": {
+    "title": "Śrī Brahma-saṁhitā",
+    "devanagari": "श्री ब्रह्मसंहिता",
+    "author": "Lord Brahmā / Śrī Caitanya Mahāprabhu (Discovered)",
+    "author_id": "brahma",
+    "category": "philosophy",
+    "desc": "The prayers of Lord Brahmā glorifying Lord Kṛṣṇa (Govinda) as the primeval Lord of Goloka.",
+    "accent": "#006064",
+    "status": "ready",
+    "href": "/quiz/bs",
+    "subtitle": "Prayers of Lord Brahmā",
+    "quiz_desc": "Five questions drawn from the verses and teachings of Śrī Brahma-saṁhitā. Study the prayers of Lord Brahmā glorifying Lord Kṛṣṇa (Govinda) as the primeval Lord of Goloka.",
+    "verse": "\"īśvaraḥ paramaḥ kṛṣṇaḥ\nsac-cid-ānanda-vigrahaḥ\nanādir ādir govindaḥ\nsarva-kāraṇa-kāraṇam\"",
+    "input_file": "public/bs/bs.json",
+    "output_file": "public/bs/questions.json",
+    "enabled_modes": [
+      "quiz"
+    ]
+  },
+  "bb": {
+    "title": "Bṛhad-Bhāgavatāmṛta",
+    "devanagari": "बृहद् भागवतामृत",
+    "author": "Sanātana Gosvāmī",
+    "author_id": "sanatana",
+    "category": "philosophy",
+    "desc": "A journey through the levels of devotional attainment, culminating in pure love of Kṛṣṇa.",
+    "accent": "#5a3a8a",
+    "status": "soon"
+  },
+  "skd": {
+    "title": "Saṅkalpa Kalpadruma",
+    "devanagari": "सङ्कल्प कल्पद्रुम",
+    "author": "Viśvanātha Cakravartī Ṭhākura",
+    "author_id": "visvanatha",
+    "category": "devotion",
+    "desc": "Meditations on the daily pastimes of Rādhā-Kṛṣṇa through the eight periods of the day.",
+    "accent": "#a03555",
+    "status": "soon"
+  },
+  "brs": {
+    "title": "Bhakti-rasāmṛta-sindhu",
+    "devanagari": "भक्ति रसामृत सिन्धु",
+    "author": "Rūpa Gosvāmī",
+    "author_id": "rupa",
+    "category": "devotion",
+    "desc": "The ocean of the nectar of devotion — the definitive science of bhakti and its sixty-four practices.",
+    "accent": "#7a3a1a",
+    "status": "soon"
+  },
+  "un": {
+    "title": "Ujjvala-nīlamaṇi",
+    "devanagari": "उज्ज्वल नीलमणि",
+    "author": "Rūpa Gosvāmī",
+    "author_id": "rupa",
+    "category": "devotion",
+    "desc": "The sapphire of mādhurya-rasa — a complete analysis of conjugal love and the nature of the gopīs.",
+    "accent": "#1a4a7a",
+    "status": "soon"
+  },
+  "sm": {
+    "title": "Stava-mālā",
+    "devanagari": "स्तव माला",
+    "author": "Rūpa Gosvāmī",
+    "author_id": "rupa",
+    "category": "vraja",
+    "desc": "A garland of prayers glorifying the dhāma, the devotees, and the sweetness of Kṛṣṇa's pastimes.",
+    "accent": "#3a6a20",
+    "status": "soon"
+  },
+  "vk": {
+    "title": "Vilāpa-kusumāñjali",
+    "devanagari": "विलाप कुसुमाञ्जलि",
+    "author": "Raghunātha Dāsa Gosvāmī",
+    "author_id": "raghunatha",
+    "category": "devotion",
+    "desc": "One hundred prayers of longing to Śrī Rādhā, the supreme source of divine ecstasy.",
+    "accent": "#6a2a7a",
+    "status": "soon"
+  },
+  "kb": {
+    "title": "Kṛṣṇa-bhāvanāmṛta",
+    "devanagari": "कृष्ण भावनामृत",
+    "author": "Viśvanātha Cakravartī Ṭhākura",
+    "author_id": "visvanatha",
+    "category": "vraja",
+    "desc": "Vivid meditation on Kṛṣṇa's aṣṭa-kālīya-līlā — the eight-period cycle of His daily pastimes.",
+    "accent": "#5a7a1a",
+    "status": "soon"
+  },
+  "mk": {
+    "title": "Mādhurya Kādambinī",
+    "devanagari": "माधुर्य कादम्बिनी",
+    "author": "Viśvanātha Cakravartī Ṭhākura",
+    "author_id": "visvanatha",
+    "category": "philosophy",
+    "desc": "Eight showers of clouds of sweetness — mapping the progressive stages of pure devotional service.",
+    "accent": "#2a5a7a",
+    "status": "soon"
+  },
+  "hbv": {
+    "title": "Hari-bhakti-vilāsa",
+    "devanagari": "हरि भक्ति विलास",
+    "author": "Sanātana Gosvāmī & Gopāla Bhaṭṭa Gosvāmī",
+    "author_id": "sanatana",
+    "category": "saints",
+    "desc": "The manual of Vaiṣṇava conduct — the complete code of devotional life and sacred ritual.",
+    "accent": "#7a5a2a",
+    "status": "soon"
+  },
+  "cc": {
+    "title": "Caitanya-caritāmṛta",
+    "devanagari": "चैतन्य चरितामृत",
+    "author": "Kṛṣṇadāsa Kavirāja Gosvāmī",
+    "author_id": "kaviraja",
+    "category": "saints",
+    "desc": "The life and teachings of Śrī Caitanya Mahāprabhu — the supreme devotee and hidden avatāra.",
+    "accent": "#8a5a2a",
+    "status": "soon"
+  },
+  "sb": {
+    "title": "Śrīmad-Bhāgavatam",
+    "devanagari": "श्रीमद्भागवतम्",
+    "author": "Vyāsadeva",
+    "author_id": "vyasadeva",
+    "category": "philosophy",
+    "desc": "The spotless Purāṇa, revealing the absolute truth and the highest transcendental pastimes of Kṛṣṇa.",
+    "accent": "#B8860B",
+    "status": "soon"
+  },
+  "cb": {
+    "title": "Śrī Caitanya Bhāgavata",
+    "devanagari": "श्री चैतन्य भागवत",
+    "author": "Vṛndāvana dāsa Ṭhākura",
+    "author_id": "vrindavana_dasa",
+    "category": "saints",
+    "desc": "The earliest biography of Śrī Caitanya Mahāprabhu, focusing on His early pastimes and sankirtana movement.",
+    "accent": "#FF8C00",
+    "status": "soon"
+  },
+  "upd": {
+    "title": "Upadeśāmṛta",
+    "devanagari": "उपदेशामृत",
+    "author": "Rūpa Gosvāmī",
+    "author_id": "rupa",
+    "category": "philosophy",
+    "desc": "Eleven key instructions on controlling the senses and progressing from faith to pure love of Kṛṣṇa.",
+    "accent": "#4A752C",
+    "status": "soon"
+  },
+  "sik": {
+    "title": "Śikṣāṣṭaka",
+    "devanagari": "शिक्षाष्टक",
+    "author": "Śrī Caitanya Mahāprabhu",
+    "author_id": "caitanya",
+    "category": "devotion",
+    "desc": "Eight verses of instruction detailing the progressive stages of chanting the holy name.",
+    "accent": "#D81B60",
+    "status": "soon"
+  },
+  "jd": {
+    "title": "Jaiva-dharma",
+    "devanagari": "जैव धर्म",
+    "author": "Bhaktivinoda Ṭhākura",
+    "author_id": "bhaktivinoda",
+    "category": "philosophy",
+    "desc": "A spiritual novel detailing the eternal nature of the soul and the supreme path of raganuga-bhakti.",
+    "accent": "#4B0082",
+    "status": "soon"
+  },
+  "pbc": {
+    "title": "Prema-bhakti-candrikā",
+    "devanagari": "प्रेम भक्ति चन्द्रिका",
+    "author": "Narottama dāsa Ṭhākura",
+    "author_id": "narottama",
+    "category": "devotion",
+    "desc": "\"The Moonlight of Loving Devotion\" — essential instructions on raganuga-bhakti and serving in the mood of the gopīs.",
+    "accent": "#800000",
+    "status": "soon"
+  },
+  "skk": {
+    "title": "Śrī Kṛṣṇa-karṇāmṛtam",
+    "devanagari": "श्रीकृष्णकर्णामृतम्",
+    "author": "Bilvamaṅgala Ṭhākura",
+    "author_id": "bilvamangala",
+    "category": "devotion",
+    "desc": "Nectarean prayers and ecstatic verses describing the beauty, sweetness, and pastimes of Lord Śrī Kṛṣṇa.",
+    "accent": "#1E3F66",
+    "status": "soon"
+  },
+  "rrsn": {
+    "title": "Rādhā Rasa Sudhā Nidhi",
+    "devanagari": "राधारससुधानिधि",
+    "author": "Prabodhānanda Sarasvatī",
+    "author_id": "prabodhananda",
+    "category": "devotion",
+    "desc": "The nectar ocean of the liquid mellows of Srimati Radharani's sublime service and glorification.",
+    "accent": "#D11A2A",
+    "status": "soon"
+  }
+}
+
+{
+  "ggd": {
+    "title": "Gaura Gaṇoddeśa Dīpikā",
+    "devanagari": "गौर गणोद्देश दीपिका",
+    "author": "Kavi Karṇapūra",
+    "author_id": "karnapura",
+    "category": "identities",
+    "desc": "Reveals the eternal identities of Śrī Caitanya's associates as expansions of Vṛndāvana's devotees.",
+    "accent": "#bf6a1f",
+    "status": "ready",
+    "href": "/quiz/ggd",
+    "featured": true,
+    "subtitle": "Identifying the Associates of Śrī Caitanya Mahāprabhu",
+    "quiz_desc": "Five questions drawn from the verses and teachings of Gaura Gaṇoddeśa Dīpikā. Study the identities, relationships, and pastimes of the Lord and His associates.",
+    "verse": "\"Dark-complexioned Lord Kṛṣṇa, whose form is eternal, blissful, and full of knowledge, formerly danced with the golden-complexioned gopīs in Vṛndāvana…\"",
+    "input_file": "public/ggd/ggd.json",
     "output_file": "public/ggd/questions.json"
   },
   "rkgd": {
@@ -264,5 +561,53 @@
     "verse": "\"īśvaraḥ paramaḥ kṛṣṇaḥ sac-cid-ānanda-vigrahaḥ anādir ādir govindaḥ sarva-kāraṇa-kāraṇam\"",
     "input_file": "public/bs/bs.json",
     "output_file": "public/bs/questions.json"
+  },
+  "rkgd1": {
+    "title": "Rādhā Kṛṣṇa Gaṇoddeśa Dīpikā",
+    "devanagari": "राधा कृष्ण गणोद्देश दीपिका",
+    "author": "Rūpa Gosvāmī",
+    "author_id": "rupa",
+    "category": "identities",
+    "desc": "Reveals the eternal identities, lineages, and groupings of the associates in Vṛndāvana.",
+    "accent": "#b24f5a",
+    "status": "soon",
+    "href": "/quiz/rkgd",
+    "featured": true,
+    "subtitle": "Identifying the Associates of Śrī Rādhā-Kṛṣṇa",
+    "quiz_desc": "Five questions drawn from the verses and teachings of Rādhā Kṛṣṇa Gaṇoddeśa Dīpikā. Study the identities, lineages, and groupings of the associates in Vṛndāvana.",
+    "verse": "\"I offer my respectful obeisances to the two lotus feet of Srimati Radharani. I offer my respectful obeisances to Lord Nandanandana, who is surrounded by the gopis and enchants the minds of the residents of Vrndavana.\"",
+    "input_file": "public/rkgd/rkgd.json",
+    "output_file": "public/rkgd/questions.json",
+    "enabled_modes": [
+      "quiz"
+    ],
+    "parts": [
+      {
+        "id": "brihad",
+        "name": "Bṛhad Bhāga (Part 1)",
+        "desc": "Associates, lineages, and groupings of the residents of Vṛndāvana.",
+        "filter_prefix": "1.",
+        "chapters": [
+          {
+            "id": "brihad_ch1",
+            "name": "Chapter 1: The Elder Relatives",
+            "desc": "Questions regarding Nanda, Yasoda, Rohini, and other elders.",
+            "filter_prefix": "1.1"
+          },
+          {
+            "id": "brihad_ch2",
+            "name": "Chapter 2: The Gopis and Friends",
+            "desc": "Questions regarding Radharani, the Astasakhis, and friends.",
+            "filter_prefix": "1.2"
+          }
+        ]
+      },
+      {
+        "id": "laghu",
+        "name": "Laghu Bhāga (Part 2)",
+        "desc": "Kṛṣṇa's form, garments, flute, attributes, and characteristics.",
+        "filter_prefix": "2."
+      }
+    ]
   }
 }

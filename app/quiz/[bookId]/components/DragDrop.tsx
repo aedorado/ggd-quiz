@@ -133,16 +133,16 @@ export default function DragDrop({
         if (res.ok) {
           const idData = await res.json();
           const flatIdentities: IdentityMapping[] = [];
-          
+
           if (bookId === "vvs") {
             if (idData.entities) {
               Object.entries(idData.entities).forEach(([entityId, entity]: [string, any]) => {
                 const firstVerseRef = entity.mentioned_in && entity.mentioned_in.length > 0 ? entity.mentioned_in[0] : "";
                 const rawVerse = idData.verses ? idData.verses[firstVerseRef] : null;
                 const verseText = rawVerse ? rawVerse.text : "";
-                
+
                 const descriptors: string[] = [...(entity.attributes || [])];
-                
+
                 if (entity.relations) {
                   Object.entries(entity.relations).forEach(([relType, targetId]: [string, any]) => {
                     const targetEntity = idData.entities[targetId];
@@ -152,7 +152,7 @@ export default function DragDrop({
                     descriptors.push(`${capitalizedRel}: ${targetName}`);
                   });
                 }
-                
+
                 flatIdentities.push({
                   gaura_name: entity.name,
                   previous_forms: descriptors.length > 0 ? descriptors : [entity.type || "Vraja Entity"],
@@ -176,7 +176,7 @@ export default function DragDrop({
               }
             });
           }
-          
+
           const loaded = flatIdentities.length > 0 ? flatIdentities : FALLBACK_IDENTITIES;
           setIdentities(loaded);
           setupGame(loaded);
@@ -207,13 +207,24 @@ export default function DragDrop({
   const setupGame = (activeIdentities: IdentityMapping[]) => {
     const shuffledIdentities = shuffle(activeIdentities);
     const targetCount = GAMIFICATION_CONFIG.gameUnlocks["drag-drop"].pairsCount || 6;
-    const selected = shuffledIdentities.slice(0, Math.min(targetCount, shuffledIdentities.length));
 
     const targets: DragTarget[] = [];
     const items: DragItem[] = [];
+    const chosenGauraNames = new Set<string>();
+    const chosenPrevForms = new Set<string>();
 
-    selected.forEach((item) => {
-      const prevForm = item.previous_forms[Math.floor(Math.random() * item.previous_forms.length)];
+    // Step 1: Try to build pairs with unique gaura_name AND unique previous form
+    for (const item of shuffledIdentities) {
+      if (targets.length >= targetCount) break;
+      if (chosenGauraNames.has(item.gaura_name)) continue;
+
+      const availablePrevForms = item.previous_forms.filter(f => !chosenPrevForms.has(f));
+      if (availablePrevForms.length === 0) continue;
+
+      const prevForm = availablePrevForms[Math.floor(Math.random() * availablePrevForms.length)];
+
+      chosenGauraNames.add(item.gaura_name);
+      chosenPrevForms.add(prevForm);
 
       targets.push({
         gaura_name: item.gaura_name,
@@ -229,7 +240,35 @@ export default function DragDrop({
         mappingId: item.gaura_name,
         isMatched: false
       });
-    });
+    }
+
+    // Step 2: If we still need more pairs, relax previous form uniqueness (but keep gaura_name unique)
+    if (targets.length < targetCount) {
+      for (const item of shuffledIdentities) {
+        if (targets.length >= targetCount) break;
+        if (chosenGauraNames.has(item.gaura_name)) continue;
+
+        const prevForm = item.previous_forms[Math.floor(Math.random() * item.previous_forms.length)];
+
+        chosenGauraNames.add(item.gaura_name);
+        chosenPrevForms.add(prevForm);
+
+        targets.push({
+          gaura_name: item.gaura_name,
+          correct_prev_form: prevForm,
+          matched_prev_form: null,
+          isMatched: false,
+          verse_ref: item.verse_ref,
+          verse_text: item.verse_text
+        });
+
+        items.push({
+          text: prevForm,
+          mappingId: item.gaura_name,
+          isMatched: false
+        });
+      }
+    }
 
     setDragTargets(targets);
     setDragItems(shuffle(items));
@@ -322,10 +361,18 @@ export default function DragDrop({
   };
 
   const handleTargetClick = (targetName: string) => {
-    if (!selectedPrevItem || !dragDropActive) return;
-
     const targetIdx = dragTargets.findIndex(t => t.gaura_name === targetName);
-    if (targetIdx === -1 || dragTargets[targetIdx].isMatched) return;
+    if (targetIdx === -1) return;
+
+    if (dragTargets[targetIdx].isMatched) {
+      const matchedIdentity = identities.find(id => id.gaura_name === targetName);
+      if (matchedIdentity) {
+        setMatchedVersePopup(matchedIdentity);
+      }
+      return;
+    }
+
+    if (!selectedPrevItem || !dragDropActive) return;
 
     setDragDropMoves((prev) => prev + 1);
 
@@ -401,13 +448,13 @@ export default function DragDrop({
                 onClick={() => handleTargetClick(target.gaura_name)}
                 style={{
                   padding: "0.8rem",
-                  backgroundColor: target.isMatched 
-                    ? "var(--correct-bg)" 
-                    : isDragOver 
-                      ? "var(--gold-pale)" 
+                  backgroundColor: target.isMatched
+                    ? "var(--correct-bg)"
+                    : isDragOver
+                      ? "var(--gold-pale)"
                       : "var(--ivory)",
-                  border: target.isMatched 
-                    ? "2px solid var(--correct)" 
+                  border: target.isMatched
+                    ? "2px solid var(--correct)"
                     : isDragOver
                       ? "2px solid var(--saffron)"
                       : "2px dashed var(--border)",
@@ -416,7 +463,7 @@ export default function DragDrop({
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
-                  cursor: target.isMatched ? "default" : "pointer",
+                  cursor: "pointer",
                   transition: "all 0.25s"
                 }}
               >
@@ -474,7 +521,7 @@ export default function DragDrop({
         <div style={{ textAlign: "center", padding: "1rem" }}>
           <h3 style={{ color: "#2e7d32", marginBottom: "0.5rem" }}>🎉 All Mappings Locked!</h3>
           <p style={{ color: "var(--ink-soft)", fontSize: "0.9rem", marginBottom: "1.5rem" }}>
-            Completed in {dragDropMoves} moves and {Math.floor(dragDropTime / 60)}m {dragDropTime % 60}s. You earned scriptural study XP!
+            Completed in {dragDropMoves} moves and {Math.floor(dragDropTime / 60)}m {dragDropTime % 60}s. You earned Gunja Berries (GB)!
           </p>
           <div style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
             <button className="btn btn-primary" onClick={() => setupGame(identities)}>

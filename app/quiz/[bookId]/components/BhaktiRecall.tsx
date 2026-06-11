@@ -228,8 +228,14 @@ export default function BhaktiRecall({
 
   const startGame = () => {
     const shuffled = shuffle(identities);
-    const selected = shuffled.slice(0, Math.min(CARDS_PER_ROUND, shuffled.length));
-    setDeck(selected);
+    const selected = shuffled.slice(0, Math.min(CARDS_PER_ROUND, shuffled.length)).map(item => {
+      const chosen = item.previous_forms[Math.floor(Math.random() * item.previous_forms.length)];
+      return {
+        ...item,
+        chosen_prev_form: chosen
+      };
+    });
+    setDeck(selected as any);
     setCurrentIdx(0);
     setIsFlipped(false);
     setHardCount(0);
@@ -414,7 +420,7 @@ export default function BhaktiRecall({
           <div style={{
             perspective: "1000px",
             width: "100%",
-            height: "380px",
+            height: "410px",
             marginBottom: "2rem"
           }}>
             <div style={{
@@ -436,7 +442,7 @@ export default function BhaktiRecall({
                 backgroundColor: "var(--ivory, #fdfbf7)",
                 border: "2px solid var(--border, #e5d5c0)",
                 borderRadius: "12px",
-                padding: "1.8rem 2rem",
+                padding: "1.4rem 2rem",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -445,14 +451,14 @@ export default function BhaktiRecall({
               }}>
                 <span style={{ fontSize: "1.6rem" }}>🪷</span>
 
-                <div style={{ textAlign: "center", width: "100%", flexGrow: 1, display: "flex", flexDirection: "column", justifyContent: "center", margin: "1rem 0" }}>
+                <div style={{ textAlign: "center", width: "100%", flexGrow: 1, display: "flex", flexDirection: "column", justifyContent: "center", margin: "0.5rem 0", overflowY: "auto" }}>
                   <span style={{ fontSize: "0.75rem", textTransform: "uppercase", color: "var(--ink-soft)", letterSpacing: "1px", display: "block", marginBottom: "0.4rem" }}>
                     Identify this associate's {bookId === "vvs"
                       ? (cardDirection === "gaura" ? "Attribute / Relation" : "Entity Name")
                       : (cardDirection === "gaura" ? "Vraja form" : "Gaura form")}
                   </span>
                   <h3 style={{ fontSize: "2.1rem", color: "var(--saffron)", margin: "0 0 1.2rem 0", lineHeight: "1.2" }}>
-                    {cardDirection === "gaura" ? deck[currentIdx].gaura_name : deck[currentIdx].previous_forms.join(" / ")}
+                    {cardDirection === "gaura" ? deck[currentIdx].gaura_name : ((deck[currentIdx] as any).chosen_prev_form || deck[currentIdx].previous_forms.join(" / "))}
                   </h3>
 
                   {/* Scriptural Hint */}
@@ -488,7 +494,7 @@ export default function BhaktiRecall({
                 backgroundColor: "var(--correct-bg, #f4fbf7)",
                 border: "2px solid var(--correct, #2e7d32)",
                 borderRadius: "12px",
-                padding: "1.8rem 2rem",
+                padding: "1.4rem 2rem",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -498,7 +504,7 @@ export default function BhaktiRecall({
               }}>
                 <span style={{ fontSize: "1.6rem" }}>📜</span>
 
-                <div style={{ textAlign: "center", width: "100%", flexGrow: 1, display: "flex", flexDirection: "column", justifyContent: "center", margin: "1rem 0" }}>
+                <div style={{ textAlign: "center", width: "100%", flexGrow: 1, display: "flex", flexDirection: "column", justifyContent: "center", margin: "0.5rem 0", overflowY: "auto" }}>
                   <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "1.2rem", flexWrap: "wrap", marginBottom: "0.8rem" }}>
                     <div>
                       <span style={{ fontSize: "0.7rem", color: "var(--ink-soft)", textTransform: "uppercase", display: "block", marginBottom: "0.2rem" }}>
@@ -509,9 +515,16 @@ export default function BhaktiRecall({
                     <span style={{ color: "var(--saffron)", fontWeight: "bold", fontSize: "1.3rem" }}>↔</span>
                     <div>
                       <span style={{ fontSize: "0.7rem", color: "var(--ink-soft)", textTransform: "uppercase", display: "block", marginBottom: "0.2rem" }}>
-                        {bookId === "vvs" ? "Attributes / Relations" : "Vraja Lila"}
+                        {bookId === "vvs" ? "Attribute / Relation" : "Vraja Lila"}
                       </span>
-                      <div style={{ fontWeight: "700", color: "var(--ink)", fontSize: "1.25rem" }}>{deck[currentIdx].previous_forms.join(" / ")}</div>
+                      <div style={{ fontWeight: "700", color: "var(--ink)", fontSize: "1.25rem" }}>
+                        {((deck[currentIdx] as any).chosen_prev_form || deck[currentIdx].previous_forms.join(" / "))}
+                      </div>
+                      {bookId !== "vvs" && deck[currentIdx].previous_forms.length > 1 && (
+                        <div style={{ fontSize: "0.65rem", color: "var(--ink-soft)", marginTop: "0.2rem" }}>
+                          Alternative forms: {deck[currentIdx].previous_forms.filter(f => f !== (deck[currentIdx] as any).chosen_prev_form).join(", ")}
+                        </div>
+                      )}
                     </div>
                   </div>
 

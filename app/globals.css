@@ -1034,6 +1034,16 @@ footer .foot-copy {
   }
 }
 
+/* Responsive Nav Badges */
+.badge-text-short {
+  display: none;
+}
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 @media (max-width: 700px) {
   nav {
     padding: 0 1.2rem;
@@ -1041,6 +1051,20 @@ footer .foot-copy {
 
   .nav-links {
     display: none;
+  }
+
+  .badge-text-long {
+    display: none;
+  }
+  .badge-text-short {
+    display: inline;
+  }
+  .nav-actions {
+    gap: 0.6rem;
+  }
+  .rank-badge, .streak-badge {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.68rem;
   }
 
   .hero {
@@ -1072,11 +1096,13 @@ footer .foot-copy {
   .quiz-card {
     padding: 1.6rem 1.4rem;
   }
-}
 
-@media (max-width: 420px) {
   .books-grid {
     grid-template-columns: 1fr;
+  }
+
+  .book-card.featured {
+    grid-column: span 1;
   }
 }
 
@@ -1261,37 +1287,57 @@ footer .foot-copy {
 
 /* ── KRISHNA PREMA IMMERSION ADDITIONS ── */
 
-/* Divine Halo Auras */
+/* Divine Halo Auras - GPU Optimized to prevent layout reflows and repaints */
 .divine-aura {
-  animation: auraPulseGauri 3s ease-in-out infinite alternate;
   position: relative;
+  box-shadow: 0 4px 15px rgba(200, 114, 42, 0.1), 0 0 10px rgba(212, 168, 67, 0.05);
+  border-color: rgba(212, 168, 67, 0.35);
 }
 
 [data-theme="shyama"] .divine-aura {
-  animation: auraPulseShyama 3s ease-in-out infinite alternate;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.1), 0 0 10px rgba(251, 191, 36, 0.05);
+  border-color: rgba(16, 185, 129, 0.3);
 }
 
-@keyframes auraPulseGauri {
-  0% {
-    box-shadow: 0 4px 15px rgba(200, 114, 42, 0.1), 0 0 10px rgba(212, 168, 67, 0.05);
-    border-color: rgba(212, 168, 67, 0.35);
-  }
+.divine-aura::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  
+  /* Intense glow state for Gauri (default) */
+  border: 1px solid var(--saffron-lt);
+  box-shadow: 0 8px 30px rgba(200, 114, 42, 0.25), 0 0 20px rgba(212, 168, 67, 0.2);
+  
+  /* Hardware acceleration hint */
+  will-change: opacity;
+  animation: auraPulseGauriGPU 3s ease-in-out infinite alternate;
+}
 
+[data-theme="shyama"] .divine-aura::after {
+  /* Intense glow state for Shyama */
+  border: 1px solid var(--saffron);
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.25), 0 0 20px rgba(251, 191, 36, 0.15);
+  animation: auraPulseShyamaGPU 3s ease-in-out infinite alternate;
+}
+
+@keyframes auraPulseGauriGPU {
+  0% {
+    opacity: 0;
+  }
   100% {
-    box-shadow: 0 8px 30px rgba(200, 114, 42, 0.25), 0 0 20px rgba(212, 168, 67, 0.2);
-    border-color: var(--saffron-lt);
+    opacity: 1;
   }
 }
 
-@keyframes auraPulseShyama {
+@keyframes auraPulseShyamaGPU {
   0% {
-    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.1), 0 0 10px rgba(251, 191, 36, 0.05);
-    border-color: rgba(16, 185, 129, 0.3);
+    opacity: 0;
   }
-
   100% {
-    box-shadow: 0 8px 30px rgba(16, 185, 129, 0.25), 0 0 20px rgba(251, 191, 36, 0.15);
-    border-color: var(--saffron);
+    opacity: 1;
   }
 }
 

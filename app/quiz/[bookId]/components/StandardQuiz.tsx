@@ -32,6 +32,7 @@ interface StandardQuizProps {
   playWrongSound: () => void;
   triggerParticles: () => void;
   onComplete: (answers: UserAnswer[]) => void;
+  bookId?: string;
 }
 
 const LETTERS = ["A", "B", "C", "D"];
@@ -51,6 +52,7 @@ export default function StandardQuiz({
   playWrongSound,
   triggerParticles,
   onComplete,
+  bookId,
 }: StandardQuizProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answered, setAnswered] = useState(false);
@@ -129,6 +131,11 @@ export default function StandardQuiz({
       </div>
 
       <div className="question-tags">
+        {questions[currentIndex].verse_number && (
+          <span className="tag" style={{ borderStyle: "double", borderWidth: "3px" }}>
+            {bookId ? `${bookId.toUpperCase()} ${questions[currentIndex].verse_number}` : `Verse ${questions[currentIndex].verse_number}`}
+          </span>
+        )}
         {questions[currentIndex].tags.map((tag, i) => (
           <span key={i} className="tag">
             {tag}
@@ -163,7 +170,7 @@ export default function StandardQuiz({
 
           return (
             <button
-              key={i}
+              key={`${currentIndex}-${opt}`}
               className={optClass}
               onClick={() => handleSelectOption(opt)}
               disabled={answered}

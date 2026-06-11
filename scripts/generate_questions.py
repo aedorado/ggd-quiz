@@ -82,10 +82,23 @@ def parse_json_verses(data):
     if isinstance(data, list):
         verses_list = data
     elif isinstance(data, dict):
+        # 1. Check if any value is directly a list of verses
         for val in data.values():
             if isinstance(val, list):
                 verses_list = val
                 break
+        
+        # 2. Check if it is a chapter-based dictionary (e.g. chapter_id -> chapter_object with "verses" list)
+        if not verses_list:
+            for val in data.values():
+                if isinstance(val, dict) and "verses" in val and isinstance(val["verses"], list):
+                    verses_list.extend(val["verses"])
+                    
+        # 3. Check if it is a flat dictionary of verses (e.g. verse_id -> verse_object)
+        if not verses_list:
+            first_val = next(iter(data.values())) if data else None
+            if isinstance(first_val, dict) and any(k in first_val for k in ['content', 'verse_text', 'text', 'translation']):
+                verses_list = list(data.values())
     
     if not verses_list:
         raise ValueError("Could not find a list of verses in the JSON file.")
@@ -101,7 +114,7 @@ def parse_json_verses(data):
                 break
         
         # Auto-detect verse text/content field
-        content_keys = ['content', 'verse_text', 'text']
+        content_keys = ['translation', 'content', 'verse_text', 'text']
         content = None
         for k in content_keys:
             if k in item:

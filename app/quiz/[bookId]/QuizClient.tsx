@@ -8,6 +8,7 @@ import MemoryMatch from "./components/MemoryMatch";
 import DragDrop from "./components/DragDrop";
 import Crossword from "./components/Crossword";
 import BhaktiRecall from "./components/BhaktiRecall";
+import SlokaBuilder from "./components/SlokaBuilder";
 import { useBhaktiProgress } from "../../utils/bhaktiProgress";
 import { GAMIFICATION_CONFIG, isGameModeUnlocked } from "../../utils/gamificationConfig";
 import SadhanaDashboard from "../../components/SadhanaDashboard";
@@ -44,8 +45,14 @@ interface UserAnswer {
 interface BookPart {
   id: string;
   name: string;
-  desc: string;
+  desc?: string;
   filter_prefix: string;
+  chapters?: {
+    id: string;
+    name: string;
+    desc?: string;
+    filter_prefix: string;
+  }[];
 }
 
 interface BookMeta {
@@ -56,6 +63,7 @@ interface BookMeta {
   verse?: string;
   output_file?: string;
   parts?: BookPart[];
+  enabled_modes?: string[];
 }
 
 interface Particle {
@@ -86,15 +94,16 @@ function shuffle<T>(arr: T[]): T[] {
 
 export default function QuizClient({ bookId }: QuizClientProps) {
   // Screen and Config States
-  const [screen, setScreen] = useState<"loading" | "error" | "landing" | "quiz" | "results" | "memory" | "drag-drop" | "crossword" | "recall">("loading");
+  const [screen, setScreen] = useState<"loading" | "error" | "landing" | "quiz" | "results" | "memory" | "drag-drop" | "crossword" | "recall" | "builder">("loading");
   const [meta, setMeta] = useState<BookMeta | null>(null);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [quizQuestions, setQuizQuestions] = useState<Question[]>([]);
   const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
   const [selectedPartId, setSelectedPartId] = useState<string>("all");
+  const [expandedPartId, setExpandedPartId] = useState<string | null>(null);
 
   // Game sub-modes
-  const [selectedSubMode, setSelectedSubMode] = useState<"quiz" | "memory" | "drag-drop" | "crossword" | "recall">("quiz");
+  const [selectedSubMode, setSelectedSubMode] = useState<"quiz" | "memory" | "drag-drop" | "crossword" | "recall" | "builder">("quiz");
 
   // Krishna Prema Additions State
   const [particles, setParticles] = useState<Particle[]>([]);
@@ -102,14 +111,14 @@ export default function QuizClient({ bookId }: QuizClientProps) {
   const [ambientEnabled, setAmbientEnabled] = useState(false);
 
   // Hook-based progress tracking
-  const { 
-    isMounted, 
-    stats, 
-    currentRank, 
-    pendingLevelUp, 
-    clearLevelUp, 
-    addXp, 
-    resetProgress 
+  const {
+    isMounted,
+    stats,
+    currentRank,
+    pendingLevelUp,
+    clearLevelUp,
+    addXp,
+    resetProgress
   } = useBhaktiProgress();
 
   const [dashboardOpen, setDashboardOpen] = useState(false);
@@ -338,14 +347,36 @@ export default function QuizClient({ bookId }: QuizClientProps) {
     loadQuizData();
   }, [bookId]);
 
+  useEffect(() => {
+    if (meta) {
+      const modes = meta.enabled_modes || ["quiz"];
+      if (!modes.includes(selectedSubMode)) {
+        setSelectedSubMode(modes[0] as any);
+      }
+    }
+  }, [meta, selectedSubMode]);
+
   const startQuiz = () => {
     if (allQuestions.length === 0) return;
 
     let targetQuestions = allQuestions;
     if (meta?.parts && selectedPartId !== "all") {
-      const part = meta.parts.find(p => p.id === selectedPartId);
-      if (part) {
-        targetQuestions = allQuestions.filter(q => q.verse_number.startsWith(part.filter_prefix));
+      let prefix = "";
+      for (const part of meta.parts) {
+        if (part.id === selectedPartId) {
+          prefix = part.filter_prefix;
+          break;
+        }
+        if (part.chapters) {
+          const ch = part.chapters.find(c => c.id === selectedPartId);
+          if (ch) {
+            prefix = ch.filter_prefix;
+            break;
+          }
+        }
+      }
+      if (prefix) {
+        targetQuestions = allQuestions.filter(q => q.verse_number.startsWith(prefix));
       }
     }
 
@@ -360,7 +391,7 @@ export default function QuizClient({ bookId }: QuizClientProps) {
 
     const correctCount = answers.filter((a) => a.isCorrect).length;
     const isPerfect = correctCount === answers.length && answers.length > 0;
-    
+
     // +XP per correct answer from config
     const baseXP = correctCount * GAMIFICATION_CONFIG.xpRewards.quizCorrectAnswer;
     // Perfect bonus from config
@@ -370,7 +401,7 @@ export default function QuizClient({ bookId }: QuizClientProps) {
     let description = `Completed ${meta?.title || "Quiz"}: scored ${correctCount}/${answers.length}`;
     if (isPerfect) description += " (Perfect Score Bonus!)";
 
-    addXp(totalXP, "quiz", description, { 
+    addXp(totalXP, "quiz", description, {
       isPerfect,
       bookCount: 1
     });
@@ -381,7 +412,7 @@ export default function QuizClient({ bookId }: QuizClientProps) {
   const handleGameComplete = (xpEarned: number, moves: number, seconds: number) => {
     let gameType = "Game";
     let extraData: any = {};
-    
+
     if (screen === "memory") {
       gameType = "Memory Match";
       extraData = { memoryTurns: moves };
@@ -412,6 +443,11 @@ export default function QuizClient({ bookId }: QuizClientProps) {
       extraData = { recallRetries: moves };
       let bonus = moves === 0 ? GAMIFICATION_CONFIG.xpRewards.recallPerfectBonus : 0;
       xpEarned = GAMIFICATION_CONFIG.xpRewards.recallBase + bonus;
+    } else if (screen === "builder") {
+      gameType = "Sloka Builder";
+      extraData = { builderMistakesAndHints: moves };
+      let bonus = moves === 0 ? GAMIFICATION_CONFIG.xpRewards.builderPerfectBonus : 0;
+      xpEarned = xpEarned + bonus;
     }
 
     let description = `Completed ${gameType} for ${meta?.title || "Book"}`;
@@ -501,21 +537,17 @@ export default function QuizClient({ bookId }: QuizClientProps) {
           <Link href="/" className="name">Tattva Darpaṇa</Link>
         </div>
 
-        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+        <div className="nav-actions">
           {isMounted && (
             <>
-              <span 
-                className="rank-badge interactive" 
+              <span
+                className="rank-badge interactive"
                 title="Click to view Devotional Dashboard!"
                 onClick={() => setDashboardOpen(true)}
               >
-                📜 {currentRank.title} (Lvl {stats.level})
+                📜 <span className="badge-text-long">{currentRank.title} (Lvl {stats.level})</span>
+                <span className="badge-text-short">Lvl {stats.level}</span>
               </span>
-              {stats.streak > 0 && (
-                <span className="streak-badge" title="Daily study streak!">
-                  🔥 {stats.streak} Day Streak
-                </span>
-              )}
             </>
           )}
           {screen !== "quiz" && screen !== "memory" && screen !== "drag-drop" && screen !== "crossword" && (
@@ -565,30 +597,104 @@ export default function QuizClient({ bookId }: QuizClientProps) {
                 <div className="scope-options">
                   <div
                     className={`scope-option ${selectedPartId === "all" ? "selected" : ""}`}
-                    onClick={() => setSelectedPartId("all")}
+                    onClick={() => {
+                      setSelectedPartId("all");
+                      setExpandedPartId(null);
+                    }}
                   >
                     <span className="scope-name">Complete Book (All)</span>
                     <span className="scope-desc">Questions from all sections of the book.</span>
                   </div>
-                  {meta.parts.map((part) => (
-                    <div
-                      key={part.id}
-                      className={`scope-option ${selectedPartId === part.id ? "selected" : ""}`}
-                      onClick={() => setSelectedPartId(part.id)}
-                    >
-                      <span className="scope-name">{part.name}</span>
-                      <span className="scope-desc">{part.desc}</span>
-                    </div>
-                  ))}
+                  {meta.parts.map((part) => {
+                    const hasChapters = part.chapters && part.chapters.length > 0;
+                    const isExpanded = expandedPartId === part.id;
+                    const isSelected = selectedPartId === part.id;
+
+                    if (!hasChapters) {
+                      return (
+                        <div
+                          key={part.id}
+                          className={`scope-option ${isSelected ? "selected" : ""}`}
+                          onClick={() => {
+                            setSelectedPartId(part.id);
+                            setExpandedPartId(null);
+                          }}
+                        >
+                          <span className="scope-name">{part.name}</span>
+                          {part.desc && <span className="scope-desc">{part.desc}</span>}
+                        </div>
+                      );
+                    }
+
+                    // Render collapsible part section
+                    return (
+                      <div key={part.id} className="scope-group" style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                        <div
+                          className={`scope-option ${isExpanded ? "expanded" : ""} ${isSelected ? "selected" : ""}`}
+                          onClick={() => {
+                            setExpandedPartId(isExpanded ? null : part.id);
+                          }}
+                          style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}
+                        >
+                          <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+                            <span className="scope-name">{part.name}</span>
+                            {part.desc && <span className="scope-desc">{part.desc}</span>}
+                          </div>
+                          <span style={{
+                            fontSize: "1.1rem",
+                            marginLeft: "1rem",
+                            color: "var(--saffron)",
+                            transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)",
+                            transition: "transform 0.2s",
+                            display: "inline-block"
+                          }}>
+                            ▾
+                          </span>
+                        </div>
+
+                        {isExpanded && (
+                          <div className="chapter-options" style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "0.5rem",
+                            paddingLeft: "1.2rem",
+                            borderLeft: "2px solid var(--border)",
+                            margin: "0.2rem 0"
+                          }}>
+                            {/* Option to select the entire part */}
+                            <div
+                              className={`scope-option ${selectedPartId === part.id ? "selected" : ""}`}
+                              onClick={() => setSelectedPartId(part.id)}
+                              style={{ padding: "0.6rem 1rem" }}
+                            >
+                              <span className="scope-name" style={{ fontSize: "0.82rem" }}>All of {part.name}</span>
+                              <span className="scope-desc" style={{ fontSize: "0.76rem" }}>Study all chapters in this part.</span>
+                            </div>
+
+                            {/* Individual chapters */}
+                            {part.chapters?.map((chapter) => (
+                              <div
+                                key={chapter.id}
+                                className={`scope-option ${selectedPartId === chapter.id ? "selected" : ""}`}
+                                onClick={() => setSelectedPartId(chapter.id)}
+                                style={{ padding: "0.6rem 1rem" }}
+                              >
+                                <span className="scope-name" style={{ fontSize: "0.82rem" }}>{chapter.name}</span>
+                                {chapter.desc && <span className="scope-desc" style={{ fontSize: "0.76rem" }}>{chapter.desc}</span>}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             )}
 
             {(() => {
-              const modes = (bookId === "ggd" || bookId === "vvs")
-                ? ["quiz", "memory", "drag-drop", "recall", "crossword"] 
-                : ["quiz", "recall", "crossword"];
-              
+              const modes = meta.enabled_modes || ["quiz"];
+
               return (
                 <div className="game-mode-selector" style={{ marginTop: "1.5rem", width: "100%" }}>
                   <div className="scope-title" style={{ marginBottom: "0.8rem", textAlign: "center" }}>Select Game Mode</div>
@@ -597,18 +703,19 @@ export default function QuizClient({ bookId }: QuizClientProps) {
                       const cfg = GAMIFICATION_CONFIG.gameUnlocks[m as "quiz" | "memory" | "drag-drop" | "crossword" | "recall"];
                       const isUnlocked = stats.level >= cfg.unlockLevel;
                       const isSelected = selectedSubMode === m;
-                      
+
                       return (
                         <button
                           key={m}
                           className={`btn game-mode-btn ${isSelected ? "btn-primary active" : "btn-secondary"} ${!isUnlocked ? "locked-mode" : ""}`}
                           disabled={!isUnlocked}
                           onClick={() => isUnlocked && setSelectedSubMode(m as any)}
-                          style={{ 
-                            minWidth: "140px", 
-                            display: "flex", 
-                            flexDirection: "column", 
-                            gap: "0.2rem", 
+                          style={{
+                            width: "100%",
+                            maxWidth: "320px",
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "0.2rem",
                             padding: "0.8rem",
                             opacity: isUnlocked ? 1 : 0.55,
                             cursor: isUnlocked ? "pointer" : "not-allowed"
@@ -639,6 +746,7 @@ export default function QuizClient({ bookId }: QuizClientProps) {
                   else if (selectedSubMode === "drag-drop") setScreen("drag-drop");
                   else if (selectedSubMode === "crossword") setScreen("crossword");
                   else if (selectedSubMode === "recall") setScreen("recall");
+                  else if (selectedSubMode === "builder") setScreen("builder");
                 }}
               >
                 {selectedSubMode === "quiz" ? "Begin Quiz" : "Start Game"}
@@ -658,6 +766,7 @@ export default function QuizClient({ bookId }: QuizClientProps) {
             playWrongSound={playWrongSound}
             triggerParticles={triggerParticles}
             onComplete={handleQuizComplete}
+            bookId={bookId}
           />
         )}
 
@@ -694,7 +803,7 @@ export default function QuizClient({ bookId }: QuizClientProps) {
         )}
 
         {screen === "crossword" && (
-          <Crossword 
+          <Crossword
             bookId={bookId}
             bookTitle={meta.title}
             onClose={() => setScreen("landing")}
@@ -710,6 +819,17 @@ export default function QuizClient({ bookId }: QuizClientProps) {
             triggerParticles={triggerParticles}
             onClose={() => setScreen("landing")}
             onComplete={(xp, retries, secs) => handleGameComplete(xp, retries, secs)}
+          />
+        )}
+
+        {screen === "builder" && (
+          <SlokaBuilder
+            bookId={bookId}
+            playCorrectSound={playCorrectSound}
+            playWrongSound={playWrongSound}
+            triggerParticles={triggerParticles}
+            onClose={() => setScreen("landing")}
+            onComplete={(xp, mistakes, secs) => handleGameComplete(xp, mistakes, secs)}
           />
         )}
       </div>

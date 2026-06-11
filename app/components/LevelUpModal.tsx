@@ -110,7 +110,7 @@ export default function LevelUpModal({
               <div className="levelup-badges-list">
                 {newBadges.map((badgeId) => (
                   <span key={badgeId} className="levelup-badge-tag">
-                    🏆 {badgeId.replace("_", " ").toUpperCase()} (+50 XP)
+                    🏆 {badgeId.replace("_", " ").toUpperCase()} (+50 GB)
                   </span>
                 ))}
               </div>

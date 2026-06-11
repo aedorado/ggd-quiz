@@ -1528,7 +1528,7 @@ export default function Crossword({
           </div>
 
           <div style={{ fontFamily: "Cinzel, serif", fontWeight: 600, color: "var(--saffron, #c8722a)" }}>
-            🏆 Reward: {currentPotentialXp()} XP {hintPenalty === 0 && "(No Hint Bonus: +15 XP)"}
+            🏆 Reward: {currentPotentialXp()} GB {hintPenalty === 0 && "(No Hint Bonus: +15 GB)"}
           </div>
 
           <div className="action-buttons">
@@ -1555,7 +1555,7 @@ export default function Crossword({
             </p>
 
             <div className="xp-gain-badge">
-              🏆 +{finalXp !== null ? finalXp : currentPotentialXp()} Bhakti XP Gained!
+              🏆 +{finalXp !== null ? finalXp : currentPotentialXp()} Bhakti GB Gained!
             </div>
 
             <div className="verses-study-section">
@@ -1630,19 +1630,19 @@ export default function Crossword({
                 className="hint-btn context-btn"
                 onClick={handleSeeVerseContext}
               >
-                📖 See Verse (-5 XP)
+                📖 See Verse (-5 GB)
               </button>
               <button
                 className="hint-btn letter-btn"
                 onClick={handleRevealLetter}
               >
-                💡 Reveal Letter (-1 XP)
+                💡 Reveal Letter (-1 GB)
               </button>
               <button
                 className="hint-btn word-btn"
                 onClick={handleRevealWord}
               >
-                🔑 Reveal Word (-{selectedClue.word.length} XP)
+                🔑 Reveal Word (-{selectedClue.word.length} GB)
               </button>
             </div>
 

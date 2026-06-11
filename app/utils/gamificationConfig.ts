@@ -11,6 +11,8 @@ export interface XpRewardConfig {
   crosswordSpeedBonus: number;
   recallBase: number;
   recallPerfectBonus: number;
+  builderBase: number;
+  builderPerfectBonus: number;
   dailyNectarBase: number;
   dailyNectarStreakMultiplier: number;
   dailyNectarMaxStreakBonus: number;
@@ -18,7 +20,7 @@ export interface XpRewardConfig {
 }
 
 export interface GameUnlockConfig {
-  modeId: "quiz" | "memory" | "drag-drop" | "crossword" | "recall";
+  modeId: "quiz" | "memory" | "drag-drop" | "crossword" | "recall" | "builder";
   unlockLevel: number;
   displayName: string;
   emoji: string;
@@ -48,15 +50,18 @@ export const GAMIFICATION_CONFIG: GamificationConfig = {
     crosswordSpeedBonus: 10, // solved under 5 minutes (300 seconds)
     recallBase: 15,
     recallPerfectBonus: 10,
+    builderBase: 10,
+    builderPerfectBonus: 10,
     dailyNectarBase: 10,
     dailyNectarStreakMultiplier: 5, // +5 XP per day of streak
     dailyNectarMaxStreakBonus: 25,
     badgeUnlockBonus: 50,
   },
   bookUnlocks: {
-    ggd: 1,   // Gaura Gaṇoddeśa Dīpikā
-    rkgd: 4,  // Rādhā Kṛṣṇa Gaṇoddeśa Dīpikā
+    bg: 1,  // Bhagavad Gita
+    ggd: 2,   // Gaura Gaṇoddeśa Dīpikā
     vvs: 8,   // Vraja Vilāsa Stava
+    rkgd: 10,  // Rādhā Kṛṣṇa Gaṇoddeśa Dīpikā
     bs: 12,  // Śrī Brahma-saṁhitā
   },
   gameUnlocks: {
@@ -70,7 +75,7 @@ export const GAMIFICATION_CONFIG: GamificationConfig = {
     },
     memory: {
       modeId: "memory",
-      unlockLevel: 2,
+      unlockLevel: 3,
       displayName: "Memory Match",
       emoji: "🧠",
       description: "Match 10 Card Pairs",
@@ -78,7 +83,7 @@ export const GAMIFICATION_CONFIG: GamificationConfig = {
     },
     "drag-drop": {
       modeId: "drag-drop",
-      unlockLevel: 4,
+      unlockLevel: 5,
       displayName: "Drag & Drop",
       emoji: "🤝",
       description: "Match 10 Associations",
@@ -86,7 +91,7 @@ export const GAMIFICATION_CONFIG: GamificationConfig = {
     },
     recall: {
       modeId: "recall",
-      unlockLevel: 7,
+      unlockLevel: 15,
       displayName: "Bhakti Recall",
       emoji: "🎴",
       description: "Active Flashcard Study",
@@ -97,6 +102,13 @@ export const GAMIFICATION_CONFIG: GamificationConfig = {
       displayName: "Crossword",
       emoji: "🧩",
       description: "Interactive Puzzle",
+    },
+    builder: {
+      modeId: "builder",
+      unlockLevel: 5,
+      displayName: "Sloka Builder",
+      emoji: "🧱",
+      description: "Sequence the Sanskrit words",
     },
   },
 };

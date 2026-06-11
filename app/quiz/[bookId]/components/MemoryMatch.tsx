@@ -127,16 +127,16 @@ export default function MemoryMatch({
         if (res.ok) {
           const idData = await res.json();
           const flatIdentities: IdentityMapping[] = [];
-          
+
           if (bookId === "vvs") {
             if (idData.entities) {
               Object.entries(idData.entities).forEach(([entityId, entity]: [string, any]) => {
                 const firstVerseRef = entity.mentioned_in && entity.mentioned_in.length > 0 ? entity.mentioned_in[0] : "";
                 const rawVerse = idData.verses ? idData.verses[firstVerseRef] : null;
                 const verseText = rawVerse ? rawVerse.text : "";
-                
+
                 const descriptors: string[] = [...(entity.attributes || [])];
-                
+
                 if (entity.relations) {
                   Object.entries(entity.relations).forEach(([relType, targetId]: [string, any]) => {
                     const targetEntity = idData.entities[targetId];
@@ -146,7 +146,7 @@ export default function MemoryMatch({
                     descriptors.push(`${capitalizedRel}: ${targetName}`);
                   });
                 }
-                
+
                 flatIdentities.push({
                   gaura_name: entity.name,
                   previous_forms: descriptors.length > 0 ? descriptors : [entity.type || "Vraja Entity"],
@@ -170,7 +170,7 @@ export default function MemoryMatch({
               }
             });
           }
-          
+
           const loaded = flatIdentities.length > 0 ? flatIdentities : FALLBACK_IDENTITIES;
           setIdentities(loaded);
           setupGame(loaded);
@@ -200,12 +200,45 @@ export default function MemoryMatch({
 
   const setupGame = (activeIdentities: IdentityMapping[]) => {
     const shuffledIdentities = shuffle(activeIdentities);
-    const selected = shuffledIdentities.slice(0, Math.min(MAX_SHOW_IN_GAME, shuffledIdentities.length));
+    const targetCount = Math.min(MAX_SHOW_IN_GAME, shuffledIdentities.length);
+
+    const selected: Array<{ item: IdentityMapping; prevForm: string }> = [];
+    const chosenGauraNames = new Set<string>();
+    const chosenPrevForms = new Set<string>();
+
+    // Step 1: Try to build pairs with unique gaura_name AND unique previous form
+    for (const item of shuffledIdentities) {
+      if (selected.length >= targetCount) break;
+      if (chosenGauraNames.has(item.gaura_name)) continue;
+
+      const availablePrevForms = item.previous_forms.filter(f => !chosenPrevForms.has(f));
+      if (availablePrevForms.length === 0) continue;
+
+      const prevForm = availablePrevForms[Math.floor(Math.random() * availablePrevForms.length)];
+
+      chosenGauraNames.add(item.gaura_name);
+      chosenPrevForms.add(prevForm);
+
+      selected.push({ item, prevForm });
+    }
+
+    // Step 2: If we still need more pairs, relax previous form uniqueness (but keep gaura_name unique)
+    if (selected.length < targetCount) {
+      for (const item of shuffledIdentities) {
+        if (selected.length >= targetCount) break;
+        if (chosenGauraNames.has(item.gaura_name)) continue;
+
+        const prevForm = item.previous_forms[Math.floor(Math.random() * item.previous_forms.length)];
+
+        chosenGauraNames.add(item.gaura_name);
+        chosenPrevForms.add(prevForm);
+
+        selected.push({ item, prevForm });
+      }
+    }
 
     const cards: MemoryCard[] = [];
-    selected.forEach((item, index) => {
-      const prevForm = item.previous_forms[Math.floor(Math.random() * item.previous_forms.length)];
-
+    selected.forEach(({ item, prevForm }, index) => {
       cards.push({
         id: `gaura-${index}-${item.gaura_name}`,
         text: item.gaura_name,
@@ -234,9 +267,18 @@ export default function MemoryMatch({
   };
 
   const handleCardClick = (cardIndex: number) => {
+    const card = memoryCards[cardIndex];
+    if (card.isMatched) {
+      const matchedIdentity = identities.find(id => id.gaura_name === card.mappingId);
+      if (matchedIdentity) {
+        setMatchedVersePopup(matchedIdentity);
+      }
+      return;
+    }
+
     if (!memoryActive) return;
     if (flippedCards.length >= 2) return;
-    if (memoryCards[cardIndex].isMatched || memoryCards[cardIndex].isFlipped) return;
+    if (card.isFlipped) return;
 
     const updatedCards = [...memoryCards];
     updatedCards[cardIndex].isFlipped = true;
@@ -290,7 +332,7 @@ export default function MemoryMatch({
           });
           setMemoryCards(resetCards);
           setFlippedCards([]);
-        }, 1200);
+        }, 2250);
       }
     }
   };
@@ -318,7 +360,7 @@ export default function MemoryMatch({
               style={{
                 height: "100px",
                 perspective: "1000px",
-                cursor: isFlippedOrMatched ? "default" : "pointer"
+                cursor: card.isFlipped && !card.isMatched ? "default" : "pointer"
               }}
             >
               <div style={{
@@ -408,7 +450,7 @@ export default function MemoryMatch({
         <div style={{ textAlign: "center", padding: "1rem" }}>
           <h3 style={{ color: "#2e7d32", marginBottom: "0.5rem" }}>🎉 All Matches Found!</h3>
           <p style={{ color: "var(--ink-soft)", fontSize: "0.9rem", marginBottom: "1.5rem" }}>
-            Completed in {memoryMoves} moves and {Math.floor(memoryTime / 60)}m {memoryTime % 60}s. You earned scriptural study XP!
+            Completed in {memoryMoves} moves and {Math.floor(memoryTime / 60)}m {memoryTime % 60}s. You earned Gunja Berries (GB)!
           </p>
           <div style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
             <button className="btn btn-primary" onClick={() => setupGame(identities)}>

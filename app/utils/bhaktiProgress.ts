@@ -116,7 +116,7 @@ export const BADGES: BadgeInfo[] = [
     name: "Steady Sadhana",
     sanskrit: "Nitya-sevā",
     desc: "Maintain a 3-day daily study streak.",
-    emoji: "🔥",
+    emoji: "🦚",
     color: "#bf6a1f"
   },
   {
@@ -507,7 +507,7 @@ export const useBhaktiProgress = () => {
             id: `badge-${badgeId}-${Date.now()}`,
             timestamp: new Date().toISOString(),
             type: "badge",
-            description: `Unlocked Badge: ${badge.name}! (+${bonusXp} XP Bonus)`,
+            description: `Unlocked Badge: ${badge.name}! (+${bonusXp} GB Bonus)`,
             xpEarned: bonusXp
           });
         }
@@ -574,7 +574,7 @@ export const useBhaktiProgress = () => {
     saveStatsToLocalStorage(currentStats);
     
     // Trigger progress update with XP
-    addXp(totalEarned, "nectar", `Daily Sadhana: Read Nectar Drop! (Streak Bonus: +${streakBonus} XP)`);
+    addXp(totalEarned, "nectar", `Daily Sadhana: Read Nectar Drop! (Streak Bonus: +${streakBonus} GB)`);
     return true;
   };
 
