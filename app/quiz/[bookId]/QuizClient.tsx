@@ -8,7 +8,7 @@ import MemoryMatch from "./components/MemoryMatch";
 import DragDrop from "./components/DragDrop";
 import Crossword from "./components/Crossword";
 import BhaktiRecall from "./components/BhaktiRecall";
-import SlokaBuilder from "./components/SlokaBuilder";
+import SlokaBuilder from "./components/ShlokaBuilder";
 import { useBhaktiProgress } from "../../utils/bhaktiProgress";
 import { GAMIFICATION_CONFIG, isGameModeUnlocked } from "../../utils/gamificationConfig";
 import SadhanaDashboard from "../../components/SadhanaDashboard";
