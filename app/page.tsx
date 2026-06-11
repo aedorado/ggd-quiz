@@ -1,2542 +1,491 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;500;600&family=Cinzel+Decorative:wght@400;700&display=swap');
-
-/* ── DESIGN TOKENS ── */
-:root,
-[data-theme="gauri"] {
-  --saffron: #c8722a;
-  --saffron-lt: #e8954a;
-  --gold: #d4a843;
-  --gold-pale: #f5e9c8;
-  --ivory: #fdf6e8;
-  --parchment: #f0e6cc;
-  --parchment-dk: #e8d9b8;
-  --ink: #1e1408;
-  --ink-mid: #3d2b10;
-  --ink-soft: #6b4e26;
-  --ink-faint: #9c7a4a;
-  --lotus: #8b3a5a;
-  --lotus-pale: #f5e8ef;
-
-  --correct-bg: #e8f5e0;
-  --correct: #3a7a2a;
-  --wrong-bg: #fae8e8;
-  --wrong: #8a2a2a;
-
-  --border: rgba(212, 168, 67, 0.25);
-  --header-bg: rgba(255, 255, 255, 0.45);
-  --header-bg-hover: rgba(255, 255, 255, 0.65);
-  --nav-h: 64px;
-  --accent: #bf6a1f;
-  --accent-tint: #fef6ec;
-}
-
-/* ── ŚYĀMA THEME TOKENS (KRISHNA) ── */
-[data-theme="shyama"] {
-  --ivory: #060b13;
-  /* Deep raincloud blue-black complexion */
-  --parchment: #0e1320;
-  /* Slate blue card background */
-  --parchment-dk: #161c2d;
-  /* Active card background */
-  --ink: #f1f5f9;
-  /* Soft slate white text */
-  --ink-mid: #e2e8f0;
-  /* Muted slate text */
-  --ink-soft: #94a3b8;
-  /* Soft blue-slate text */
-  --ink-faint: #64748b;
-  /* Faint slate text */
-
-  /* Kṛṣṇa's Peacock feather green & Pītāmbara yellow */
-  --saffron: #10b981;
-  /* Peacock green */
-  --saffron-lt: #34d399;
-  /* Light peacock green */
-  --gold: #fbbf24;
-  /* Glowing yellow silks */
-  --gold-pale: #1e293b;
-  /* Dark slate highlight */
-
-  /* Correct/Wrong state overrides for dark screen */
-  --correct-bg: #064e3b;
-  --correct: #34d399;
-  --wrong-bg: #450a0a;
-  --wrong: #f87171;
-
-  --border: rgba(16, 185, 129, 0.2);
-  --header-bg: rgba(0, 0, 0, 0.25);
-  --header-bg-hover: rgba(0, 0, 0, 0.4);
-  --lotus: #f43f5e;
-  /* Lotus rose eyes/lips */
-  --lotus-pale: #4c0519;
-  --accent: #10b981;
-  --accent-tint: #1e293b;
-}
-
-/* ── RESET & BASE ── */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background-color: var(--ivory);
-  color: var(--ink);
-  font-family: 'EB Garamond', Georgia, serif;
-  font-size: 18px;
-  line-height: 1.7;
-  min-height: 100vh;
-  position: relative;
-}
-
-/* ── BACKGROUND TEXTURE ── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image:
-    radial-gradient(ellipse 100% 50% at 50% -5%, rgba(212, 168, 67, 0.12) 0%, transparent 65%),
-    url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c8722a' fill-opacity='0.035'%3E%3Cpath d='M40 0C17.9 0 0 17.9 0 40s17.9 40 40 40 40-17.9 40-40S62.1 0 40 0zm0 6c18.8 0 34 15.2 34 34S58.8 74 40 74 6 58.8 6 40 21.2 6 40 6zm0 8c-14.3 0-26 11.7-26 26s11.7 26 26 26 26-11.7 26-26S54.3 14 40 14zm0 4c12.1 0 22 9.9 22 22s-9.9 22-22 22-22-9.9-22-22 9.9-22 22-22z'/%3E%3C/g%3E%3C/svg%3E");
-}
-
-[data-theme="shyama"] body::before {
-  background-image:
-    radial-gradient(ellipse 100% 50% at 50% -5%, rgba(251, 191, 36, 0.08) 0%, transparent 65%),
-    url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2310b981' fill-opacity='0.015'%3E%3Cpath d='M40 0C17.9 0 0 17.9 0 40s17.9 40 40 40 40-17.9 40-40S62.1 0 40 0zm0 6c18.8 0 34 15.2 34 34S58.8 74 40 74 6 58.8 6 40 21.2 6 40 6zm0 8c-14.3 0-26 11.7-26 26s11.7 26 26 26 26-11.7 26-26S54.3 14 40 14zm0 4c12.1 0 22 9.9 22 22s-9.9 22-22 22-22-9.9-22-22 9.9-22 22-22z'/%3E%3C/g%3E%3C/svg%3E");
-}
-
-.main-container {
-  position: relative;
-  z-index: 1;
-}
-
-/* ── NAV ── */
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  height: var(--nav-h);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 3rem;
-  background: rgba(253, 248, 238, 0.92);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(201, 153, 30, 0.2);
-}
-
-.nav-brand {
-  display: flex;
-  align-items: baseline;
-  gap: 0.6rem;
-}
-
-.nav-brand .om {
-  font-size: 1.1rem;
-  color: var(--saffron);
-  opacity: 0.8;
-}
-
-.nav-brand .name {
-  font-family: 'Cinzel', serif;
-  font-size: 0.95rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  color: var(--ink-mid);
-  text-decoration: none;
-}
-
-.nav-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-}
-
-.nav-links a {
-  font-family: 'Cinzel', serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.nav-links a:hover {
-  color: var(--saffron);
-}
-
-/* ── HERO ── */
-.hero {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  padding: 5rem 2rem 4.5rem;
-  max-width: 860px;
-  margin: 0 auto;
-}
-
-.hero-lotus {
-  font-size: 2.8rem;
-  color: var(--saffron);
-  display: block;
-  margin-bottom: 1rem;
-  animation: floatOm 4s ease-in-out infinite;
-}
-
-@keyframes floatOm {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-.hero h1 {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 700;
-  color: var(--ink-mid);
-  letter-spacing: 0.06em;
-  line-height: 1.15;
-  margin-bottom: 0.5rem;
-}
-
-.hero-devanagari {
-  display: block;
-  font-family: 'EB Garamond', serif;
-  font-size: 1.3rem;
-  color: var(--saffron);
-  letter-spacing: 0.18em;
-  margin-bottom: 1.5rem;
-}
-
-.hero-rule {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.hero-rule::before,
-.hero-rule::after {
-  content: '';
-  flex: 1;
-  max-width: 120px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold));
-}
-
-.hero-rule::after {
-  background: linear-gradient(90deg, var(--gold), transparent);
-}
-
-.hero-rule-diamond {
-  width: 8px;
-  height: 8px;
-  background: var(--gold);
-  transform: rotate(45deg);
-  flex-shrink: 0;
-}
-
-.hero-tagline {
-  font-size: 1.15rem;
-  color: var(--ink-soft);
-  font-style: italic;
-  max-width: 600px;
-  margin: 0 auto 0.8rem;
-  line-height: 1.7;
-}
-
-.hero-sub {
-  font-size: 0.9rem;
-  color: var(--ink-faint);
-  letter-spacing: 0.04em;
-  font-family: 'Cinzel', serif;
-  text-transform: uppercase;
-  font-weight: 400;
-}
-
-/* ── STATS STRIP ── */
-.stats-strip {
-  position: relative;
-  z-index: 1;
-  background: var(--parchment);
-  border-top: 1px solid rgba(212, 168, 67, 0.25);
-  border-bottom: 1px solid rgba(212, 168, 67, 0.25);
-  display: flex;
-  justify-content: center;
-  gap: 0;
-}
-
-.stat-item {
-  padding: 1.5rem 3.5rem;
-  text-align: center;
-  border-right: 1px solid rgba(212, 168, 67, 0.2);
-}
-
-.stat-item:last-child {
-  border-right: none;
-}
-
-.stat-num {
-  display: block;
-  font-family: 'Cinzel', serif;
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--saffron);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-.stat-lbl {
-  font-size: 0.82rem;
-  color: var(--ink-soft);
-  letter-spacing: 0.05em;
-}
-
-/* ── MAIN CONTENT ── */
-main.books-main {
-  position: relative;
-  z-index: 1;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 3.5rem 2rem 5rem;
-}
-
-/* ── SECTION HEADER ── */
-.section-header {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  margin-bottom: 2.5rem;
-}
-
-.section-header-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(212, 168, 67, 0.4), transparent);
-}
-
-.section-header h2 {
-  font-family: 'Cinzel', serif;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  white-space: nowrap;
-}
-
-/* ── CATEGORY FILTER ── */
-.filter-bar {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 2.5rem;
-}
-
-.filter-btn {
-  font-family: 'Cinzel', serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.4rem 1.1rem;
-  border: 1px solid rgba(107, 76, 34, 0.3);
-  border-radius: 2px;
-  background: transparent;
-  color: var(--ink-soft);
-  cursor: pointer;
-  transition: all 0.18s;
-}
-
-.filter-btn:hover,
-.filter-btn.active {
-  background: var(--saffron);
-  border-color: var(--saffron);
-  color: #fff;
-}
-
-/* ── BOOK GRID ── */
-.books-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1.25rem;
-}
-
-/* ── BOOK CARD ── */
-.book-card {
-  background: var(--parchment);
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  padding: 0;
-  cursor: pointer;
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  animation: cardIn 0.4s ease both;
-}
-
-@keyframes cardIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.book-card.available:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(30, 18, 8, 0.12);
-  border-color: rgba(212, 168, 67, 0.5);
-}
-
-.book-card.coming-soon {
-  opacity: 0.72;
-  cursor: default;
-}
-
-.book-card.locked {
-  opacity: 0.65;
-  cursor: not-allowed;
-  filter: grayscale(35%);
-}
-
-.book-card.locked:hover {
-  transform: none !important;
-  box-shadow: none !important;
-  border-color: var(--border) !important;
-}
-
-.book-card.locked .card-accent {
-  background: #7a7a7a !important;
-}
-
-.badge-locked {
-  background: rgba(138, 58, 90, 0.08);
-  color: var(--lotus);
-  border: 1px solid rgba(138, 58, 90, 0.2);
-}
-
-.card-accent {
-  height: 4px;
-  width: 100%;
-  flex-shrink: 0;
-}
-
-.card-body {
-  padding: 1.4rem 1.5rem 1.3rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 6px;
-}
-
-.card-category {
-  font-family: 'Cinzel', serif;
-  font-size: 0.62rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin-bottom: 2px;
-}
-
-.card-title {
-  font-family: 'Cinzel', serif;
-  font-size: 0.92rem;
-  font-weight: 500;
-  color: var(--ink-mid);
-  line-height: 1.4;
-  letter-spacing: 0.02em;
-}
-
-.card-devanagari {
-  font-family: 'EB Garamond', serif;
-  font-size: 0.88rem;
-  color: var(--ink-soft);
-  letter-spacing: 0.05em;
-  opacity: 0.8;
-}
-
-.card-author {
-  font-family: 'EB Garamond', serif;
-  font-size: 0.88rem;
-  color: var(--ink-soft);
-  font-style: italic;
-  margin-top: 2px;
-}
-
-.card-desc {
-  font-size: 0.83rem;
-  color: var(--ink-soft);
-  line-height: 1.55;
-  margin-top: 6px;
-  flex: 1;
-}
-
-.card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 1rem;
-  padding-top: 0.8rem;
-  border-top: 1px solid rgba(212, 168, 67, 0.18);
-}
-
-.status-badge {
-  font-family: 'Cinzel', serif;
-  font-size: 0.63rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 3px 10px;
-  border-radius: 2px;
-}
-
-.badge-ready {
-  background: rgba(56, 110, 30, 0.12);
-  color: #2d6010;
-  border: 1px solid rgba(56, 110, 30, 0.25);
-}
-
-.badge-soon {
-  background: rgba(107, 76, 34, 0.08);
-  color: var(--ink-faint);
-  border: 1px solid rgba(107, 76, 34, 0.15);
-}
-
-.card-qcount {
-  font-family: 'Cinzel', serif;
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
-  color: var(--ink-faint);
-}
-
-.card-arrow {
-  font-size: 0.9rem;
-  color: var(--saffron);
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: opacity 0.2s, transform 0.2s;
-}
-
-.book-card.available:hover .card-arrow {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.book-card.featured {
-  grid-column: span 2;
-  background: linear-gradient(135deg, var(--gold-pale) 0%, var(--parchment) 100%);
-  border-color: rgba(212, 168, 67, 0.4);
-}
-
-/* ── VERSE BAND ── */
-.verse-band {
-  position: relative;
-  z-index: 1;
-  background: var(--parchment);
-  border-top: 1px solid rgba(212, 168, 67, 0.2);
-  border-bottom: 1px solid rgba(212, 168, 67, 0.2);
-  padding: 3rem 2rem;
-  text-align: center;
-  margin: 0;
-}
-
-.verse-band blockquote {
-  max-width: 680px;
-  margin: 0 auto;
-  font-size: 1.15rem;
-  font-style: italic;
-  color: var(--ink-mid);
-  line-height: 1.8;
-}
-
-.verse-band cite {
-  display: block;
-  margin-top: 1rem;
-  font-style: normal;
-  font-family: 'Cinzel', serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-}
-
-.verse-band .verse-om {
-  font-size: 1.4rem;
-  color: var(--saffron);
-  display: block;
-  margin-bottom: 1rem;
-  opacity: 0.6;
-}
-
-/* ── FOOTER ── */
-footer {
-  position: relative;
-  z-index: 1;
-  background: var(--ink-mid);
-  color: rgba(253, 248, 238, 0.7);
-  text-align: center;
-  padding: 2.5rem 2rem;
-  margin-top: auto;
-}
-
-footer .foot-title {
-  font-family: 'Cinzel', serif;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: rgba(253, 248, 238, 0.9);
-  letter-spacing: 0.1em;
-  margin-bottom: 0.4rem;
-}
-
-footer .foot-trinity {
-  font-family: 'Cinzel', serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(212, 168, 67, 0.8);
-  margin-bottom: 1rem;
-}
-
-footer .foot-copy {
-  font-size: 0.8rem;
-  opacity: 0.4;
-  font-style: italic;
-}
-
-/* ── QUIZ PAGE SPECIFICS ── */
-.quiz-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 20px;
-}
-
-/* ── QUIZ HEADER ── */
-.site-header {
-  width: 100%;
-  text-align: center;
-  padding: 2.5rem 1rem 0;
-  position: relative;
-  z-index: 1;
-}
-
-.site-header .om {
-  font-size: 2rem;
-  color: var(--saffron);
-  letter-spacing: 0.1em;
-  display: block;
-  margin-bottom: 0.25rem;
-  opacity: 0.7;
-}
-
-.site-header h1 {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(1.1rem, 3vw, 1.5rem);
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  color: var(--ink-mid);
-  text-transform: uppercase;
-}
-
-.site-header .subtitle {
-  font-style: italic;
-  color: var(--ink-soft);
-  font-size: 0.95rem;
-  margin-top: 0.2rem;
-}
-
-.divider {
-  width: 120px;
-  height: 2px;
-  margin: 1rem auto;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-
-/* ── CARD ── */
-.quiz-card {
-  background: var(--parchment);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  box-shadow:
-    0 2px 12px rgba(30, 20, 8, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  width: min(800px, 94vw);
-  padding: 2.5rem 2.8rem;
-  margin: 0 auto 3rem;
-  position: relative;
-  z-index: 1;
-}
-
-/* ── LANDING SCREEN ── */
-.screen-landing {
-  text-align: center;
-}
-
-.screen-landing h2 {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(1.3rem, 4vw, 1.9rem);
-  font-weight: 600;
-  color: var(--ink-mid);
-  margin-bottom: 0.6rem;
-}
-
-.screen-landing p {
-  color: var(--ink-soft);
-  font-size: 1rem;
-  max-width: 480px;
-  margin: 0 auto 1.8rem;
-}
-
-.verse-box {
-  background: rgba(255, 255, 255, 0.5);
-  border-left: 3px solid var(--gold);
-  padding: 1rem 1.4rem;
-  font-style: italic;
-  font-size: 0.95rem;
-  color: var(--ink-mid);
-  text-align: left;
-  margin-bottom: 2rem;
-  border-radius: 0 3px 3px 0;
-}
-
-/* ── BUTTONS ── */
-.btn {
-  display: inline-block;
-  font-family: 'Cinzel', serif;
-  font-size: 0.85rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  cursor: pointer;
-  border: none;
-  border-radius: 3px;
-  transition: all 0.2s ease;
-  text-decoration: none;
-}
-
-.btn-primary {
-  background: var(--saffron);
-  color: #fff;
-  padding: 0.75rem 2.4rem;
-  box-shadow: 0 2px 8px rgba(200, 114, 42, 0.3);
-}
-
-.btn-primary:hover {
-  background: var(--saffron-lt);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(200, 114, 42, 0.35);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: var(--saffron);
-  border: 1.5px solid var(--saffron);
-  padding: 0.6rem 1.8rem;
-}
-
-.btn-secondary:hover {
-  background: rgba(200, 114, 42, 0.07);
-}
-
-/* ── PROGRESS ── */
-.progress-bar-wrap {
-  height: 4px;
-  background: rgba(30, 20, 8, 0.1);
-  border-radius: 2px;
-  margin-bottom: 1.8rem;
-  overflow: hidden;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--saffron), var(--gold));
-  border-radius: 2px;
-  transition: width 0.4s ease;
-}
-
-.progress-label {
-  font-family: 'Cinzel', serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  color: var(--ink-soft);
-  margin-bottom: 0.5rem;
-  text-align: right;
-}
-
-/* ── QUESTION ── */
-.question-tags {
-  display: flex;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
-}
-
-.tag {
-  font-size: 0.72rem;
-  font-family: 'Cinzel', serif;
-  letter-spacing: 0.08em;
-  padding: 0.15rem 0.6rem;
-  border-radius: 2px;
-  background: var(--gold-pale);
-  color: var(--ink-soft);
-  border: 1px solid var(--border);
-  text-transform: uppercase;
-}
-
-.difficulty-easy {
-  background: rgba(58, 122, 42, 0.1);
-  color: #3a7a2a;
-  border-color: rgba(58, 122, 42, 0.25);
-}
-
-.difficulty-medium {
-  background: rgba(200, 114, 42, 0.1);
-  color: #8a5a10;
-  border-color: rgba(200, 114, 42, 0.25);
-}
-
-.difficulty-hard {
-  background: rgba(138, 58, 90, 0.1);
-  color: var(--lotus);
-  border-color: rgba(138, 58, 90, 0.25);
-}
-
-.question-text {
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: var(--ink);
-  margin-bottom: 1.6rem;
-  line-height: 1.6;
-}
-
-/* ── OPTIONS ── */
-.options-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.option-btn {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.9rem;
-  padding: 0.85rem 1.1rem;
-  border: 1.5px solid var(--border);
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.45);
-  color: var(--ink);
-  cursor: pointer;
-  transition: all 0.18s ease;
-  font-size: 1rem;
-  line-height: 1.5;
-  text-align: left;
-  width: 100%;
-}
-
-.option-btn:hover:not(.disabled) {
-  border-color: var(--saffron);
-  background: rgba(200, 114, 42, 0.06);
-}
-
-.option-btn .opt-letter {
-  font-family: 'Cinzel', serif;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--saffron);
-  min-width: 1.4rem;
-  padding-top: 0.1rem;
-}
-
-.option-btn.selected {
-  border-color: var(--gold);
-  background: var(--gold-pale);
-}
-
-.option-btn.correct {
-  border-color: var(--correct);
-  background: var(--correct-bg);
-}
-
-.option-btn.wrong {
-  border-color: var(--wrong);
-  background: var(--wrong-bg);
-}
-
-.option-btn.disabled {
-  cursor: default;
-}
-
-/* ── RESULTS ── */
-.result-summary {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.result-score {
-  font-family: 'Cinzel', serif;
-  font-size: 3rem;
-  font-weight: 600;
-  color: var(--saffron);
-  line-height: 1;
-}
-
-.result-score span {
-  font-size: 1.3rem;
-  color: var(--ink-soft);
-  font-weight: 400;
-}
-
-.result-label {
-  font-style: italic;
-  color: var(--ink-soft);
-  margin-top: 0.4rem;
-}
-
-.result-item {
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  margin-bottom: 1rem;
-  overflow: hidden;
-}
-
-.result-item-header {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  padding: 0.8rem 1rem;
-  background: var(--header-bg);
-  font-size: 0.95rem;
-  font-weight: 500;
-  cursor: pointer;
-  user-select: none;
-}
-
-.result-item-header:hover {
-  background: var(--header-bg-hover);
-}
-
-.result-status {
-  font-size: 1rem;
-  flex-shrink: 0;
-}
-
-.result-q-text {
-  flex: 1;
-  line-height: 1.4;
-}
-
-.result-chevron {
-  font-size: 0.7rem;
-  color: var(--ink-soft);
-  transition: transform 0.2s;
-}
-
-.result-item.open .result-chevron {
-  transform: rotate(180deg);
-}
-
-.result-body {
-  display: none;
-  padding: 1rem 1.1rem 1.1rem;
-  border-top: 1px solid var(--border);
-  font-size: 0.95rem;
-}
-
-.result-item.open .result-body {
-  display: block;
-}
-
-.result-answer-line {
-  margin-bottom: 0.5rem;
-}
-
-.result-answer-line strong {
-  color: var(--ink-mid);
-}
-
-.result-explanation {
-  font-style: italic;
-  color: var(--ink-soft);
-  margin-top: 0.6rem;
-  padding-top: 0.6rem;
-  border-top: 1px solid var(--border);
-  font-size: 0.9rem;
-}
-
-.results-actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-}
-
-.result-verse-box {
-  background: rgba(255, 255, 255, 0.35);
-  border-left: 2px solid var(--gold);
-  padding: 0.6rem 1rem;
-  font-size: 0.9rem;
-  color: var(--ink-mid);
-  margin-top: 0.8rem;
-  border-radius: 0 3px 3px 0;
-  line-height: 1.5;
-}
-
-/* ── ERROR DISPLAY ── */
-.error-container {
-  text-align: center;
-  color: var(--wrong);
-  font-weight: 500;
-  margin-top: 3rem;
-}
-
-.error-container a {
-  color: var(--saffron);
-  text-decoration: none;
-}
-
-/* ── ANIMATIONS & RESPONSIVE ── */
-.fade-in {
-  animation: fadeIn 0.35s ease both;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive Nav Badges */
-.badge-text-short {
-  display: none;
-}
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-@media (max-width: 700px) {
-  nav {
-    padding: 0 1.2rem;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .badge-text-long {
-    display: none;
-  }
-  .badge-text-short {
-    display: inline;
-  }
-  .nav-actions {
-    gap: 0.6rem;
-  }
-  .rank-badge, .streak-badge {
-    padding: 0.2rem 0.5rem;
-    font-size: 0.68rem;
-  }
-
-  .hero {
-    padding: 3rem 1.2rem 3rem;
-  }
-
-  .stats-strip {
-    flex-wrap: wrap;
-  }
-
-  .stat-item {
-    padding: 1.2rem 2rem;
-    flex: 1 1 33%;
-    border-right: none;
-    border-bottom: 1px solid rgba(212, 168, 67, 0.15);
-  }
-
-  main.books-main {
-    padding: 2.5rem 1.2rem 4rem;
-  }
-
-  .books-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.85rem;
-  }
-}
-
-@media (max-width: 520px) {
-  .quiz-card {
-    padding: 1.6rem 1.4rem;
-  }
-
-  .books-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .book-card.featured {
-    grid-column: span 1;
-  }
-}
-
-/* ── ŚYĀMA THEME SPECIFIC ADJUSTMENTS ── */
-[data-theme="shyama"] nav {
-  background: rgba(8, 12, 22, 0.92);
-}
-
-[data-theme="shyama"] .option-btn {
-  background: rgba(17, 22, 37, 0.45);
-}
-
-[data-theme="shyama"] .verse-box {
-  background: rgba(17, 22, 37, 0.5);
-}
-
-/* ── THEME TOGGLE BUTTON ── */
-.theme-toggle-btn {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  z-index: 1000;
-  padding: 0.5rem 1.1rem;
-  border-radius: 20px;
-  border: 1px solid rgba(212, 168, 67, 0.4);
-  background: rgba(253, 248, 238, 0.85);
-  backdrop-filter: blur(8px);
-  color: var(--saffron);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  box-shadow: 0 4px 16px rgba(30, 20, 8, 0.12);
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  font-family: 'Cinzel', serif;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.theme-toggle-btn:hover {
-  transform: translateY(-2px) scale(1.03);
-  border-color: var(--saffron);
-  background: var(--parchment);
-  box-shadow: 0 6px 20px rgba(200, 114, 42, 0.2);
-}
-
-[data-theme="shyama"] .theme-toggle-btn {
-  background: rgba(17, 22, 37, 0.85);
-  color: var(--gold);
-  border-color: rgba(229, 184, 76, 0.3);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-}
-
-[data-theme="shyama"] .theme-toggle-btn:hover {
-  border-color: var(--gold);
-  background: var(--parchment-dk);
-  box-shadow: 0 6px 20px rgba(229, 184, 76, 0.15);
-}
-
-.theme-toggle-label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.theme-emoji {
-  font-size: 1.15rem;
-  line-height: 1;
-}
-
-/* ── NAV BACK BUTTON ── */
-.nav-back-btn {
-  font-family: 'Cinzel', serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  transition: all 0.18s;
-  padding: 0.4rem 0.8rem;
-  border: 1px solid rgba(107, 76, 34, 0.2);
-  border-radius: 2px;
-}
-
-.nav-back-btn:hover {
-  color: #fff;
-  background: var(--saffron);
-  border-color: var(--saffron);
-}
-
-[data-theme="shyama"] .nav-back-btn {
-  border-color: rgba(229, 184, 76, 0.2);
-}
-
-[data-theme="shyama"] .nav-back-btn:hover {
-  color: #fff;
-  background: var(--gold);
-  border-color: var(--gold);
-}
-
-/* ── QUIZ SCOPE SELECTOR ── */
-.scope-selector {
-  margin: 1.5rem 0 2.2rem;
-  text-align: left;
-}
-
-.scope-title {
-  font-family: 'Cinzel', serif;
-  font-size: 0.82rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-bottom: 0.9rem;
-  text-align: center;
-}
-
-.scope-options {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  max-width: 540px;
-  margin: 0 auto;
-}
-
-.scope-option {
-  background: rgba(255, 255, 255, 0.4);
-  border: 1px solid var(--border);
-  padding: 0.9rem 1.2rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  text-align: left;
-}
-
-.scope-option:hover {
-  background: rgba(255, 255, 255, 0.7);
-  border-color: var(--saffron-lt);
-  transform: translateY(-1px);
-}
-
-.scope-option.selected {
-  background: var(--parchment-dk);
-  border-color: var(--saffron);
-  box-shadow: 0 0 0 1px var(--saffron);
-}
-
-[data-theme="shyama"] .scope-option {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-[data-theme="shyama"] .scope-option:hover {
-  background: rgba(0, 0, 0, 0.35);
-  border-color: var(--gold);
-}
-
-[data-theme="shyama"] .scope-option.selected {
-  background: var(--parchment-dk);
-  border-color: var(--gold);
-  box-shadow: 0 0 0 1px var(--gold);
-}
-
-.scope-name {
-  font-family: 'Cinzel', serif;
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--ink-mid);
-}
-
-.scope-desc {
-  font-size: 0.85rem;
-  color: var(--ink-soft);
-  line-height: 1.4;
-}
-
-/* ── KRISHNA PREMA IMMERSION ADDITIONS ── */
-
-/* Divine Halo Auras - GPU Optimized to prevent layout reflows and repaints */
-.divine-aura {
-  position: relative;
-  box-shadow: 0 4px 15px rgba(200, 114, 42, 0.1), 0 0 10px rgba(212, 168, 67, 0.05);
-  border-color: rgba(212, 168, 67, 0.35);
-}
-
-[data-theme="shyama"] .divine-aura {
-  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.1), 0 0 10px rgba(251, 191, 36, 0.05);
-  border-color: rgba(16, 185, 129, 0.3);
-}
-
-.divine-aura::after {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0;
-  
-  /* Intense glow state for Gauri (default) */
-  border: 1px solid var(--saffron-lt);
-  box-shadow: 0 8px 30px rgba(200, 114, 42, 0.25), 0 0 20px rgba(212, 168, 67, 0.2);
-  
-  /* Hardware acceleration hint */
-  will-change: opacity;
-  animation: auraPulseGauriGPU 3s ease-in-out infinite alternate;
-}
-
-[data-theme="shyama"] .divine-aura::after {
-  /* Intense glow state for Shyama */
-  border: 1px solid var(--saffron);
-  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.25), 0 0 20px rgba(251, 191, 36, 0.15);
-  animation: auraPulseShyamaGPU 3s ease-in-out infinite alternate;
-}
-
-@keyframes auraPulseGauriGPU {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes auraPulseShyamaGPU {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-/* Floating Particle Styles */
-.particle-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 9999;
-  overflow: hidden;
-}
-
-.puspa-particle {
-  position: absolute;
-  top: -40px;
-  pointer-events: none;
-  user-select: none;
-  animation: fallAndRotate 4s linear forwards;
-}
-
-@keyframes fallAndRotate {
-  0% {
-    transform: translateY(0) rotate(0deg) translateX(0);
-    opacity: 0;
-  }
-
-  15% {
-    opacity: 0.8;
-  }
-
-  35% {
-    opacity: 0.6;
-  }
-
-  70%,
-  100% {
-    transform: translateY(40vh) rotate(120deg) translateX(15px);
-    opacity: 0;
-  }
-}
-
-/* Audio Controls */
-.sound-controls {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  margin-top: 1rem;
-}
-
-.sound-toggle-btn {
-  background: transparent;
-  border: 1px dashed var(--border);
-  color: var(--ink-soft);
-  font-family: 'Cinzel', serif;
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  padding: 0.35rem 0.75rem;
-  cursor: pointer;
-  border-radius: 2px;
-  letter-spacing: 0.08em;
-  transition: all 0.2s;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
-.sound-toggle-btn:hover,
-.sound-toggle-btn.active {
-  border-style: solid;
-  border-color: var(--saffron);
-  color: var(--saffron);
-}
-
-[data-theme="shyama"] .sound-toggle-btn:hover,
-[data-theme="shyama"] .sound-toggle-btn.active {
-  border-color: var(--gold);
-  color: var(--gold);
-}
-
-/* Streak Badge */
-.streak-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: rgba(200, 114, 42, 0.08);
-  border: 1px solid rgba(200, 114, 42, 0.2);
-  color: var(--saffron);
-  font-family: 'Cinzel', serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
-  letter-spacing: 0.05em;
-  transition: all 0.3s ease;
-}
-
-[data-theme="shyama"] .streak-badge {
-  background: rgba(251, 191, 36, 0.08);
-  border-color: rgba(251, 191, 36, 0.25);
-  color: var(--gold);
-}
-
-.streak-badge:hover {
-  transform: scale(1.05);
-}
-
-/* Nectar Drops widget styles */
-.nectar-widget-container {
-  margin-top: 4.5rem;
-  padding: 2.5rem 1rem 0;
-  border-top: 1px solid var(--border);
-  text-align: center;
-  max-width: 720px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  box-sizing: border-box;
-}
-
-.nectar-card-box {
-  background: var(--parchment);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 2.5rem 2rem;
-  margin: 1.5rem auto 0;
-  box-shadow: 0 8px 24px rgba(30, 18, 8, 0.05);
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: cardIn 0.5s ease both;
-  max-width: 680px;
-}
-
-[data-theme="shyama"] .nectar-card-box {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
-.nectar-card-box::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: var(--saffron);
-}
-
-[data-theme="shyama"] .nectar-card-box::before {
-  background: var(--gold);
-}
-
-.nectar-card-verse {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.25rem;
-  font-style: italic;
-  line-height: 1.7;
-  color: var(--ink-mid);
-  margin-bottom: 1rem;
-}
-
-.nectar-card-translation {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: var(--ink-soft);
-  max-width: 580px;
-  margin-bottom: 1.2rem;
-}
-
-.nectar-card-source {
-  font-family: 'Cinzel', serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--saffron);
-}
-
-[data-theme="shyama"] .nectar-card-source {
-  color: var(--gold);
-}
-
-/* Bhakti Sopana Badge & Details */
-.bhakti-sopana-box {
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 1.5rem 1.8rem;
-  margin: 1.5rem 0;
-  text-align: left;
-}
-
-[data-theme="shyama"] .bhakti-sopana-box {
-  background: rgba(0, 0, 0, 0.25);
-}
-
-.bhakti-sopana-title {
-  font-family: 'Cinzel', serif;
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--saffron);
-  margin-bottom: 0.4rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-[data-theme="shyama"] .bhakti-sopana-title {
-  color: var(--gold);
-}
-
-.bhakti-sopana-desc {
-  font-family: 'EB Garamond', serif;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--ink-soft);
-}
-
-/* Palm-leaf Manuscript styling */
-.manuscript-verse-card {
-  background: #fdfaf2;
-  border-top: 1px solid rgba(200, 114, 42, 0.2);
-  border-bottom: 1px solid rgba(200, 114, 42, 0.2);
-  border-left: 3.5px solid var(--saffron);
-  border-right: 3.5px solid var(--saffron);
-  padding: 1.4rem 2.2rem;
-  margin: 1.25rem 0;
-  position: relative;
-  border-radius: 1px;
-  box-shadow: inset 0 0 8px rgba(200, 114, 42, 0.03);
-}
-
-[data-theme="shyama"] .manuscript-verse-card {
-  background: #0f1422;
-  border-top: 1px solid rgba(251, 191, 36, 0.15);
-  border-bottom: 1px solid rgba(251, 191, 36, 0.15);
-  border-left-color: var(--gold);
-  border-right-color: var(--gold);
-  box-shadow: inset 0 0 8px rgba(251, 191, 36, 0.03);
-}
-
-.manuscript-verse-card::before,
-.manuscript-verse-card::after {
-  content: '❋';
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--saffron);
-  font-size: 0.75rem;
-  opacity: 0.45;
-}
-
-.manuscript-verse-card::before {
-  left: 0.6rem;
-}
-
-.manuscript-verse-card::after {
-  right: 0.6rem;
-}
-
-[data-theme="shyama"] .manuscript-verse-card::before,
-[data-theme="shyama"] .manuscript-verse-card::after {
-  color: var(--gold);
-}
-
-/* Bhakti Rank Badge */
-.rank-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(139, 58, 90, 0.07);
-  border: 1px solid rgba(139, 58, 90, 0.18);
-  color: var(--lotus);
-  font-family: 'Cinzel', serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
-  letter-spacing: 0.05em;
-  transition: all 0.3s ease;
-}
-
-.rank-badge.interactive {
-  cursor: pointer;
-  background: rgba(200, 114, 42, 0.08);
-  border-color: rgba(200, 114, 42, 0.3);
-  color: var(--saffron);
-  box-shadow: 0 0 10px rgba(200, 114, 42, 0.05);
-}
-
-.rank-badge.interactive:hover {
-  transform: translateY(-1px);
-  background: var(--saffron);
-  color: #fff;
-  border-color: var(--saffron);
-  box-shadow: 0 4px 12px rgba(200, 114, 42, 0.25);
-}
-
-[data-theme="shyama"] .rank-badge {
-  background: rgba(244, 63, 94, 0.07);
-  border-color: rgba(244, 63, 94, 0.22);
-  color: var(--lotus);
-}
-
-[data-theme="shyama"] .rank-badge.interactive {
-  background: rgba(16, 185, 129, 0.08);
-  border-color: rgba(16, 185, 129, 0.3);
-  color: var(--saffron);
-}
-
-[data-theme="shyama"] .rank-badge.interactive:hover {
-  background: var(--saffron);
-  color: #fff;
-  border-color: var(--saffron);
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-}
-
-/* Lotus Dividers */
-.lotus-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  margin: 1.5rem auto;
-  color: var(--gold);
-  opacity: 0.85;
-}
-
-.lotus-divider::before,
-.lotus-divider::after {
-  content: '';
-  width: 50px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold));
-}
-
-.lotus-divider::after {
-  background: linear-gradient(90deg, var(--gold), transparent);
-}
-
-.lotus-svg {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-  display: inline-block;
-}
-
-/* ── PROGRESSION DASHBOARD OVERLAY & MODAL ── */
-.dashboard-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  background: rgba(30, 20, 8, 0.6);
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  animation: fadeIn 0.25s ease-out;
-}
-
-[data-theme="shyama"] .dashboard-overlay {
-  background: rgba(0, 0, 0, 0.75);
-}
-
-.dashboard-modal {
-  background: var(--parchment);
-  border: 1.5px solid var(--border);
-  border-radius: 6px;
-  width: min(850px, 95vw);
-  max-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 
-    0 15px 45px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4);
-  position: relative;
-  overflow: hidden;
-}
-
-.dashboard-header {
-  padding: 1.5rem 2rem;
-  border-bottom: 1px solid rgba(212, 168, 67, 0.2);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.dashboard-brand {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.brand-om {
-  font-size: 1.5rem;
-  color: var(--saffron);
-  opacity: 0.9;
-}
-
-.dashboard-brand h2 {
-  font-family: 'Cinzel', serif;
-  font-size: 1.15rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: var(--ink-mid);
-}
-
-.dashboard-close-btn {
-  background: transparent;
-  border: none;
-  font-size: 1.25rem;
-  color: var(--ink-soft);
-  cursor: pointer;
-  transition: color 0.15s, transform 0.15s;
-}
-
-.dashboard-close-btn:hover {
-  color: var(--saffron);
-  transform: rotate(90deg);
-}
-
-.dashboard-content {
-  padding: 2rem;
-  overflow-y: auto;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-/* Scrollbar styling */
-.dashboard-content::-webkit-scrollbar,
-.ranks-scroll-list::-webkit-scrollbar,
-.activity-feed::-webkit-scrollbar {
-  width: 6px;
-}
-
-.dashboard-content::-webkit-scrollbar-track,
-.ranks-scroll-list::-webkit-scrollbar-track,
-.activity-feed::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.dashboard-content::-webkit-scrollbar-thumb,
-.ranks-scroll-list::-webkit-scrollbar-thumb,
-.activity-feed::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 3px;
-}
-
-.dashboard-section {
-  background: rgba(255, 255, 255, 0.4);
-  border: 1px solid rgba(212, 168, 67, 0.15);
-  border-radius: 4px;
-  padding: 1.5rem;
-}
-
-[data-theme="shyama"] .dashboard-section {
-  background: rgba(0, 0, 0, 0.2);
-  border-color: rgba(16, 185, 129, 0.1);
-}
-
-/* Rank Panel */
-.rank-panel {
-  background: linear-gradient(135deg, rgba(245, 233, 200, 0.6) 0%, rgba(240, 230, 204, 0.4) 100%);
-  border-color: rgba(212, 168, 67, 0.35);
-}
-
-[data-theme="shyama"] .rank-panel {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.06) 0%, rgba(14, 19, 32, 0.3) 100%);
-  border-color: rgba(16, 185, 129, 0.25);
-}
-
-.rank-avatar-section {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  margin-bottom: 0.75rem;
-}
-
-.rank-emoji {
-  font-size: 2.75rem;
-  filter: drop-shadow(0 4px 8px rgba(30, 20, 8, 0.15));
-}
-
-.rank-info-text .rank-subtitle {
-  display: block;
-  font-family: 'Cinzel', serif;
-  font-size: 0.62rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-}
-
-.rank-info-text h3 {
-  font-family: 'Cinzel', serif;
-  font-size: 1.35rem;
-  font-weight: 600;
-  color: var(--ink-mid);
-  margin-bottom: 2px;
-}
-
-.rank-sanskrit-name {
-  font-size: 0.95rem;
-  color: var(--saffron);
-  font-weight: 500;
-}
-
-.rank-description {
-  font-size: 0.92rem;
-  color: var(--ink-soft);
-  font-style: italic;
-  line-height: 1.6;
-  margin-bottom: 1.25rem;
-  border-left: 2px solid var(--border);
-  padding-left: 0.75rem;
-}
-
-/* XP Details */
-.dashboard-xp-container {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.dashboard-xp-header {
-  display: flex;
-  justify-content: space-between;
-  font-family: 'Cinzel', serif;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--ink-mid);
-  letter-spacing: 0.05em;
-}
-
-.dashboard-xp-bar-wrap {
-  height: 8px;
-  background: rgba(30, 20, 8, 0.08);
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
-}
-
-[data-theme="shyama"] .dashboard-xp-bar-wrap {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.dashboard-xp-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--saffron), var(--gold));
-  border-radius: 4px;
-  transition: width 0.6s cubic-bezier(0.1, 0.8, 0.2, 1);
-  box-shadow: 0 1px 3px rgba(200, 114, 42, 0.2);
-}
-
-.dashboard-xp-total {
-  font-size: 0.78rem;
-  color: var(--ink-faint);
-  text-align: right;
-  margin-top: 2px;
-}
-
-/* Stats Cards Grid */
-.dashboard-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-}
-
-@media (max-width: 680px) {
-  .dashboard-stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.dash-stat-card {
-  background: rgba(255, 255, 255, 0.35);
-  border: 1px solid rgba(212, 168, 67, 0.15);
-  border-radius: 4px;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-[data-theme="shyama"] .dash-stat-card {
-  background: rgba(255, 255, 255, 0.02);
-  border-color: rgba(255, 255, 255, 0.05);
-}
-
-.dash-stat-icon {
-  font-size: 1.6rem;
-}
-
-.dash-stat-values {
-  display: flex;
-  flex-direction: column;
-}
-
-.dash-stat-num {
-  font-family: 'Cinzel', serif;
-  font-weight: 600;
-  font-size: 1.15rem;
-  color: var(--saffron);
-  line-height: 1.2;
-}
-
-.dash-stat-label {
-  font-size: 0.72rem;
-  color: var(--ink-soft);
-  margin-top: 1px;
-}
-
-/* Badges Grid */
-.section-title {
-  font-family: 'Cinzel', serif;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-mid);
-  margin-bottom: 1rem;
-  border-bottom: 1px solid rgba(212, 168, 67, 0.12);
-  padding-bottom: 0.4rem;
-}
-
-.badges-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.8rem;
-}
-
-@media (max-width: 600px) {
-  .badges-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.badge-item {
-  background: rgba(255, 255, 255, 0.45);
-  border: 1.5px solid rgba(212, 168, 67, 0.15);
-  border-radius: 4px;
-  padding: 0.9rem 0.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.22s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-[data-theme="shyama"] .badge-item {
-  background: rgba(255, 255, 255, 0.015);
-  border-color: rgba(255, 255, 255, 0.06);
-}
-
-.badge-item.locked {
-  opacity: 0.45;
-  filter: grayscale(85%);
-}
-
-.badge-item.unlocked:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-color: var(--badge-color);
-}
-
-.badge-item.selected {
-  border-color: var(--badge-color);
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 12px rgba(212, 168, 67, 0.15);
-}
-
-[data-theme="shyama"] .badge-item.selected {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.badge-emoji {
-  font-size: 1.8rem;
-  margin-bottom: 4px;
-  transition: transform 0.2s;
-}
-
-.badge-item:hover .badge-emoji {
-  transform: scale(1.1);
-}
-
-.badge-name {
-  font-family: 'EB Garamond', serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--ink-mid);
-  line-height: 1.25;
-}
-
-.badge-status-dot {
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: transparent;
-}
-
-.badge-item.unlocked .badge-status-dot {
-  background: #10b981;
-  box-shadow: 0 0 4px #10b981;
-}
-
-/* Badge Detail Card */
-.badge-detail-card {
-  margin-top: 1rem;
-  background: rgba(255, 255, 255, 0.65);
-  border: 1.5px solid var(--border);
-  border-radius: 4px;
-  padding: 1.2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  animation: slideDown 0.2s ease-out;
-}
-
-[data-theme="shyama"] .badge-detail-card {
-  background: rgba(255, 255, 255, 0.03);
-}
-
-.badge-detail-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.badge-detail-emoji {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-}
-
-.badge-detail-header h5 {
-  font-family: 'Cinzel', serif;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--ink-mid);
-}
-
-.badge-detail-sanskrit {
-  font-size: 0.78rem;
-  color: var(--saffron);
-  font-weight: 500;
-  font-style: italic;
-  display: block;
-}
-
-.badge-detail-desc {
-  font-size: 0.88rem;
-  color: var(--ink-soft);
-  line-height: 1.5;
-}
-
-.badge-detail-status {
-  margin-top: 2px;
-}
-
-.status-unlocked-text {
-  font-size: 0.8rem;
-  color: #047857;
-  font-weight: 600;
-  font-family: 'Cinzel', serif;
-}
-
-.status-locked-text {
-  font-size: 0.8rem;
-  color: var(--ink-faint);
-  font-style: italic;
-}
-
-/* Split panels layout */
-.dashboard-split-panels {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-}
-
-@media (max-width: 680px) {
-  .dashboard-split-panels {
-    grid-template-columns: 1fr;
-  }
-}
-
-.dashboard-split-panels .dashboard-section {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Activity logs */
-.activity-feed {
-  max-height: 250px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding-right: 0.5rem;
-}
-
-.activity-log-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  padding: 0.6rem;
-  background: rgba(255, 255, 255, 0.4);
-  border: 1px solid rgba(212, 168, 67, 0.12);
-  border-radius: 3px;
-  transition: background 0.15s;
-}
-
-[data-theme="shyama"] .activity-log-item {
-  background: rgba(255, 255, 255, 0.01);
-  border-color: rgba(255, 255, 255, 0.03);
-}
-
-.activity-log-item:hover {
-  background: rgba(255, 255, 255, 0.7);
-}
-
-[data-theme="shyama"] .activity-log-item:hover {
-  background: rgba(255, 255, 255, 0.03);
-}
-
-.activity-log-icon {
-  font-size: 1rem;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.activity-log-details {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.activity-log-desc {
-  font-size: 0.85rem;
-  color: var(--ink-mid);
-  line-height: 1.4;
-}
-
-.activity-log-time {
-  font-size: 0.7rem;
-  color: var(--ink-faint);
-  margin-top: 2px;
-}
-
-.activity-log-xp {
-  font-family: 'Cinzel', serif;
-  font-size: 0.76rem;
-  font-weight: 600;
-  color: #047857;
-  white-space: nowrap;
-}
-
-.no-activities-text {
-  font-size: 0.85rem;
-  color: var(--ink-faint);
-  text-align: center;
-  margin: 2rem 0;
-  font-style: italic;
-}
-
-/* Ranks Guide */
-.ranks-scroll-list {
-  max-height: 250px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding-right: 0.5rem;
-}
-
-.ranks-guide-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.5rem 0.6rem;
-  border-radius: 3px;
-  border: 1px solid transparent;
-  transition: all 0.15s;
-}
-
-.ranks-guide-item.inactive {
-  opacity: 0.4;
-  filter: grayscale(60%);
-}
-
-.ranks-guide-item.active {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(212, 168, 67, 0.08);
-}
-
-.ranks-guide-item.current {
-  background: rgba(212, 168, 67, 0.08);
-  border-color: var(--gold);
-  box-shadow: 0 0 8px rgba(212, 168, 67, 0.1);
-}
-
-[data-theme="shyama"] .ranks-guide-item.current {
-  background: rgba(16, 185, 129, 0.08);
-  border-color: var(--saffron);
-}
-
-.ranks-guide-emoji {
-  font-size: 1.25rem;
-  flex-shrink: 0;
-}
-
-.ranks-guide-details {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.ranks-guide-details > div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.ranks-guide-title {
-  font-family: 'Cinzel', serif;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--ink-mid);
-}
-
-.ranks-guide-level {
-  font-size: 0.7rem;
-  color: var(--ink-faint);
-  font-weight: 500;
-}
-
-.ranks-guide-sanskrit {
-  font-size: 0.75rem;
-  color: var(--saffron);
-  margin-top: 1px;
-}
-
-/* Footer & Dashboard Modals actions */
-.dashboard-footer {
-  padding: 1.2rem 2rem;
-  border-top: 1px solid rgba(212, 168, 67, 0.15);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.reset-btn {
-  border-color: var(--wrong) !important;
-  color: var(--wrong) !important;
-  font-size: 0.72rem !important;
-  padding: 0.4rem 1rem !important;
-}
-
-.reset-btn:hover {
-  background: rgba(138, 42, 42, 0.08) !important;
-}
-
-
-/* ── LEVEL UP CELEBRATION MODAL ── */
-.levelup-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background: rgba(15, 10, 5, 0.8);
-  backdrop-filter: blur(12px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  animation: fadeIn 0.4s ease-out;
-}
-
-.levelup-card {
-  background: radial-gradient(circle at top, var(--gold-pale) 0%, var(--parchment) 100%);
-  border: 2px solid var(--gold);
-  border-radius: 6px;
-  width: min(500px, 94vw);
-  padding: 3rem 2.5rem;
-  text-align: center;
-  box-shadow: 
-    0 25px 60px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(212, 168, 67, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
-  position: relative;
-  overflow: hidden;
-  animation: scaleUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-}
-
-[data-theme="shyama"] .levelup-card {
-  background: radial-gradient(circle at top, rgba(16, 185, 129, 0.15) 0%, #0e1320 100%);
-  border-color: var(--saffron);
-  box-shadow: 
-    0 25px 60px rgba(0, 0, 0, 0.6),
-    0 0 40px rgba(16, 185, 129, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-
-.levelup-glow {
-  position: absolute;
-  top: -60px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 250px;
-  height: 250px;
-  background: radial-gradient(circle, rgba(212, 168, 67, 0.2) 0%, transparent 70%);
-  pointer-events: none;
-  animation: rotateGlow 8s linear infinite;
-}
-
-[data-theme="shyama"] .levelup-glow {
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 70%);
-}
-
-.levelup-om-icon {
-  font-size: 2.2rem;
-  color: var(--saffron);
-  display: block;
-  margin-bottom: 0.5rem;
-  animation: beatHeart 1.5s infinite alternate;
-}
-
-.levelup-title {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: 2.1rem;
-  font-weight: 700;
-  color: var(--ink-mid);
-  letter-spacing: 0.02em;
-  line-height: 1.2;
-}
-
-.levelup-devanagari {
-  font-size: 1.25rem;
-  color: var(--saffron);
-  display: block;
-  margin-top: 1px;
-  letter-spacing: 0.15em;
-  opacity: 0.85;
-}
-
-.levelup-subtitle {
-  font-family: 'Cinzel', serif;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin-top: 0.5rem;
-}
-
-.levelup-body {
-  margin: 2.2rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.level-badge-display {
-  display: inline-flex;
-  align-items: center;
-  gap: 1.25rem;
-  background: rgba(255, 255, 255, 0.55);
-  border: 1px solid var(--border);
-  padding: 0.75rem 1.75rem;
-  border-radius: 30px;
-  box-shadow: 0 4px 12px rgba(30, 20, 8, 0.06);
-}
-
-[data-theme="shyama"] .level-badge-display {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.level-old {
-  font-family: 'Cinzel', serif;
-  font-size: 1.8rem;
-  color: var(--ink-faint);
-  opacity: 0.65;
-}
-
-.level-arrow {
-  color: var(--saffron);
-  font-size: 1.4rem;
-  font-weight: 600;
-}
-
-.level-new {
-  font-family: 'Cinzel', serif;
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: var(--saffron);
-  text-shadow: 0 0 10px rgba(200, 114, 42, 0.15);
-}
-
-[data-theme="shyama"] .level-new {
-  color: var(--gold);
-  text-shadow: 0 0 10px rgba(251, 191, 36, 0.2);
-}
-
-.levelup-rank-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.levelup-rank-title {
-  font-family: 'Cinzel', serif;
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--ink-mid);
-  line-height: 1.35;
-}
-
-.levelup-badges-unlocked {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  width: 100%;
-}
-
-.levelup-badges-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  justify-content: center;
-}
-
-.levelup-badge-tag {
-  background: rgba(16, 185, 129, 0.1);
-  color: #047857;
-  font-family: 'Cinzel', serif;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  padding: 0.3rem 0.75rem;
-  border-radius: 4px;
-  border: 1px solid rgba(16, 185, 129, 0.2);
-}
-
-.levelup-quote {
-  font-size: 0.88rem;
-  color: var(--ink-soft);
-  font-style: italic;
-  line-height: 1.6;
-  max-width: 380px;
-  margin-top: 0.5rem;
-}
-
-.levelup-actions {
-  display: flex;
-  justify-content: center;
-}
-
-
-/* ── ANIMATIONS ── */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes scaleUp {
-  from { opacity: 0; transform: scale(0.85); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes rotateGlow {
-  0% { transform: translateX(-50%) rotate(0deg); }
-  100% { transform: translateX(-50%) rotate(360deg); }
-}
-
-@keyframes beatHeart {
-  from { transform: scale(1); }
-  to { transform: scale(1.1); }
+"use client";
+
+import React, { useState, useEffect, useCallback } from "react";
+import Link from "next/link";
+import { useBhaktiProgress } from "./utils/bhaktiProgress";
+import { GAMIFICATION_CONFIG } from "./utils/gamificationConfig";
+import SadhanaDashboard from "./components/SadhanaDashboard";
+import LevelUpModal from "./components/LevelUpModal";
+
+interface Book {
+  id: string;
+  title: string;
+  devanagari?: string;
+  author: string;
+  author_id?: string;
+  category: string;
+  desc: string;
+  accent: string;
+  status: "ready" | "soon";
+  href?: string;
+  featured?: boolean;
+  questions?: number;
+}
+
+const AUTHOR_MAP: Record<string, string> = {
+  rupa: "Rūpa Gosvāmī",
+  sanatana: "Sanātana Gosvāmī",
+  jiva: "Jīva Gosvāmī",
+  raghunatha: "Raghunātha Dāsa",
+  visvanatha: "Viśvanātha Cakravartī",
+  bhaktivinoda: "Bhaktivinoda Ṭhākura",
+  narottama: "Narottama dāsa",
+  karnapura: "Kavi Karṇapūra",
+  kaviraja: "Kṛṣṇadāsa Kavirāja",
+  vyasadeva: "Vyāsadeva",
+  vrindavana_dasa: "Vṛndāvana dāsa",
+  caitanya: "Śrī Caitanya",
+  sruti: "Śruti-śāstra",
+  brahma: "Lord Brahmā",
+  locana: "Locana dāsa",
+  godavara: "Godāvara Miśra",
+};
+
+const AUTHOR_ORDER = [
+  "caitanya",
+  "rupa",
+  "sanatana",
+  "jiva",
+  "raghunatha",
+  "karnapura",
+  "kaviraja",
+  "vrindavana_dasa",
+  "locana",
+  "narottama",
+  "visvanatha",
+  "bhaktivinoda",
+  "vyasadeva",
+  "brahma",
+  "sruti",
+  "godavara"
+];
+const LotusDivider = () => (
+  <div className="lotus-divider">
+    <svg className="lotus-svg" viewBox="0 0 24 24">
+      <path d="M12,3C12,3 9,8 9,11C9,12.66 10.34,14 12,14C13.66,14 15,12.66 15,11C15,8 12,3 12,3M12,6.5C12.83,8.5 13.5,10.5 13.5,11C13.5,11.83 12.83,12.5 12,12.5C11.17,12.5 10.5,11.83 10.5,11C10.5,10.5 11.17,8.5 12,6.5M7,12C7,12 4.5,14 4.5,16C4.5,17.1 5.4,18 6.5,18C7.6,18 8.5,17.1 8.5,16C8.5,14 7,12 7,12M17,12C17,12 15.5,14 15.5,16C15.5,17.1 16.4,18 17.5,18C18.6,18 19.5,17.1 19.5,16C19.5,14 17,12 17,12Z" />
+    </svg>
+  </div>
+);
+
+export default function Home() {
+  const [books, setBooks] = useState<Book[]>([]);
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [uniqueAuthors, setUniqueAuthors] = useState<{ id: string; label: string }[]>([]);
+  const [nectarCard, setNectarCard] = useState<{ verse: string; translation: string; source: string } | null>(null);
+
+  // Hook-based progress tracking
+  const {
+    isMounted,
+    stats,
+    currentRank,
+    pendingLevelUp,
+    clearLevelUp,
+    claimDailyNectar,
+    resetProgress
+  } = useBhaktiProgress();
+
+  const [dashboardOpen, setDashboardOpen] = useState(false);
+  const [particles, setParticles] = useState<any[]>([]);
+  const [soundEnabled, setSoundEnabled] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setSoundEnabled(localStorage.getItem("quiz_sound_enabled") === "true");
+    }
+  }, []);
+
+  const triggerParticles = useCallback(() => {
+    const chars = ["🌸", "🪷", "🌹", "💮", "🦚"];
+    const colors = ["#e8954a", "#8b3a5a", "#d4a843", "#ffffff", "#10b981"];
+    const newParticles = Array.from({ length: 32 }).map((_, i) => {
+      const rand = Math.random();
+      let xPos = 0;
+      if (rand < 0.4) {
+        xPos = Math.random() * 18;
+      } else if (rand < 0.8) {
+        xPos = 82 + Math.random() * 18;
+      } else {
+        xPos = 18 + Math.random() * 64;
+      }
+      return {
+        id: Date.now() + i,
+        x: xPos,
+        char: chars[Math.floor(Math.random() * chars.length)],
+        color: colors[Math.floor(Math.random() * colors.length)],
+        size: 16 + Math.random() * 24,
+        delay: Math.random() * 1.8,
+      };
+    });
+    setParticles(newParticles);
+
+    setTimeout(() => {
+      setParticles([]);
+    }, 5500);
+  }, []);
+
+  const NECTAR_POOL = [
+    {
+      verse: "namāmīśvaram sac-cid-ānanda-rūpaṁ\nlasad-kuṇḍalaṁ gokule bhrājamānam",
+      translation: "I offer my respectful obeisances unto that Supreme Ishvara, whose form is eternal, conscious, and full of bliss, whose earrings swing and who shines beautifully in Gokula.",
+      source: "Śrī Dāmodarāṣṭakam · 1"
+    },
+    {
+      verse: "ārādhyo bhagavān vrajeśa-tanayas tad-dhāma vṛndāvanam\nramyā kācid upāsanā vraja-vadhū-vargēṇa yā kalpitā",
+      translation: "The Supreme Lord, the son of Nanda Maharaja, is the ultimate object of worship. His transcendental abode is Vrindavana. The most excellent method of worship is that which was performed by the young damsels of Vraja.",
+      source: "Śrīla Viśvanātha Cakravartī Ṭhākura"
+    },
+    {
+      verse: "nayanam galad-aśru-dhārayā\nvadanam gadgada-ruddhayā girā",
+      translation: "O My Lord, when will My eyes be decorated with tears of love flowing constantly when I chant Your holy name? When will My voice choke up with ecstasy?",
+      source: "Śikṣāṣṭaka · 6"
+    },
+    {
+      verse: "anarpita-carīṁ cirāt karuṇayāvatīrṇaḥ kalau\nsamarpayitum unnatojjvala-rasāṁ sva-bhakti-śriyam",
+      translation: "May the Supreme Lord, who is known as the son of Srimati Saci-devi, be transcendentally situated in the innermost chambers of your heart. Resplendent with the radiance of molten gold, He has appeared in the Age of Kali by His causeless mercy to bestow what no incarnation has ever offered before: the most sublime and radiant mellow of devotional service, the mellow of conjugal love.",
+      source: "Śrī Caitanya-caritāmṛta · Ādi 1.4"
+    },
+    {
+      verse: "yo 'py āsuram bhāvam upetya te bhayāt\ntvam eva dhyāyan samayām gataḥ sphuṭam",
+      translation: "Even the demons, who entered into the mood of hostility, attained liberation by thinking of You in fear. What then to speak of those who worship You with pure love?",
+      source: "Śrīmad-Bhāgavatam"
+    }
+  ];
+
+  const drawNectarCard = () => {
+    const current = nectarCard;
+    let next = NECTAR_POOL[Math.floor(Math.random() * NECTAR_POOL.length)];
+    while (next === current) {
+      next = NECTAR_POOL[Math.floor(Math.random() * NECTAR_POOL.length)];
+    }
+    setNectarCard(next);
+
+    // Auto-claim daily nectar XP reward when reading
+    claimDailyNectar();
+  };
+
+  useEffect(() => {
+    async function loadBooks() {
+      try {
+        const response = await fetch("/books.json");
+        const data = await response.json();
+        const parsed = Object.entries(data).map(([id, info]) => ({
+          id,
+          ...(info as any),
+        }));
+        setBooks(parsed);
+
+        // Extract unique author ids present in the data
+        const authorIds = Array.from(
+          new Set(parsed.map((b) => b.author_id).filter(Boolean))
+        ) as string[];
+
+        // Sort based on AUTHOR_ORDER, placing unknown ones at the end
+        authorIds.sort((a, b) => {
+          const idxA = AUTHOR_ORDER.indexOf(a);
+          const idxB = AUTHOR_ORDER.indexOf(b);
+          if (idxA === -1 && idxB === -1) return a.localeCompare(b);
+          if (idxA === -1) return 1;
+          if (idxB === -1) return -1;
+          return idxA - idxB;
+        });
+
+        const authorsList = authorIds.map((id) => ({
+          id,
+          label: AUTHOR_MAP[id] || id.charAt(0).toUpperCase() + id.slice(1),
+        }));
+        setUniqueAuthors(authorsList);
+      } catch (error) {
+        console.error("Failed to load books.json:", error);
+      }
+    }
+    loadBooks();
+  }, []);
+
+  const catLabel = (c: string) => {
+    const map: Record<string, string> = {
+      identities: "Identities & Associates",
+      philosophy: "Philosophy & Tattva",
+      devotion: "Bhakti & Rasa",
+      saints: "Saints & Ācāryas",
+      vraja: "Vraja Dhāma",
+    };
+    return map[c] || c;
+  };
+
+  const filteredBooks =
+    activeFilter === "all"
+      ? books
+      : books.filter((b) => b.author_id === activeFilter);
+
+  return (
+    <>
+      {/* ── PUṢPA VRISṬI PARTICLES ── */}
+      {particles.length > 0 && (
+        <div className="particle-container">
+          {particles.map((p) => (
+            <span
+              key={p.id}
+              className="puspa-particle"
+              style={{
+                left: `${p.x}%`,
+                color: p.color,
+                fontSize: `${p.size}px`,
+                animationDelay: `${p.delay}s`,
+              }}
+            >
+              {p.char}
+            </span>
+          ))}
+        </div>
+      )}
+
+      {/* ── NAV ── */}
+      <nav>
+        <div className="nav-brand">
+          <span className="om">ॐ</span>
+          <Link href="/" className="name">
+            Tattva Darpaṇa
+          </Link>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
+          {isMounted && (
+            <>
+              <span
+                className="rank-badge interactive"
+                title="Click to view Devotional Dashboard!"
+                onClick={() => setDashboardOpen(true)}
+              >
+                📜 {currentRank.title} (Lvl {stats.level})
+              </span>
+              {stats.streak > 0 && (
+                <span className="streak-badge" title="Daily study streak!">
+                  🔥 {stats.streak} Day Streak
+                </span>
+              )}
+            </>
+          )}
+          <ul className="nav-links" style={{ display: "flex", gap: "1.5rem", listStyle: "none" }}>
+            <li>
+              <a href="#texts">Texts</a>
+            </li>
+            <li>
+              <a href="#about">About</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      {/* ── HERO ── */}
+      <section className="hero">
+        <span className="hero-lotus">ॐ</span>
+        <h1>Tattva Darpaṇa</h1>
+        <span className="hero-devanagari">तत्त्व दर्पण</span>
+        <LotusDivider />
+        <p className="hero-tagline">
+          A mirror of truth — explore the philosophy, scriptures, saints,
+          <br />
+          and devotional science of Gauḍīya Vaiṣṇavism through living inquiry.
+        </p>
+        <p className="hero-sub">Śravaṇam &middot; Mananam &middot; Nididhyāsanam &middot; Vandanam</p>
+      </section>
+
+      {/* ── STATS ── */}
+      <div className="stats-strip">
+        <div className="stat-item">
+          <span className="stat-num">{books.length}</span>
+          <span className="stat-lbl">Sacred texts</span>
+        </div>
+        <div className="stat-item">
+          <span className="stat-num">{GAMIFICATION_CONFIG.gameUnlocks.quiz.questionsCount}</span>
+          <span className="stat-lbl">Questions per round</span>
+        </div>
+        <div className="stat-item">
+          <span className="stat-num">∞</span>
+          <span className="stat-lbl">Unique rounds</span>
+        </div>
+        <div className="stat-item">
+          <span className="stat-num">{uniqueAuthors.length}</span>
+          <span className="stat-lbl">Ācāryas & Sources</span>
+        </div>
+      </div>
+
+      {/* ── MAIN CONTENT ── */}
+      <main className="books-main" id="texts">
+        <div className="section-header">
+          <h2>Choose a text to begin</h2>
+          <div className="section-header-line"></div>
+        </div>
+
+        {/* FILTER BAR */}
+        <div className="filter-bar">
+          {[{ id: "all", label: "All Authors" }, ...uniqueAuthors].map((filter) => (
+            <button
+              key={filter.id}
+              className={`filter-btn ${activeFilter === filter.id ? "active" : ""
+                }`}
+              onClick={() => setActiveFilter(filter.id)}
+            >
+              {filter.label}
+            </button>
+          ))}
+        </div>
+
+        {/* GRID */}
+        <div className="books-grid">
+          {filteredBooks.map((b, i) => {
+            const requiredLevel = GAMIFICATION_CONFIG.bookUnlocks[b.id] || 1;
+            const isUnlocked = isMounted ? (stats.level >= requiredLevel) : true;
+            const isReady = b.status === "ready";
+            const isAvailable = isReady && isUnlocked;
+            const cardClass = `book-card ${isAvailable ? "available" : isReady ? "locked" : "coming-soon"} ${b.featured ? "featured" : ""
+              }`;
+
+            const CardContent = (
+              <>
+                <div
+                  className="card-accent"
+                  style={{ background: b.accent }}
+                ></div>
+                <div className="card-body">
+                  <div className="card-category">{catLabel(b.category)}</div>
+                  <div className="card-title">{b.title}</div>
+                  {b.devanagari && (
+                    <div className="card-devanagari">{b.devanagari}</div>
+                  )}
+                  <div className="card-author">{b.author}</div>
+                  <div className="card-desc">{b.desc}</div>
+                  <div className="card-footer">
+                    <span
+                      className={`status-badge ${isAvailable ? "badge-ready" : isReady ? "badge-locked" : "badge-soon"
+                        }`}
+                    >
+                      {isAvailable ? "Ready" : isReady ? `🔒 Lvl ${requiredLevel} Req` : "Coming soon"}
+                    </span>
+                    {b.questions && (
+                      <span className="card-qcount">
+                        {b.questions} questions
+                      </span>
+                    )}
+                    {isAvailable && <span className="card-arrow">→</span>}
+                  </div>
+                </div>
+              </>
+            );
+
+            if (isAvailable && b.href) {
+              return (
+                <Link
+                  key={b.id}
+                  href={b.href}
+                  className={cardClass}
+                  style={{
+                    animationDelay: `${i * 0.045}s`,
+                    textDecoration: "none",
+                    color: "inherit",
+                  }}
+                >
+                  {CardContent}
+                </Link>
+              );
+            }
+
+            return (
+              <div
+                key={b.id}
+                className={cardClass}
+                style={{
+                  animationDelay: `${i * 0.045}s`,
+                  cursor: isReady ? "not-allowed" : "default"
+                }}
+              >
+                {CardContent}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* ── NECTAR DROPS WIDGET ── */}
+        <section className="nectar-widget-container">
+          <div className="section-header" style={{ justifyContent: "center" }}>
+            <h2>Nectar Drops from the Ocean</h2>
+          </div>
+          <p style={{ color: "var(--ink-soft)", fontStyle: "italic", fontSize: "0.95rem" }}>
+            Draw a card for your daily meditation and contemplate the sweetness of the Gauḍīya Vaiṣṇava truths.
+          </p>
+
+          {nectarCard ? (
+            <div className="nectar-card-box divine-aura fade-in">
+              <div className="nectar-card-verse">
+                {nectarCard.verse.split("\n").map((line, idx) => (
+                  <React.Fragment key={idx}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </div>
+              <p className="nectar-card-translation">
+                "{nectarCard.translation}"
+              </p>
+              <div className="nectar-card-source">
+                — {nectarCard.source}
+              </div>
+              <button
+                className="btn btn-secondary"
+                onClick={drawNectarCard}
+                style={{ marginTop: "1.5rem", padding: "0.4rem 1.2rem", fontSize: "0.75rem" }}
+              >
+                Draw Another Card
+              </button>
+            </div>
+          ) : (
+            <div style={{ marginTop: "1.5rem" }}>
+              <button className="btn btn-primary" onClick={drawNectarCard}>
+                🪷 Draw Nectar Card
+              </button>
+            </div>
+          )}
+        </section>
+      </main>
+
+      {/* ── VERSE BAND ── */}
+      <div className="verse-band" id="about">
+        <span className="verse-om">❋</span>
+        <blockquote>
+          "One who knows the truth about the pastimes, qualities, name, and form
+          of the Supreme Lord is freed from all sins and, after leaving this
+          body, attains the transcendental abode of the Lord."
+          <cite>Śrīmad-Bhāgavatam &middot; 10.14.3</cite>
+        </blockquote>
+      </div>
+
+      {/* ── FOOTER ── */}
+      <footer>
+        <p className="foot-title">Tattva Darpaṇa — तत्त्व दर्पण</p>
+        <p className="foot-trinity">Śravaṇam · Mananam · Nididhyāsanam · Vandanam</p>
+        <p className="foot-copy">In service of the Gauḍīya Vaiṣṇava paramparā</p>
+      </footer>
+
+      {/* ── MODALS & CELEBRATIONS ── */}
+      {isMounted && (
+        <>
+          <SadhanaDashboard
+            isOpen={dashboardOpen}
+            onClose={() => setDashboardOpen(false)}
+            stats={stats}
+            resetProgress={resetProgress}
+          />
+          <LevelUpModal
+            isOpen={!!pendingLevelUp}
+            onClose={clearLevelUp}
+            oldLevel={pendingLevelUp?.oldLevel || 1}
+            newLevel={pendingLevelUp?.newLevel || 2}
+            rankTitle={pendingLevelUp?.rankTitle || ""}
+            newBadges={pendingLevelUp?.newBadges || []}
+            triggerParticles={triggerParticles}
+            soundEnabled={soundEnabled}
+          />
+        </>
+      )}
+    </>
+  );
 }
