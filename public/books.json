@@ -95,6 +95,24 @@
       "crossword"
     ]
   },
+  "skk": {
+    "title": "Śrī Kṛṣṇa-karṇāmṛtam",
+    "devanagari": "श्रीकृष्णकर्णामृतम्",
+    "author": "Bilvamaṅgala Ṭhākura",
+    "author_id": "bilvamangala",
+    "category": "devotion",
+    "desc": "Nectarean prayers and ecstatic verses describing the beauty, sweetness, and pastimes of Lord Śrī Kṛṣṇa.",
+    "accent": "#1E3F66",
+    "status": "ready",
+    "featured": true,
+    "href": "/quiz/skk",
+    "input_file": "public/skk/skk.json",
+    "output_file": "public/skk/questions.json",
+    "prompt_file": "public/skk/prompt.txt",
+    "enabled_modes": [
+      "quiz"
+    ]
+  },
   "bs": {
     "title": "Śrī Brahma-saṁhitā",
     "devanagari": "श्री ब्रह्मसंहिता",
@@ -272,16 +290,6 @@
     "category": "devotion",
     "desc": "\"The Moonlight of Loving Devotion\" — essential instructions on raganuga-bhakti and serving in the mood of the gopīs.",
     "accent": "#800000",
-    "status": "soon"
-  },
-  "skk": {
-    "title": "Śrī Kṛṣṇa-karṇāmṛtam",
-    "devanagari": "श्रीकृष्णकर्णामृतम्",
-    "author": "Bilvamaṅgala Ṭhākura",
-    "author_id": "bilvamangala",
-    "category": "devotion",
-    "desc": "Nectarean prayers and ecstatic verses describing the beauty, sweetness, and pastimes of Lord Śrī Kṛṣṇa.",
-    "accent": "#1E3F66",
     "status": "soon"
   },
   "rrsn": {

@@ -1,0 +1,58 @@
+You are creating educational quiz questions for a study tool.
+
+BOOK CONTEXT
+
+This is Śrī Kṛṣṇa-karṇāmṛtam by Śrīla Bilvamaṅgala Ṭhākura (Sage Śrī-Līlā-Śuka).
+This work consists of nectarean prayers and ecstatic verses describing the beauty, sweetness, and pastimes of Lord Śrī Kṛṣṇa.
+
+SOURCE RESTRICTIONS
+
+The supplied MAIN VERSE translation content is the ONLY source of truth for generating questions, answers, options, and explanations.
+
+DO NOT:
+- Invent facts or add external details not explicitly stated in the translation content. For example, if the text mentions "playful talks," do not embellish it with words like "confidential" or "secret."
+- Use outside knowledge, commentaries, or theological conclusions not explicitly mentioned in the text.
+- Use information from the PREVIOUS VERSE or NEXT VERSE. These adjacent verses are provided SOLELY for surrounding context and continuity. Under no circumstances should any question, correct option, distractor, or explanation rely on information from the PREVIOUS or NEXT verses.
+
+Every question, option, answer, and explanation must be derivable strictly and exclusively from the MAIN VERSE target text.
+
+QUESTION DESIGN RULES
+
+This quiz is NOT a reading-comprehension exercise.
+Assume the user is NOT looking at the verse while answering.
+Questions should test knowledge, memory, recognition, and understanding of the descriptions, metaphors, names, and pastimes as stated in the text.
+
+STRICT RULES:
+- Do NOT generate trivial questions that ask about basic vocabulary, common general knowledge, or simple adjectives/nouns mentioned in passing.
+- Do NOT write questions that can be answered by simple grammar matching or context clues.
+- Distractors must be highly plausible, scriptural terms, names, or concepts.
+- DO NOT use phrases like:
+  * "According to the text..."
+  * "What does the passage say..."
+  * "Who is mentioned in the verse..."
+  * "According to the above excerpt..."
+  * "Based on the verse..."
+  * "In this verse, what..."
+- Instead, write questions directly as if testing a student who has studied the book. E.g., "What is the reason Lord Kṛṣṇa pretends to sleep?" or "To what does the author compare the allure of material sense objects?"
+- If a verse contains ONLY generic, trivial, or introductory statements that do not offer any non-trivial details or unique metaphors, you MUST return an empty array of questions (`"questions": []`) for that verse. Do NOT invent trivial questions just to fill a quota.
+
+Requirements:
+- 100% of questions, options, answers, and explanations must focus strictly and exclusively on the MAIN VERSE target text.
+- Exactly 4 options.
+- Exactly 1 correct answer.
+- Include explanation verifying the fact directly from the main verse content.
+- Include difficulty.
+- Use tags related to the main themes (e.g., "gopīs", "flute", "pastimes", "beauty").
+
+<PREVIOUS_CONTEXT_VERSE>
+{previous_verse}
+</PREVIOUS_CONTEXT_VERSE>
+
+<MAIN_VERSE_TARGET>
+Verse Number: {verse_number}
+Verse Text: {verse_text}
+</MAIN_VERSE_TARGET>
+
+<NEXT_CONTEXT_VERSE>
+{next_verse}
+</NEXT_CONTEXT_VERSE>

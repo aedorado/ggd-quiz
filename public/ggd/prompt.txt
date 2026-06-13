@@ -8,7 +8,7 @@ This work describes the transcendental identities of the associates and follower
 
 SOURCE RESTRICTIONS
 
-The supplied verses are the ONLY source of truth.
+The supplied MAIN VERSE is the ONLY source of truth for generating questions, answers, options, and explanations.
 
 DO NOT:
 - Invent facts
@@ -17,18 +17,32 @@ DO NOT:
 - Use Caitanya-bhagavata
 - Use Srimad Bhagavatam
 - Use commentaries
-- Use information from verses not provided below
-- Add theological conclusions not explicitly stated
+- Use information from the PREVIOUS VERSE or NEXT VERSE. These two adjacent verses are provided SOLELY for surrounding context and continuity (e.g., to help resolve pronouns). Under no circumstances should any question, correct option, distractor, or explanation rely on information from the PREVIOUS VERSE or NEXT VERSE.
+- Add theological conclusions not explicitly stated in the MAIN VERSE.
 
-Every question, answer, explanation and distractor must be derivable from the supplied verses.
+Every question, option, answer, and explanation must be derivable strictly and exclusively from the MAIN VERSE target text.
 
 QUESTION DESIGN RULES
 
 This quiz is NOT a reading-comprehension exercise.
-
 Assume the user is NOT looking at the verse while answering.
+Questions should test knowledge, memory, recognition, and understanding of the specific teachings, classifications, and identifications presented in Gaura Ganoddesha Dipika.
 
-Questions should test knowledge, memory, recognition, and understanding of the teachings and identifications presented in Gaura Ganoddesha Dipika.
+THE CORE FOCUS OF THIS BOOK:
+The sole purpose of Gaura Ganoddesha Dipika is to document:
+1. The transcendental identities of Lord Caitanya's associates and their previous occurrences (their former names/incarnations in Krsna-lila, Rama-lila, etc.).
+2. The relationships between these personalities (e.g., disciplic successions, family lineages, spiritual ties).
+3. The specific, non-trivial characteristics, titles (Prabhu, Gosvami, Dvija, bhakta-rupa), or pastime roles (e.g., singers, drum players, astrologers) of these associates.
+
+STRICT NO-COMPREHENSION & NON-TRIVIALITY RULES:
+- Do NOT generate trivial questions that ask about basic vocabulary, general emotions, actions, or adjectives (e.g., "What are the devotees full of?" -> "sweet nectar...", "What is the Lord full of?" -> "auspicious transcendental qualities", "What do the great devotees remove?" -> "grave sins"). These are reading comprehension questions, not scripture testing, and must be avoided completely.
+- Do NOT write questions that can be answered by simple grammar matching or context clues.
+- Distractors must be highly plausible, scriptural terms, names, or concepts.
+- If a verse contains ONLY generic, trivial, or introductory statements that do not offer any non-trivial identities, relationships, or unique theology (e.g., Verse 2), you MUST return an empty array of questions (`"questions": []`) for that verse. Do NOT invent trivial questions just to fill a quota.
+
+DENSE VERSE / LINEAGE EXTRACTION RULES:
+- If a verse contains a dense list of relationships, names, or lineage steps (such as the disciplic succession in Verse 22), you MUST systematically extract questions that cover all these steps.
+- Do not stop at a generic limit of 5 questions. For dense verses, mine every single transition or identity. If a lineage has 15 steps, generate questions testing the relationships between those steps so the entire lineage is covered.
 
 DO NOT write questions such as:
 * "According to the text..."
@@ -44,6 +58,7 @@ GOOD:
 * Which associate is identified as Narada Muni?
 * Who compiled the evidence used in Gaura Ganoddesha Dipika?
 * Which member of the Panca-tattva is described as bhakta-sakti?
+* By what process does the verse state that Lord Krsna assumed His golden form in Navadvipa?
 
 BAD:
 * According to the text, who...
@@ -55,9 +70,9 @@ QUESTION PRIORITY
 
 Prefer questions about:
 1. Identities
-2. Previous incarnations
-3. Relationships between personalities
-4. Panca-tattva theology
+2. Characteristics
+3. Previous incarnations
+4. Relationships between personalities
 5. Important claims made by the book
 
 Avoid questions about:
@@ -68,10 +83,11 @@ Avoid questions about:
 unless the verse itself is primarily about those topics.
 
 Requirements:
-- At least 70% must focus on MAIN VERSE.
+- QUANTITY: Maximize the number of questions generated. If the verse is dense (e.g., lists multiple names, identities, lineages, or relationships), mine every single unique fact, identity, relationship, and designation to generate as many distinct, high-quality, non-trivial questions as possible (e.g., 3 to 6 or more questions for rich verses). If a verse is simple or contains no non-trivial mappings, you may generate 0 questions, but for informative verses, be highly thorough and cover every distinct detail.
+- 100% of questions, options, answers, and explanations must focus strictly and exclusively on the MAIN VERSE target text.
 - Exactly 4 options.
 - Exactly 1 correct answer.
-- Include explanation.
+- Include explanation verifying the fact directly from the main verse content.
 - Include difficulty.
 - Use a mixture of:
   - identity questions
@@ -80,11 +96,15 @@ Requirements:
   - meaning questions
   - contextual questions
 
-PREVIOUS VERSE
+<PREVIOUS_CONTEXT_VERSE>
 {previous_verse}
+</PREVIOUS_CONTEXT_VERSE>
 
-MAIN VERSE ({verse_number})
-{verse_text}
+<MAIN_VERSE_TARGET>
+Verse Number: {verse_number}
+Verse Text: {verse_text}
+</MAIN_VERSE_TARGET>
 
-NEXT VERSE
+<NEXT_CONTEXT_VERSE>
 {next_verse}
+</NEXT_CONTEXT_VERSE>
