@@ -8,7 +8,11 @@ interface IdentityMapping {
   previous_forms: string[];
   verse_ref: string;
   verse_text: string;
+  chosen_prev_form?: string;
+  matched_verses?: Array<{ ref: string; text: string }>;
+  other_verses?: string;
 }
+
 
 interface BhaktiRecallProps {
   bookId: string;

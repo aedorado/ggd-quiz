@@ -8,6 +8,9 @@ interface IdentityMapping {
   previous_forms: string[];
   verse_ref: string;
   verse_text: string;
+  chosen_prev_form?: string;
+  matched_verses?: Array<{ ref: string; text: string }>;
+  other_verses?: string;
 }
 
 interface DragTarget {
@@ -102,9 +105,9 @@ export function resolveVerseForEntityForm(
   entityName: string,
   chosenForm: string,
   idData: any
-): { verseRef: string; verseText: string; otherVerses: string } {
+): { verseRef: string; verseText: string; matchedVerses: Array<{ ref: string; text: string }>; otherVerses: string } {
   if (!idData || !idData.entities || !idData.verses) {
-    return { verseRef: "", verseText: "", otherVerses: "" };
+    return { verseRef: "", verseText: "", matchedVerses: [], otherVerses: "" };
   }
 
   // Find the entity key in idData.entities
@@ -112,81 +115,80 @@ export function resolveVerseForEntityForm(
     ([_, ent]: [string, any]) => ent.name === entityName
   );
   if (!entityEntry) {
-    return { verseRef: "", verseText: "", otherVerses: "" };
+    return { verseRef: "", verseText: "", matchedVerses: [], otherVerses: "" };
   }
   const [entityId, entity] = entityEntry as [string, any];
 
-  let matchedVerseRef = "";
+  let matchedVerses: Array<{ ref: string; text: string }> = [];
 
-  if (bookId === "ggd") {
-    // Look up in incarnation_of
-    if (entity.incarnation_of) {
-      const match = entity.incarnation_of.find((inc: any) => {
-        const prevId = typeof inc === "object" && inc !== null ? inc.id : inc;
-        const pEnt = idData.entities[prevId];
-        return (pEnt && pEnt.name === chosenForm) || prevId === chosenForm;
-      });
-      if (match) {
-        matchedVerseRef = typeof match === "object" && match !== null ? match.verse : "";
-      }
-    }
-    // Fallback/Legacy lookup in incarnation_of_verses
-    if (!matchedVerseRef && entity.incarnation_of_verses && entity.incarnation_of) {
-      const match = entity.incarnation_of.find((inc: any) => {
-        const prevId = typeof inc === "object" && inc !== null ? inc.id : inc;
-        const pEnt = idData.entities[prevId];
-        return (pEnt && pEnt.name === chosenForm) || prevId === chosenForm;
-      });
-      const prevId = match ? (typeof match === "object" && match !== null ? match.id : match) : null;
-      if (prevId && entity.incarnation_of_verses[prevId]) {
-        const versesList = entity.incarnation_of_verses[prevId];
-        if (Array.isArray(versesList) && versesList.length > 0) {
-          matchedVerseRef = versesList[0];
-        } else if (typeof versesList === "string") {
-          matchedVerseRef = versesList;
-        }
+  // Look up in incarnation_of
+  if (entity.incarnation_of) {
+    const match = entity.incarnation_of.find((inc: any) => {
+      const prevId = typeof inc === "object" && inc !== null ? inc.id : inc;
+      const pEnt = idData.entities[prevId];
+      return (pEnt && pEnt.name === chosenForm) || prevId === chosenForm;
+    });
+    if (match) {
+      const ref = typeof match === "object" && match !== null ? match.verse : "";
+      const rawVerse = idData.verses[ref];
+      if (rawVerse) {
+        matchedVerses.push({ ref, text: rawVerse.text || rawVerse.content || "" });
       }
     }
   } else if (bookId === "vvs" || bookId === "rkgd") {
     // First, check if it's an attribute
     if (entity.attributes) {
-      const match = entity.attributes.find((a: any) => a.att === chosenForm);
-      if (match) {
-        matchedVerseRef = match.verse;
-      }
+      const matches = entity.attributes.filter((a: any) => a.att === chosenForm);
+      matches.forEach((match: any) => {
+        const ref = match.verse;
+        const rawVerse = idData.verses[ref];
+        if (rawVerse) {
+          matchedVerses.push({ ref, text: rawVerse.text || rawVerse.content || "" });
+        }
+      });
     }
     
-    if (!matchedVerseRef && entity.relations) {
+    if (matchedVerses.length === 0 && entity.relations) {
       // Find relation key
-      const match = entity.relations.find((rel: any) => {
+      const matches = entity.relations.filter((rel: any) => {
         const formattedRel = rel.type.replace(/_/g, " ");
         const capitalizedRel = formattedRel.charAt(0).toUpperCase() + formattedRel.slice(1);
         const targetEntity = idData.entities[rel.target_id];
         const targetName = targetEntity ? targetEntity.name : rel.target_id;
         return chosenForm === `${capitalizedRel}: ${targetName}`;
       });
-      if (match) {
-        matchedVerseRef = match.verse;
-      }
+      matches.forEach((match: any) => {
+        const ref = match.verse;
+        const rawVerse = idData.verses[ref];
+        if (rawVerse) {
+          matchedVerses.push({ ref, text: rawVerse.text || rawVerse.content || "" });
+        }
+      });
     }
   }
 
   // Fallback to first mentioned verse if not found
-  if (!matchedVerseRef) {
-    matchedVerseRef = entity.mentioned_in && entity.mentioned_in.length > 0 ? entity.mentioned_in[0] : "";
+  if (matchedVerses.length === 0) {
+    const fallbackRef = entity.mentioned_in && entity.mentioned_in.length > 0 ? entity.mentioned_in[0] : "";
+    if (fallbackRef) {
+      const rawVerse = idData.verses[fallbackRef];
+      matchedVerses.push({ ref: fallbackRef, text: rawVerse ? rawVerse.text || rawVerse.content || "" : "" });
+    }
   }
 
-  const rawVerse = idData.verses[matchedVerseRef];
-  const verseText = rawVerse ? rawVerse.text || rawVerse.content || "" : "";
+  const primaryRef = matchedVerses[0]?.ref || "";
+  const primaryText = matchedVerses[0]?.text || "";
 
-  // Get other verses
+  // Get other verses (all mentioned_in minus the ones that matched the chosen form)
+  const matchedRefsSet = new Set(matchedVerses.map(v => v.ref));
   const otherVersesList = entity.mentioned_in
-    ? entity.mentioned_in.filter((v: string) => v !== matchedVerseRef)
+    ? entity.mentioned_in.filter((v: string) => !matchedRefsSet.has(v))
     : [];
 
   return {
-    verseRef: matchedVerseRef,
-    verseText,
+    verseRef: primaryRef,
+    verseText: primaryText,
+    matchedVerses,
     otherVerses: otherVersesList.length > 0 ? otherVersesList.join(", ") : ""
   };
 }
