@@ -93,6 +93,99 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
+export function resolveVerseForEntityForm(
+  bookId: string,
+  entityName: string,
+  chosenForm: string,
+  idData: any
+): { verseRef: string; verseText: string; matchedVerses: Array<{ ref: string; text: string }>; otherVerses: string } {
+  if (!idData || !idData.entities || !idData.verses) {
+    return { verseRef: "", verseText: "", matchedVerses: [], otherVerses: "" };
+  }
+
+  // Find the entity key in idData.entities
+  const entityEntry = Object.entries(idData.entities).find(
+    ([_, ent]: [string, any]) => ent.name === entityName
+  );
+  if (!entityEntry) {
+    return { verseRef: "", verseText: "", matchedVerses: [], otherVerses: "" };
+  }
+  const [entityId, entity] = entityEntry as [string, any];
+
+  let matchedVerses: Array<{ ref: string; text: string }> = [];
+
+    // Look up in incarnation_of
+    if (entity.incarnation_of) {
+      const match = entity.incarnation_of.find((inc: any) => {
+        const prevId = typeof inc === "object" && inc !== null ? inc.id : inc;
+        const pEnt = idData.entities[prevId];
+        return (pEnt && pEnt.name === chosenForm) || prevId === chosenForm;
+      });
+      if (match) {
+        const ref = typeof match === "object" && match !== null ? match.verse : "";
+        const rawVerse = idData.verses[ref];
+        if (rawVerse) {
+          matchedVerses.push({ ref, text: rawVerse.text || rawVerse.content || "" });
+        }
+      }
+    } else if (bookId === "vvs" || bookId === "rkgd") {
+    // First, check if it's an attribute
+    if (entity.attributes) {
+      const matches = entity.attributes.filter((a: any) => a.att === chosenForm);
+      matches.forEach((match: any) => {
+        const ref = match.verse;
+        const rawVerse = idData.verses[ref];
+        if (rawVerse) {
+          matchedVerses.push({ ref, text: rawVerse.text || rawVerse.content || "" });
+        }
+      });
+    }
+    
+    if (matchedVerses.length === 0 && entity.relations) {
+      // Find relation key
+      const matches = entity.relations.filter((rel: any) => {
+        const formattedRel = rel.type.replace(/_/g, " ");
+        const capitalizedRel = formattedRel.charAt(0).toUpperCase() + formattedRel.slice(1);
+        const targetEntity = idData.entities[rel.target_id];
+        const targetName = targetEntity ? targetEntity.name : rel.target_id;
+        return chosenForm === `${capitalizedRel}: ${targetName}`;
+      });
+      matches.forEach((match: any) => {
+        const ref = match.verse;
+        const rawVerse = idData.verses[ref];
+        if (rawVerse) {
+          matchedVerses.push({ ref, text: rawVerse.text || rawVerse.content || "" });
+        }
+      });
+    }
+  }
+
+  // Fallback to first mentioned verse if not found
+  if (matchedVerses.length === 0) {
+    const fallbackRef = entity.mentioned_in && entity.mentioned_in.length > 0 ? entity.mentioned_in[0] : "";
+    if (fallbackRef) {
+      const rawVerse = idData.verses[fallbackRef];
+      matchedVerses.push({ ref: fallbackRef, text: rawVerse ? rawVerse.text || rawVerse.content || "" : "" });
+    }
+  }
+
+  const primaryRef = matchedVerses[0]?.ref || "";
+  const primaryText = matchedVerses[0]?.text || "";
+
+  // Get other verses (all mentioned_in minus the ones that matched the chosen form)
+  const matchedRefsSet = new Set(matchedVerses.map(v => v.ref));
+  const otherVersesList = entity.mentioned_in
+    ? entity.mentioned_in.filter((v: string) => !matchedRefsSet.has(v))
+    : [];
+
+  return {
+    verseRef: primaryRef,
+    verseText: primaryText,
+    matchedVerses,
+    otherVerses: otherVersesList.length > 0 ? otherVersesList.join(", ") : ""
+  };
+}
+
 export default function BhaktiRecall({
   bookId,
   playCorrectSound,
@@ -107,10 +200,12 @@ export default function BhaktiRecall({
   const [timeAttack, setTimeAttack] = useState(false);
 
   // Deck states
+  const [rawIdData, setRawIdData] = useState<any>(null);
   const [identities, setIdentities] = useState<IdentityMapping[]>([]);
   const [deck, setDeck] = useState<IdentityMapping[]>([]);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [activeCardVerseIdx, setActiveCardVerseIdx] = useState(0);
 
   // Scoring / metrics
   const [hardCount, setHardCount] = useState(0);
@@ -133,22 +228,28 @@ export default function BhaktiRecall({
         const res = await fetch(`/${bookId}/identities.json`);
         if (res.ok) {
           const idData = await res.json();
+          setRawIdData(idData);
           const flatIdentities: IdentityMapping[] = [];
           
-          if (bookId === "vvs") {
-            if (idData.entities) {
+          if (idData.entities) {
+            if (bookId === "vvs" || bookId === "rkgd") {
               Object.entries(idData.entities).forEach(([entityId, entity]: [string, any]) => {
                 const firstVerseRef = entity.mentioned_in && entity.mentioned_in.length > 0 ? entity.mentioned_in[0] : "";
                 const rawVerse = idData.verses ? idData.verses[firstVerseRef] : null;
                 const verseText = rawVerse ? rawVerse.text : "";
                 
-                const descriptors: string[] = [...(entity.attributes || [])];
+                const descriptors: string[] = [];
+                if (entity.attributes) {
+                  entity.attributes.forEach((attr: any) => {
+                    descriptors.push(attr.att);
+                  });
+                }
                 
                 if (entity.relations) {
-                  Object.entries(entity.relations).forEach(([relType, targetId]: [string, any]) => {
-                    const targetEntity = idData.entities[targetId];
-                    const targetName = targetEntity ? targetEntity.name : targetId;
-                    const formattedRel = relType.replace(/_/g, " ");
+                  entity.relations.forEach((rel: any) => {
+                    const targetEntity = idData.entities[rel.target_id];
+                    const targetName = targetEntity ? targetEntity.name : rel.target_id;
+                    const formattedRel = rel.type.replace(/_/g, " ");
                     const capitalizedRel = formattedRel.charAt(0).toUpperCase() + formattedRel.slice(1);
                     descriptors.push(`${capitalizedRel}: ${targetName}`);
                   });
@@ -161,9 +262,40 @@ export default function BhaktiRecall({
                   verse_text: verseText
                 });
               });
+            } else {
+              // GGD graph-based parsing
+              Object.entries(idData.entities).forEach(([entityId, entity]: [string, any]) => {
+                if (entity.lila === "gaura" && Array.isArray(entity.incarnation_of) && entity.incarnation_of.length > 0) {
+                  const prevForms = entity.incarnation_of.map((inc: any) => {
+                    const prevId = typeof inc === "object" && inc !== null ? inc.id : inc;
+                    const prevEntity = idData.entities[prevId];
+                    return prevEntity ? prevEntity.name : prevId;
+                  });
+
+                  // Resolve the specific verse where the incarnation was described
+                  const firstInc = entity.incarnation_of[0];
+                  const firstVerseRef = typeof firstInc === "object" && firstInc !== null ? (firstInc.verse || "") : "";
+
+                  const rawVerse = idData.verses ? idData.verses[firstVerseRef] : null;
+                  const verseText = rawVerse ? rawVerse.text : "";
+
+                  // All other verses where the entity is mentioned (excluding firstVerseRef)
+                  const otherVersesList = entity.mentioned_in
+                    ? entity.mentioned_in.filter((v: string) => v !== firstVerseRef)
+                    : [];
+
+                  flatIdentities.push({
+                    gaura_name: entity.name,
+                    previous_forms: prevForms,
+                    verse_ref: firstVerseRef,
+                    verse_text: verseText,
+                    other_verses: otherVersesList.length > 0 ? otherVersesList.join(", ") : undefined
+                  } as any);
+                }
+              });
             }
           } else {
-            // Default GGD parsing
+            // Default flat legacy parsing
             Object.entries(idData).forEach(([verseRef, val]: [string, any]) => {
               if (val && Array.isArray(val.identities)) {
                 val.identities.forEach((id: any) => {
@@ -230,14 +362,23 @@ export default function BhaktiRecall({
     const shuffled = shuffle(identities);
     const selected = shuffled.slice(0, Math.min(CARDS_PER_ROUND, shuffled.length)).map(item => {
       const chosen = item.previous_forms[Math.floor(Math.random() * item.previous_forms.length)];
+      
+      // Resolve the verse reference and text dynamically for the chosen form
+      const resolved = resolveVerseForEntityForm(bookId, item.gaura_name, chosen, rawIdData);
+      
       return {
         ...item,
-        chosen_prev_form: chosen
+        chosen_prev_form: chosen,
+        verse_ref: resolved.verseRef || item.verse_ref,
+        verse_text: resolved.verseText || item.verse_text,
+        matched_verses: resolved.matchedVerses,
+        other_verses: resolved.otherVerses || (item as any).other_verses
       };
     });
     setDeck(selected as any);
     setCurrentIdx(0);
     setIsFlipped(false);
+    setActiveCardVerseIdx(0);
     setHardCount(0);
     setGoodCount(0);
     setEasyCount(0);
@@ -292,6 +433,7 @@ export default function BhaktiRecall({
 
     if (currentIdx + 1 < deck.length) {
       setIsFlipped(false);
+      setActiveCardVerseIdx(0);
       setCurrentIdx(prev => prev + 1);
       determineCardDirection(deck[currentIdx + 1]);
     } else {
@@ -321,7 +463,7 @@ export default function BhaktiRecall({
           <span style={{ fontSize: "2.5rem", display: "block", marginBottom: "0.3rem" }}>🎴</span>
           <h2 style={{ color: "var(--saffron)", marginBottom: "0.5rem" }}>Bhakti Recall</h2>
           <p style={{ color: "var(--ink-soft)", fontSize: "0.9rem", marginBottom: "1.2rem", lineHeight: "1.4" }}>
-            {bookId === "vvs"
+            {(bookId === "vvs" || bookId === "rkgd")
               ? "Master the attributes and relations of Vraja's eternal associates and locations using active recall flashcards."
               : "Master the identities of Gaura-lila associates and their original Vraja-lila forms using active recall flashcards."}
           </p>
@@ -337,14 +479,14 @@ export default function BhaktiRecall({
                   onClick={() => setDirection("gaura-to-prev")}
                   style={{ flex: 1, fontSize: "0.8rem", padding: "0.4rem" }}
                 >
-                  {bookId === "vvs" ? "Entity ➔ Clue" : "Gaura ➔ Vraja"}
+                  {(bookId === "vvs" || bookId === "rkgd") ? "Entity ➔ Clue" : "Gaura ➔ Vraja"}
                 </button>
                 <button
                   className={`btn ${direction === "prev-to-gaura" ? "btn-primary" : "btn-secondary"}`}
                   onClick={() => setDirection("prev-to-gaura")}
                   style={{ flex: 1, fontSize: "0.8rem", padding: "0.4rem" }}
                 >
-                  {bookId === "vvs" ? "Clue ➔ Entity" : "Vraja ➔ Gaura"}
+                  {(bookId === "vvs" || bookId === "rkgd") ? "Clue ➔ Entity" : "Vraja ➔ Gaura"}
                 </button>
                 <button
                   className={`btn ${direction === "random" ? "btn-primary" : "btn-secondary"}`}
@@ -453,7 +595,7 @@ export default function BhaktiRecall({
 
                 <div style={{ textAlign: "center", width: "100%", flexGrow: 1, display: "flex", flexDirection: "column", justifyContent: "center", margin: "0.5rem 0", overflowY: "auto" }}>
                   <span style={{ fontSize: "0.75rem", textTransform: "uppercase", color: "var(--ink-soft)", letterSpacing: "1px", display: "block", marginBottom: "0.4rem" }}>
-                    Identify this associate's {bookId === "vvs"
+                    Identify this associate's {(bookId === "vvs" || bookId === "rkgd")
                       ? (cardDirection === "gaura" ? "Attribute / Relation" : "Entity Name")
                       : (cardDirection === "gaura" ? "Vraja form" : "Gaura form")}
                   </span>
@@ -508,19 +650,19 @@ export default function BhaktiRecall({
                   <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "1.2rem", flexWrap: "wrap", marginBottom: "0.8rem" }}>
                     <div>
                       <span style={{ fontSize: "0.7rem", color: "var(--ink-soft)", textTransform: "uppercase", display: "block", marginBottom: "0.2rem" }}>
-                        {bookId === "vvs" ? "Entity Name" : "Gaura Lila"}
+                        {(bookId === "vvs" || bookId === "rkgd") ? "Entity Name" : "Gaura Lila"}
                       </span>
                       <div style={{ fontWeight: "700", color: "var(--ink)", fontSize: "1.25rem" }}>{deck[currentIdx].gaura_name}</div>
                     </div>
                     <span style={{ color: "var(--saffron)", fontWeight: "bold", fontSize: "1.3rem" }}>↔</span>
                     <div>
                       <span style={{ fontSize: "0.7rem", color: "var(--ink-soft)", textTransform: "uppercase", display: "block", marginBottom: "0.2rem" }}>
-                        {bookId === "vvs" ? "Attribute / Relation" : "Vraja Lila"}
+                        {(bookId === "vvs" || bookId === "rkgd") ? "Attribute / Relation" : "Vraja Lila"}
                       </span>
                       <div style={{ fontWeight: "700", color: "var(--ink)", fontSize: "1.25rem" }}>
                         {((deck[currentIdx] as any).chosen_prev_form || deck[currentIdx].previous_forms.join(" / "))}
                       </div>
-                      {bookId !== "vvs" && deck[currentIdx].previous_forms.length > 1 && (
+                      {!(bookId === "vvs" || bookId === "rkgd") && deck[currentIdx].previous_forms.length > 1 && (
                         <div style={{ fontSize: "0.65rem", color: "var(--ink-soft)", marginTop: "0.2rem" }}>
                           Alternative forms: {deck[currentIdx].previous_forms.filter(f => f !== (deck[currentIdx] as any).chosen_prev_form).join(", ")}
                         </div>
@@ -540,10 +682,46 @@ export default function BhaktiRecall({
                     textAlign: "left",
                     width: "100%"
                   }}>
-                    {deck[currentIdx].verse_text}
+                    {deck[currentIdx].matched_verses && deck[currentIdx].matched_verses.length > 0
+                      ? deck[currentIdx].matched_verses[activeCardVerseIdx].text
+                      : deck[currentIdx].verse_text}
                   </div>
+
+                  {deck[currentIdx].matched_verses && deck[currentIdx].matched_verses.length > 1 && (
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%", marginTop: "0.4rem", padding: "0 0.5rem" }}>
+                      <button
+                        className="btn btn-secondary"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActiveCardVerseIdx(prev => (prev - 1 + deck[currentIdx].matched_verses!.length) % deck[currentIdx].matched_verses!.length);
+                        }}
+                        style={{ padding: "0.2rem 0.5rem", fontSize: "0.75rem", minWidth: "auto" }}
+                      >
+                        ◀ Prev
+                      </button>
+                      <span style={{ fontSize: "0.75rem", color: "var(--ink-soft)" }}>
+                        Verse {activeCardVerseIdx + 1} of {deck[currentIdx].matched_verses.length}
+                      </span>
+                      <button
+                        className="btn btn-secondary"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActiveCardVerseIdx(prev => (prev + 1) % deck[currentIdx].matched_verses!.length);
+                        }}
+                        style={{ padding: "0.2rem 0.5rem", fontSize: "0.75rem", minWidth: "auto" }}
+                      >
+                        Next ▶
+                      </button>
+                    </div>
+                  )}
+
                   <div style={{ fontSize: "0.72rem", color: "var(--ink-soft)", marginTop: "0.5rem" }}>
-                    Reference: Verse {deck[currentIdx].verse_ref}
+                    Reference: Verse {deck[currentIdx].matched_verses && deck[currentIdx].matched_verses.length > 0
+                      ? deck[currentIdx].matched_verses[activeCardVerseIdx].ref
+                      : deck[currentIdx].verse_ref}
+                    {deck[currentIdx].other_verses && (
+                      <span> (also mentioned in Verse {deck[currentIdx].other_verses})</span>
+                    )}
                   </div>
                 </div>
 
@@ -622,7 +800,7 @@ export default function BhaktiRecall({
           <span style={{ fontSize: "3rem" }}>🎉</span>
           <h2 style={{ color: "var(--correct)", margin: "0.5rem 0" }}>Session Complete!</h2>
           <p style={{ color: "var(--ink-soft)", fontSize: "0.9rem", marginBottom: "2rem" }}>
-            {bookId === "vvs"
+            {(bookId === "vvs" || bookId === "rkgd")
               ? "You reviewed the card deck and reinforced your memory of Vraja's eternal associates, locations, and pastimes."
               : "You reviewed the card deck and reinforced your memory of Lord Caitanya's divine associates."}
           </p>

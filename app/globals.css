@@ -1038,6 +1038,7 @@ footer .foot-copy {
 .badge-text-short {
   display: none;
 }
+
 .nav-actions {
   display: flex;
   align-items: center;
@@ -1056,13 +1057,17 @@ footer .foot-copy {
   .badge-text-long {
     display: none;
   }
+
   .badge-text-short {
     display: inline;
   }
+
   .nav-actions {
     gap: 0.6rem;
   }
-  .rank-badge, .streak-badge {
+
+  .rank-badge,
+  .streak-badge {
     padding: 0.2rem 0.5rem;
     font-size: 0.68rem;
   }
@@ -1306,11 +1311,11 @@ footer .foot-copy {
   border-radius: inherit;
   pointer-events: none;
   opacity: 0;
-  
+
   /* Intense glow state for Gauri (default) */
   border: 1px solid var(--saffron-lt);
   box-shadow: 0 8px 30px rgba(200, 114, 42, 0.25), 0 0 20px rgba(212, 168, 67, 0.2);
-  
+
   /* Hardware acceleration hint */
   will-change: opacity;
   animation: auraPulseGauriGPU 3s ease-in-out infinite alternate;
@@ -1716,7 +1721,7 @@ footer .foot-copy {
   max-height: 90vh;
   display: flex;
   flex-direction: column;
-  box-shadow: 
+  box-shadow:
     0 15px 45px rgba(0, 0, 0, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.4);
   position: relative;
@@ -2273,7 +2278,7 @@ footer .foot-copy {
   flex-direction: column;
 }
 
-.ranks-guide-details > div {
+.ranks-guide-details>div {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -2341,7 +2346,7 @@ footer .foot-copy {
   width: min(500px, 94vw);
   padding: 3rem 2.5rem;
   text-align: center;
-  box-shadow: 
+  box-shadow:
     0 25px 60px rgba(0, 0, 0, 0.5),
     0 0 40px rgba(212, 168, 67, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -2353,7 +2358,7 @@ footer .foot-copy {
 [data-theme="shyama"] .levelup-card {
   background: radial-gradient(circle at top, rgba(16, 185, 129, 0.15) 0%, #0e1320 100%);
   border-color: var(--saffron);
-  box-shadow: 
+  box-shadow:
     0 25px 60px rgba(0, 0, 0, 0.6),
     0 0 40px rgba(16, 185, 129, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -2517,26 +2522,95 @@ footer .foot-copy {
 
 /* ── ANIMATIONS ── */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes scaleUp {
-  from { opacity: 0; transform: scale(0.85); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes rotateGlow {
-  0% { transform: translateX(-50%) rotate(0deg); }
-  100% { transform: translateX(-50%) rotate(360deg); }
+  0% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translateX(-50%) rotate(360deg);
+  }
 }
 
 @keyframes beatHeart {
-  from { transform: scale(1); }
-  to { transform: scale(1.1); }
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.1);
+  }
+}
+
+/* ── YAKSHA PRASHNA OPTION BUTTON THEMING ── */
+.yaksha-option-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.yaksha-option-btn:disabled:not(.correct):not(.wrong) {
+  color: var(--ink-mid) !important;
+}
+.yaksha-option-btn.correct:disabled {
+  color: var(--correct) !important;
+  opacity: 1;
+}
+.yaksha-option-btn.wrong:disabled {
+  color: var(--wrong) !important;
+  opacity: 1;
+}
+
+/* ── TELEPORTATION VISUAL EFFECTS ── */
+.teleporting-effect {
+  animation: teleportSpinOut 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+}
+
+@keyframes teleportSpinOut {
+  0% {
+    transform: scale(1.1) rotate(0deg);
+    opacity: 1;
+    filter: hue-rotate(0deg) blur(0px);
+  }
+  50% {
+    transform: scale(0.6) rotate(180deg);
+    opacity: 0.5;
+    filter: hue-rotate(90deg) blur(2px);
+  }
+  100% {
+    transform: scale(0) rotate(720deg);
+    opacity: 0;
+    filter: hue-rotate(180deg) blur(5px);
+  }
 }

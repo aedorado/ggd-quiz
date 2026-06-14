@@ -60,8 +60,9 @@ CROSSWORD_SCHEMA = {
                     "clue": {
                         "type": "STRING",
                         "description": (
-                            "A short, evocative crossword clue (10-20 words). Fill-in-the-blank style. "
-                            "Devotional, precise, and unique — only one answer fits this clue."
+                            "A short, simple, and direct crossword clue (8-20 words). "
+                            "It should be factual and easy to understand, focusing on identities/previous births, "
+                            "books written, locations, or prominent distinguishable activities/attributes."
                         )
                     }
                 }
@@ -171,11 +172,21 @@ _ENGLISH_BLOCKLIST = {
 }
 
 
+def normalize_canonical_id(cid):
+    if cid == 'caitanya_mahaprabhu':
+        return 'CAITANYA'
+    return cid.replace('_', '').upper()
+
+
+THEOLOGICAL_BLOCKLIST = {
+    "BHAKTA", "AVATARA", "SAKTI", "POTENCY", "TATTVAM", "DEVOTEE", "TRUTH", "GROUP", "PERSONALITY", "LOCATION"
+}
+
+
 def _sanitize_clues(clues: list) -> list:
     """
     Post-process clues from the model:
     - Strip diacritics / non-A-Z from the word field
-    - Enforce 4–15 letter length
     - Reject common English words (must be proper nouns / Sanskrit terms)
     - Deduplicate by word
     """
@@ -190,11 +201,8 @@ def _sanitize_clues(clues: list) -> list:
         word = re.sub(r"[^A-Za-z]", "", word).upper()
         if not word or not clue:
             continue
-        if len(word) < 4 or len(word) > 22:
-            rejected.append(f"{word} (length)")
-            continue
-        if word in _ENGLISH_BLOCKLIST:
-            rejected.append(f"{word} (generic English)")
+        if word in _ENGLISH_BLOCKLIST or word in THEOLOGICAL_BLOCKLIST:
+            rejected.append(f"{word} (generic/theological)")
             continue
         if word in seen:
             continue
@@ -202,6 +210,81 @@ def _sanitize_clues(clues: list) -> list:
         clean.append({"word": word, "clue": clue})
     if rejected:
         print(f"    ⚠ Rejected {len(rejected)} generic words: {rejected}")
+    return clean
+
+
+SYSTEM_INSTRUCTION = (
+    ""
+)
+
+
+def generate_clues_from_extractions(client, model, prompt_template, current_verse, entities):
+    candidates_text = ""
+    allowed_words = set()
+    for ent in entities:
+        normalized_word = normalize_canonical_id(ent["canonical_id"])
+        if normalized_word in _ENGLISH_BLOCKLIST or normalized_word in THEOLOGICAL_BLOCKLIST:
+            continue
+        attributes = ent.get("attributes", [])
+        if not attributes:
+            continue
+        allowed_words.add(normalized_word)
+        candidates_text += f"\n- ANSWER: {normalized_word}\n  DISPLAY NAME: {ent.get('display_name', '')}\n  ATTRIBUTES EXTRACTED FROM VERSE:\n"
+        for att in attributes:
+            candidates_text += f"    * {att}\n"
+
+    if not allowed_words:
+        return []
+
+    prompt = f"""{prompt_template}
+
+We have already extracted the exact entities and their attributes for the MAIN VERSE ({current_verse["verse_number"]}) below.
+You MUST generate crossword clues ONLY for the following candidate answers using ONLY their provided attributes.
+Do NOT generate clues for any other words.
+Do NOT add any details, historical facts, or theological concepts that are not explicitly present in the provided attributes.
+Keep clues short (8-20 words), simple, direct, and factual. Do NOT use flowery, poetic, or cheesy language.
+
+CRITICAL RULE FOR CLUES:
+- The clue MUST NOT contain the answer itself, nor any parts of the answer. E.g., if the answer is "SRISAMPRADAYA", you MUST NOT use the words "Sri" or "sampradaya" in the clue. 
+- You can and SHOULD freely use the names of OTHER personalities (e.g., "Caitanya", "Nityananda", "Krsna") to provide clear and unambiguous context. Do NOT mask names of other characters.
+- Do NOT use relative, index-based, or ordinal references like "the first personality", "the second personality", "the former", "the latter", etc. Refer to other entities by their actual names.
+
+CANDIDATES:
+{candidates_text}
+
+MAIN VERSE ({current_verse["verse_number"]})
+{current_verse["verse_text"]}
+"""
+
+    response = client.models.generate_content(
+        model=model,
+        contents=prompt,
+        config={
+            "response_mime_type": "application/json",
+            "response_schema": CROSSWORD_SCHEMA,
+            "system_instruction": SYSTEM_INSTRUCTION,
+        },
+    )
+    raw = json.loads(response.text)
+    clues = raw.get("clues", [])
+    
+    # We sanitize the output but map it to our validated canonical IDs to ensure exact mapping
+    seen = set()
+    clean = []
+    
+    for item in clues:
+        word = item.get("answer") or item.get("word", "")
+        clue = item.get("clue", "").strip()
+        word = re.sub(r"[^A-Za-z]", "", word).upper()
+        if not word or not clue:
+            continue
+        if word not in allowed_words:
+            continue
+        if word in seen:
+            continue
+        seen.add(word)
+        clean.append({"word": word, "clue": clue})
+        
     return clean
 
 
@@ -220,6 +303,7 @@ def generate_clues(client, model, prompt_template, previous_verse, current_verse
         config={
             "response_mime_type": "application/json",
             "response_schema": CROSSWORD_SCHEMA,
+            "system_instruction": SYSTEM_INSTRUCTION,
         },
     )
     raw = json.loads(response.text)
@@ -227,10 +311,13 @@ def generate_clues(client, model, prompt_template, previous_verse, current_verse
     return _sanitize_clues(clues)
 
 
-def generate_with_retry(client, model, prompt_template, previous_verse, current_verse, next_verse, max_retries=5):
+def generate_with_retry(client, model, prompt_template, previous_verse, current_verse, next_verse, extractions_entities=None, max_retries=5):
     for attempt in range(max_retries):
         try:
-            return generate_clues(client, model, prompt_template, previous_verse, current_verse, next_verse)
+            if extractions_entities is not None:
+                return generate_clues_from_extractions(client, model, prompt_template, current_verse, extractions_entities)
+            else:
+                return generate_clues(client, model, prompt_template, previous_verse, current_verse, next_verse)
         except Exception as e:
             if attempt == max_retries - 1:
                 raise
@@ -295,6 +382,16 @@ def main():
         questions_out = book_cfg.get("output_file", f"public/{args.book}/questions.json")
         output_path = Path(questions_out).parent / "crosswords.json"
 
+    # ── Extractions path ───────────────────────────────────
+    extractions_path = output_path.parent / "raw_extractions.json"
+    if extractions_path.exists():
+        print(f"Found entity extractions at {extractions_path}. Will generate clues based strictly on extracted entities.")
+        with open(extractions_path, "r", encoding="utf-8") as f:
+            extractions_data = json.load(f)
+    else:
+        print("No extractions found. Using raw verse text mode.")
+        extractions_data = {}
+
     # ── Prompt file ────────────────────────────────────────
     if args.prompt_file:
         prompt_file = Path(args.prompt_file)
@@ -324,27 +421,43 @@ def main():
     verses = load_verses(input_file)
     print(f"Found {len(verses)} verses.")
 
-    # ── Resume from existing progress ──────────────────────
-    data = {}
+    # ── Resume from existing progress (2-pass check) ──────
+    raw_output_path = output_path.with_name(output_path.stem + "_raw.json")
+    raw_data = {}
     completed = set()
-    if output_path.exists():
+
+    # If raw file exists, use it. If not, but old output exists, migrate it.
+    if raw_output_path.exists():
+        try:
+            with open(raw_output_path, "r", encoding="utf-8") as f:
+                raw_data = json.load(f)
+            completed = set(raw_data.keys())
+            print(f"Loaded {len(completed)} completed verses from raw progress: {raw_output_path}")
+        except Exception as e:
+            print(f"Warning: Could not load raw progress file: {e}. Starting fresh.")
+    elif output_path.exists():
         try:
             with open(output_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-            completed = set(data.keys())
-            print(f"Loaded {len(completed)} already-completed verses from {output_path}.")
+                temp_data = json.load(f)
+            # Check if this is the old verse-level format (keys are digits)
+            is_old_format = any(k.isdigit() for k in temp_data.keys())
+            if is_old_format:
+                raw_data = temp_data
+                completed = set(raw_data.keys())
+                print(f"Migrated {len(completed)} completed verses from old format in {output_path}")
         except Exception as e:
-            print(f"Warning: Could not load existing file: {e}. Starting fresh.")
+            print(f"Warning: Could not check old output file: {e}")
 
     # ── Generation loop ────────────────────────────────────
     delay = 60.0 / args.rpm
     print(f"\nStarting crossword generation (model={args.model}, RPM={args.rpm}, delay={delay:.1f}s)...")
-    print(f"Output → {output_path}\n")
+    print(f"Intermediate Raw Progress → {raw_output_path}")
+    print(f"Final Normalized Output  → {output_path}\n")
 
     total_clues = 0
     for idx, verse in enumerate(verses):
         verse_id = verse["verse_number"]
-        if verse_id in completed:
+        if str(verse_id) in completed:
             print(f"[{idx+1}/{len(verses)}] Verse {verse_id} — already done, skipping.")
             continue
 
@@ -354,6 +467,10 @@ def main():
         print(f"[{idx+1}/{len(verses)}] Generating clues for Verse {verse_id}...")
 
         try:
+            extractions_entities = None
+            if str(verse_id) in extractions_data:
+                extractions_entities = extractions_data[str(verse_id)].get("entities", [])
+
             clues = generate_with_retry(
                 client,
                 args.model,
@@ -361,15 +478,40 @@ def main():
                 previous_verse,
                 verse,
                 next_verse,
+                extractions_entities=extractions_entities,
                 max_retries=args.max_retries,
             )
 
-            data[verse_id] = {
+            # 1. Update and save the raw verse-level data
+            raw_data[str(verse_id)] = {
                 "verse_text": verse["verse_text"],
-                "clues": clues,
+                "clues": clues
             }
+            save_data_atomic(raw_output_path, raw_data)
 
-            save_data_atomic(output_path, data)
+            # 2. Compile raw data to normalized format: {"verses": ..., "words": ...}
+            normalized_verses = {}
+            normalized_words = {}
+            for v_id, v_info in raw_data.items():
+                v_text = v_info["verse_text"]
+                normalized_verses[str(v_id)] = v_text
+                for c in v_info["clues"]:
+                    word = c["word"]
+                    clue_item = {
+                        "clue": c["clue"],
+                        "verse": str(v_id)
+                    }
+                    if word not in normalized_words:
+                        normalized_words[word] = []
+                    # Avoid duplicates
+                    if not any(x["verse"] == str(v_id) for x in normalized_words[word]):
+                        normalized_words[word].append(clue_item)
+
+            normalized_data = {
+                "verses": normalized_verses,
+                "words": normalized_words
+            }
+            save_data_atomic(output_path, normalized_data)
             total_clues += len(clues)
             print(f"  ✓ Saved Verse {verse_id} → {len(clues)} clues: {[c['word'] for c in clues]}")
 
@@ -381,9 +523,11 @@ def main():
 
     print(f"\n{'='*60}")
     print(f"Generation COMPLETE")
-    print(f"  Verses processed : {len(data)}")
-    print(f"  Total clues      : {total_clues}")
-    print(f"  Output file      : {output_path}")
+    # Safe reference to actual words object
+    final_words = normalized_data.get("words", {}) if 'normalized_data' in locals() else {}
+    print(f"  Total unique words: {len(final_words)}")
+    print(f"  Total clues       : {total_clues}")
+    print(f"  Output file       : {output_path}")
     print(f"{'='*60}")
 
 

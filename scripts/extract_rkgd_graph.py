@@ -15,7 +15,7 @@ SINGLE_ENTITY_SCHEMA = {
     "properties": {
         "canonical_id": {
             "type": "STRING",
-            "description": "Standardised lowercase snake_case ID (e.g. 'krsna', 'balarama', 'radha_kunda', 'nanda_maharaja', 'yasoda', 'padmagandha_bull')."
+            "description": "Standardised lowercase snake_case ID (e.g. 'krsna', 'balarama', 'radha_kunda', 'nanda_maharaja', 'yasoda')."
         },
         "display_name": {
             "type": "STRING",
@@ -43,7 +43,7 @@ SINGLE_ENTITY_SCHEMA = {
                     },
                     "target_id": {
                         "type": "STRING",
-                        "description": "The canonical_id of the target entity in Vraja (e.g. 'krsna', 'radharani', 'syama_kunda')."
+                        "description": "The canonical_id of the target entity (e.g. 'krsna', 'radharani')."
                     }
                 }
             },
@@ -94,7 +94,7 @@ RESOLVER_RESPONSE_SCHEMA = {
 RESOLVER_PROMPT = """
 You are an expert scriptural entity resolution assistant specializing in Gaudiya Vaishnava history and theology.
 
-Your task is to analyze a list of entities that were extracted from different verses of 'Vraja Vilasa Stava'. Because the extraction was done verse-by-verse, some different personalities or objects who share the same name (or similar names) have been naively assigned the same 'canonical_id'.
+Your task is to analyze a list of entities that were extracted from different verses of 'Radha Krishna Ganoddesha Dipika'. Because the extraction was done verse-by-verse, some different personalities or objects who share the same name (or similar names) have been naively assigned the same 'canonical_id'.
 
 You need to identify which of these IDs represent multiple distinct real-world personalities, locations, animals, or objects, and suggest a distinct 'resolved_id' for each distinct entity.
 
@@ -107,7 +107,7 @@ Follow these strict rules to decide if occurrences belong to the SAME entity:
    - Example: 'Hiranyangi' described as "born of Harini-devi" (mother), "born to a deer" (harini translates to female deer), "friend of Radha", and "daughter of Mahavasu" (father) is the SAME person. These details are completely consistent with a single person. Do NOT split them.
    - Example: 'Jatila' described as "Radharani's mother-in-law" in one verse, "living in Javata" in another, and "sister of mother of Daksina-devi" in a third is the SAME famous Jatila-devi. Do NOT split them.
 2. RULE OF NARRATIVE SEQUENCE: Verses of a scripture often describe the same person in contiguous blocks of verses (e.g. introducing her, then describing her beauty, then her parents, then her marriage). If the name appears in adjacent/close verses, they are almost always the same person.
-3. ONCE-PER-ERA: For eternal associates or pastimes in Vraja-lila (such as in VVS), there is typically only ONE primary character per name (e.g., only one gopi named Kalavati, only one gopa named Sridama, only one mother-in-law named Jatila).
+3. ONCE-PER-ERA: For eternal associates or pastimes in Vraja-lila (such as in RKGD), there is typically only ONE primary character per name (e.g., only one gopi named Kalavati, only one gopa named Sridama, only one mother-in-law named Jatila).
 
 Only split (i.e., output remapping rules) if there is DIRECT CONTRADICTION, such as:
 - Different entity types (e.g. one is a person, another is an animal, another is a river/location).
@@ -220,7 +220,9 @@ def resolve_entity_collisions(client, model, raw_extractions):
 def load_verses(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
-    verses = data.get("vraja_vilasa_stava", [])
+    
+    key = "sri_sri_radha_krsna-ganoddesa-dipika"
+    verses = data.get(key, [])
     parsed = []
     for item in verses:
         parsed.append({
@@ -229,8 +231,18 @@ def load_verses(file_path):
         })
     return parsed
 
-def extract_identities(client, model, prompt_template, current_verse):
-    prompt = prompt_template.replace(
+def extract_identities(client, model, prompt_template, current_verse, prev_verse=None):
+    prompt = prompt_template
+    if prev_verse:
+        context_str = (
+            f"PRECEEDING CONTEXT (Preceding Verse {prev_verse['verse_number']}):\n"
+            f"{prev_verse['verse_text']}\n\n"
+            f"Note: Use this preceding context ONLY to resolve pronouns or ambiguous entities in the main verse. "
+            f"Do not extract new entities or attributes that exist ONLY in this preceding context.\n\n"
+        )
+        prompt = prompt.replace("MAIN VERSE", f"{context_str}MAIN VERSE")
+
+    prompt = prompt.replace(
         "{verse_number}", current_verse["verse_number"]
     ).replace(
         "{verse_text}", current_verse["verse_text"]
@@ -246,10 +258,10 @@ def extract_identities(client, model, prompt_template, current_verse):
     )
     return json.loads(response.text).get("entities", [])
 
-def extract_with_retry(client, model, prompt_template, current_verse, max_retries=5):
+def extract_with_retry(client, model, prompt_template, current_verse, prev_verse=None, max_retries=5):
     for attempt in range(max_retries):
         try:
-            return extract_identities(client, model, prompt_template, current_verse)
+            return extract_identities(client, model, prompt_template, current_verse, prev_verse)
         except Exception as e:
             if attempt == max_retries - 1:
                 raise
@@ -259,10 +271,10 @@ def extract_with_retry(client, model, prompt_template, current_verse, max_retrie
 
 def main():
     model = "gemini-3.1-flash-lite"
-    input_file = "public/vvs/vvs.json"
-    raw_extractions_file = "public/vvs/raw_extractions.json"
-    output_file = "public/vvs/identities.json"
-    prompt_file = "public/vvs/graph_prompt.txt"
+    input_file = "public/rkgd/rkgd.json"
+    raw_extractions_file = "public/rkgd/raw_extractions.json"
+    output_file = "public/rkgd/identities.json"
+    prompt_file = "public/rkgd/graph_prompt.txt"
 
     if not Path(prompt_file).exists():
         print(f"Error: Prompt file not found at {prompt_file}")
@@ -296,13 +308,15 @@ def main():
             print(f"Warning: Could not load raw extractions file: {e}. Starting fresh.")
 
     # RPM limit delay
-    delay_between_requests = 15.0
+    delay_between_requests = 4.5
 
     print("Starting extraction loop...")
     for idx, verse in enumerate(verses):
         verse_id = verse["verse_number"]
         if verse_id in completed_verses:
             continue
+
+        prev_verse = verses[idx - 1] if idx > 0 else None
 
         print(f"[{idx+1}/{len(verses)}] Extracting entities for Verse {verse_id}...")
         try:
@@ -311,6 +325,7 @@ def main():
                 model, 
                 prompt_template, 
                 verse,
+                prev_verse,
                 max_retries=3
             )
             
@@ -344,7 +359,6 @@ def main():
     normalized_verses = {}
     
     for verse_id, data in raw_extractions.items():
-        verse_num = int(verse_id)
         normalized_verses[verse_id] = {
             "text": data["verse_text"],
             "entities": []
@@ -359,7 +373,6 @@ def main():
             display_name = ent.get("display_name", "").strip()
             ent_type = ent.get("type", "personality")
             
-            # Skip if this is an empty list or invalid
             if not display_name:
                 display_name = cid.replace("_", " ").title()
                 
@@ -372,9 +385,8 @@ def main():
                     "mentioned_in": []
                 }
             
-            # Choose the most descriptive name (e.g. with diacritics)
+            # Choose the most descriptive name (preferring diacritics)
             current_name = normalized_entities[cid]["name"]
-            # Prefer names with diacritics (letters like Ś, ś, Ā, ā, Ṛ, ṛ, Ṇ, ṇ, Ṭ, ṭ, Ī, ī, Ū, ū)
             diacritical_chars = set("āīūṛḷṅñṭḍṇśṣhḥṁ")
             has_diacritics = lambda s: any(c in diacritical_chars for c in s.lower())
             
@@ -416,16 +428,21 @@ def main():
                         })
                     
             # Add mention
-            if verse_num not in normalized_entities[cid]["mentioned_in"]:
-                normalized_entities[cid]["mentioned_in"].append(verse_num)
+            if verse_id not in normalized_entities[cid]["mentioned_in"]:
+                normalized_entities[cid]["mentioned_in"].append(verse_id)
                 
             # Link entity to verse
             if cid not in normalized_verses[verse_id]["entities"]:
                 normalized_verses[verse_id]["entities"].append(cid)
                 
     # Sort mentioned_in lists
+    def clean_sort_key(v_id):
+        import re
+        m = re.match(r'\d+', str(v_id))
+        return int(m.group(0)) if m else 9999
+        
     for cid in normalized_entities:
-        normalized_entities[cid]["mentioned_in"].sort()
+        normalized_entities[cid]["mentioned_in"].sort(key=clean_sort_key)
         
     final_graph = {
         "entities": normalized_entities,

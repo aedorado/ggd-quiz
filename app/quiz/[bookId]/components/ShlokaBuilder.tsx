@@ -46,7 +46,7 @@ function shuffle<T>(arr: T[]): T[] {
 // Cleans words by removing Sanskrit-specific punctuation, numerals, and brackets
 const cleanWords = (text: string, isDevanagari: boolean): string[] => {
   if (!text) return [];
-  const tokens = text.split(/\s+/);
+  const tokens = text.split(/[\s\-]+/);
   return tokens
     .map(token => {
       let cleaned = token.trim();
@@ -89,6 +89,7 @@ export default function SlokaBuilder({
   const [assembled, setAssembled] = useState<(AssembledItem | null)[]>([]);
   const [isChecked, setIsChecked] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [isSwapped, setIsSwapped] = useState(false);
 
   // Scoring States
   const [slokaXp, setSlokaXp] = useState(GAMIFICATION_CONFIG.xpRewards.builderBase || 10);
@@ -214,7 +215,7 @@ export default function SlokaBuilder({
     setupVerse(selected[0], isDevanagari);
   };
 
-  const setupVerse = (verse: Verse, useDevanagari: boolean) => {
+  const setupVerse = (verse: Verse, useDevanagari: boolean, keepSwapped = false) => {
     const targetText = useDevanagari ? (verse.devanagari || verse.verse_text) : verse.verse_text;
     const words = cleanWords(targetText, useDevanagari);
 
@@ -228,14 +229,20 @@ export default function SlokaBuilder({
     setAssembled(new Array(words.length).fill(null));
     setIsChecked(false);
     setIsCorrect(false);
-    setSlokaXp(GAMIFICATION_CONFIG.xpRewards.builderBase || 10);
+    if (keepSwapped) {
+      setSlokaXp(0);
+      setIsSwapped(true);
+    } else {
+      setSlokaXp(GAMIFICATION_CONFIG.xpRewards.builderBase || 10);
+      setIsSwapped(false);
+    }
   };
 
   // Switch Script and Reset Current Progress
   const handleScriptToggle = (checkedDevanagari: boolean) => {
     setIsDevanagari(checkedDevanagari);
     if (gameState === "active" && roundVerses[currentIdx]) {
-      setupVerse(roundVerses[currentIdx], checkedDevanagari);
+      setupVerse(roundVerses[currentIdx], checkedDevanagari, isSwapped);
     }
   };
 
@@ -388,14 +395,41 @@ export default function SlokaBuilder({
 
   // Reset current verse progress
   const handleReset = () => {
-    setupVerse(roundVerses[currentIdx], isDevanagari);
+    setupVerse(roundVerses[currentIdx], isDevanagari, isSwapped);
+  };
+
+  // Change the current shloka, reward goes to 0 XP, can be done unlimited times
+  const handleChangeShloka = () => {
+    if (isChecked && isCorrect) return;
+
+    // Filter allVerses to find ones not currently in roundVerses
+    const usedVerseNumbers = new Set(roundVerses.map(v => v.verse_number));
+    let available = allVerses.filter(v => !usedVerseNumbers.has(v.verse_number));
+
+    // If no unused verses are available, allow any verse except the current one
+    if (available.length === 0) {
+      available = allVerses.filter(v => v.verse_number !== currentVerse.verse_number);
+    }
+
+    if (available.length === 0) return;
+
+    const newVerse = available[Math.floor(Math.random() * available.length)];
+
+    // Update roundVerses at currentIdx
+    setRoundVerses(prev => {
+      const next = [...prev];
+      next[currentIdx] = newVerse;
+      return next;
+    });
+
+    setupVerse(newVerse, isDevanagari, true);
   };
 
   // Next Verse or Complete Game
   const handleNext = () => {
     if (currentIdx + 1 < roundVerses.length) {
       setCurrentIdx(prev => prev + 1);
-      setupVerse(roundVerses[currentIdx + 1], isDevanagari);
+      setupVerse(roundVerses[currentIdx + 1], isDevanagari, false);
     } else {
       finishGame();
     }
@@ -779,6 +813,9 @@ export default function SlokaBuilder({
               </button>
               <button className="btn btn-secondary" onClick={handleReset} disabled={assembled.every(slot => slot === null) || (isChecked && isCorrect)}>
                 Reset
+              </button>
+              <button className="btn btn-secondary" onClick={handleChangeShloka} disabled={isChecked && isCorrect}>
+                🔄 Change Shloka
               </button>
               <button className="btn btn-secondary" onClick={handleHint} disabled={(isChecked && isCorrect) || slokaXp === 0}>
                 💡 Hint

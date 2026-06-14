@@ -38,7 +38,9 @@
       "memory",
       "drag-drop",
       "recall",
-      "crossword"
+      "crossword",
+      "guesser",
+      "pathfinder"
     ]
   },
   "rkgd": {
@@ -57,6 +59,15 @@
     "verse": "\"I offer my respectful obeisances to the two lotus feet of Srimati Radharani. I offer my respectful obeisances to Lord Nandanandana, who is surrounded by the gopis and enchants the minds of the residents of Vrndavana.\"",
     "input_file": "public/rkgd/rkgd.json",
     "output_file": "public/rkgd/questions.json",
+    "enabled_modes": [
+      "quiz",
+      "memory",
+      "drag-drop",
+      "recall",
+      "crossword",
+      "guesser",
+      "pathfinder"
+    ],
     "parts": [
       {
         "id": "brihad",
@@ -92,7 +103,9 @@
       "memory",
       "drag-drop",
       "recall",
-      "crossword"
+      "crossword",
+      "guesser",
+      "pathfinder"
     ]
   },
   "skk": {

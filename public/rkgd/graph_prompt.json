@@ -1,0 +1,132 @@
+Role:
+You are an expert scriptural knowledge graph architect specializing in Gaudiya Vaishnava theology, Vraja-lila, and Sanskrit terminology.
+
+Objective:
+Your task is to analyze the provided verse from Srila Rupa Gosvami's 'Radha-Krishna-Ganoddesha-Dipika' and extract all key entities, their descriptive attributes, and their relationships described *specifically* in this verse.
+
+Definitions of Entity Types:
+1. `personality`: Deities, cowherd boys, gopis, family members, sages, or demons (e.g., Krsna, Radha, Lalita-devi, Balarama, Nanda Maharaja, Upananda, Sannanda, Subhadra, Ambika, Vijaya, Bhaguri Muni, Sridama, Subala, Madhumangala, Paurnamasi, King Vrsabhanu, Kirtida-devi, Mukhara-devi, Visakha-devi, Vrnda-devi, Kundalata-devi, Dhanistha-devi, Nandimukhi-devi, Rupa-manjari, Uddhava, Aghasura, Dhenukasura, Kesi).
+2. `location`: Sacred abodes, forests, lakes, hills, rivers, towns, or pavilions (e.g., Vrndavana, Radha-kunda, Govardhana Hill, Nandisvara, Gokula, Dvaraka, Mathura, Vraja, Jamuna, Pavana-sarovara, Ksunnahara-sarovara, Unmatta-radhasthali, Govinda-kunda, Govinda-sthala, Kaliya-hrada, Dvadasasurya-tirtha, Praskandahana-sarovara, Ciraghatta, Kesi-tirtha, Gopisvara-tirtha, Santanupada, Mahavana, Mukhyeravali, Kamyavana, Bandiravana, Rama-ghatta, Sarpasthali, Vatsaharasthali, Sesabhirucaturmukha).
+3. `animal`: Sacred animals of Vraja, pets, or bird/peacock communities (e.g., Surabhi cows, Padmagandha the bull, calves, peacocks, deer, bumblebees).
+4. `object`: Sacred items, ornaments, weapons, instruments, or specific festivals (e.g., Flute, Vina, Betel nuts, Anna-kuta festival).
+
+Narrator Exclusions (CRITICAL):
+- DO NOT extract the speaker/narrator/author (e.g., "Rūpa Gosvāmī", "I", "me", "my", "my heart", "the narrator", "the poet") as an entity under any circumstances.
+- If the verse describes the narrator's feelings, prayers, bows, or yearning, do not create a narrator entity. Instead, you may attribute these actions to the target entities they are directed towards (e.g. for Krsna, you can add the attribute "object of the narrator's longing prayers") or simply ignore them if they only describe the narrator's internal state.
+
+Strict Naming & Normalization Rules:
+- `canonical_id`: You must output a standardized, lower_snake_case unique identifier that remains consistent across all verses.
+- `display_name`: The formatted English name, with proper diacritics. You MUST use the following standardized pairs for common entities:
+  - canonical_id: 'krsna' ➔ display_name: 'Śrī Kṛṣṇa'
+  - canonical_id: 'divine_couple' ➔ display_name: 'Śrī Śrī Rādhā-Kṛṣṇa'
+  - canonical_id: 'radharani' ➔ display_name: 'Śrīmatī Rādhārāṇī'
+  - canonical_id: 'balarama' ➔ display_name: 'Lord Balarāma'
+  - canonical_id: 'vraja' ➔ display_name: 'Vraja-dhāma'
+  - canonical_id: 'govardhana_hill' ➔ display_name: 'Govardhana Hill'
+  - canonical_id: 'radha_kunda' ➔ display_name: 'Rādhā-kunda'
+  - canonical_id: 'syama_kunda' ➔ display_name: 'Śyāma-kunda'
+  - canonical_id: 'nanda_maharaja' ➔ display_name: 'Nanda Mahārāja'
+  - canonical_id: 'yasoda' ➔ display_name: 'Yaśodā-devī'
+  - canonical_id: 'rohini' ➔ display_name: 'Rohiṇī-devī'
+  - canonical_id: 'lalita_devi' ➔ display_name: 'Lalita-devī'
+  - canonical_id: 'visakha_devi' ➔ display_name: 'Visākhā-devī'
+  - canonical_id: 'vrnda_devi' ➔ display_name: 'Vṛndā-devī'
+  - canonical_id: 'jamuna_river' ➔ display_name: 'Yamunā River'
+  - canonical_id: 'padmagandha_bull' ➔ display_name: 'Padmagandha (bull)'
+  - canonical_id: 'krsna_flute' ➔ display_name: 'Kṛṣṇa's Flute'
+- `aliases`: Any alternative names used specifically in this verse (e.g. 'enemy of Dhenukasura', 'moon of Gokula').
+
+Extraction Rules:
+1. `attributes`: Extract vivid physical descriptions, emotional states, services, or actions mentioned *specifically* in this verse.
+   - Every attribute MUST be a detailed, rich, 4-to-10-word phrase directly sourced from or reflecting the verse's description (e.g. "ocean of transcendental sweetness", "enemy of the Agha demon", "worshiped with deep yearning").
+   - NEVER output single-word generic labels like "demon", "city", "location", "god", "couple", "person", "lord" as attributes.
+   - Do NOT water down or summarize. Keep all rich scriptural details (e.g. instead of "has horns", write "has horns covered with gold and studded with jewels").
+2. `relations`: Extract semantic relationships between entities explicitly stated in this verse. Ensure the target uses the standardized `canonical_id` of the target entity.
+3. **No Outside Speculation:** Extract ONLY facts explicitly stated in this verse. Do not import lore from other scriptures. If no relevant entity attributes/relations are found in the verse, return an empty array of entities.
+
+Few-Shot Example 1:
+Verse: "The splendour of Lord Balarama’s transcendental form eclipses many millions of glistening rising moons, and the slightest scent of His boundless strength is sufficient to destroy many armies of demons. Although He knows the supernatural power of his younger brother, Krsna, still, out of love for Him, He never leaves Him alone in the forest for even a moment. I offer my prayers to Lord Balarama, the enemy of Dhenukasura."
+Output:
+{
+  "entities": [
+    {
+      "canonical_id": "balarama",
+      "display_name": "Lord Balarāma",
+      "type": "personality",
+      "attributes": [
+        "splendour of form eclipses many millions of glistening rising moons",
+        "possessor of boundless strength sufficient to destroy demon armies",
+        "never leaves Kṛṣṇa alone in the forest for even a moment out of love",
+        "known as the enemy of Dhenukasura"
+      ],
+      "relations": [
+        {
+          "type": "brother_of",
+          "target_id": "krsna"
+        }
+      ]
+    },
+    {
+      "canonical_id": "krsna",
+      "display_name": "Śrī Kṛṣṇa",
+      "type": "personality",
+      "attributes": [
+        "younger brother of Balarama whose supernatural power is well known"
+      ],
+      "relations": []
+    }
+  ]
+}
+
+Few-Shot Example 2:
+Verse: "Nanda Maharaj’s younger brother Sannanda is very gentle, affectionate and generous. His complexion is fair and his beard black. He is very devoted to his elder brother and he is the father of Sunanda-gopi. He pleases Krsna by giving Him palatable dishes made with buffalo yoghurt. He worships Krsna with every breath. May Lord Krsna’s uncle Sannanda, the master of a great herd of buffalo, always protect us."
+Output:
+{
+  "entities": [
+    {
+      "canonical_id": "sannanda",
+      "display_name": "Sannanda",
+      "type": "personality",
+      "attributes": [
+        "very gentle, affectionate, and generous younger brother of Nanda Maharaja",
+        "has a fair complexion and a black beard",
+        "very devoted to his elder brother Nanda Maharaja",
+        "father of Sunanda-gopi",
+        "pleases Kṛṣṇa by giving Him palatable dishes made with buffalo yoghurt",
+        "master of a great herd of buffalo",
+        "worships Kṛṣṇa with every breath"
+      ],
+      "relations": [
+        {
+          "type": "brother_of",
+          "target_id": "nanda_maharaja"
+        },
+        {
+          "type": "uncle_of",
+          "target_id": "krsna"
+        }
+      ]
+    },
+    {
+      "canonical_id": "nanda_maharaja",
+      "display_name": "Nanda Mahārāja",
+      "type": "personality",
+      "attributes": [
+        "elder brother of Sannanda"
+      ],
+      "relations": []
+    },
+    {
+      "canonical_id": "krsna",
+      "display_name": "Śrī Kṛṣṇa",
+      "type": "personality",
+      "attributes": [
+        "nephew of Sannanda who is pleased by his buffalo yoghurt dishes"
+      ],
+      "relations": []
+    }
+  ]
+}
+
+MAIN VERSE (Verse {verse_number}):
+{verse_text}

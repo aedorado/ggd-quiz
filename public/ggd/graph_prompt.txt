@@ -1,0 +1,254 @@
+Role:
+You are an expert scriptural knowledge graph architect specializing in Gaudiya Vaishnava theology, Caitanya-lila (Gaura-lila), Krsna-lila (Vraja-lila), and Sanskrit terminology.
+
+Objective:
+Your task is to analyze the provided verse from Kavi Karnapura's 'Gaura Ganoddesha Dipika' and extract all key entities, their descriptive attributes, and their relationships described *specifically* in this verse, classifying them into "gaura" and "krishna" lila layers.
+
+Definitions of Entity Types:
+1. `personality`: Deities, associates, family members, historical teachers, or incarnations (e.g., Lord Caitanya, Lord Nityananda, Advaita Acarya, Sivananda Sena, Krsna, Balarama, Yasoda, Kausalya, Hanuman, Vyasadeva).
+2. `location`: Sacred abodes, towns, forests, or rivers (e.g., Navadvipa, Vrndavana, Sri Hatta, Dvaraka, Jagannath Puri).
+3. `group`: Families, lineages, or sampradayas (e.g., Sena family, Rudra sampradaya, Panca-tattva).
+4. `object`: Sacred books, items, or specific attributes (e.g., Mayavada-sata-dusani, Bhakti-ratnavali, Sri Visnu-samhita).
+
+Lila Classification Rules:
+For every extracted entity, assign the "lila" field as either "gaura" or "krishna":
+- "gaura": Personalities, places, groups, or books existing in Lord Caitanya's contemporary advent/lifetime (e.g., Lord Caitanya, Saci-devi, Jagannatha Purandara, Upendra Misra, Srivasa Pandita, Gadadhara Pandita, Sivananda Sena, Navadvipa, Sri Hatta, Sena family).
+- "krishna": Previous incarnations, forms, or eternal entities from Krsna-lila, Rama-lila, demigods, or Vedic history who appeared in/mapped to the Gaura timeline (e.g., Lord Krsna, Lord Balarama, Yasoda-devi, Nanda Maharaja, Parjanya, Aditi, Kasyapa, Kausalya, Dasaratha, Hanuman, Vyasadeva, kalpa-vrksa tree).
+
+Strict Naming & Normalization Rules:
+- `canonical_id`: Output a standardized, lower_snake_case unique identifier that remains consistent across all verses (e.g. 'caitanya_mahaprabhu', 'krsna', 'saci_devi', 'nanda_maharaja').
+- `display_name`: Formatted English name with proper diacritics where appropriate.
+- `incarnation_of`: For "gaura" entities, list the `canonical_id` of the previous forms/incarnations (from the "krishna" lila layer) they are mapped to in this verse. For "krishna" entities, leave this array empty.
+
+Extraction Rules:
+1. `attributes`: Extract physical descriptions, sentiments, roles, or actions mentioned *specifically* in this verse.
+   - Every attribute MUST be a detailed, rich, 4-to-10-word phrase directly reflecting the text (e.g. "bhakta-sakti or devotional energy", "foremost of the brahmanas", "author of Bhakti-ratnavali").
+   - NEVER output single-word generic labels like "lord", "book", "devotee" as attributes.
+2. `relations`: Extract semantic relationships between entities explicitly stated in this verse (e.g., `disciple_of`, `son_of`, `father_of`, `wife_of`, `author_of`, `non_different_from`). Target must be the target entity's `canonical_id`.
+3. **No Outside Speculation:** Extract ONLY facts explicitly stated in this verse.
+
+Few-Shot Example 1:
+Verse: "I shall now summarily explain the meaning of these words. In this Panca-tattva, the bhakta-rupa (form of a devotee) is Lord Caitanya Mahaprabhu, who formerly appeared as Lord Krsna, the son of Nanda Maharaja. The bhakta-svarupa (devotional incarnation) is Lord Nityananda, who formerly appeared in Vrajabhumi as Lord Balarama. The bhaktavatara (devotional manifestation) is Lord Advaita Acarya, who is not different from Lord Sadasiva. The bhaktakhya (pure devotee) is Srinivasa and the other great devotees as well. The bhakta-sakti (devotional energy) is Gadadhara Pandita, the foremost of brahmanas."
+Output:
+{
+  "entities": [
+    {
+      "canonical_id": "caitanya_mahaprabhu",
+      "display_name": "Lord Caitanya Mahāprabhu",
+      "type": "personality",
+      "lila": "gaura",
+      "attributes": [
+        "the bhakta-rupa or form of a devotee",
+        "formerly appeared as Lord Krsna"
+      ],
+      "relations": [],
+      "incarnation_of": ["krsna"]
+    },
+    {
+      "canonical_id": "krsna",
+      "display_name": "Lord Kṛṣṇa",
+      "type": "personality",
+      "lila": "krishna",
+      "attributes": [
+        "son of Nanda Maharaja"
+      ],
+      "relations": [],
+      "incarnation_of": []
+    },
+    {
+      "canonical_id": "nityananda",
+      "display_name": "Lord Nityānanda",
+      "type": "personality",
+      "lila": "gaura",
+      "attributes": [
+        "the bhakta-svarupa or devotional incarnation",
+        "formerly appeared as Lord Balarama"
+      ],
+      "relations": [],
+      "incarnation_of": ["balarama"]
+    },
+    {
+      "canonical_id": "balarama",
+      "display_name": "Lord Balarāma",
+      "type": "personality",
+      "lila": "krishna",
+      "attributes": [
+        "formerly appeared in Vrajabhumi"
+      ],
+      "relations": [],
+      "incarnation_of": []
+    },
+    {
+      "canonical_id": "advaita_acarya",
+      "display_name": "Lord Advaita Ācārya",
+      "type": "personality",
+      "lila": "gaura",
+      "attributes": [
+        "the bhaktavatara or devotional manifestation",
+        "not different from Lord Sadasiva"
+      ],
+      "relations": [
+        {
+          "type": "non_different_from",
+          "target_id": "sadasiva"
+        }
+      ],
+      "incarnation_of": ["sadasiva"]
+    },
+    {
+      "canonical_id": "sadasiva",
+      "display_name": "Lord Sadāśiva",
+      "type": "personality",
+      "lila": "krishna",
+      "attributes": [
+        "non-different from Advaita Acarya"
+      ],
+      "relations": [],
+      "incarnation_of": []
+    },
+    {
+      "canonical_id": "srinivasa",
+      "display_name": "Śrīnīvāsa",
+      "type": "personality",
+      "lila": "gaura",
+      "attributes": [
+        "the bhaktakhya or pure devotee"
+      ],
+      "relations": [],
+      "incarnation_of": []
+    },
+    {
+      "canonical_id": "gadadhara_pandita",
+      "display_name": "Gadādhara Paṇḍita",
+      "type": "personality",
+      "lila": "gaura",
+      "attributes": [
+        "the bhakta-sakti or devotional energy",
+        "the foremost of brahmanas"
+      ],
+      "relations": [],
+      "incarnation_of": []
+    }
+  ]
+}
+
+Few-Shot Example 2:
+Verse: "Lord Brahma, the creator of the universe became the disciple of the Supreme Personality of Godhead, Lord Narayana. Brahma's disciple was Narada. Narada's disciple was Vyasa. Vyasa then transmitted transcendental knowledge to his disciple Sukadeva. The famous Madhvacarya received initiation from Vyasa personally. Madhvacaya wrote his book Mayavada-sata-dusani."
+Output:
+{
+  "entities": [
+    {
+      "canonical_id": "brahma",
+      "display_name": "Lord Brahmā",
+      "type": "personality",
+      "lila": "krishna",
+      "attributes": [
+        "creator of the universe",
+        "disciple of Lord Narayana"
+      ],
+      "relations": [
+        {
+          "type": "disciple_of",
+          "target_id": "narayana"
+        }
+      ],
+      "incarnation_of": []
+    },
+    {
+      "canonical_id": "narayana",
+      "display_name": "Lord Nārāyaṇa",
+      "type": "personality",
+      "lila": "krishna",
+      "attributes": [
+        "the Supreme Personality of Godhead"
+      ],
+      "relations": [],
+      "incarnation_of": []
+    },
+    {
+      "canonical_id": "narada",
+      "display_name": "Nārada Muni",
+      "type": "personality",
+      "lila": "krishna",
+      "attributes": [
+        "disciple of Lord Brahma"
+      ],
+      "relations": [
+        {
+          "type": "disciple_of",
+          "target_id": "brahma"
+        }
+      ],
+      "incarnation_of": []
+    },
+    {
+      "canonical_id": "vyasa",
+      "display_name": "Vyasadeva",
+      "type": "personality",
+      "lila": "krishna",
+      "attributes": [
+        "disciple of Narada Muni",
+        "personally initiated Sripada Madhvacarya"
+      ],
+      "relations": [
+        {
+          "type": "disciple_of",
+          "target_id": "narada"
+        }
+      ],
+      "incarnation_of": []
+    },
+    {
+      "canonical_id": "sukadeva",
+      "display_name": "Śukadeva Gosvāmī",
+      "type": "personality",
+      "lila": "krishna",
+      "attributes": [
+        "received transcendental knowledge from Vyasa"
+      ],
+      "relations": [
+        {
+          "type": "disciple_of",
+          "target_id": "vyasa"
+        }
+      ],
+      "incarnation_of": []
+    },
+    {
+      "canonical_id": "madhvacarya",
+      "display_name": "Śrīpada Madhvācārya",
+      "type": "personality",
+      "lila": "krishna",
+      "attributes": [
+        "received initiation from Vyasa personally",
+        "author of Mayavada-sata-dusani"
+      ],
+      "relations": [
+        {
+          "type": "disciple_of",
+          "target_id": "vyasa"
+        }
+      ],
+      "incarnation_of": []
+    },
+    {
+      "canonical_id": "mayavada_sata_dusani",
+      "display_name": "Mayavada-sata-dusani",
+      "type": "object",
+      "lila": "krishna",
+      "attributes": [
+        "book written by Sripada Madhvacarya"
+      ],
+      "relations": [
+        {
+          "type": "authored_by",
+          "target_id": "madhvacarya"
+        }
+      ],
+      "incarnation_of": []
+    }
+  ]
+}
+
+MAIN VERSE (Verse {verse_number}):
+{verse_text}

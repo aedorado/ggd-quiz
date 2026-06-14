@@ -13,6 +13,10 @@ export interface XpRewardConfig {
   recallPerfectBonus: number;
   builderBase: number;
   builderPerfectBonus: number;
+  guesserBase: number;
+  guesserPerfectBonus: number;
+  pathfinderBase: number;
+  pathfinderPerfectBonus: number;
   dailyNectarBase: number;
   dailyNectarStreakMultiplier: number;
   dailyNectarMaxStreakBonus: number;
@@ -20,7 +24,7 @@ export interface XpRewardConfig {
 }
 
 export interface GameUnlockConfig {
-  modeId: "quiz" | "memory" | "drag-drop" | "crossword" | "recall" | "builder";
+  modeId: "quiz" | "memory" | "drag-drop" | "crossword" | "recall" | "builder" | "guesser" | "pathfinder";
   unlockLevel: number;
   displayName: string;
   emoji: string;
@@ -52,6 +56,10 @@ export const GAMIFICATION_CONFIG: GamificationConfig = {
     recallPerfectBonus: 10,
     builderBase: 10,
     builderPerfectBonus: 10,
+    guesserBase: 15,
+    guesserPerfectBonus: 10, // solved on first clue
+    pathfinderBase: 20,
+    pathfinderPerfectBonus: 15, // no hearts lost
     dailyNectarBase: 10,
     dailyNectarStreakMultiplier: 5, // +5 XP per day of streak
     dailyNectarMaxStreakBonus: 25,
@@ -109,6 +117,20 @@ export const GAMIFICATION_CONFIG: GamificationConfig = {
       displayName: "Sloka Builder",
       emoji: "🧱",
       description: "Sequence the Sanskrit words",
+    },
+    guesser: {
+      modeId: "guesser",
+      unlockLevel: 6,
+      displayName: "Mystic Guesser",
+      emoji: "🔍",
+      description: "Who Am I? Attribute Clues",
+    },
+    pathfinder: {
+      modeId: "pathfinder",
+      unlockLevel: 11,
+      displayName: "Yaksha Prashna",
+      emoji: "👹",
+      description: "Celestial lake riddle quest",
     },
   },
 };

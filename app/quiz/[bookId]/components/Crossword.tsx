@@ -63,9 +63,37 @@ function isValidPlacement(
   startRow: number,
   startCol: number,
   direction: "across" | "down",
-  gridLetters: Record<string, string>
+  gridLetters: Record<string, string>,
+  placed: PlacedWord[]
 ): boolean {
   const maxLimit = 22;
+
+  // Check if we overlap/share any cell with any already placed word in the same direction
+  for (const p of placed) {
+    if (p.direction === direction) {
+      if (direction === "across") {
+        if (p.row === startRow) {
+          const minCol1 = startCol;
+          const maxCol1 = startCol + word.length - 1;
+          const minCol2 = p.col;
+          const maxCol2 = p.col + p.word.length - 1;
+          if (minCol1 <= maxCol2 && maxCol1 >= minCol2) {
+            return false;
+          }
+        }
+      } else {
+        if (p.col === startCol) {
+          const minRow1 = startRow;
+          const maxRow1 = startRow + word.length - 1;
+          const minRow2 = p.row;
+          const maxRow2 = p.row + p.word.length - 1;
+          if (minRow1 <= maxRow2 && maxRow1 >= minRow2) {
+            return false;
+          }
+        }
+      }
+    }
+  }
 
   for (let i = 0; i < word.length; i++) {
     const r = direction === "across" ? startRow : startRow + i;
@@ -202,7 +230,7 @@ function compileSingleLayout(words: WordItem[], isMobile: boolean): LayoutResult
         const startR = newDir === "across" ? gr : gr - charIdx;
         const startC = newDir === "across" ? gc - charIdx : gc;
 
-        if (isValidPlacement(item.word, startR, startC, newDir, gridLetters)) {
+        if (isValidPlacement(item.word, startR, startC, newDir, gridLetters, placed)) {
           const score = calculatePlacementScore(item.word, startR, startC, newDir, gridLetters, minRow, maxRow, minCol, maxCol, isMobile);
           candidates.push({ row: startR, col: startC, direction: newDir, score });
         }
@@ -323,6 +351,7 @@ export default function Crossword({
   const [userAnswers, setUserAnswers] = useState<Record<string, string>>({});
   const [selectedClue, setSelectedClue] = useState<PlacedWord | null>(null);
   const [cluePool, setCluePool] = useState<WordItem[]>(FALLBACK_CLUE_POOL);
+  const [rawCrosswordData, setRawCrosswordData] = useState<any>(null);
   const [loadingSource, setLoadingSource] = useState<"generated" | "fallback" | "loading">("loading");
 
   // Undo / Redo History stack states
@@ -422,35 +451,92 @@ export default function Crossword({
     setHistoryIndex(0);
   };
 
-  const initializeNewPuzzle = () => buildPuzzle(cluePool);
+  const initializeNewPuzzle = () => {
+    if (rawCrosswordData) {
+      const verses = rawCrosswordData.verses || {};
+      const words = rawCrosswordData.words || rawCrosswordData;
 
-  // On mount or bookId change: try to load generated crosswords.json; fall back to seed pool
+      const wordGroups: Record<string, WordItem[]> = {};
+      Object.entries(words).forEach(([word, cluesList]) => {
+        if (Array.isArray(cluesList)) {
+          cluesList.forEach((c: any) => {
+            if (!wordGroups[word]) {
+              wordGroups[word] = [];
+            }
+            wordGroups[word].push({
+              word: word,
+              clue: c.clue,
+              verseKey: c.verse,
+              verseText: c.verse_text || verses[c.verse] || ""
+            });
+          });
+        }
+      });
+
+      const uniqueWordClues: WordItem[] = [];
+      Object.values(wordGroups).forEach((cluesForWord) => {
+        if (cluesForWord.length > 0) {
+          const randomClue = cluesForWord[Math.floor(Math.random() * cluesForWord.length)];
+          uniqueWordClues.push(randomClue);
+        }
+      });
+
+      if (uniqueWordClues.length >= 8) {
+        setCluePool(uniqueWordClues);
+        buildPuzzle(uniqueWordClues);
+        return;
+      }
+    }
+    buildPuzzle(cluePool);
+  };
+
   useEffect(() => {
     fetch(`/${bookId}/crosswords.json`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
       })
-      .then((data: Record<string, { verse_text: string; clues: { word: string; clue: string }[] }>) => {
-        const seen = new Set<string>();
-        const allClues: WordItem[] = [];
-        Object.entries(data).forEach(([verseKey, verseData]) => {
-          verseData.clues.forEach((c) => {
-            if (!seen.has(c.word)) {
-              seen.add(c.word);
-              allClues.push({
-                word: c.word,
+      .then((data: any) => {
+        const verses = data.verses || {};
+        const words = data.words || data; // fallback if it's the old flat structure
+
+        // Group clues by word: key is word, value is array of WordItems
+        const wordGroups: Record<string, WordItem[]> = {};
+
+        Object.entries(words).forEach(([word, cluesList]) => {
+          if (Array.isArray(cluesList)) {
+            cluesList.forEach((c: any) => {
+              if (!wordGroups[word]) {
+                wordGroups[word] = [];
+              }
+              wordGroups[word].push({
+                word: word,
                 clue: c.clue,
-                verseKey: verseKey,
-                verseText: verseData.verse_text
+                verseKey: c.verse,
+                verseText: c.verse_text || verses[c.verse] || ""
               });
-            }
-          });
+            });
+          }
         });
-        if (allClues.length >= 8) {
-          setCluePool(allClues);
+
+        // Convert the grouped words into a list of word pools, choosing exactly one random clue per word
+        const uniqueWordClues: WordItem[] = [];
+        Object.values(wordGroups).forEach((cluesForWord) => {
+          if (cluesForWord.length > 0) {
+            // Pick a random clue for this word
+            const randomClue = cluesForWord[Math.floor(Math.random() * cluesForWord.length)];
+            uniqueWordClues.push(randomClue);
+          }
+        });
+
+        if (uniqueWordClues.length >= 8) {
+          // We can shuffle uniqueWordClues inside buildPuzzle or store it as cluePool.
+          // Note: cluePool contains unique words, each having exactly one random clue chosen.
+          // Since buildPuzzle does filtering/slicing on cluePool, this guarantees each word is picked at most once!
+          setRawCrosswordData(data);
+          setCluePool(uniqueWordClues);
           setLoadingSource("generated");
-          buildPuzzle(allClues);
+          buildPuzzle(uniqueWordClues);
         } else {
           setLoadingSource("fallback");
           buildPuzzle(FALLBACK_CLUE_POOL);
@@ -734,6 +820,12 @@ export default function Crossword({
     });
 
     if (associated.length > 0) {
+      // If cell belongs to currently selected clue, don't change
+      if (selectedClue && associated.includes(selectedClue)) {
+        setActiveCell({ r, c });
+        return;
+      }
+
       // Prioritize the clue that starts at this coordinate
       const startingClue = associated.find((w) => w.row === r && w.col === c);
       if (startingClue) {
@@ -742,11 +834,6 @@ export default function Crossword({
         return;
       }
 
-      // If cell belongs to currently selected clue, don't change
-      if (selectedClue && associated.includes(selectedClue)) {
-        setActiveCell({ r, c });
-        return;
-      }
       // Default to the first associated clue
       setSelectedClue(associated[0]);
       setActiveCell({ r, c });
@@ -1555,7 +1642,7 @@ export default function Crossword({
             </p>
 
             <div className="xp-gain-badge">
-              🏆 +{finalXp !== null ? finalXp : currentPotentialXp()} Bhakti GB Gained!
+              🏆 +{finalXp !== null ? finalXp : currentPotentialXp()} Gunja Berries Gained!
             </div>
 
             <div className="verses-study-section">
@@ -1630,19 +1717,19 @@ export default function Crossword({
                 className="hint-btn context-btn"
                 onClick={handleSeeVerseContext}
               >
-                📖 See Verse (-5 GB)
+                📖 See Verse (-5 Gunja Berries)
               </button>
               <button
                 className="hint-btn letter-btn"
                 onClick={handleRevealLetter}
               >
-                💡 Reveal Letter (-1 GB)
+                💡 Reveal Letter (-1 Gunja Berry)
               </button>
               <button
                 className="hint-btn word-btn"
                 onClick={handleRevealWord}
               >
-                🔑 Reveal Word (-{selectedClue.word.length} GB)
+                🔑 Reveal Word (-{selectedClue.word.length} Gunja Berries)
               </button>
             </div>
 

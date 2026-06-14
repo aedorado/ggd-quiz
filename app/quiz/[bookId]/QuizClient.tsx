@@ -9,6 +9,8 @@ import DragDrop from "./components/DragDrop";
 import Crossword from "./components/Crossword";
 import BhaktiRecall from "./components/BhaktiRecall";
 import SlokaBuilder from "./components/ShlokaBuilder";
+import Guesser from "./components/Guesser";
+import YakshaPrashna from "./components/YakshaPrashna";
 import { useBhaktiProgress } from "../../utils/bhaktiProgress";
 import { GAMIFICATION_CONFIG, isGameModeUnlocked } from "../../utils/gamificationConfig";
 import SadhanaDashboard from "../../components/SadhanaDashboard";
@@ -94,7 +96,7 @@ function shuffle<T>(arr: T[]): T[] {
 
 export default function QuizClient({ bookId }: QuizClientProps) {
   // Screen and Config States
-  const [screen, setScreen] = useState<"loading" | "error" | "landing" | "quiz" | "results" | "memory" | "drag-drop" | "crossword" | "recall" | "builder">("loading");
+  const [screen, setScreen] = useState<"loading" | "error" | "landing" | "quiz" | "results" | "memory" | "drag-drop" | "crossword" | "recall" | "builder" | "guesser" | "pathfinder">("loading");
   const [meta, setMeta] = useState<BookMeta | null>(null);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [quizQuestions, setQuizQuestions] = useState<Question[]>([]);
@@ -103,7 +105,7 @@ export default function QuizClient({ bookId }: QuizClientProps) {
   const [expandedPartId, setExpandedPartId] = useState<string | null>(null);
 
   // Game sub-modes
-  const [selectedSubMode, setSelectedSubMode] = useState<"quiz" | "memory" | "drag-drop" | "crossword" | "recall" | "builder">("quiz");
+  const [selectedSubMode, setSelectedSubMode] = useState<"quiz" | "memory" | "drag-drop" | "crossword" | "recall" | "builder" | "guesser" | "pathfinder">("quiz");
 
   // Krishna Prema Additions State
   const [particles, setParticles] = useState<Particle[]>([]);
@@ -448,6 +450,14 @@ export default function QuizClient({ bookId }: QuizClientProps) {
       extraData = { builderMistakesAndHints: moves };
       let bonus = moves === 0 ? GAMIFICATION_CONFIG.xpRewards.builderPerfectBonus : 0;
       xpEarned = xpEarned + bonus;
+    } else if (screen === "guesser") {
+      gameType = "Mystic Guesser";
+      // moves parameter here stores the score (number of correct answers, e.g. 5/5)
+      // xpEarned holds the total XP calculated dynamically by the component
+      setScreen("landing");
+    } else if (screen === "pathfinder") {
+      gameType = "Yaksha Prashna";
+      extraData = { heartsLeft: moves, potsCollected: seconds };
     }
 
     let description = `Completed ${gameType} for ${meta?.title || "Book"}`;
@@ -747,6 +757,8 @@ export default function QuizClient({ bookId }: QuizClientProps) {
                   else if (selectedSubMode === "crossword") setScreen("crossword");
                   else if (selectedSubMode === "recall") setScreen("recall");
                   else if (selectedSubMode === "builder") setScreen("builder");
+                  else if (selectedSubMode === "guesser") setScreen("guesser");
+                  else if (selectedSubMode === "pathfinder") setScreen("pathfinder");
                 }}
               >
                 {selectedSubMode === "quiz" ? "Begin Quiz" : "Start Game"}
@@ -830,6 +842,32 @@ export default function QuizClient({ bookId }: QuizClientProps) {
             triggerParticles={triggerParticles}
             onClose={() => setScreen("landing")}
             onComplete={(xp, mistakes, secs) => handleGameComplete(xp, mistakes, secs)}
+          />
+        )}
+
+        {screen === "guesser" && (
+          <Guesser
+            bookId={bookId}
+            playCorrectSound={playCorrectSound}
+            playWrongSound={playWrongSound}
+            triggerParticles={triggerParticles}
+            onClose={() => setScreen("landing")}
+            onComplete={(xp, score, secs) => handleGameComplete(xp, score, secs)}
+          />
+        )}
+
+        {screen === "pathfinder" && (
+          <YakshaPrashna
+            bookId={bookId}
+            bookQuestions={allQuestions}
+            playCorrectSound={playCorrectSound}
+            playWrongSound={playWrongSound}
+            triggerParticles={triggerParticles}
+            onClose={() => setScreen("landing")}
+            onComplete={(xp, hearts, pots) => {
+              handleGameComplete(xp, hearts, pots);
+              setScreen("landing");
+            }}
           />
         )}
       </div>

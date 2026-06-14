@@ -131,7 +131,7 @@ export default function StandardQuiz({
       </div>
 
       <div className="question-tags">
-        {questions[currentIndex].verse_number && (
+        {questions[currentIndex].verse_number && bookId === 'bg' && (
           <span className="tag" style={{ borderStyle: "double", borderWidth: "3px" }}>
             {bookId ? `${bookId.toUpperCase()} ${questions[currentIndex].verse_number}` : `Verse ${questions[currentIndex].verse_number}`}
           </span>

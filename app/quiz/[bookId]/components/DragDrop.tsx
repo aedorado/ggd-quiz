@@ -97,6 +97,100 @@ const FALLBACK_IDENTITIES: IdentityMapping[] = [
   }
 ];
 
+export function resolveVerseForEntityForm(
+  bookId: string,
+  entityName: string,
+  chosenForm: string,
+  idData: any
+): { verseRef: string; verseText: string; otherVerses: string } {
+  if (!idData || !idData.entities || !idData.verses) {
+    return { verseRef: "", verseText: "", otherVerses: "" };
+  }
+
+  // Find the entity key in idData.entities
+  const entityEntry = Object.entries(idData.entities).find(
+    ([_, ent]: [string, any]) => ent.name === entityName
+  );
+  if (!entityEntry) {
+    return { verseRef: "", verseText: "", otherVerses: "" };
+  }
+  const [entityId, entity] = entityEntry as [string, any];
+
+  let matchedVerseRef = "";
+
+  if (bookId === "ggd") {
+    // Look up in incarnation_of
+    if (entity.incarnation_of) {
+      const match = entity.incarnation_of.find((inc: any) => {
+        const prevId = typeof inc === "object" && inc !== null ? inc.id : inc;
+        const pEnt = idData.entities[prevId];
+        return (pEnt && pEnt.name === chosenForm) || prevId === chosenForm;
+      });
+      if (match) {
+        matchedVerseRef = typeof match === "object" && match !== null ? match.verse : "";
+      }
+    }
+    // Fallback/Legacy lookup in incarnation_of_verses
+    if (!matchedVerseRef && entity.incarnation_of_verses && entity.incarnation_of) {
+      const match = entity.incarnation_of.find((inc: any) => {
+        const prevId = typeof inc === "object" && inc !== null ? inc.id : inc;
+        const pEnt = idData.entities[prevId];
+        return (pEnt && pEnt.name === chosenForm) || prevId === chosenForm;
+      });
+      const prevId = match ? (typeof match === "object" && match !== null ? match.id : match) : null;
+      if (prevId && entity.incarnation_of_verses[prevId]) {
+        const versesList = entity.incarnation_of_verses[prevId];
+        if (Array.isArray(versesList) && versesList.length > 0) {
+          matchedVerseRef = versesList[0];
+        } else if (typeof versesList === "string") {
+          matchedVerseRef = versesList;
+        }
+      }
+    }
+  } else if (bookId === "vvs" || bookId === "rkgd") {
+    // First, check if it's an attribute
+    if (entity.attributes) {
+      const match = entity.attributes.find((a: any) => a.att === chosenForm);
+      if (match) {
+        matchedVerseRef = match.verse;
+      }
+    }
+    
+    if (!matchedVerseRef && entity.relations) {
+      // Find relation key
+      const match = entity.relations.find((rel: any) => {
+        const formattedRel = rel.type.replace(/_/g, " ");
+        const capitalizedRel = formattedRel.charAt(0).toUpperCase() + formattedRel.slice(1);
+        const targetEntity = idData.entities[rel.target_id];
+        const targetName = targetEntity ? targetEntity.name : rel.target_id;
+        return chosenForm === `${capitalizedRel}: ${targetName}`;
+      });
+      if (match) {
+        matchedVerseRef = match.verse;
+      }
+    }
+  }
+
+  // Fallback to first mentioned verse if not found
+  if (!matchedVerseRef) {
+    matchedVerseRef = entity.mentioned_in && entity.mentioned_in.length > 0 ? entity.mentioned_in[0] : "";
+  }
+
+  const rawVerse = idData.verses[matchedVerseRef];
+  const verseText = rawVerse ? rawVerse.text || rawVerse.content || "" : "";
+
+  // Get other verses
+  const otherVersesList = entity.mentioned_in
+    ? entity.mentioned_in.filter((v: string) => v !== matchedVerseRef)
+    : [];
+
+  return {
+    verseRef: matchedVerseRef,
+    verseText,
+    otherVerses: otherVersesList.length > 0 ? otherVersesList.join(", ") : ""
+  };
+}
+
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -106,6 +200,7 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
+
 export default function DragDrop({
   bookId,
   playCorrectSound,
@@ -114,6 +209,7 @@ export default function DragDrop({
   onClose,
   onComplete,
 }: DragDropProps) {
+  const [rawIdData, setRawIdData] = useState<any>(null);
   const [identities, setIdentities] = useState<IdentityMapping[]>([]);
   const [dragTargets, setDragTargets] = useState<DragTarget[]>([]);
   const [dragItems, setDragItems] = useState<DragItem[]>([]);
@@ -124,6 +220,7 @@ export default function DragDrop({
   const [selectedPrevItem, setSelectedPrevItem] = useState<DragItem | null>(null);
   const [matchedVersePopup, setMatchedVersePopup] = useState<IdentityMapping | null>(null);
   const [dragOverTargetName, setDragOverTargetName] = useState<string | null>(null);
+  const [activeSlideIdx, setActiveSlideIdx] = useState(0);
 
   // Fetch identities on mount
   useEffect(() => {
@@ -132,22 +229,28 @@ export default function DragDrop({
         const res = await fetch(`/${bookId}/identities.json`);
         if (res.ok) {
           const idData = await res.json();
+          setRawIdData(idData);
           const flatIdentities: IdentityMapping[] = [];
 
-          if (bookId === "vvs") {
-            if (idData.entities) {
+          if (idData.entities) {
+            if (bookId === "vvs" || bookId === "rkgd") {
               Object.entries(idData.entities).forEach(([entityId, entity]: [string, any]) => {
                 const firstVerseRef = entity.mentioned_in && entity.mentioned_in.length > 0 ? entity.mentioned_in[0] : "";
                 const rawVerse = idData.verses ? idData.verses[firstVerseRef] : null;
                 const verseText = rawVerse ? rawVerse.text : "";
 
-                const descriptors: string[] = [...(entity.attributes || [])];
+                const descriptors: string[] = [];
+                if (entity.attributes) {
+                  entity.attributes.forEach((attr: any) => {
+                    descriptors.push(attr.att);
+                  });
+                }
 
                 if (entity.relations) {
-                  Object.entries(entity.relations).forEach(([relType, targetId]: [string, any]) => {
-                    const targetEntity = idData.entities[targetId];
-                    const targetName = targetEntity ? targetEntity.name : targetId;
-                    const formattedRel = relType.replace(/_/g, " ");
+                  entity.relations.forEach((rel: any) => {
+                    const targetEntity = idData.entities[rel.target_id];
+                    const targetName = targetEntity ? targetEntity.name : rel.target_id;
+                    const formattedRel = rel.type.replace(/_/g, " ");
                     const capitalizedRel = formattedRel.charAt(0).toUpperCase() + formattedRel.slice(1);
                     descriptors.push(`${capitalizedRel}: ${targetName}`);
                   });
@@ -160,9 +263,57 @@ export default function DragDrop({
                   verse_text: verseText
                 });
               });
+            } else {
+              // GGD graph-based parsing
+              Object.entries(idData.entities).forEach(([entityId, entity]: [string, any]) => {
+                if (entity.lila === "gaura" && Array.isArray(entity.incarnation_of) && entity.incarnation_of.length > 0) {
+                  const prevForms = entity.incarnation_of.map((inc: any) => {
+                    const prevId = typeof inc === "object" && inc !== null ? inc.id : inc;
+                    const prevEntity = idData.entities[prevId];
+                    return prevEntity ? prevEntity.name : prevId;
+                  });
+
+                  // Resolve the specific verse where the incarnation was described
+                  let firstVerseRef = "";
+                  const firstInc = entity.incarnation_of[0];
+                  if (firstInc) {
+                    if (typeof firstInc === "object" && firstInc !== null) {
+                      firstVerseRef = firstInc.verse || "";
+                    }
+                    if (!firstVerseRef && entity.incarnation_of_verses) {
+                      const firstIncId = typeof firstInc === "object" && firstInc !== null ? firstInc.id : firstInc;
+                      const incVerses = entity.incarnation_of_verses[firstIncId];
+                      if (incVerses && incVerses.length > 0) {
+                        firstVerseRef = incVerses[0];
+                      } else if (typeof incVerses === "string") {
+                        firstVerseRef = incVerses;
+                      }
+                    }
+                  }
+                  if (!firstVerseRef) {
+                    firstVerseRef = entity.mentioned_in && entity.mentioned_in.length > 0 ? entity.mentioned_in[0] : "";
+                  }
+
+                  const rawVerse = idData.verses ? idData.verses[firstVerseRef] : null;
+                  const verseText = rawVerse ? rawVerse.text : "";
+
+                  // All other verses where the entity is mentioned (excluding firstVerseRef)
+                  const otherVersesList = entity.mentioned_in
+                    ? entity.mentioned_in.filter((v: string) => v !== firstVerseRef)
+                    : [];
+
+                  flatIdentities.push({
+                    gaura_name: entity.name,
+                    previous_forms: prevForms,
+                    verse_ref: firstVerseRef,
+                    verse_text: verseText,
+                    other_verses: otherVersesList.length > 0 ? otherVersesList.join(", ") : undefined
+                  } as any);
+                }
+              });
             }
           } else {
-            // Default GGD parsing
+            // Default flat legacy parsing
             Object.entries(idData).forEach(([verseRef, val]: [string, any]) => {
               if (val && Array.isArray(val.identities)) {
                 val.identities.forEach((id: any) => {
@@ -335,9 +486,17 @@ export default function DragDrop({
       });
       setDragItems(updatedItems);
 
+      const resolved = resolveVerseForEntityForm(bookId, targetName, draggedItem.text, rawIdData);
       const matchedIdentity = identities.find(id => id.gaura_name === targetName);
       if (matchedIdentity) {
-        setMatchedVersePopup(matchedIdentity);
+        setMatchedVersePopup({
+          ...matchedIdentity,
+          verse_ref: resolved.verseRef || matchedIdentity.verse_ref,
+          verse_text: resolved.verseText || matchedIdentity.verse_text,
+          matched_verses: resolved.matchedVerses,
+          other_verses: resolved.otherVerses || (matchedIdentity as any).other_verses
+        } as any);
+        setActiveSlideIdx(0);
       }
 
       const allMatched = updatedTargets.every(t => t.isMatched);
@@ -365,9 +524,18 @@ export default function DragDrop({
     if (targetIdx === -1) return;
 
     if (dragTargets[targetIdx].isMatched) {
+      const matchedTarget = dragTargets[targetIdx];
+      const resolved = resolveVerseForEntityForm(bookId, targetName, matchedTarget.matched_prev_form || "", rawIdData);
       const matchedIdentity = identities.find(id => id.gaura_name === targetName);
       if (matchedIdentity) {
-        setMatchedVersePopup(matchedIdentity);
+        setMatchedVersePopup({
+          ...matchedIdentity,
+          verse_ref: resolved.verseRef || matchedIdentity.verse_ref,
+          verse_text: resolved.verseText || matchedIdentity.verse_text,
+          matched_verses: resolved.matchedVerses,
+          other_verses: resolved.otherVerses || (matchedIdentity as any).other_verses
+        } as any);
+        setActiveSlideIdx(0);
       }
       return;
     }
@@ -394,9 +562,17 @@ export default function DragDrop({
       });
       setDragItems(updatedItems);
 
+      const resolved = resolveVerseForEntityForm(bookId, targetName, selectedPrevItem.text, rawIdData);
       const matchedIdentity = identities.find(id => id.gaura_name === targetName);
       if (matchedIdentity) {
-        setMatchedVersePopup(matchedIdentity);
+        setMatchedVersePopup({
+          ...matchedIdentity,
+          verse_ref: resolved.verseRef || matchedIdentity.verse_ref,
+          verse_text: resolved.verseText || matchedIdentity.verse_text,
+          matched_verses: resolved.matchedVerses,
+          other_verses: resolved.otherVerses || (matchedIdentity as any).other_verses
+        } as any);
+        setActiveSlideIdx(0);
       }
 
       const allMatched = updatedTargets.every(t => t.isMatched);
@@ -420,7 +596,7 @@ export default function DragDrop({
       </div>
 
       <p style={{ color: "var(--ink-soft)", fontSize: "0.85rem", fontStyle: "italic", marginBottom: "1rem", textAlign: "center" }}>
-        {bookId === "vvs"
+        {(bookId === "vvs" || bookId === "rkgd")
           ? "Drag attributes/relations onto the entities, or tap an attribute then tap an entity to match them!"
           : "Drag previous forms onto the Caitanya associates, or tap a form then tap an associate to match them!"}
       </p>
@@ -434,7 +610,7 @@ export default function DragDrop({
         {/* Left Column: Targets (Gaura associates) */}
         <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
           <div style={{ fontWeight: "700", color: "var(--accent)", borderBottom: "1px solid var(--border-color)", paddingBottom: "0.4rem" }}>
-            {bookId === "vvs" ? "Vraja Entities" : "Gaura Associates"}
+            {(bookId === "vvs" || bookId === "rkgd") ? "Vraja Entities" : "Gaura Associates"}
           </div>
           {dragTargets.map((target) => {
             const isDragOver = dragOverTargetName === target.gaura_name;
@@ -474,7 +650,7 @@ export default function DragDrop({
                   </span>
                 ) : (
                   <span style={{ fontSize: "0.75rem", color: "var(--ink-soft)", marginTop: "0.2rem", pointerEvents: "none" }}>
-                    {bookId === "vvs" ? "Drop matching attribute / relation here" : "Drop matching previous form here"}
+                    {(bookId === "vvs" || bookId === "rkgd") ? "Drop matching attribute / relation here" : "Drop matching previous form here"}
                   </span>
                 )}
               </div>
@@ -485,7 +661,7 @@ export default function DragDrop({
         {/* Right Column: Draggable Previous Forms */}
         <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
           <div style={{ fontWeight: "700", color: "var(--accent)", borderBottom: "1px solid var(--border-color)", paddingBottom: "0.4rem" }}>
-            {bookId === "vvs" ? "Attributes / Relations" : "Previous Forms"}
+            {(bookId === "vvs" || bookId === "rkgd") ? "Attributes / Relations" : "Previous Forms"}
           </div>
           {dragItems.map((item) => {
             const isSelected = selectedPrevItem?.text === item.text;
@@ -571,7 +747,7 @@ export default function DragDrop({
             <span style={{ fontSize: "2rem" }}>🪷</span>
             <h3 style={{ color: "var(--saffron)", margin: "0.5rem 0" }}>Divine Match!</h3>
             <div style={{ fontWeight: "700", marginBottom: "1rem", fontSize: "1.1rem", color: "var(--ink)" }}>
-              {matchedVersePopup.gaura_name} ↔ {matchedVersePopup.previous_forms.join(" / ")}
+              {matchedVersePopup.gaura_name} ↔ {(matchedVersePopup as any).matched_prev_form || matchedVersePopup.previous_forms.join(" / ")}
             </div>
             <div style={{
               backgroundColor: "var(--parchment)",
@@ -583,15 +759,55 @@ export default function DragDrop({
               marginBottom: "1.2rem",
               lineHeight: "1.4"
             }}>
-              {matchedVersePopup.verse_text.split("\n").map((line, lIdx) => (
-                <React.Fragment key={lIdx}>
-                  {line}
-                  <br />
-                </React.Fragment>
-              ))}
+              {(matchedVersePopup as any).matched_verses && (matchedVersePopup as any).matched_verses.length > 0
+                ? (matchedVersePopup as any).matched_verses[activeSlideIdx].text.split("\n").map((line: string, lIdx: number) => (
+                  <React.Fragment key={lIdx}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))
+                : matchedVersePopup.verse_text.split("\n").map((line, lIdx) => (
+                  <React.Fragment key={lIdx}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))
+              }
             </div>
+
+            {(matchedVersePopup as any).matched_verses && (matchedVersePopup as any).matched_verses.length > 1 && (
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%", marginTop: "-0.8rem", marginBottom: "1.2rem", padding: "0 1rem" }}>
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => {
+                    setActiveSlideIdx(prev => (prev - 1 + (matchedVersePopup as any).matched_verses.length) % (matchedVersePopup as any).matched_verses.length);
+                  }}
+                  style={{ padding: "0.2rem 0.6rem", fontSize: "0.8rem" }}
+                >
+                  ◀ Prev
+                </button>
+                <span style={{ fontSize: "0.8rem", color: "var(--ink-soft)" }}>
+                  Verse {activeSlideIdx + 1} of {(matchedVersePopup as any).matched_verses.length}
+                </span>
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => {
+                    setActiveSlideIdx(prev => (prev + 1) % (matchedVersePopup as any).matched_verses.length);
+                  }}
+                  style={{ padding: "0.2rem 0.6rem", fontSize: "0.8rem" }}
+                >
+                  Next ▶
+                </button>
+              </div>
+            )}
+
             <div style={{ fontSize: "0.75rem", color: "var(--ink-soft)", marginBottom: "1.2rem" }}>
-              Reference: <strong>Verse {matchedVersePopup.verse_ref}</strong>
+              Reference: <strong>Verse {(matchedVersePopup as any).matched_verses && (matchedVersePopup as any).matched_verses.length > 0
+                ? (matchedVersePopup as any).matched_verses[activeSlideIdx].ref
+                : matchedVersePopup.verse_ref}</strong>
+              {matchedVersePopup.other_verses && (
+                <span> (also mentioned in Verse {matchedVersePopup.other_verses})</span>
+              )}
             </div>
             <button className="btn btn-primary" onClick={() => setMatchedVersePopup(null)}>
               Continue
