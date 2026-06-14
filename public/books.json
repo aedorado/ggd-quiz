@@ -117,7 +117,7 @@
     "desc": "Nectarean prayers and ecstatic verses describing the beauty, sweetness, and pastimes of Lord Śrī Kṛṣṇa.",
     "accent": "#1E3F66",
     "status": "ready",
-    "featured": true,
+    "featured": false,
     "href": "/quiz/skk",
     "input_file": "public/skk/skk.json",
     "output_file": "public/skk/questions.json",
