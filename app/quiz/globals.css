@@ -1181,3 +1181,81 @@ footer .foot-copy {
   background: var(--gold);
   border-color: var(--gold);
 }
+
+/* ── SEQUENTIAL STUDY MODE ── */
+.sequence-card-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  color: var(--saffron);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.verse-reveal-card {
+  background: var(--parchment-dk);
+  border: 2px double var(--gold);
+  border-radius: 6px;
+  padding: 2.2rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  animation: fadeIn 0.6s ease-out;
+}
+
+.verse-reveal-number {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--saffron);
+  text-align: center;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.8rem;
+}
+
+.verse-reveal-text {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--ink-mid);
+  text-align: center;
+  font-style: italic;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.seq-progress-text {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.seq-nav-btn {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.seq-btn-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.explanation-box {
+  background: rgba(212, 168, 67, 0.08);
+  border-left: 3px solid var(--gold);
+  padding: 1rem;
+  margin-top: 1.2rem;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--ink-mid);
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

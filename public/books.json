@@ -14,7 +14,8 @@
     "output_file": "public/bg/questions.json",
     "enabled_modes": [
       "quiz",
-      "builder"
+      "builder",
+      "sequence"
     ]
   },
   "ggd": {
@@ -40,7 +41,8 @@
       "recall",
       "crossword",
       "guesser",
-      "pathfinder"
+      "pathfinder",
+      "sequence"
     ]
   },
   "rkgd": {
@@ -66,7 +68,8 @@
       "recall",
       "crossword",
       "guesser",
-      "pathfinder"
+      "pathfinder",
+      "sequence"
     ],
     "parts": [
       {
@@ -105,7 +108,8 @@
       "recall",
       "crossword",
       "guesser",
-      "pathfinder"
+      "pathfinder",
+      "sequence"
     ]
   },
   "skk": {
@@ -123,7 +127,8 @@
     "output_file": "public/skk/questions.json",
     "prompt_file": "public/skk/prompt.txt",
     "enabled_modes": [
-      "quiz"
+      "quiz",
+      "sequence"
     ]
   },
   "bs": {
@@ -142,7 +147,8 @@
     "input_file": "public/bs/bs.json",
     "output_file": "public/bs/questions.json",
     "enabled_modes": [
-      "quiz"
+      "quiz",
+      "sequence"
     ]
   },
   "bb": {

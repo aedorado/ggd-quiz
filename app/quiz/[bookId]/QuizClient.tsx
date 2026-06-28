@@ -11,6 +11,7 @@ import BhaktiRecall from "./components/BhaktiRecall";
 import SlokaBuilder from "./components/ShlokaBuilder";
 import Guesser from "./components/Guesser";
 import YakshaPrashna from "./components/YakshaPrashna";
+import SequenceStudy from "./components/SequenceStudy";
 import { useBhaktiProgress } from "../../utils/bhaktiProgress";
 import { GAMIFICATION_CONFIG, isGameModeUnlocked } from "../../utils/gamificationConfig";
 import SadhanaDashboard from "../../components/SadhanaDashboard";
@@ -96,7 +97,7 @@ function shuffle<T>(arr: T[]): T[] {
 
 export default function QuizClient({ bookId }: QuizClientProps) {
   // Screen and Config States
-  const [screen, setScreen] = useState<"loading" | "error" | "landing" | "quiz" | "results" | "memory" | "drag-drop" | "crossword" | "recall" | "builder" | "guesser" | "pathfinder">("loading");
+  const [screen, setScreen] = useState<"loading" | "error" | "landing" | "quiz" | "results" | "memory" | "drag-drop" | "crossword" | "recall" | "builder" | "guesser" | "pathfinder" | "sequence">("loading");
   const [meta, setMeta] = useState<BookMeta | null>(null);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [quizQuestions, setQuizQuestions] = useState<Question[]>([]);
@@ -105,7 +106,7 @@ export default function QuizClient({ bookId }: QuizClientProps) {
   const [expandedPartId, setExpandedPartId] = useState<string | null>(null);
 
   // Game sub-modes
-  const [selectedSubMode, setSelectedSubMode] = useState<"quiz" | "memory" | "drag-drop" | "crossword" | "recall" | "builder" | "guesser" | "pathfinder">("quiz");
+  const [selectedSubMode, setSelectedSubMode] = useState<"quiz" | "memory" | "drag-drop" | "crossword" | "recall" | "builder" | "guesser" | "pathfinder" | "sequence">("quiz");
 
   // Krishna Prema Additions State
   const [particles, setParticles] = useState<Particle[]>([]);
@@ -124,6 +125,7 @@ export default function QuizClient({ bookId }: QuizClientProps) {
   } = useBhaktiProgress();
 
   const [dashboardOpen, setDashboardOpen] = useState(false);
+  const [rawQuestionsData, setRawQuestionsData] = useState<any>(null);
 
   // Load stats on mount
   useEffect(() => {
@@ -325,6 +327,7 @@ export default function QuizClient({ bookId }: QuizClientProps) {
           throw new Error(`HTTP error ${questionsRes.status}`);
         }
         const data = await questionsRes.json();
+        setRawQuestionsData(data);
 
         const parsed = Object.entries(data).flatMap(([verseKey, section]: any) =>
           section.questions.map((q: any) => ({
@@ -759,6 +762,7 @@ export default function QuizClient({ bookId }: QuizClientProps) {
                   else if (selectedSubMode === "builder") setScreen("builder");
                   else if (selectedSubMode === "guesser") setScreen("guesser");
                   else if (selectedSubMode === "pathfinder") setScreen("pathfinder");
+                  else if (selectedSubMode === "sequence") setScreen("sequence");
                 }}
               >
                 {selectedSubMode === "quiz" ? "Begin Quiz" : "Start Game"}
@@ -868,6 +872,19 @@ export default function QuizClient({ bookId }: QuizClientProps) {
               handleGameComplete(xp, hearts, pots);
               setScreen("landing");
             }}
+          />
+        )}
+
+        {screen === "sequence" && rawQuestionsData && (
+          <SequenceStudy
+            bookId={bookId}
+            bookTitle={meta.title}
+            rawQuestionsData={rawQuestionsData}
+            playCorrectSound={playCorrectSound}
+            playWrongSound={playWrongSound}
+            triggerParticles={triggerParticles}
+            addXp={addXp}
+            onClose={() => setScreen("landing")}
           />
         )}
       </div>

@@ -24,7 +24,7 @@ export interface XpRewardConfig {
 }
 
 export interface GameUnlockConfig {
-  modeId: "quiz" | "memory" | "drag-drop" | "crossword" | "recall" | "builder" | "guesser" | "pathfinder";
+  modeId: "quiz" | "memory" | "drag-drop" | "crossword" | "recall" | "builder" | "guesser" | "pathfinder" | "sequence";
   unlockLevel: number;
   displayName: string;
   emoji: string;
@@ -131,6 +131,13 @@ export const GAMIFICATION_CONFIG: GamificationConfig = {
       displayName: "Yaksha Prashna",
       emoji: "👹",
       description: "Celestial lake riddle quest",
+    },
+    sequence: {
+      modeId: "sequence",
+      unlockLevel: 1,
+      displayName: "Sequential Study",
+      emoji: "🔁",
+      description: "Learn verse-by-verse with questions & reveals",
     },
   },
 };
