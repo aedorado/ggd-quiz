@@ -31,6 +31,7 @@ COMPARE THESE STYLES:
 
 TASK EXPECTATIONS:
 - SOURCE RESTRICTION: Extract facts ONLY from the provided MAIN VERSE text. Do not invent external lore.
+- CONTEXT ONLY FOR CONTINUITY: Use information from the PREVIOUS VERSE or NEXT VERSE SOLELY for surrounding context and continuity (e.g., to help resolve pronouns). Under no circumstances should any question, correct option, distractor, or explanation rely on information from the PREVIOUS VERSE or NEXT VERSE. Every generated question, correct answer, and explanation must be derivable strictly and exclusively from the MAIN VERSE target text.
 - AUTHENTIC DISTRACTORS: All 3 incorrect options must be real, authentic names, abodes, or items from Gaudiya Vaishnava theology so answers cannot be guessed by simple elimination.
 - QUANTITY: Maximize the count (ATLEAST 5 distinct questions) by mining every possible factual element.
 

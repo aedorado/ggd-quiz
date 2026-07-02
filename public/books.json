@@ -13,9 +13,9 @@
     "input_file": "public/bg/gita.json",
     "output_file": "public/bg/questions.json",
     "enabled_modes": [
+      "sequence",
       "quiz",
-      "builder",
-      "sequence"
+      "builder"
     ]
   },
   "ggd": {
@@ -35,14 +35,14 @@
     "input_file": "public/ggd/ggd.json",
     "output_file": "public/ggd/questions.json",
     "enabled_modes": [
+      "sequence",
       "quiz",
       "memory",
       "drag-drop",
       "recall",
       "crossword",
       "guesser",
-      "pathfinder",
-      "sequence"
+      "pathfinder"
     ]
   },
   "rkgd": {
@@ -62,14 +62,14 @@
     "input_file": "public/rkgd/rkgd.json",
     "output_file": "public/rkgd/questions.json",
     "enabled_modes": [
+      "sequence",
       "quiz",
       "memory",
       "drag-drop",
       "recall",
       "crossword",
       "guesser",
-      "pathfinder",
-      "sequence"
+      "pathfinder"
     ],
     "parts": [
       {
@@ -102,14 +102,14 @@
     "input_file": "public/vvs/vvs.json",
     "output_file": "public/vvs/questions.json",
     "enabled_modes": [
+      "sequence",
       "quiz",
       "memory",
       "drag-drop",
       "recall",
       "crossword",
       "guesser",
-      "pathfinder",
-      "sequence"
+      "pathfinder"
     ]
   },
   "skk": {

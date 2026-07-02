@@ -212,6 +212,8 @@ def main():
     parser.add_argument("--model", default="gemini-3.1-flash-lite", help="Gemini model to use")
     parser.add_argument("--max-retries", type=int, default=5, help="Maximum retries per verse")
     parser.add_argument("--rpm", type=float, default=2.0, help="Requests per minute rate limit")
+    parser.add_argument("--limit", type=int, help="Maximum number of verses to process")
+    parser.add_argument("--overwrite", action="store_true", help="Overwrite existing completed verses")
     args = parser.parse_args()
 
     # Load books.json configuration
@@ -275,7 +277,7 @@ def main():
     data = {}
     completed = set()
     output_path = Path(output_file)
-    if output_path.exists():
+    if output_path.exists() and not args.overwrite:
         try:
             with open(output_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
@@ -287,8 +289,10 @@ def main():
     # Calculate delays
     delay_between_requests = 60.0 / args.rpm
 
+    verses_to_process = verses[:args.limit] if args.limit is not None else verses
+
     print(f"Starting generation loop (RPM: {args.rpm}, Delay: {delay_between_requests:.1f}s)...")
-    for idx, verse in enumerate(verses[:]):
+    for idx, verse in enumerate(verses_to_process):
         verse_id = verse["verse_number"]
         if verse_id in completed:
             continue

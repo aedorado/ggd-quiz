@@ -51,6 +51,7 @@ A question is VALID only if:
 5. The question is clear.
 6. Distractors do not create ambiguity.
 7. Nothing is invented.
+8. The question can be answered completely using only the information provided in the verse.
 
 VERSE:
 {verse_text}
