@@ -765,7 +765,7 @@ export default function QuizClient({ bookId }: QuizClientProps) {
                   else if (selectedSubMode === "sequence") setScreen("sequence");
                 }}
               >
-                {selectedSubMode === "quiz" ? "Begin Quiz" : "Start Game"}
+                {selectedSubMode === "quiz" ? "Begin Quiz" : "Start"}
               </button>
               <Link href="/" className="btn btn-secondary">
                 Back to Library

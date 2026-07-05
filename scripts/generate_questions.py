@@ -213,6 +213,7 @@ def main():
     parser.add_argument("--max-retries", type=int, default=5, help="Maximum retries per verse")
     parser.add_argument("--rpm", type=float, default=2.0, help="Requests per minute rate limit")
     parser.add_argument("--limit", type=int, help="Maximum number of verses to process")
+    parser.add_argument("--prefix", help="Only process verses whose text/verse number starts with this prefix (e.g. 1.1.)")
     parser.add_argument("--overwrite", action="store_true", help="Overwrite existing completed verses")
     args = parser.parse_args()
 
@@ -289,7 +290,13 @@ def main():
     # Calculate delays
     delay_between_requests = 60.0 / args.rpm
 
-    verses_to_process = verses[:args.limit] if args.limit is not None else verses
+    # Filter verses by prefix if specified
+    verses_to_process = verses
+    if args.prefix:
+        verses_to_process = [v for v in verses_to_process if v["verse_number"].startswith(args.prefix)]
+    
+    if args.limit is not None:
+        verses_to_process = verses_to_process[:args.limit]
 
     print(f"Starting generation loop (RPM: {args.rpm}, Delay: {delay_between_requests:.1f}s)...")
     for idx, verse in enumerate(verses_to_process):
@@ -297,10 +304,12 @@ def main():
         if verse_id in completed:
             continue
 
-        previous_verse = verses[idx - 1]["verse_text"] if idx > 0 else "None"
-        next_verse = verses[idx + 1]["verse_text"] if idx < len(verses) - 1 else "None"
+        # Find the correct adjacent context verses from the full list
+        orig_idx = next((i for i, v in enumerate(verses) if v["verse_number"] == verse_id), -1)
+        previous_verse = verses[orig_idx - 1]["verse_text"] if orig_idx > 0 else "None"
+        next_verse = verses[orig_idx + 1]["verse_text"] if (orig_idx != -1 and orig_idx < len(verses) - 1) else "None"
 
-        print(f"[{idx+1}/{len(verses)}] Generating questions for Verse {verse_id}...")
+        print(f"[{idx+1}/{len(verses_to_process)}] Generating questions for Verse {verse_id}...")
         
         try:
             result = generate_with_retry(
@@ -326,7 +335,7 @@ def main():
             print(f"  ✗ Failed Verse {verse_id}: {e}")
             
         # Rate limit delay
-        if idx < len(verses) - 1:
+        if idx < len(verses_to_process) - 1:
             time.sleep(delay_between_requests)
 
     print("\nGeneration Loop: COMPLETED")

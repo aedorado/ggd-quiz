@@ -81,6 +81,7 @@ export default function SequenceStudy({
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [shuffledOptions, setShuffledOptions] = useState<string[]>([]);
   const [incorrectAttempts, setIncorrectAttempts] = useState<number>(0);
+  const [isReplayingQuestions, setIsReplayingQuestions] = useState<boolean>(false);
 
   const PROGRESS_KEY = `tattva_sequence_progress_${bookId}`;
   const HIGHEST_KEY = `tattva_sequence_highest_${bookId}`;
@@ -116,6 +117,11 @@ export default function SequenceStudy({
     }
   }, [rawQuestionsData, bookId]);
 
+  // Reset replay state when current verse index changes
+  useEffect(() => {
+    setIsReplayingQuestions(false);
+  }, [currentVerseIndex]);
+
   // Shuffle options when index changes
   const activeVerse = parsedVerses[currentVerseIndex];
   const activeQuestion = activeVerse?.questions?.[questionIndex];
@@ -139,7 +145,11 @@ export default function SequenceStudy({
       playCorrectSound();
       triggerParticles();
       // Reward standard 5 XP for correct answer
-      addXp(5, "quiz", `Correctly answered question in Sequence Study for ${bookTitle}`);
+      // Only reward XP if this is the active study verse (not a replay/review)
+      const isReplay = currentVerseIndex <= highestCompletedIndex;
+      if (!isReplay) {
+        addXp(5, "quiz", `Correctly answered question in Sequence Study for ${bookTitle}`);
+      }
     } else {
       playWrongSound();
       setIncorrectAttempts(prev => prev + 1);
@@ -165,6 +175,10 @@ export default function SequenceStudy({
   };
 
   const handleProceedNextVerse = () => {
+    // If we are proceeding from the active study verse, mark it as completed first
+    if (currentVerseIndex > highestCompletedIndex) {
+      handleRevealVerse();
+    }
     const nextIdx = currentVerseIndex + 1;
     if (nextIdx < parsedVerses.length) {
       setCurrentVerseIndex(nextIdx);
@@ -179,9 +193,11 @@ export default function SequenceStudy({
   const handleRestart = () => {
     if (confirm("Are you sure you want to restart your study pathway? Your progress will be reset to Verse 1.")) {
       setCurrentVerseIndex(0);
+      setHighestCompletedIndex(-1);
       setQuestionIndex(0);
       setIncorrectAttempts(0);
       localStorage.setItem(PROGRESS_KEY, "0");
+      localStorage.setItem(HIGHEST_KEY, "-1");
       setMode("study");
     }
   };
@@ -244,8 +260,11 @@ export default function SequenceStudy({
             onClick={() => {
               // Reset to beginning
               setCurrentVerseIndex(0);
+              setHighestCompletedIndex(-1);
               setQuestionIndex(0);
+              setIncorrectAttempts(0);
               localStorage.setItem(PROGRESS_KEY, "0");
+              localStorage.setItem(HIGHEST_KEY, "-1");
               setMode("study");
             }}
             style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", height: "44px", padding: "0 1.8rem" }}
@@ -308,7 +327,8 @@ export default function SequenceStudy({
   // 3. ACTIVE STUDY STATE
   const progressPercent = Math.round((currentVerseIndex / parsedVerses.length) * 100);
   const totalQuestions = activeVerse.questions.length;
-  const isQuestionPhase = activeVerse.questions.length > 0 && questionIndex < totalQuestions;
+  const isCompletedVerse = currentVerseIndex <= highestCompletedIndex;
+  const isQuestionPhase = activeVerse.questions.length > 0 && (isReplayingQuestions || !isCompletedVerse) && questionIndex < totalQuestions;
 
   return (
     <div className="quiz-card divine-aura fade-in">
@@ -327,7 +347,7 @@ export default function SequenceStudy({
         </div>
       </div>
 
-      <div className="progress-bar-wrap" style={{ marginBottom: "1.5rem" }}>
+      <div className="progress-bar-wrap" style={{ marginBottom: "1rem" }}>
         <div
           className="progress-bar-fill"
           style={{
@@ -336,11 +356,97 @@ export default function SequenceStudy({
         ></div>
       </div>
 
+      {/* VERSE NAVIGATION BAR */}
+      <div className="seq-navigation-bar">
+        <div className="seq-select-wrap">
+          <span className="seq-select-label">Go to:</span>
+          <select
+            className="seq-select"
+            value={currentVerseIndex}
+            onChange={(e) => {
+              const idx = parseInt(e.target.value, 10);
+              setCurrentVerseIndex(idx);
+              localStorage.setItem(PROGRESS_KEY, idx.toString());
+              setQuestionIndex(0);
+              setIncorrectAttempts(0);
+            }}
+          >
+            {parsedVerses.map((v, idx) => {
+              const isCompleted = idx <= highestCompletedIndex;
+              const isActiveStudy = idx === highestCompletedIndex + 1;
+              const isLocked = idx > highestCompletedIndex + 1;
+
+              let label = `Verse ${v.verseNumber}`;
+              if (isCompleted) label += " (✓)";
+              else if (isActiveStudy) label += " (Active 📖)";
+              else label += " (Locked 🔒)";
+
+              return (
+                <option key={idx} value={idx} disabled={isLocked}>
+                  {label}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+
+        <div className="seq-nav-btn-group">
+          <button
+            className="seq-nav-arrow-btn"
+            onClick={() => {
+              if (currentVerseIndex > 0) {
+                const prevIdx = currentVerseIndex - 1;
+                setCurrentVerseIndex(prevIdx);
+                localStorage.setItem(PROGRESS_KEY, prevIdx.toString());
+                setQuestionIndex(0);
+                setIncorrectAttempts(0);
+              }
+            }}
+            disabled={currentVerseIndex === 0}
+          >
+            ◀ Prev
+          </button>
+          <button
+            className="seq-nav-arrow-btn"
+            onClick={() => {
+              if (currentVerseIndex <= highestCompletedIndex && currentVerseIndex + 1 < parsedVerses.length) {
+                const nextIdx = currentVerseIndex + 1;
+                setCurrentVerseIndex(nextIdx);
+                localStorage.setItem(PROGRESS_KEY, nextIdx.toString());
+                setQuestionIndex(0);
+                setIncorrectAttempts(0);
+              }
+            }}
+            disabled={currentVerseIndex > highestCompletedIndex || currentVerseIndex + 1 >= parsedVerses.length}
+          >
+            Next ▶
+          </button>
+        </div>
+      </div>
+
       {isQuestionPhase && activeQuestion ? (
         // A) QUESTION PHASE
         <div>
-          <div className="progress-label" style={{ fontSize: "0.8rem", color: "var(--ink-soft)" }}>
-            Question {questionIndex + 1} of {totalQuestions} for this Verse
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div className="progress-label" style={{ fontSize: "0.8rem", color: "var(--ink-soft)", margin: 0 }}>
+              Question {questionIndex + 1} of {totalQuestions} for this Verse {isCompletedVerse && "(Replay)"}
+            </div>
+            {isCompletedVerse && (
+              <button
+                onClick={() => setIsReplayingQuestions(false)}
+                style={{
+                  background: "none",
+                  border: "none",
+                  color: "var(--ink-soft)",
+                  textDecoration: "underline",
+                  fontSize: "0.8rem",
+                  cursor: "pointer",
+                  padding: 0
+                }}
+              >
+                Cancel Replay
+              </button>
+            )}
           </div>
 
           <div className="question-tags" style={{ marginTop: "0.5rem" }}>
@@ -437,7 +543,16 @@ export default function SequenceStudy({
           )}
 
           {answered && (
-            <div style={{ marginTop: "1.5rem", display: "flex", justifyContent: "flex-end" }}>
+            <div style={{ marginTop: "1.5rem", display: "flex", justifyContent: "flex-end", gap: "1rem" }}>
+              {isCompletedVerse && (
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => setIsReplayingQuestions(false)}
+                  style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", height: "44px", padding: "0 1.5rem" }}
+                >
+                  Back to Translation
+                </button>
+              )}
               {questionIndex + 1 < totalQuestions ? (
                 <button
                   className="btn btn-primary"
@@ -450,13 +565,16 @@ export default function SequenceStudy({
                 <button
                   className="btn btn-primary"
                   onClick={() => {
-                    handleRevealVerse();
-                    // trigger reveal transition
-                    setQuestionIndex(prev => prev + 1);
+                    if (isCompletedVerse) {
+                      setIsReplayingQuestions(false);
+                    } else {
+                      handleRevealVerse();
+                      setQuestionIndex(prev => prev + 1);
+                    }
                   }}
                   style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", height: "44px", padding: "0 1.8rem" }}
                 >
-                  Reveal Verse
+                  {isCompletedVerse ? "Finish Replay" : "Reveal Verse"}
                 </button>
               )}
             </div>
@@ -465,6 +583,12 @@ export default function SequenceStudy({
       ) : (
         // B) VERSE REVEAL PHASE
         <div>
+          {isCompletedVerse && (
+            <div style={{ textAlign: "center", marginBottom: "1rem", color: "var(--gold)", fontSize: "0.9rem", fontStyle: "italic" }}>
+              ✨ Reviewing Completed Verse
+            </div>
+          )}
+
           <div className="verse-reveal-card">
             <div className="verse-reveal-number">
               Verse {activeVerse.verseNumber}
@@ -484,19 +608,38 @@ export default function SequenceStudy({
 
           {totalQuestions > 0 ? (
             <p className="seq-progress-text">
-              ✨ You successfully answered {totalQuestions} questions for this verse and unlocked its realization! (+10 GB)
+              {isCompletedVerse
+                ? `✨ Verse containing ${totalQuestions} questions.`
+                : `✨ You successfully answered ${totalQuestions} questions for this verse and unlocked its realization! (+10 GB)`}
             </p>
           ) : (
             <p className="seq-progress-text">
-              📖 This verse contains no questions. Contemplate the translation and continue. (+10 GB)
+              {isCompletedVerse
+                ? "📖 This verse contains no questions."
+                : "📖 This verse contains no questions. Contemplate the translation and continue. (+10 GB)"}
             </p>
           )}
 
-          <div style={{ display: "flex", justifyContent: "center", marginTop: "1.5rem" }}>
+          <div style={{ display: "flex", justifyContent: "center", gap: "1rem", marginTop: "1.5rem", flexWrap: "wrap" }}>
+            {isCompletedVerse && totalQuestions > 0 && (
+              <button
+                className="btn btn-secondary"
+                onClick={() => {
+                  setIsReplayingQuestions(true);
+                  setQuestionIndex(0);
+                  setAnswered(false);
+                  setSelectedOption(null);
+                  setIncorrectAttempts(0);
+                }}
+                style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", height: "44px", padding: "0 1.8rem" }}
+              >
+                🔄 Replay Questions
+              </button>
+            )}
             <button
               className="btn btn-primary"
               onClick={handleProceedNextVerse}
-              style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", height: "44px", padding: "0 2.2rem", minWidth: "220px" }}
+              style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", height: "44px", padding: "0 2.2rem", minWidth: "200px" }}
             >
               {currentVerseIndex + 1 < parsedVerses.length ? "Proceed to Next Verse" : "Complete Pathway"}
             </button>
