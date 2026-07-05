@@ -13,8 +13,8 @@
     "input_file": "public/bg/gita.json",
     "output_file": "public/bg/questions.json",
     "enabled_modes": [
-      "sequence",
       "quiz",
+      "sequence",
       "builder"
     ]
   },
@@ -35,8 +35,8 @@
     "input_file": "public/ggd/ggd.json",
     "output_file": "public/ggd/questions.json",
     "enabled_modes": [
-      "sequence",
       "quiz",
+      "sequence",
       "memory",
       "drag-drop",
       "recall",
@@ -62,8 +62,8 @@
     "input_file": "public/rkgd/rkgd.json",
     "output_file": "public/rkgd/questions.json",
     "enabled_modes": [
-      "sequence",
       "quiz",
+      "sequence",
       "memory",
       "drag-drop",
       "recall",
@@ -102,14 +102,206 @@
     "input_file": "public/vvs/vvs.json",
     "output_file": "public/vvs/questions.json",
     "enabled_modes": [
-      "sequence",
       "quiz",
+      "sequence",
       "memory",
       "drag-drop",
       "recall",
       "crossword",
       "guesser",
       "pathfinder"
+    ]
+  },
+  "brs": {
+    "title": "Bhakti-rasāmṛta-sindhu",
+    "devanagari": "भक्ति रसामृत सिन्धु",
+    "author": "Rūpa Gosvāmī",
+    "author_id": "rupa",
+    "category": "devotion",
+    "desc": "The ocean of the nectar of devotion — the definitive science of bhakti and its sixty-four practices.",
+    "accent": "#7a3a1a",
+    "status": "soon",
+    "href": "/quiz/brs",
+    "subtitle": "The Ocean of the Nectar of Devotion",
+    "quiz_desc": "Test your knowledge of the science of devotional service, the stages of practice, the components of bhakti-rasa, and the relationships with Lord Kṛṣṇa.",
+    "verse": "\"akhila-rasāmṛta-mūrtiḥ prasṛmara-ruci-ruddha-tārakā-pāliḥ | kalita-śyāmā-lalito rādhā-preyān vidhur jayati ||\"",
+    "input_file": "public/brs/brs.json",
+    "output_file": "public/brs/questions.json",
+    "enabled_modes": [
+      "quiz",
+      "sequence"
+    ],
+    "parts": [
+      {
+        "id": "purva",
+        "name": "Pūrva-vibhāga (Eastern Division)",
+        "desc": "General principles of devotional service and the progressive stages of bhakti.",
+        "filter_prefix": "1.",
+        "chapters": [
+          {
+            "id": "purva_ch1",
+            "name": "Wave 1: Sāmānya-bhakti",
+            "desc": "General characteristics of pure devotional service (uttama-bhakti).",
+            "filter_prefix": "1.1."
+          },
+          {
+            "id": "purva_ch2",
+            "name": "Wave 2: Sādhana-bhakti",
+            "desc": "Devotional service in practice: Vaidhi and Rāgānugā Sādhana.",
+            "filter_prefix": "1.2."
+          },
+          {
+            "id": "purva_ch3",
+            "name": "Wave 3: Bhāva-bhakti",
+            "desc": "Devotional service in ecstasy/emotion.",
+            "filter_prefix": "1.3."
+          },
+          {
+            "id": "purva_ch4",
+            "name": "Wave 4: Prema-bhakti",
+            "desc": "Pure love for Lord Kṛṣṇa.",
+            "filter_prefix": "1.4."
+          }
+        ]
+      },
+      {
+        "id": "daksina",
+        "name": "Dakṣiṇa-vibhāga (Southern Division)",
+        "desc": "The structural components of bhakti-rasa (the mellow or taste of devotion).",
+        "filter_prefix": "2.",
+        "chapters": [
+          {
+            "id": "daksina_ch1",
+            "name": "Wave 1: Vibhāva",
+            "desc": "Stimulus or causes of ecstatic love: Ālambana and Uddīpana.",
+            "filter_prefix": "2.1."
+          },
+          {
+            "id": "daksina_ch2",
+            "name": "Wave 2: Anubhāva",
+            "desc": "Subsequent symptoms of ecstasy (bodily movements and gestures).",
+            "filter_prefix": "2.2."
+          },
+          {
+            "id": "daksina_ch3",
+            "name": "Wave 3: Sāttvika-bhāva",
+            "desc": "Constitutional ecstatic symptoms (eight involuntary bodily changes).",
+            "filter_prefix": "2.3."
+          },
+          {
+            "id": "daksina_ch4",
+            "name": "Wave 4: Vyabhicārī-bhāva",
+            "desc": "Transitory emotions (thirty-three passing spiritual feelings).",
+            "filter_prefix": "2.4."
+          },
+          {
+            "id": "daksina_ch5",
+            "name": "Wave 5: Sthāyī-bhāva",
+            "desc": "Foundational love (permanent relationship with the Lord).",
+            "filter_prefix": "2.5."
+          }
+        ]
+      },
+      {
+        "id": "pascima",
+        "name": "Paścima-vibhāga (Western Division)",
+        "desc": "The five primary or direct relationships (mukhya-bhakti-rasa) with Lord Kṛṣṇa.",
+        "filter_prefix": "3.",
+        "chapters": [
+          {
+            "id": "pascima_ch1",
+            "name": "Wave 1: Śānta-bhakti-rasa",
+            "desc": "Neutrality: Devotional service in peaceful adoration.",
+            "filter_prefix": "3.1."
+          },
+          {
+            "id": "pascima_ch2",
+            "name": "Wave 2: Prīta-bhakti-rasa (Dāsya)",
+            "desc": "Servitorship: Active devotional service as a servant of the Lord.",
+            "filter_prefix": "3.2."
+          },
+          {
+            "id": "pascima_ch3",
+            "name": "Wave 3: Preyo-bhakti-rasa (Sakhya)",
+            "desc": "Friendship: Devotional service in friendly intimacy.",
+            "filter_prefix": "3.3."
+          },
+          {
+            "id": "pascima_ch4",
+            "name": "Wave 4: Vatsala-bhakti-rasa (Vātsalya)",
+            "desc": "Parenthood: Loving parental relationship with Kṛṣṇa.",
+            "filter_prefix": "3.4."
+          },
+          {
+            "id": "pascima_ch5",
+            "name": "Wave 5: Madhura-bhakti-rasa (Mādhurya)",
+            "desc": "Conjugal Love: Transcendent amorous relationship.",
+            "filter_prefix": "3.5."
+          }
+        ]
+      },
+      {
+        "id": "uttara",
+        "name": "Uttara-vibhāga (Northern Division)",
+        "desc": "The seven secondary or indirect loving relationships (gauṇa-bhakti-rasa).",
+        "filter_prefix": "4.",
+        "chapters": [
+          {
+            "id": "uttara_ch1",
+            "name": "Wave 1: Hāsya-rasa",
+            "desc": "Laughter: Devotional service mixed with humor.",
+            "filter_prefix": "4.1."
+          },
+          {
+            "id": "uttara_ch2",
+            "name": "Wave 2: Adbhuta-rasa",
+            "desc": "Astonishment: Devotional service mixed with wonder.",
+            "filter_prefix": "4.2."
+          },
+          {
+            "id": "uttara_ch3",
+            "name": "Wave 3: Vīra-rasa",
+            "desc": "Chivalry: Devotional service mixed with heroism.",
+            "filter_prefix": "4.3."
+          },
+          {
+            "id": "uttara_ch4",
+            "name": "Wave 4: Karuṇa-rasa",
+            "desc": "Compassion: Devotional service mixed with grief.",
+            "filter_prefix": "4.4."
+          },
+          {
+            "id": "uttara_ch5",
+            "name": "Wave 5: Raudra-rasa",
+            "desc": "Anger: Devotional service mixed with anger.",
+            "filter_prefix": "4.5."
+          },
+          {
+            "id": "uttara_ch6",
+            "name": "Wave 6: Bhayānaka-rasa",
+            "desc": "Dread: Devotional service mixed with fear.",
+            "filter_prefix": "4.6."
+          },
+          {
+            "id": "uttara_ch7",
+            "name": "Wave 7: Bībhatsa-rasa",
+            "desc": "Ghastliness: Devotional service mixed with disgust.",
+            "filter_prefix": "4.7."
+          },
+          {
+            "id": "uttara_ch8",
+            "name": "Wave 8: Rasa-maitrī & Rasa-vairitya",
+            "desc": "Compatibility and incompatibility of different rasas.",
+            "filter_prefix": "4.8."
+          },
+          {
+            "id": "uttara_ch9",
+            "name": "Wave 9: Rasābhāsa",
+            "desc": "Semblance of rasa: Uparasa, Anurasa, and Aparasa.",
+            "filter_prefix": "4.9."
+          }
+        ]
+      }
     ]
   },
   "skk": {
@@ -169,16 +361,6 @@
     "category": "devotion",
     "desc": "Meditations on the daily pastimes of Rādhā-Kṛṣṇa through the eight periods of the day.",
     "accent": "#a03555",
-    "status": "soon"
-  },
-  "brs": {
-    "title": "Bhakti-rasāmṛta-sindhu",
-    "devanagari": "भक्ति रसामृत सिन्धु",
-    "author": "Rūpa Gosvāmī",
-    "author_id": "rupa",
-    "category": "devotion",
-    "desc": "The ocean of the nectar of devotion — the definitive science of bhakti and its sixty-four practices.",
-    "accent": "#7a3a1a",
     "status": "soon"
   },
   "un": {
