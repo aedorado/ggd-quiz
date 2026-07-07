@@ -376,13 +376,14 @@ export default function SequenceStudy({
               const isActiveStudy = idx === highestCompletedIndex + 1;
               const isLocked = idx > highestCompletedIndex + 1;
 
+              if (isLocked) return null;
+
               let label = `Verse ${v.verseNumber}`;
               if (isCompleted) label += " (✓)";
               else if (isActiveStudy) label += " (Active 📖)";
-              else label += " (Locked 🔒)";
 
               return (
-                <option key={idx} value={idx} disabled={isLocked}>
+                <option key={idx} value={idx}>
                   {label}
                 </option>
               );
