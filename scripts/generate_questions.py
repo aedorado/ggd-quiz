@@ -278,12 +278,13 @@ def main():
     data = {}
     completed = set()
     output_path = Path(output_file)
-    if output_path.exists() and not args.overwrite:
+    if output_path.exists():
         try:
             with open(output_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
-            completed = set(data.keys())
-            print(f"Loaded {len(completed)} existing completed verses from {output_file}.")
+            if not args.overwrite:
+                completed = set(data.keys())
+            print(f"Loaded {len(data)} existing completed verses from {output_file}.")
         except Exception as e:
             print(f"Warning: Could not load existing file: {e}. Starting fresh.")
 

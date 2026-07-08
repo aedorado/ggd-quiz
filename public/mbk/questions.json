@@ -1,0 +1,117 @@
+{
+  "1.1.1": {
+    "paragraph_text": "Ambikā peered curiously into the mirror as her maidservants finished adorning her in preparation for the nuptial bed. She had lost none of her beauty despite her months of mourning. Her skin was flawless and as white as milk. Curling jet-black hair framed her oval face. Bow-like eyebrows arched over her black eyes, which curved like two lotus petals. No wonder Vicitravīrya had been so enamored of her, rarely leaving her side. While he was alive her maidservants had adorned her each evening, just in case her lord had desired to approach her. As Ambikā again put on her ornaments and fine dress her mind drifted sadly back to the days she had spent with her husband. After having lain in that great hero’s powerful arms, how strange to now be preparing to meet another man!",
+    "questions": []
+  },
+  "1.1.2": {
+    "paragraph_text": "Ambikā balked at the prospect, and she felt herself growing increasingly restless. She dismissed the maidservants as they fussed around her. She needed to be alone to think. When Vicitravīrya had died in such an untimely way, she had wanted to ascend his funeral pyre and follow him to the heavens. She could not imagine living without him. But Satyavatī, the queen mother, had restrained her--she still had a duty to perform. Despite the fact that they had enjoyed so much pleasure together, after seven years of marriage they had not produced a child. Without leaving an heir the king was guilty of neglecting a prime duty. How, then, would he be able to reach the higher regions?",
+    "questions": [
+      {
+        "question": "Who prevented Ambikā from ascending Vicitravīrya's funeral pyre after his untimely death?",
+        "options": [
+          "Satyavatī",
+          "Her maidservants",
+          "The royal guards",
+          "Her own reluctance"
+        ],
+        "correct_answer": "Satyavatī",
+        "explanation": "When Vicitravīrya had died in such an untimely way, Ambikā had wanted to ascend his funeral pyre and follow him to the heavens. But Satyavatī, the queen mother, had restrained her.",
+        "difficulty": "easy",
+        "tags": [
+          "Characters",
+          "Customs",
+          "Relationships"
+        ]
+      },
+      {
+        "question": "What was the duration of Ambikā and Vicitravīrya's marriage before his death, during which they did not produce an heir?",
+        "options": [
+          "Three years",
+          "Five years",
+          "Seven years",
+          "Nine years"
+        ],
+        "correct_answer": "Seven years",
+        "explanation": "Despite the fact that they had enjoyed so much pleasure together, after seven years of marriage they had not produced a child.",
+        "difficulty": "medium",
+        "tags": [
+          "Chronology",
+          "Relationships"
+        ]
+      },
+      {
+        "question": "What was the specific consequence for King Vicitravīrya for dying without leaving an heir?",
+        "options": [
+          "He would be reborn as an animal.",
+          "He would be unable to reach the higher regions.",
+          "He would cause his kingdom to fall into chaos.",
+          "He would lose all his accumulated wealth."
+        ],
+        "correct_answer": "He would be unable to reach the higher regions.",
+        "explanation": "Without leaving an heir the king was guilty of neglecting a prime duty. How, then, would he be able to reach the higher regions?",
+        "difficulty": "hard",
+        "tags": [
+          "Duty",
+          "Kingship",
+          "Spiritual Law"
+        ]
+      }
+    ]
+  },
+  "1.1.3": {
+    "paragraph_text": "Satyavatī had convinced Ambikā and her co-wife Ambālikā to stay and fulfill their husband’s duty and thereby secure the welfare of his soul. The scriptures allowed that in times of emergency a man’s elder brother could conceive children in his wife if he was unable. This was such an emergency. Ambikā suddenly felt more peaceful. Her union with Bhīṣma would not be a betrayal of the love she felt for her husband, but a service to him and to the kingdom. She stopped her restless pacing and lay down on the ivory bed in bashful anticipation. Bhīṣma was a powerful and righteous man. Who better to sire the future king? She should ensure that he felt completely honored by her.",
+    "questions": [
+      {
+        "question": "What specific familial relation did the scriptures allow to conceive children with a man's wife during an emergency if the husband was unable?",
+        "options": [
+          "A man's elder brother",
+          "A man's younger brother",
+          "A respected sage from the kingdom",
+          "A chosen warrior of the Kuru dynasty"
+        ],
+        "correct_answer": "A man's elder brother",
+        "explanation": "The scriptures allowed that in times of emergency a man’s elder brother could conceive children in his wife if he was unable.",
+        "difficulty": "medium",
+        "tags": [
+          "scriptural law",
+          "family",
+          "succession"
+        ]
+      },
+      {
+        "question": "What was Satyavatī's primary motivation for convincing Ambikā and Ambālikā to stay and fulfill their husband's duty?",
+        "options": [
+          "To secure the welfare of their husband's soul",
+          "To maintain the social order of the kingdom",
+          "To prevent them from leaving the royal household",
+          "To ensure the continuation of the royal lineage"
+        ],
+        "correct_answer": "To secure the welfare of their husband's soul",
+        "explanation": "Satyavatī had convinced Ambikā and her co-wife Ambālikā to stay and fulfill their husband’s duty and thereby secure the welfare of his soul.",
+        "difficulty": "easy",
+        "tags": [
+          "duty",
+          "welfare",
+          "family"
+        ]
+      },
+      {
+        "question": "According to Ambikā's thoughts, what qualities described Bhīṣma, whom she anticipated would sire the future king?",
+        "options": [
+          "Powerful and righteous",
+          "Wise and ancient",
+          "Dutiful and celibate",
+          "Respected and learned"
+        ],
+        "correct_answer": "Powerful and righteous",
+        "explanation": "Ambikā thought, 'Bhīṣma was a powerful and righteous man. Who better to sire the future king?'",
+        "difficulty": "easy",
+        "tags": [
+          "characters",
+          "attributes",
+          "anticipation"
+        ]
+      }
+    ]
+  }
+}

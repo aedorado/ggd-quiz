@@ -112,6 +112,37 @@
       "pathfinder"
     ]
   },
+  "mbk": {
+    "title": "Mahābhārata",
+    "devanagari": "महाभारत",
+    "author": "Kṛṣṇa Dharma dasa",
+    "author_id": "krsnadharma",
+    "category": "epic",
+    "desc": "The great epic retelling of the Kuru dynasty, the Pandavas, and the battle of Kurukṣetra.",
+    "accent": "#9E1B1B",
+    "status": "ready",
+    "href": "/quiz/mbk",
+    "featured": true,
+    "subtitle": "Retold by Kṛṣṇa Dharma dasa",
+    "quiz_desc": "Five questions testing key characters, dynastic details, and events of the Mahabharata.",
+    "input_file": "public/mbk/mbk.json",
+    "output_file": "public/mbk/questions.json",
+    "enabled_modes": [
+      "quiz",
+      "sequence"
+    ]
+  },
+  "rmk": {
+    "title": "Rāmāyaṇa",
+    "devanagari": "रामायण",
+    "author": "Kṛṣṇa Dharma dasa",
+    "author_id": "krsnadharma",
+    "category": "epic",
+    "desc": "The glorious epic retelling of the life and adventures of Lord Rāmacandra.",
+    "accent": "#bf360c",
+    "status": "soon",
+    "featured": false
+  },
   "brs": {
     "title": "Bhakti-rasāmṛta-sindhu",
     "devanagari": "भक्ति रसामृत सिन्धु",

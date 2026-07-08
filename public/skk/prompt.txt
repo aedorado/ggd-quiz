@@ -26,6 +26,7 @@ STRICT RULES:
 - Do NOT generate trivial questions that ask about basic vocabulary, common general knowledge, or simple adjectives/nouns mentioned in passing.
 - Do NOT write questions that can be answered by simple grammar matching or context clues.
 - Distractors must be highly plausible, scriptural terms, names, or concepts.
+- NO ANSWER LEAKAGE: Never include the correct answer (or any giveaway clue that directly points to it) in the question itself. For example, do not ask "Which incarnation is mentioned as Kūrma?" if the correct answer is "Kūrma".
 - DO NOT use phrases like:
   * "According to the text..."
   * "What does the passage say..."

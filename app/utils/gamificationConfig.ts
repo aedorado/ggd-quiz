@@ -68,9 +68,10 @@ export const GAMIFICATION_CONFIG: GamificationConfig = {
   bookUnlocks: {
     bg: 1,  // Bhagavad Gita
     ggd: 2,   // Gaura Gaṇoddeśa Dīpikā
-    vvs: 8,   // Vraja Vilāsa Stava
-    rkgd: 10,  // Rādhā Kṛṣṇa Gaṇoddeśa Dīpikā
-    bs: 12,  // Śrī Brahma-saṁhitā
+    vvs: 3,   // Vraja Vilāsa Stava
+    rkgd: 5,  // Rādhā Kṛṣṇa Gaṇoddeśa Dīpikā
+    brs: 7,  // Śrī Bhakti Rasamrita Sindhu
+    bs: 8,  // Śrī Brahma-saṁhitā
   },
   gameUnlocks: {
     quiz: {

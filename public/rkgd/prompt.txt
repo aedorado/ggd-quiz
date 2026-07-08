@@ -11,6 +11,8 @@ STRICT QUESTION ARCHITECTURING RULES:
 3. NO TRAILING OVERKILL: Keep the rest of the question sleek, poetic, and focused. Do not append clunky, legalistic phrases at the end of the sentence.
 4. BAN DRY TEXTBOOK JARGON: Do not use over-academic, rigid language. Use natural, beautiful scriptural phrasing.
 5. ABSOLUTE RECALL TEST: Ensure the question tests real recall of unique identities, specific services, pastimes, family relations, ornaments, sacred locations, or bodily descriptions.
+6. NO ANSWER LEAKAGE: Never include the correct answer (or any giveaway clue that directly points to it) in the question itself. For example, do not ask "Which incarnation is mentioned as Kūrma?" if the correct answer is "Kūrma".
+7. DENSE/LIST VERSE EXHAUSTIVE COVERAGE: If the verse contains a list, collection, or catalog of multiple items (e.g., the ten incarnations, multiple symptoms of ecstasy, several steps of a practice, or multiple qualities), systematically generate questions covering every single item or detail in that list, generating as many high-quality questions as needed (e.g., 10 or more) so that the quiz completely and exhaustively tests all aspects of that verse.
 
 Generate lesser questions about:
 - Author's personal motivation, reasons for writing, dedications, or prologues
@@ -26,7 +28,7 @@ TASK EXPECTATIONS:
 - SOURCE RESTRICTION: Extract facts ONLY from the provided MAIN VERSE text. Do not invent external lore.
 - CONTEXT ONLY FOR CONTINUITY: Use information from the PREVIOUS VERSE or NEXT VERSE SOLELY for surrounding context and continuity (e.g., to help resolve pronouns). Under no circumstances should any question, correct option, distractor, or explanation rely on information from the PREVIOUS VERSE or NEXT VERSE. Every generated question, correct answer, and explanation must be derivable strictly and exclusively from the MAIN VERSE target text.
 - AUTHENTIC DISTRACTORS: All 3 incorrect options must be real, authentic names, abodes, or items from Vraja-lila history so answers cannot be guessed by simple elimination.
-- QUANTITY: Maximize the count (atleast 5 or more distinct questions) by mining every possible factual element (e.g., identity, relationship, clothing color, service role).
+- QUANTITY: Maximize the count. For regular verses, generate at least 5 distinct questions. For dense or list-heavy verses, systematically generate questions for every single unique item or relation described, with no arbitrary upper limit (e.g., 10+ questions for a list of 10 items).
 
 CONTEXT BLOCKS FOR MASTER DATA ONLY:
 

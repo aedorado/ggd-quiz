@@ -338,9 +338,6 @@ export default function SequenceStudy({
           Verse {activeVerse.verseNumber} of {parsedVerses.length} ({progressPercent}% Completed)
         </div>
         <div style={{ display: "flex", gap: "0.5rem" }}>
-          <button className="sound-toggle-btn" onClick={handleRestart} style={{ fontSize: "0.75rem", padding: "0.3rem 0.6rem" }}>
-            Restart
-          </button>
           <button className="sound-toggle-btn" onClick={onClose} style={{ fontSize: "0.75rem", padding: "0.3rem 0.6rem" }}>
             Exit
           </button>
