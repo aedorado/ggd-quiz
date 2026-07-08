@@ -113,5 +113,1772 @@
         ]
       }
     ]
+  },
+  "1.1.4": {
+    "paragraph_text": "There was a knock at the door. Ambikā looked up shyly. The door opened and a tall man entered. Ambikā’s blood turned cold. This was not Bhīṣma. There in her bedchamber stood a wizened, ugly and filthy ascetic. His matted locks hung about his gaunt face and he stared at her with fierce eyes. His teeth were only slightly less black than his complexion. Around his waist was a soiled loin cloth, his only garment. His hairy body was encrusted with dirt. Without any delay he came toward her and sat by her side. She instantly recoiled from the foul stench emanating from his body. Who was this person? She knew of no brother-in-law other than Bhīṣma. She prayed to the gods that she might lose consciousness, for how could she endure this fearful man’s touch? As he put his hands on her dress she closed her eyes, barely able to repress her urge to scream.",
+    "questions": [
+      {
+        "question": "Whom did Ambikā know as her only brother-in-law?",
+        "options": [
+          "Bhīṣma",
+          "The wizened ascetic",
+          "Vicitravīrya",
+          "Śantanu"
+        ],
+        "correct_answer": "Bhīṣma",
+        "explanation": "The paragraph states, 'She knew of no brother-in-law other than Bhīṣma.'",
+        "difficulty": "easy",
+        "tags": [
+          "character relationships",
+          "Ambikā",
+          "Bhīṣma"
+        ]
+      }
+    ]
+  },
+  "1.1.5": {
+    "paragraph_text": "Satyavatī blamed herself. If it had not been for her father’s greed, Hastināpura would not be in such a precarious situation now. Here sat the powerful Bhīṣma, son of the goddess Gaṅgā. There was no greater hero on earth. As the eldest son of the righteous King Śantanu, he was the natural heir to Hastināpura’s throne, but the kingdom’s good fortune had been thwarted by her foolish father on her behalf.",
+    "questions": [
+      {
+        "question": "What factor thwarted Hastināpura’s good fortune, despite Bhīṣma being the natural heir to the throne?",
+        "options": [
+          "Satyavatī's foolish father acted on her behalf due to his greed.",
+          "Bhīṣma chose to renounce his claim to the throne.",
+          "King Śantanu appointed a different successor.",
+          "A natural disaster devastated the kingdom's resources."
+        ],
+        "correct_answer": "Satyavatī's foolish father acted on her behalf due to his greed.",
+        "explanation": "The main paragraph states that Bhīṣma 'was the natural heir to Hastināpura’s throne, but the kingdom’s good fortune had been thwarted by her foolish father on her behalf.'",
+        "difficulty": "medium",
+        "tags": [
+          "Hastināpura",
+          "Succession",
+          "Characters",
+          "Conflict"
+        ]
+      }
+    ]
+  },
+  "1.1.6": {
+    "paragraph_text": "She could still vividly picture the events. It had seemed to be like any other day. She was sitting by the river’s edge, waiting to row travelers across. Her father, leader of the fishermen, had given her that duty so she would gain the religious merits born of service to travelers. On this particular day, however, the emperor of the world, the mighty Śantanu, had been hunting in the nearby forests and was seduced by the alluring fragrance that emanated from her body. Having sought out the source of that celestial scent, he had become bewitched by her beauty. From his gaze it was obvious he desired to marry her. Upon hearing that she was still unmarried, he had hurried to her father’s house to ask for her hand.",
+    "questions": [
+      {
+        "question": "What specific duty had Satyavatī's father assigned her by the river's edge?",
+        "options": [
+          "Selling fish at the market",
+          "Rowing travelers across the river",
+          "Collecting river reeds for crafts",
+          "Guiding hunters through the adjacent forests"
+        ],
+        "correct_answer": "Rowing travelers across the river",
+        "explanation": "The text states, \"She was sitting by the river’s edge, waiting to row travelers across. Her father... had given her that duty\".",
+        "difficulty": "easy",
+        "tags": [
+          "Satyavatī",
+          "duty",
+          "father"
+        ]
+      },
+      {
+        "question": "For what specific purpose did Satyavatī's father assign her the duty of rowing travelers across the river?",
+        "options": [
+          "To earn money for their family's sustenance",
+          "To gain religious merits from service to travelers",
+          "To help her find a suitable husband among the travelers",
+          "To keep her occupied and away from household chores"
+        ],
+        "correct_answer": "To gain religious merits from service to travelers",
+        "explanation": "The text states, \"Her father... had given her that duty so she would gain the religious merits born of service to travelers.\"",
+        "difficulty": "medium",
+        "tags": [
+          "Satyavatī",
+          "father",
+          "religious merits"
+        ]
+      },
+      {
+        "question": "While engaged in what activity was Emperor Śantanu when he was first seduced by Satyavatī's alluring fragrance?",
+        "options": [
+          "Fishing in the river",
+          "Meditating by a forest shrine",
+          "Hunting in the nearby forests",
+          "Meeting with local chieftains"
+        ],
+        "correct_answer": "Hunting in the nearby forests",
+        "explanation": "The text states, \"the emperor of the world, the mighty Śantanu, had been hunting in the nearby forests and was seduced by the alluring fragrance that emanated from her body.\"",
+        "difficulty": "easy",
+        "tags": [
+          "Śantanu",
+          "hunting",
+          "Satyavatī",
+          "fragrance"
+        ]
+      },
+      {
+        "question": "After being seduced by Satyavatī's alluring fragrance and seeking its source, what next completely bewitched Emperor Śantanu?",
+        "options": [
+          "Her gentle and melodious voice",
+          "Her profound wisdom and knowledge",
+          "Her humble and demure demeanor",
+          "Her beauty"
+        ],
+        "correct_answer": "Her beauty",
+        "explanation": "The text states, \"Having sought out the source of that celestial scent, he had become bewitched by her beauty.\"",
+        "difficulty": "medium",
+        "tags": [
+          "Śantanu",
+          "Satyavatī",
+          "beauty",
+          "bewitched"
+        ]
+      }
+    ]
+  },
+  "1.1.7": {
+    "paragraph_text": "When she herself had arrived home, she saw Śantanu leaving their humble hut in dismay. Her father had stipulated that he could only marry her if he promised the throne to her son. But the emperor already had a qualified son in Devavrataḥ, and he had already been consecrated as the prince regent. The king was not prepared, simply for his own pleasure, to wrong his worthy and beloved son. Thus he left, his heart torn by desire.",
+    "questions": [
+      {
+        "question": "What condition did Satyavatī's father impose on King Śantanu for their marriage?",
+        "options": [
+          "Śantanu must make Satyavatī the chief queen of his kingdom.",
+          "Śantanu must promise the throne of the kingdom to Satyavatī's son.",
+          "Śantanu must reside in their humble hut after marriage.",
+          "Śantanu must renounce his hunting activities forever."
+        ],
+        "correct_answer": "Śantanu must promise the throne of the kingdom to Satyavatī's son.",
+        "explanation": "Satyavatī's father stipulated that King Śantanu could only marry her if he promised the throne to her son.",
+        "difficulty": "medium",
+        "tags": [
+          "Marriage",
+          "Succession",
+          "Conditions"
+        ]
+      },
+      {
+        "question": "Why did King Śantanu refuse to accept the marriage condition set by Satyavatī's father?",
+        "options": [
+          "He did not consider Satyavatī's future son worthy of the throne.",
+          "He believed the condition was an insult to his royal lineage.",
+          "He already had Devavrataḥ, a qualified son who was consecrated as the prince regent.",
+          "He thought the condition would cause unrest among his current subjects."
+        ],
+        "correct_answer": "He already had Devavrataḥ, a qualified son who was consecrated as the prince regent.",
+        "explanation": "King Śantanu already had a qualified son, Devavrataḥ, who had been consecrated as the prince regent, and he was unwilling to wrong his worthy and beloved son for his own pleasure.",
+        "difficulty": "medium",
+        "tags": [
+          "Characters",
+          "Decisions",
+          "Royal Succession"
+        ]
+      },
+      {
+        "question": "What was the specific royal status of Devavrataḥ at the time Satyavatī's father set his condition for marriage?",
+        "options": [
+          "He was the chief commander of the royal army.",
+          "He was the primary advisor to King Śantanu.",
+          "He had been consecrated as the prince regent.",
+          "He was a qualified heir, but not yet holding a formal title."
+        ],
+        "correct_answer": "He had been consecrated as the prince regent.",
+        "explanation": "The paragraph states that Devavrataḥ 'had already been consecrated as the prince regent'.",
+        "difficulty": "easy",
+        "tags": [
+          "Characters",
+          "Royal Titles",
+          "Devavrataḥ"
+        ]
+      }
+    ]
+  },
+  "1.1.8": {
+    "paragraph_text": "Satyavatī too had pined for many days, praying to the gods to arrange her union with the king. Then one day, unknown to Śantanu, Devavrataḥ appeared at their hut to solicit her hand on the emperor’s behalf. Her father repeated his condition and Devavrataḥ agreed. He would never ascend Hastināpura’s throne; the crown could go to Satyavatī’s children. Still her father hesitated. He had heard enough about court intrigues to know that if Devavrataḥ relinquished the throne, then Devavrataḥ’s children might feel cheated and oppose Satyavatī’s son. The fisher-king voiced his doubts. Hearing them, Devavrataḥ uttered a terrible vow. He would never accept a wife but would maintain life-long celibacy. In order to secure his father’s happiness, he said, he was ready to renounce all personal enjoyment. Satyavatī now recalled that when Devavrataḥ made that vow, flowers had rained from the sky and a thunderous voice had echoed from the heavens: “From this day his name shall be Bhīṣma, one of a terrible vow.”",
+    "questions": [
+      {
+        "question": "What initial promise did Devavrata make to Satyavatī's father regarding the Hastināpura throne?",
+        "options": [
+          "He would rule jointly with Satyavatī's son.",
+          "He would never ascend Hastināpura's throne.",
+          "He would ascend the throne only after Satyavatī's son.",
+          "He would renounce the throne only if he had no children."
+        ],
+        "correct_answer": "He would never ascend Hastināpura's throne.",
+        "explanation": "The text states, 'Devavrataḥ agreed. He would never ascend Hastināpura’s throne; the crown could go to Satyavatī’s children.'",
+        "difficulty": "easy",
+        "tags": [
+          "Devavrata",
+          "Satyavatī",
+          "Hastināpura",
+          "throne",
+          "vow"
+        ]
+      },
+      {
+        "question": "After Devavrata offered to renounce the throne for himself, what specific concern did the fisher-king voice?",
+        "options": [
+          "Devavrata might later change his mind and claim the throne.",
+          "Devavrata's children might feel cheated and oppose Satyavatī's son.",
+          "Śantanu might not agree to Devavrata's relinquishing the throne.",
+          "Satyavatī's son might not be worthy of the throne."
+        ],
+        "correct_answer": "Devavrata's children might feel cheated and oppose Satyavatī's son.",
+        "explanation": "The paragraph details, 'He had heard enough about court intrigues to know that if Devavrataḥ relinquished the throne, then Devavrataḥ’s children might feel cheated and oppose Satyavatī’s son. The fisher-king voiced his doubts.'",
+        "difficulty": "medium",
+        "tags": [
+          "Fisher-king",
+          "Devavrata",
+          "Satyavatī",
+          "succession",
+          "doubt"
+        ]
+      },
+      {
+        "question": "What was the 'terrible vow' Devavrata made to address the fisher-king's doubts and secure his father’s happiness?",
+        "options": [
+          "He would exile himself from Hastināpura.",
+          "He would never accept a wife but would maintain life-long celibacy.",
+          "He would always protect Satyavatī's children.",
+          "He would never speak to his father again if he married Satyavatī."
+        ],
+        "correct_answer": "He would never accept a wife but would maintain life-long celibacy.",
+        "explanation": "The text explicitly states, 'Hearing them, Devavrataḥ uttered a terrible vow. He would never accept a wife but would maintain life-long celibacy.'",
+        "difficulty": "medium",
+        "tags": [
+          "Devavrata",
+          "vow",
+          "celibacy",
+          "Bhīṣma"
+        ]
+      },
+      {
+        "question": "According to Satyavatī's recall, what supernatural events accompanied Devavrata's terrible vow?",
+        "options": [
+          "The sky turned dark and a great wind blew.",
+          "Flowers rained from the sky and a thunderous voice echoed from the heavens.",
+          "A bright light appeared and the ground shook.",
+          "The rivers dried up and the mountains trembled."
+        ],
+        "correct_answer": "Flowers rained from the sky and a thunderous voice echoed from the heavens.",
+        "explanation": "Satyavatī recalled 'when Devavrataḥ made that vow, flowers had rained from the sky and a thunderous voice had echoed from the heavens'.",
+        "difficulty": "medium",
+        "tags": [
+          "Devavrata",
+          "Bhīṣma",
+          "divine intervention",
+          "vow"
+        ]
+      },
+      {
+        "question": "What new name was bestowed upon Devavrata by a thunderous voice from the heavens after he made his terrible vow?",
+        "options": [
+          "Śantanu II",
+          "Bhīṣma",
+          "Hastināpura",
+          "Dharma"
+        ],
+        "correct_answer": "Bhīṣma",
+        "explanation": "The text states: 'a thunderous voice had echoed from the heavens: “From this day his name shall be Bhīṣma, one of a terrible vow.”'",
+        "difficulty": "easy",
+        "tags": [
+          "Devavrata",
+          "Bhīṣma",
+          "name",
+          "vow"
+        ]
+      }
+    ]
+  },
+  "1.1.9": {
+    "paragraph_text": "Satyavatī looked at Bhīṣma now as he sat respectfully before her. She spoke his name and he looked up, ready to execute her command. Maybe she could yet convince him. He had always been obedient to her, even more so since Śantanu’s death.",
+    "questions": []
+  },
+  "1.1.10": {
+    "paragraph_text": "“My dear Bhīṣma, please think again,” the queen said as she pulled her fine silk sari over her plaited hair. “You made your vow simply to secure the interests of your father and me. I now absolve you of that vow. You have always been fixed in virtue. Please consider our present situation. Just as you made your vow to serve your elders, you should now serve them by acting for the welfare of our line. Surely this is your duty. Ascend Hastināpura’s throne and beget powerful sons to secure this ancient kingdom’s future.”",
+    "questions": [
+      {
+        "question": "To secure the future of the ancient kingdom, what did the queen specifically ask Bhīṣma to do?",
+        "options": [
+          "Renounce his vow and appoint a worthy successor.",
+          "Ascend Hastināpura’s throne and beget powerful sons.",
+          "Reaffirm his commitment to his father's lineage and find a suitable husband for the princesses.",
+          "Take an oath to defend Hastināpura with his life and establish new alliances."
+        ],
+        "correct_answer": "Ascend Hastināpura’s throne and beget powerful sons.",
+        "explanation": "The queen explicitly asked Bhīṣma to “Ascend Hastināpura’s throne and beget powerful sons to secure this ancient kingdom’s future.”",
+        "difficulty": "medium",
+        "tags": [
+          "Bhīṣma",
+          "The queen",
+          "Hastināpura",
+          "Succession",
+          "Royal duty"
+        ]
+      },
+      {
+        "question": "Bhīṣma originally made his vow to secure the interests of which two individuals?",
+        "options": [
+          "His father and the Kuru patriarch.",
+          "The Kuru elders and the royal family.",
+          "His father and the queen.",
+          "The previous king and the present regent."
+        ],
+        "correct_answer": "His father and the queen.",
+        "explanation": "The queen stated that Bhīṣma “made your vow simply to secure the interests of your father and me.”",
+        "difficulty": "easy",
+        "tags": [
+          "Bhīṣma",
+          "Vows",
+          "Royal family"
+        ]
+      }
+    ]
+  },
+  "1.1.11": {
+    "paragraph_text": "Bhīṣma shook his head in exasperation. “Mother, please do not ask me to stray from the path of truth. It can never be as you suggest. The sun may renounce its splendor, water its wetness and the sky its sound, but Bhīṣma will never renounce truth.”",
+    "questions": [
+      {
+        "question": "What fundamental quality did Bhīṣma declare the sun could renounce before he himself would ever renounce truth?",
+        "options": [
+          "Its heat",
+          "Its light",
+          "Its splendor",
+          "Its orbit"
+        ],
+        "correct_answer": "Its splendor",
+        "explanation": "Bhīṣma stated, \"The sun may renounce its splendor, water its wetness and the sky its sound, but Bhīṣma will never renounce truth.\"",
+        "difficulty": "medium",
+        "tags": [
+          "Bhīṣma",
+          "truth",
+          "character resolve",
+          "rhetoric"
+        ]
+      }
+    ]
+  },
+  "1.1.12": {
+    "paragraph_text": "Bhīṣma asked Satyavatī to consider the deeper cause of the unexpected emergency facing the kingdom. It was due to all-powerful destiny. How else could it have come to pass that although Satyavatī had borne two powerful sons, both had died without producing an heir to the throne? All the kings on earth had paid tribute to Satyavatī’s eldest son, Citrāṅgadā. His reputation for prowess in battle and unwavering virtue had reached the heavens. It was thus that the mighty king of the Gandharvas, who bore the same name, became envious upon hearing his glories. The jealous Gandharva could not allow another famous and powerful Citrāṅgadā to live. He came to earth and challenged his rival to battle. After years of fighting, the valorous son of Satyavatī was slain and the proud Gandharva returned triumphant to the heavens.",
+    "questions": [
+      {
+        "question": "Who was Satyavatī's eldest son, to whom all kings on earth paid tribute?",
+        "options": [
+          "Bhīṣma",
+          "Vicitravīrya",
+          "Citrāṅgadā",
+          "Dhṛtarāṣṭra"
+        ],
+        "correct_answer": "Citrāṅgadā",
+        "explanation": "The paragraph states, \"All the kings on earth had paid tribute to Satyavatī’s eldest son, Citrāṅgadā.\"",
+        "difficulty": "easy",
+        "tags": [
+          "Characters",
+          "Genealogy"
+        ]
+      },
+      {
+        "question": "What was the name of the mighty king of the Gandharvas who became envious of Satyavatī's eldest son?",
+        "options": [
+          "Bhīṣma",
+          "Vicitravīrya",
+          "Citrāṅgadā",
+          "Pāṇḍu"
+        ],
+        "correct_answer": "Citrāṅgadā",
+        "explanation": "The paragraph states, \"The mighty king of the Gandharvas, who bore the same name, became envious upon hearing his glories.\"",
+        "difficulty": "medium",
+        "tags": [
+          "Characters",
+          "Conflict"
+        ]
+      },
+      {
+        "question": "What was the primary reason the mighty king of the Gandharvas challenged Satyavatī's eldest son to battle?",
+        "options": [
+          "To claim tribute from earthly kings",
+          "He desired the throne of Hastinapura",
+          "He was envious of the earthly Citrāṅgadā's glories and prowess",
+          "To prevent the earthly Citrāṅgadā from marrying a celestial maiden"
+        ],
+        "correct_answer": "He was envious of the earthly Citrāṅgadā's glories and prowess",
+        "explanation": "The paragraph states, \"The mighty king of the Gandharvas, who bore the same name, became envious upon hearing his glories. The jealous Gandharva could not allow another famous and powerful Citrāṅgadā to live. He came to earth and challenged his rival to battle.\"",
+        "difficulty": "medium",
+        "tags": [
+          "Conflict",
+          "Motive"
+        ]
+      },
+      {
+        "question": "How long did the battle between Satyavatī's eldest son and the envious Gandharva last?",
+        "options": [
+          "A few days",
+          "Several months",
+          "Many years",
+          "A single decisive encounter"
+        ],
+        "correct_answer": "Many years",
+        "explanation": "The paragraph states, \"After years of fighting, the valorous son of Satyavatī was slain and the proud Gandharva returned triumphant to the heavens.\"",
+        "difficulty": "easy",
+        "tags": [
+          "Conflict",
+          "Timeline"
+        ]
+      }
+    ]
+  },
+  "1.1.13": {
+    "paragraph_text": "Then the powerful Vicitravīrya ascended the throne, but suddenly died from an illness after only seven years of ruling. Neither he nor his brother left a child.",
+    "questions": [
+      {
+        "question": "For how many years did King Vicitravīrya rule on the throne before he suddenly died from an illness and left no child?",
+        "options": [
+          "Ten years",
+          "Seven years",
+          "Twelve years",
+          "Eight years"
+        ],
+        "correct_answer": "Seven years",
+        "explanation": "The powerful Vicitravīrya ascended the throne, but suddenly died from an illness after only seven years of ruling. Neither he nor his brother left a child.",
+        "difficulty": "medium",
+        "tags": [
+          "Vicitravīrya",
+          "rule",
+          "duration",
+          "illness",
+          "heir"
+        ]
+      }
+    ]
+  },
+  "1.1.14": {
+    "paragraph_text": "Bhīṣma stood up and looked out of the latticed window. A full moon illumined the palace gardens, casting a silver light across the broad sandstone paths where Vicitravīrya had loved to walk with his queens. He turned back to Satyavatī and continued, “Mother, we cannot thwart Providence by acting immorally. In all circumstances a virtuous man acts in obedience to the will of God. Auspiciousness and victory always attend virtue, while grief is the sure result of unrighteousness. Therefore, please do not ask me to abandon my vow.”",
+    "questions": [
+      {
+        "question": "On what specific type of paths did King Vicitravīrya love to walk with his queens in the palace gardens?",
+        "options": [
+          "Winding cobblestone paths",
+          "Broad sandstone paths",
+          "Narrow paved paths",
+          "Serpentine gravel paths"
+        ],
+        "correct_answer": "Broad sandstone paths",
+        "explanation": "The palace gardens featured 'broad sandstone paths where Vicitravīrya had loved to walk with his queens.'",
+        "difficulty": "medium",
+        "tags": [
+          "Characters",
+          "Setting"
+        ]
+      },
+      {
+        "question": "What two qualities did Bhīṣma state always attend virtue?",
+        "options": [
+          "Longevity and wisdom",
+          "Peace and prosperity",
+          "Auspiciousness and victory",
+          "Material wealth and fame"
+        ],
+        "correct_answer": "Auspiciousness and victory",
+        "explanation": "Bhīṣma asserted that 'Auspiciousness and victory always attend virtue'.",
+        "difficulty": "medium",
+        "tags": [
+          "Philosophy",
+          "Bhīṣma's Vow"
+        ]
+      },
+      {
+        "question": "According to Bhīṣma, what is the sure result of unrighteousness?",
+        "options": [
+          "Loss of power",
+          "Divine retribution",
+          "Social ostracism",
+          "Grief"
+        ],
+        "correct_answer": "Grief",
+        "explanation": "Bhīṣma stated that 'grief is the sure result of unrighteousness'.",
+        "difficulty": "easy",
+        "tags": [
+          "Philosophy",
+          "Consequences"
+        ]
+      },
+      {
+        "question": "Bhīṣma stated that Providence cannot be thwarted by what kind of action?",
+        "options": [
+          "By acting fearfully",
+          "By acting immorally",
+          "By acting virtuously",
+          "By acting selfishly"
+        ],
+        "correct_answer": "By acting immorally",
+        "explanation": "Bhīṣma declared, 'we cannot thwart Providence by acting immorally.'",
+        "difficulty": "medium",
+        "tags": [
+          "Philosophy",
+          "Bhīṣma's Vow"
+        ]
+      }
+    ]
+  },
+  "1.1.15": {
+    "paragraph_text": "Satyavatī sat silently. Bhīṣma’s adherence to truth and virtue was unshakeable. He had spoken well. She bowed her head as he went on, “In any event, Mother, it seems destiny has provided us with a solution quite in keeping with religion. If the illustrious Vyāsadeva produces offspring upon the queens, we shall be saved. Let us pray that everything goes well.”",
+    "questions": [
+      {
+        "question": "Whom did Bhīṣma propose should produce offspring upon the queens to provide a solution in keeping with religion?",
+        "options": [
+          "Vyāsadeva",
+          "Bhīṣma",
+          "Satyavatī",
+          "No specific person; a general religious ritual was suggested"
+        ],
+        "correct_answer": "Vyāsadeva",
+        "explanation": "Bhīṣma explicitly stated, \"If the illustrious Vyāsadeva produces offspring upon the queens, we shall be saved.\"",
+        "difficulty": "medium",
+        "tags": [
+          "Dynasty",
+          "Solution",
+          "Bhīṣma",
+          "Vyāsadeva"
+        ]
+      }
+    ]
+  },
+  "1.1.16": {
+    "paragraph_text": "Satyavatī nodded. It was she who had summoned the powerful Ṛṣi Vyāsadeva, her first-born son. It had taken some courage for her to reveal how she had given birth to that sage even in her maidenhood. Out of fear of public censure she had hidden this fact for years, but she still remembered how the celestial Ṛṣi Parāśara had one day come onto her boat and begotten the great Vyāsadeva in her womb. Parāśara had told her that Providence had destined her for greatness. He was giving an illustrious son who would play an important part in that great destiny. Parāśara had then granted her the boon of keeping her maidenhood even after union with him--and it was he who had blessed her with the celestial fragrance which had captivated Śantanu.",
+    "questions": [
+      {
+        "question": "Out of fear of public censure, which fact did Satyavatī keep hidden for many years?",
+        "options": [
+          "She had given birth to Vyāsadeva in her maidenhood.",
+          "She had been blessed with a celestial fragrance by Parāśara.",
+          "She had summoned the powerful Ṛṣi Vyāsadeva.",
+          "She was destined for greatness by Providence."
+        ],
+        "correct_answer": "She had given birth to Vyāsadeva in her maidenhood.",
+        "explanation": "The paragraph states, \"Out of fear of public censure she had hidden this fact for years, but she still remembered how the celestial Ṛṣi Parāśara had one day come onto her boat and begotten the great Vyāsadeva in her womb.\" The 'fact' refers to giving birth to him in her maidenhood.",
+        "difficulty": "medium",
+        "tags": [
+          "Satyavati",
+          "Vyasadeva",
+          "secret"
+        ]
+      },
+      {
+        "question": "Which celestial Ṛṣi begot the great Vyāsadeva in Satyavatī's womb?",
+        "options": [
+          "Bhīṣma",
+          "Śantanu",
+          "Parāśara",
+          "Kṛṣṇa Dharma dasa"
+        ],
+        "correct_answer": "Parāśara",
+        "explanation": "The paragraph explicitly states, \"she still remembered how the celestial Ṛṣi Parāśara had one day come onto her boat and begotten the great Vyāsadeva in her womb.\"",
+        "difficulty": "easy",
+        "tags": [
+          "Vyasadeva",
+          "Parashara",
+          "lineage"
+        ]
+      },
+      {
+        "question": "What two boons or blessings did the celestial Ṛṣi Parāśara grant Satyavatī after conceiving Vyāsadeva?",
+        "options": [
+          "Greatness destined by Providence and the ability to summon Vyāsadeva.",
+          "Keeping her maidenhood and a celestial fragrance that captivated Śantanu.",
+          "An illustrious son for a great destiny and fear of public censure removed.",
+          "An important part in destiny and the power to hide her secret."
+        ],
+        "correct_answer": "Keeping her maidenhood and a celestial fragrance that captivated Śantanu.",
+        "explanation": "The paragraph states, \"Parāśara had then granted her the boon of keeping her maidenhood even after union with him--and it was he who had blessed her with the celestial fragrance which had captivated Śantanu.\"",
+        "difficulty": "hard",
+        "tags": [
+          "Parashara",
+          "Satyavati",
+          "boons",
+          "fragrance"
+        ]
+      }
+    ]
+  },
+  "1.1.17": {
+    "paragraph_text": "Satyavatī slowly paced the mosaic floor. Hundreds of golden oil lamps lit up the great hall. Along the high walls hung fine paintings of her ancestors, going all the way back to the mighty King Kuru. All of them had been powerful emperors of the globe. Surely the Kuru dynasty would not end now. The queen said, “I have been praying for the kingdom ever since my sons’ demise. I have faith that Vyāsadeva will prove a shelter to us all. But seeing the adverse fate afflicting us, I still cannot help but be fearful.”",
+    "questions": [
+      {
+        "question": "The paintings along the high walls in the great hall depicted Satyavatī's ancestors, going all the way back to which mighty king?",
+        "options": [
+          "Śantanu",
+          "Vyāsadeva",
+          "King Kuru",
+          "Parāśara"
+        ],
+        "correct_answer": "King Kuru",
+        "explanation": "The fine paintings of Satyavatī's ancestors went all the way back to the mighty King Kuru.",
+        "difficulty": "easy",
+        "tags": [
+          "Kuru Dynasty",
+          "Ancestry"
+        ]
+      },
+      {
+        "question": "How were the ancestors of Satyavatī, tracing back to King Kuru, characterized in the great hall's paintings?",
+        "options": [
+          "Renowned priests and spiritual leaders",
+          "Powerful emperors of the globe",
+          "Celebrated artists and architects",
+          "Valiant warriors and strategists"
+        ],
+        "correct_answer": "Powerful emperors of the globe",
+        "explanation": "All of Satyavatī's ancestors, going all the way back to the mighty King Kuru, had been powerful emperors of the globe.",
+        "difficulty": "medium",
+        "tags": [
+          "Kuru Dynasty",
+          "Rulers",
+          "History"
+        ]
+      }
+    ]
+  },
+  "1.1.18": {
+    "paragraph_text": "Satyavatī felt deeply for the kingdom and for Śantanu’s line. She still acted out of her love for the departed monarch. It was certainly providential that Parāśara had given her Vyāsadeva as her son. Vyāsadeva had grown to maturity immediately upon his birth and had left her, saying, “Dear Mother, should you ever be in difficulty, then simply think of me. I shall come to you at once from wherever I may be.”",
+    "questions": [
+      {
+        "question": "Which sage gave Satyavatī Vyāsadeva as her son?",
+        "options": [
+          "Śantanu",
+          "Parāśara",
+          "Bhīṣma",
+          "Kuru"
+        ],
+        "correct_answer": "Parāśara",
+        "explanation": "The text states, \"It was certainly providential that Parāśara had given her Vyāsadeva as her son.\"",
+        "difficulty": "easy",
+        "tags": [
+          "Characters",
+          "Genealogy"
+        ]
+      },
+      {
+        "question": "What happened to Vyāsadeva immediately after his birth?",
+        "options": [
+          "He departed to study the Vedas.",
+          "He grew to maturity.",
+          "He manifested divine powers.",
+          "He spoke words of prophecy."
+        ],
+        "correct_answer": "He grew to maturity.",
+        "explanation": "The passage mentions, \"Vyāsadeva had grown to maturity immediately upon his birth.\"",
+        "difficulty": "medium",
+        "tags": [
+          "Characters",
+          "Divine Qualities"
+        ]
+      },
+      {
+        "question": "What assurance did Vyāsadeva give his mother Satyavatī before he left her?",
+        "options": [
+          "He would return when the Kuru dynasty faced its greatest challenge.",
+          "He would always watch over her from afar.",
+          "He would come to her at once if she thought of him in difficulty.",
+          "He would send messengers to update her on his progress."
+        ],
+        "correct_answer": "He would come to her at once if she thought of him in difficulty.",
+        "explanation": "Vyāsadeva told Satyavatī, \"Dear Mother, should you ever be in difficulty, then simply think of me. I shall come to you at once from wherever I may be.\"",
+        "difficulty": "medium",
+        "tags": [
+          "Characters",
+          "Promises"
+        ]
+      }
+    ]
+  },
+  "1.1.19": {
+    "paragraph_text": "As Bhīṣma and Satyavatī spoke, Ambikā’s door opened and Vyāsadeva came out. Bhīṣma bowed at his feet and Satyavatī anxiously asked, “Will the princess bear an accomplished son?”",
+    "questions": [
+      {
+        "question": "What specific question did Satyavatī anxiously pose to Vyāsadeva after he emerged from Ambikā's door?",
+        "options": [
+          "Will the princess bear an accomplished son?",
+          "Has the princess recovered from her ordeal?",
+          "When will the kingdom receive its new heir?",
+          "Is Ambikā content with her current situation?"
+        ],
+        "correct_answer": "Will the princess bear an accomplished son?",
+        "explanation": "Satyavatī anxiously asked Vyāsadeva, 'Will the princess bear an accomplished son?'",
+        "difficulty": "medium",
+        "tags": [
+          "Satyavatī",
+          "Vyāsadeva",
+          "Ambikā",
+          "Dynasty",
+          "Succession"
+        ]
+      }
+    ]
+  },
+  "1.1.20": {
+    "paragraph_text": "Raising his hand in blessing as Bhīṣma stood up, the sage replied to Satyavatī, “The queen will bear a son who will be as strong as ten thousand elephants. He will be vastly intelligent, wise and prosperous. He will have a hundred sons. But, O pious lady, for the fault of his mother he will be born blind.”",
+    "questions": [
+      {
+        "question": "What was predicted about the strength of the son the queen would bear?",
+        "options": [
+          "As strong as a thousand elephants.",
+          "As strong as ten thousand elephants.",
+          "As strong as five thousand elephants.",
+          "As strong as one hundred elephants."
+        ],
+        "correct_answer": "As strong as ten thousand elephants.",
+        "explanation": "The sage replied to Satyavatī that the queen would bear a son who would be 'as strong as ten thousand elephants'.",
+        "difficulty": "easy",
+        "tags": [
+          "prophecy",
+          "characteristics"
+        ]
+      },
+      {
+        "question": "What intellectual and material qualities was the queen's son prophesied to possess?",
+        "options": [
+          "Vastly intelligent, brave, and humble.",
+          "Vastly intelligent, wise, and prosperous.",
+          "Vastly intelligent, powerful, and righteous.",
+          "Vastly intelligent, strong, and virtuous."
+        ],
+        "correct_answer": "Vastly intelligent, wise, and prosperous.",
+        "explanation": "The sage predicted the son would be 'vastly intelligent, wise and prosperous'.",
+        "difficulty": "medium",
+        "tags": [
+          "prophecy",
+          "characteristics"
+        ]
+      },
+      {
+        "question": "How many sons was the queen's future son predicted to have?",
+        "options": [
+          "Fifty sons.",
+          "Seventy-five sons.",
+          "One hundred sons.",
+          "Two hundred sons."
+        ],
+        "correct_answer": "One hundred sons.",
+        "explanation": "The sage stated that the queen's son 'will have a hundred sons'.",
+        "difficulty": "easy",
+        "tags": [
+          "prophecy",
+          "lineage"
+        ]
+      },
+      {
+        "question": "What physical affliction was predicted for the queen's son, and what was its cause?",
+        "options": [
+          "He would be born lame due to a fault of his father.",
+          "He would be born deaf due to a fault of his ancestors.",
+          "He would be born blind for the fault of his mother.",
+          "He would be born mute for a fault of the sage."
+        ],
+        "correct_answer": "He would be born blind for the fault of his mother.",
+        "explanation": "The sage prophesied, 'for the fault of his mother he will be born blind'.",
+        "difficulty": "medium",
+        "tags": [
+          "prophecy",
+          "affliction",
+          "cause"
+        ]
+      }
+    ]
+  },
+  "1.1.21": {
+    "paragraph_text": "Satyavatī was shocked. “How can one who is blind become a king of the Kuru race?” she asked.",
+    "questions": [
+      {
+        "question": "What primary concern did Satyavatī raise regarding the future of the Kuru throne upon learning that the child destined to be born would be blind?",
+        "options": [
+          "A blind man is ineligible to rule the Kuru kingdom.",
+          "A blind king would fail to defend the realm from invaders.",
+          "The people would refuse to accept a blind ruler.",
+          "The gods would curse the dynasty if a blind man reigned."
+        ],
+        "correct_answer": "A blind man is ineligible to rule the Kuru kingdom.",
+        "explanation": "Satyavatī questioned how one who is blind could become a king of the Kuru race.",
+        "difficulty": "medium",
+        "tags": [
+          "Kuru Dynasty",
+          "Satyavatī",
+          "Royal Succession"
+        ]
+      }
+    ]
+  },
+  "1.1.22": {
+    "paragraph_text": "Vyāsadeva explained that he had gone to Ambikā prepared to beget a son worthy in every way, but the queen had closed her eyes in fear when she saw him. When agreeing to produce an heir to the throne, the sage had stipulated that the queen must accept him in his unpleasant condition. Satyavatī had summoned him from the Himālayas and he had come to her directly from his practice of harsh asceticism. He kept himself unwashed and unkempt as a part of his ascetic vows. He said, “I would have come to the queen in a handsome form decked with jewels if she had first accepted a religious vow for one full year. But you asked that she conceive immediately. Therefore I stated my conditions in place of the religious vow.”",
+    "questions": [
+      {
+        "question": "Why did Vyāsadeva appear before Ambikā in an unkempt and unwashed state?",
+        "options": [
+          "He was punished by the sages for his lack of devotion.",
+          "He was maintaining ascetic vows practiced in the Himālayas.",
+          "He was testing Satyavatī's loyalty to the Kuru lineage.",
+          "He intentionally sought to frighten the queen into leaving the kingdom."
+        ],
+        "correct_answer": "He was maintaining ascetic vows practiced in the Himālayas.",
+        "explanation": "Vyāsadeva explained that his unwashed and unkempt appearance was a direct result of his practice of harsh asceticism in the Himālayas.",
+        "difficulty": "medium",
+        "tags": [
+          "Vyāsadeva",
+          "Asceticism",
+          "Ambikā"
+        ]
+      },
+      {
+        "question": "What alternative would have allowed Vyāsadeva to appear before Ambikā in a handsome, jewel-decked form?",
+        "options": [
+          "If Ambikā had fasted for three years.",
+          "If Satyavatī had provided him with royal offerings.",
+          "If the queen had first accepted a religious vow for one full year.",
+          "If the Kuru elders had formally requested his presence."
+        ],
+        "correct_answer": "If the queen had first accepted a religious vow for one full year.",
+        "explanation": "Vyāsadeva stated that he could have come in a handsome form if the queen had accepted a religious vow for one full year instead of requiring immediate conception.",
+        "difficulty": "medium",
+        "tags": [
+          "Vyāsadeva",
+          "Ambikā",
+          "Vows"
+        ]
+      },
+      {
+        "question": "Why did Ambikā close her eyes during her encounter with Vyāsadeva?",
+        "options": [
+          "She was following the strict instructions of Satyavatī.",
+          "She was overcome by fear upon seeing the sage's appearance.",
+          "She was performing a religious rite requiring closed eyes.",
+          "She was trying to avoid the divine radiance emitted by the sage."
+        ],
+        "correct_answer": "She was overcome by fear upon seeing the sage's appearance.",
+        "explanation": "Vyāsadeva explained that Ambikā closed her eyes in fear when she saw him in his unpleasant condition.",
+        "difficulty": "easy",
+        "tags": [
+          "Ambikā",
+          "Vyāsadeva"
+        ]
+      }
+    ]
+  },
+  "1.1.23": {
+    "paragraph_text": "Satyavatī cursed herself for her impatience. She had not wanted to wait. Without an heir to the throne the kingdom was in constant danger. In a land without a monarch even the rains would not fall regularly and the gods would not be propitious. Therefore she had begged Vyāsadeva to approach the queen at once. Now this! A blind son. How could he ever become the king?",
+    "questions": [
+      {
+        "question": "What climatic consequence is expected in a kingdom lacking a monarch according to Satyavatī?",
+        "options": [
+          "Excessive flooding",
+          "Irregular rainfall",
+          "Prolonged drought",
+          "Severe windstorms"
+        ],
+        "correct_answer": "Irregular rainfall",
+        "explanation": "Satyavatī notes that in a land without a monarch, the rains would not fall regularly.",
+        "difficulty": "medium",
+        "tags": [
+          "Satyavatī",
+          "Kingdom",
+          "Governance"
+        ]
+      },
+      {
+        "question": "Why did Satyavatī insist that Vyāsadeva approach the queen immediately instead of waiting for a year?",
+        "options": [
+          "The kingdom was in constant danger without an heir",
+          "Vyāsadeva was returning to the Himālayas",
+          "Ambikā was getting too old to conceive",
+          "The gods demanded an immediate successor"
+        ],
+        "correct_answer": "The kingdom was in constant danger without an heir",
+        "explanation": "Satyavatī explained that without an heir, the kingdom was in constant danger.",
+        "difficulty": "hard",
+        "tags": [
+          "Satyavatī",
+          "Vyāsadeva",
+          "Succession"
+        ]
+      }
+    ]
+  },
+  "1.1.24": {
+    "paragraph_text": "“You must give another king to the Kuru race,” she implored. “Please approach the other queen, Ambālikā.”",
+    "questions": [
+      {
+        "question": "Whom did Satyavatī implore Vyāsadeva to approach after the birth of the blind son?",
+        "options": [
+          "Ambikā",
+          "Ambālikā",
+          "Gāndhārī",
+          "Kuntī"
+        ],
+        "correct_answer": "Ambālikā",
+        "explanation": "Satyavatī requested that Vyāsadeva approach the other queen, Ambālikā, to provide another king for the Kuru race.",
+        "difficulty": "easy",
+        "tags": [
+          "Dynastic Succession",
+          "Satyavatī",
+          "Vyāsadeva"
+        ]
+      }
+    ]
+  },
+  "1.1.25": {
+    "paragraph_text": "Vyāsadeva looked upon his anxious mother with compassion. He soothed her fears. Soon he would return again to beget another child. She need only summon him when Ambālikā was prepared to receive him. Vyāsadeva then disappeared from the spot. Satyavatī turned and spoke to Bhīṣma. “This is what I feared. I must now ask Ambālikā to receive the sage. I pray that she will be more successful than her sister.”",
+    "questions": [
+      {
+        "question": "What instructions did Satyavatī give to Bhīṣma after Vyāsadeva vanished from her presence?",
+        "options": [
+          "She instructed him to prepare a ceremony for Ambikā's success.",
+          "She expressed her intention to approach Ambālikā and her hope for a more successful outcome.",
+          "She commanded him to bring the sage back immediately for another meeting.",
+          "She told him to inform the kingdom that a new heir was coming."
+        ],
+        "correct_answer": "She expressed her intention to approach Ambālikā and her hope for a more successful outcome.",
+        "explanation": "Satyavatī spoke to Bhīṣma explaining her fear and her intent to ask Ambālikā to receive the sage, expressing the hope that she would be more successful than her sister.",
+        "difficulty": "medium",
+        "tags": [
+          "Satyavatī",
+          "Bhīṣma",
+          "Ambālikā",
+          "Vyāsadeva"
+        ]
+      }
+    ]
+  },
+  "1.1.26": {
+    "paragraph_text": "Within a month, Vyāsadeva was called. Once again he came from his austerities and appeared in a repulsive condition. Satyavatī led him to Ambālikā’s bedchamber and the sage at once entered. Even though she had been warned by her sister what to expect, the princess was still struck with horror when the grim ascetic approached her. She turned pale with fright, although she kept her eyes open as she conceived. Vyāsadeva then said to the horrified princess, “As you have turned pale upon seeing me, so your son shall also be pale. He will therefore be named Pāṇḍu, the ‘pale one’.” The ṛṣi then left the room. He met his mother outside and she asked about the child. Vyāsadeva replied to her that a greatly powerful boy would be born but he would be pale.",
+    "questions": [
+      {
+        "question": "Why did Vyāsadeva declare that the child conceived by Ambālikā would be named Pāṇḍu?",
+        "options": [
+          "Because he was born during the lunar eclipse of the pale moon",
+          "Because Ambālikā turned pale with fright upon seeing his appearance",
+          "Because the sage performed his austerities in the pale mountains",
+          "Because of a curse placed upon the Kuru dynasty by the sages"
+        ],
+        "correct_answer": "Because Ambālikā turned pale with fright upon seeing his appearance",
+        "explanation": "Vyāsadeva explicitly stated that because the princess turned pale upon seeing him, the son would be pale and thus named Pāṇḍu.",
+        "difficulty": "medium",
+        "tags": [
+          "Pāṇḍu",
+          "Vyāsadeva",
+          "Ambālikā"
+        ]
+      }
+    ]
+  },
+  "1.1.27": {
+    "paragraph_text": "Satyavatī again felt anxious. The child would be pale? What did Vyāsadeva mean? Something was still not right. And in any event, even if everything was fine with this child, with only one qualified prince the kingdom would still be in a precarious position. Vyāsadeva should try once more. She asked him to again approach Ambikā. This time the princess, knowing what to expect, would keep her eyes open. Vyāsadeva smiled and replied, “Be it so. I shall return again shortly after she has delivered her first child.”",
+    "questions": [
+      {
+        "question": "For what reason did Satyavatī conclude that the kingdom would remain in a precarious position despite the expected birth of Pāṇḍu?",
+        "options": [
+          "Because Pāṇḍu was expected to be blind",
+          "Because there was only one qualified prince",
+          "Because Vyāsadeva refused to father any further children",
+          "Because Ambikā refused to cooperate with the request"
+        ],
+        "correct_answer": "Because there was only one qualified prince",
+        "explanation": "Satyavatī remained anxious because she felt that with only one qualified prince, the kingdom would remain in a precarious position.",
+        "difficulty": "medium",
+        "tags": [
+          "Dynastic Succession",
+          "Satyavatī"
+        ]
+      },
+      {
+        "question": "When did Vyāsadeva agree to visit Ambikā for a second time following Satyavatī's request?",
+        "options": [
+          "Immediately after the birth of Pāṇḍu",
+          "Shortly after Ambikā delivered her first child",
+          "Before the birth of Dhṛtarāṣṭra",
+          "Once Ambālikā had fully recovered from her labor"
+        ],
+        "correct_answer": "Shortly after Ambikā delivered her first child",
+        "explanation": "Vyāsadeva agreed to return to approach Ambikā shortly after she had delivered her first child.",
+        "difficulty": "medium",
+        "tags": [
+          "Vyāsadeva",
+          "Ambikā"
+        ]
+      }
+    ]
+  },
+  "1.1.28": {
+    "paragraph_text": "In due course of time Ambikā gave birth to a blind child who was named Dhṛtarāṣṭra. Ambālikā delivered a pale child who was nevertheless effulgent and endowed with many auspicious marks on his body, and who was named Pāṇḍu in accord with Vyāsadeva’s words. Soon after, the sage again came to the palace in order to approach Ambikā for a second time.",
+    "questions": [
+      {
+        "question": "Which child born to Ambikā was given the name Dhṛtarāṣṭra?",
+        "options": [
+          "The blind child",
+          "The pale child",
+          "The effulgent child",
+          "The child with auspicious marks"
+        ],
+        "correct_answer": "The blind child",
+        "explanation": "The text identifies the blind child born to Ambikā as Dhṛtarāṣṭra.",
+        "difficulty": "easy",
+        "tags": [
+          "Dhṛtarāṣṭra",
+          "Ambikā",
+          "Kuru Dynasty"
+        ]
+      },
+      {
+        "question": "What name was given to the pale child born to Ambālikā?",
+        "options": [
+          "Dhṛtarāṣṭra",
+          "Vyāsa",
+          "Pāṇḍu",
+          "Vicitravīrya"
+        ],
+        "correct_answer": "Pāṇḍu",
+        "explanation": "Ambālikā delivered a pale child who was named Pāṇḍu in accordance with the words of the sage Vyāsadeva.",
+        "difficulty": "easy",
+        "tags": [
+          "Pāṇḍu",
+          "Ambālikā",
+          "Vyāsadeva"
+        ]
+      }
+    ]
+  },
+  "1.1.29": {
+    "paragraph_text": "The queen was alarmed at the prospect of meeting again with the terrible-looking ṛṣi. She went to a maidservant who was an intimate friend and asked that she take her place. Giving the servant her own ornaments and adorning her with the finest robes, she had her wait in the bedchamber for the sage.",
+    "questions": [
+      {
+        "question": "Why did Queen Ambikā choose to send her maidservant to the bedchamber in her stead instead of meeting the ṛṣi herself?",
+        "options": [
+          "She was too ill to attend to the sage",
+          "She was alarmed at the prospect of meeting the terrible-looking ṛṣi",
+          "She wanted to test the sage's ability to recognize her",
+          "She was instructed to do so by Satyavatī"
+        ],
+        "correct_answer": "She was alarmed at the prospect of meeting the terrible-looking ṛṣi",
+        "explanation": "The queen was alarmed at the prospect of meeting again with the terrible-looking ṛṣi, leading her to have her maidservant take her place.",
+        "difficulty": "medium",
+        "tags": [
+          "Ambikā",
+          "Vyāsadeva",
+          "Dynastic"
+        ]
+      }
+    ]
+  },
+  "1.1.30": {
+    "paragraph_text": "Although he knew everything the ṛṣi entered the chamber as before. As soon as she saw the exalted sage the maidservant rose up respectfully. She bowed at his feet and had him sit down comfortably. After gently washing his feet, the girl offered him many kinds of delicious foodstuffs. Vyāsadeva was pleased. After laying with the girl, he said, “O good-natured girl, you shall be a maidservant no longer. Your son from our union will be wise, fortunate and the foremost of all intelligent men upon this earth.”",
+    "questions": [
+      {
+        "question": "What prophecy did Vyāsadeva make regarding the son born from his union with the maidservant?",
+        "options": [
+          "He would become a great king and conqueror of the world",
+          "He would be wise, fortunate, and the foremost of all intelligent men",
+          "He would become a renunciate and a master of all Vedic scriptures",
+          "He would live for one hundred years and rule over a prosperous kingdom"
+        ],
+        "correct_answer": "He would be wise, fortunate, and the foremost of all intelligent men",
+        "explanation": "Vyāsadeva told the maidservant that her son would be wise, fortunate, and the foremost of all intelligent men upon the earth.",
+        "difficulty": "medium",
+        "tags": [
+          "Vyāsadeva",
+          "Prophecy",
+          "Mahabharata"
+        ]
+      },
+      {
+        "question": "What did Vyāsadeva promise the maidservant would no longer be after their union?",
+        "options": [
+          "A servant in the palace",
+          "A resident of the city",
+          "A maidservant",
+          "A companion to the queen"
+        ],
+        "correct_answer": "A maidservant",
+        "explanation": "Upon interacting with the girl, Vyāsadeva explicitly stated she would no longer be a maidservant.",
+        "difficulty": "easy",
+        "tags": [
+          "Vyāsadeva",
+          "Maidservant"
+        ]
+      },
+      {
+        "question": "How did the maidservant treat Vyāsadeva when he entered the chamber?",
+        "options": [
+          "She fled in fear of his terrible appearance",
+          "She immediately sought to deceive him by pretending to be the queen",
+          "She rose respectfully, bowed at his feet, and offered him delicious foodstuffs",
+          "She remained silent and waited for him to speak first"
+        ],
+        "correct_answer": "She rose respectfully, bowed at his feet, and offered him delicious foodstuffs",
+        "explanation": "The text describes the maidservant rising respectfully, bowing at his feet, and offering him delicious foodstuffs after washing his feet.",
+        "difficulty": "medium",
+        "tags": [
+          "Vyāsadeva",
+          "Etiquette"
+        ]
+      }
+    ]
+  },
+  "1.1.31": {
+    "paragraph_text": "Again Satyavatī was waiting outside the bedchamber. Vyāsadeva told her, “The queen deceived me and sent instead her servant. That simple girl received me with all respect. She will therefore bear an auspicious child. O Mother, I shall now go and continue my asceticism. I will return when you need me again, but I will not beget any more children.” Vyāsadeva vanished, leaving Bhīṣma and Satyavatī reflecting on his words.",
+    "questions": [
+      {
+        "question": "What reason did Vyāsadeva give for refusing to beget any more children after his encounter with the maidservant?",
+        "options": [
+          "The queen deceived him by sending a servant in her place.",
+          "His ascetic duties required him to leave the palace immediately.",
+          "Satyavatī explicitly asked him to cease his efforts.",
+          "The gods commanded him to focus solely on his spiritual practices."
+        ],
+        "correct_answer": "The queen deceived him by sending a servant in her place.",
+        "explanation": "Vyāsadeva explicitly states that the queen deceived him by sending her servant, and he declares he will not beget any more children before vanishing.",
+        "difficulty": "medium",
+        "tags": [
+          "Vyāsadeva",
+          "Satyavatī",
+          "Dynastic succession"
+        ]
+      },
+      {
+        "question": "Who remained with Satyavatī to reflect upon the words of Vyāsadeva after he vanished?",
+        "options": [
+          "Vidura",
+          "Ambikā",
+          "Bhīṣma",
+          "The maidservant"
+        ],
+        "correct_answer": "Bhīṣma",
+        "explanation": "The text states that Vyāsadeva vanished, leaving Bhīṣma and Satyavatī reflecting on his words.",
+        "difficulty": "easy",
+        "tags": [
+          "Bhīṣma",
+          "Satyavatī"
+        ]
+      }
+    ]
+  },
+  "1.1.32": {
+    "paragraph_text": "The maidservant gave birth to a child named Vidura, who later became the chief minister and advisor of the Kuru house. He was raised alongside his two brothers, and the three boys grew up like resplendent gods. Everyone was satisfied that the kingdom was secure. Happiness and prosperity were everywhere as the gods showered their blessings on the kingdom. Bhīṣma ruled as regent while the boys grew up.",
+    "questions": [
+      {
+        "question": "What official capacity did Vidura hold within the Kuru dynasty upon reaching maturity?",
+        "options": [
+          "Chief minister and advisor",
+          "Regent of the kingdom",
+          "Supreme commander of the Kuru armies",
+          "Royal priest and spiritual preceptor"
+        ],
+        "correct_answer": "Chief minister and advisor",
+        "explanation": "Vidura is identified as the individual who later became the chief minister and advisor of the Kuru house.",
+        "difficulty": "easy",
+        "tags": [
+          "Vidura",
+          "Kuru Dynasty",
+          "Political Roles"
+        ]
+      },
+      {
+        "question": "Who served as the regent of the Kuru kingdom during the childhood of Vidura and his two brothers?",
+        "options": [
+          "Vyāsadeva",
+          "Bhīṣma",
+          "Dhṛtarāṣṭra",
+          "Pāṇḍu"
+        ],
+        "correct_answer": "Bhīṣma",
+        "explanation": "The text explicitly states that Bhīṣma ruled as regent while the boys grew up.",
+        "difficulty": "medium",
+        "tags": [
+          "Bhīṣma",
+          "Regency",
+          "Kuru Dynasty"
+        ]
+      }
+    ]
+  },
+  "1.1.33": {
+    "paragraph_text": "Although Dhṛtarāṣṭra was the eldest, his blindness disqualified him from becoming the king. Nor could Vidura assume the throne, as he was born of a servant girl. But Pāṇḍu was a worthy monarch in every way; and when he came of age, he was installed on the Kuru throne. Pāṇḍu excelled all men in archery, and he soon became skilled in the Vedic science of leadership and diplomacy.",
+    "questions": [
+      {
+        "question": "What primary condition disqualified Dhṛtarāṣṭra from assuming the Kuru throne despite being the eldest son?",
+        "options": [
+          "His lack of interest in governance",
+          "His blindness",
+          "His refusal to study the Vedic sciences",
+          "His failure to master archery"
+        ],
+        "correct_answer": "His blindness",
+        "explanation": "Dhṛtarāṣṭra was disqualified from becoming king specifically because of his blindness.",
+        "difficulty": "easy",
+        "tags": [
+          "Dhṛtarāṣṭra",
+          "Kuru Dynasty",
+          "Succession"
+        ]
+      },
+      {
+        "question": "Why was Vidura ineligible to occupy the Kuru throne?",
+        "options": [
+          "He lacked proficiency in Vedic diplomacy",
+          "He was born of a servant girl",
+          "He was younger than Pāṇḍu",
+          "He declined the position due to religious devotion"
+        ],
+        "correct_answer": "He was born of a servant girl",
+        "explanation": "Vidura could not assume the throne because his mother was a servant girl.",
+        "difficulty": "medium",
+        "tags": [
+          "Vidura",
+          "Succession"
+        ]
+      },
+      {
+        "question": "Which Kuru prince was installed as monarch after coming of age due to his skill in archery and Vedic leadership?",
+        "options": [
+          "Dhṛtarāṣṭra",
+          "Vidura",
+          "Pāṇḍu",
+          "Bhīṣma"
+        ],
+        "correct_answer": "Pāṇḍu",
+        "explanation": "Pāṇḍu was considered a worthy monarch and was installed on the throne once he came of age and demonstrated mastery in archery and Vedic science.",
+        "difficulty": "easy",
+        "tags": [
+          "Pāṇḍu",
+          "Kuru Dynasty"
+        ]
+      }
+    ]
+  },
+  "1.1.34": {
+    "paragraph_text": "All three brothers were given the best education and were raised with affection by Bhīṣma. As predicted by Vyāsadeva, Dhṛtarāṣṭra displayed immense bodily strength and Vidura was naturally wise even from childhood. His devotion to religion and morality could not be matched by anyone. When he reached maturity, even the learned Bhīṣma would seek his counsel. It was thus that one day Bhīṣma approached Vidura and said, “O wise one, we should take steps to ensure that our noble line does not again face extinction. The two princes are ready for marriage. I have heard that there are three princesses worthy of being allied to our house. Tell me your thoughts on this, O Vidura.”",
+    "questions": [
+      {
+        "question": "Which specific trait characterized Vidura from his early childhood, eventually leading Bhīṣma to seek his counsel?",
+        "options": [
+          "Extraordinary prowess in archery",
+          "Natural wisdom",
+          "Unmatched physical strength",
+          "Skill in political diplomacy"
+        ],
+        "correct_answer": "Natural wisdom",
+        "explanation": "The text explicitly states that Vidura was naturally wise even from childhood and that Bhīṣma would seek his counsel when he reached maturity.",
+        "difficulty": "medium",
+        "tags": [
+          "Vidura",
+          "Bhīṣma"
+        ]
+      },
+      {
+        "question": "What primary concern motivated Bhīṣma to consult Vidura regarding the marriage of the two princes?",
+        "options": [
+          "To increase the wealth of the Kuru dynasty",
+          "To prevent the extinction of the noble line",
+          "To fulfill the dying wish of King Vicitravīrya",
+          "To secure alliances against neighboring kingdoms"
+        ],
+        "correct_answer": "To prevent the extinction of the noble line",
+        "explanation": "Bhīṣma tells Vidura that they should take steps to ensure that their noble line does not again face extinction.",
+        "difficulty": "medium",
+        "tags": [
+          "Bhīṣma",
+          "Vidura",
+          "Marriage"
+        ]
+      },
+      {
+        "question": "In addition to his wisdom, what notable physical quality did Dhṛtarāṣṭra display as a youth?",
+        "options": [
+          "Immense bodily strength",
+          "Unrivaled speed in combat",
+          "Keen eyesight despite his blindness",
+          "A commanding stature"
+        ],
+        "correct_answer": "Immense bodily strength",
+        "explanation": "The text notes that as predicted by Vyāsadeva, Dhṛtarāṣṭra displayed immense bodily strength.",
+        "difficulty": "easy",
+        "tags": [
+          "Dhṛtarāṣṭra",
+          "Vyāsadeva"
+        ]
+      }
+    ]
+  },
+  "1.1.35": {
+    "paragraph_text": "Bhīṣma said that there was a princess in the Yadu house named Kuntī, another named Gāndhārī, who was a daughter of the mountain king Suvala, and a third princess named Mādrī, in Madra. He suggested that two of these girls could be sought for Pāṇḍu and the other for Dhṛtarāṣṭra.",
+    "questions": [
+      {
+        "question": "Which kingdom was the princess Gāndhārī associated with as the daughter of King Suvala?",
+        "options": [
+          "Yadu",
+          "Madra",
+          "Kuru",
+          "Mountain kingdom"
+        ],
+        "correct_answer": "Mountain kingdom",
+        "explanation": "The text identifies Gāndhārī specifically as the daughter of the mountain king Suvala.",
+        "difficulty": "medium",
+        "tags": [
+          "genealogy",
+          "Mahabharata"
+        ]
+      },
+      {
+        "question": "Which of the following princesses was identified as belonging to the Yadu house?",
+        "options": [
+          "Kuntī",
+          "Gāndhārī",
+          "Mādrī",
+          "Ambikā"
+        ],
+        "correct_answer": "Kuntī",
+        "explanation": "Bhīṣma explicitly describes Kuntī as a princess from the Yadu house.",
+        "difficulty": "easy",
+        "tags": [
+          "genealogy",
+          "Mahabharata"
+        ]
+      },
+      {
+        "question": "Which princess was specifically identified as being from Madra?",
+        "options": [
+          "Kuntī",
+          "Gāndhārī",
+          "Mādrī",
+          "Subhadrā"
+        ],
+        "correct_answer": "Mādrī",
+        "explanation": "The text states that there was a princess named Mādrī located in Madra.",
+        "difficulty": "easy",
+        "tags": [
+          "genealogy",
+          "Mahabharata"
+        ]
+      }
+    ]
+  },
+  "1.1.36": {
+    "paragraph_text": "Vidura folded his hands and replied, “My lord, you are our father, our protector and our preceptor. You should do whatever you feel is proper for the welfare of our dynasty.”",
+    "questions": []
+  },
+  "1.1.37": {
+    "paragraph_text": "Bhīṣma paced up and down his palace chamber. He had heard that Gāndhārī had received a boon from Śiva, who had said she would have one hundred sons. Surely she would make a good wife for Dhṛtarāṣṭra, who had also been blessed in a similar way by Vyāsadeva. A hundred sons from that powerful prince would be a great asset to the kingdom and would ensure the perpetuation of the Kuru dynasty. Bhīṣma at once arranged for messengers to go to Suvala and ask for the hand of Gāndhārī.",
+    "questions": [
+      {
+        "question": "Who granted Gāndhārī the boon that she would bear one hundred sons?",
+        "options": [
+          "Vyāsadeva",
+          "Śiva",
+          "Bhīṣma",
+          "King Suvala"
+        ],
+        "correct_answer": "Śiva",
+        "explanation": "The text explicitly states that Gāndhārī received a boon from Śiva that she would have one hundred sons.",
+        "difficulty": "easy",
+        "tags": [
+          "Gāndhārī",
+          "Śiva",
+          "Dynastic Succession"
+        ]
+      },
+      {
+        "question": "Which figure provided a blessing to Dhṛtarāṣṭra regarding his potential to produce one hundred sons?",
+        "options": [
+          "Vyāsadeva",
+          "Bhīṣma",
+          "King Suvala",
+          "Śiva"
+        ],
+        "correct_answer": "Vyāsadeva",
+        "explanation": "The text mentions that Dhṛtarāṣṭra had been blessed by Vyāsadeva regarding the prospect of having sons.",
+        "difficulty": "medium",
+        "tags": [
+          "Dhṛtarāṣṭra",
+          "Vyāsadeva",
+          "Dynastic Succession"
+        ]
+      },
+      {
+        "question": "To which ruler did Bhīṣma send messengers to request Gāndhārī's hand in marriage for Dhṛtarāṣṭra?",
+        "options": [
+          "King Śakuni",
+          "King Suvala",
+          "King Vicitravīrya",
+          "King Śiva"
+        ],
+        "correct_answer": "King Suvala",
+        "explanation": "Bhīṣma arranged for messengers to go to Suvala to ask for the hand of Gāndhārī.",
+        "difficulty": "easy",
+        "tags": [
+          "Bhīṣma",
+          "King Suvala",
+          "Marriage Alliances"
+        ]
+      }
+    ]
+  },
+  "1.1.38": {
+    "paragraph_text": "When King Suvala heard Bhīṣma’s request, he was hesitant. How could his daughter marry a blind prince? But Suvala reflected on the possibility. Dhṛtarāṣṭra belonged to the glorious Kuru house. They had ruled the world for thousands of years. Considering the fame, nobility and virtue of the Kurus, Suvala assented to the marriage. He had his son Śakuni bring Gāndhārī to Hastināpura. When the princess heard that she was to marry the blind Dhṛtarāṣṭra, she took a cloth and bound her own eyes, not wanting to be in any way superior to her lord.",
+    "questions": [
+      {
+        "question": "Why was King Suvala initially hesitant to accept the marriage proposal for his daughter Gāndhārī?",
+        "options": [
+          "He feared the Kuru dynasty was losing its influence.",
+          "The suitor Dhṛtarāṣṭra was blind.",
+          "Bhīṣma had not offered enough in the way of gifts.",
+          "He wanted Gāndhārī to marry a prince from a different kingdom."
+        ],
+        "correct_answer": "The suitor Dhṛtarāṣṭra was blind.",
+        "explanation": "King Suvala was hesitant because he wondered how his daughter could marry a blind prince.",
+        "difficulty": "easy",
+        "tags": [
+          "Gāndhārī",
+          "Suvala",
+          "Dhṛtarāṣṭra"
+        ]
+      },
+      {
+        "question": "Which family member escorted Gāndhārī to Hastināpura after King Suvala agreed to the marriage?",
+        "options": [
+          "Bhīṣma",
+          "Her brother Śakuni",
+          "Vyāsadeva",
+          "A royal messenger"
+        ],
+        "correct_answer": "Her brother Śakuni",
+        "explanation": "King Suvala had his son Śakuni bring Gāndhārī to Hastināpura.",
+        "difficulty": "easy",
+        "tags": [
+          "Gāndhārī",
+          "Suvala",
+          "Śakuni"
+        ]
+      },
+      {
+        "question": "What action did Gāndhārī take upon learning she was to marry the blind prince Dhṛtarāṣṭra?",
+        "options": [
+          "She refused to leave her father's palace.",
+          "She performed a ritual to restore his sight.",
+          "She bound her own eyes with a cloth.",
+          "She demanded that he renounce his claim to the throne."
+        ],
+        "correct_answer": "She bound her own eyes with a cloth.",
+        "explanation": "Upon hearing she would marry the blind Dhṛtarāṣṭra, Gāndhārī took a cloth and bound her own eyes so as not to be superior to her husband.",
+        "difficulty": "medium",
+        "tags": [
+          "Gāndhārī",
+          "Dhṛtarāṣṭra"
+        ]
+      }
+    ]
+  },
+  "1.1.39": {
+    "paragraph_text": "Śakuni gave away his beautiful sister to Dhṛtarāṣṭra along with many gifts sent by Suvala. After being duly respected by Bhīṣma, he then mounted his golden chariot and returned to his kingdom. Gāndhārī became immediately devoted to her husband. She pleased him in every way by her attentions, she never even referred to other men in her speech, and her eyes were always covered by the cloth.",
+    "questions": [
+      {
+        "question": "Which specific physical action did Gāndhārī perform to show her devotion to her husband, Dhṛtarāṣṭra, after their marriage?",
+        "options": [
+          "She wore a veil of gold given by Śakuni.",
+          "She kept her eyes covered with a cloth.",
+          "She took a vow of silence in his presence.",
+          "She lived in the forest to practice austerity."
+        ],
+        "correct_answer": "She kept her eyes covered with a cloth.",
+        "explanation": "The text states that Gāndhārī's eyes were always covered by the cloth after she married Dhṛtarāṣṭra.",
+        "difficulty": "easy",
+        "tags": [
+          "Gāndhārī",
+          "Dhṛtarāṣṭra",
+          "Kuru Dynasty"
+        ]
+      }
+    ]
+  },
+  "1.1.40": {
+    "paragraph_text": "With Dhṛtarāṣṭra married, Bhīṣma turned his mind to Pāṇḍu’s marriage. He had heard that the princess Kuntī would soon select a husband at a special ceremony known as a svayaṁvara. That princess was famous for her beauty and womanly qualifications, and she belonged to the noble Yadu race. Bhīṣma told Pāṇḍu to leave at once for the svayaṁvara and try to win Kuntī’s hand.",
+    "questions": [
+      {
+        "question": "To which noble race did the princess Kuntī belong, according to Bhīṣma?",
+        "options": [
+          "The Kuru race",
+          "The Yadu race",
+          "The Matsya race",
+          "The Paurava race"
+        ],
+        "correct_answer": "The Yadu race",
+        "explanation": "The text explicitly states that Princess Kuntī belonged to the noble Yadu race.",
+        "difficulty": "medium",
+        "tags": [
+          "Kuntī",
+          "Yadu race",
+          "Bhīṣma"
+        ]
+      },
+      {
+        "question": "After the marriage of Dhṛtarāṣṭra, who directed Pāṇḍu to attend the svayaṁvara to seek the hand of Kuntī?",
+        "options": [
+          "Suvala",
+          "Bhīṣma",
+          "Vicitravīrya",
+          "Kuntībhoja"
+        ],
+        "correct_answer": "Bhīṣma",
+        "explanation": "Bhīṣma is the individual who turned his mind to Pāṇḍu's marriage and instructed Pāṇḍu to leave for the svayaṁvara.",
+        "difficulty": "easy",
+        "tags": [
+          "Bhīṣma",
+          "Pāṇḍu",
+          "Kuntī"
+        ]
+      }
+    ]
+  },
+  "1.1.41": {
+    "paragraph_text": "The king mounted a great dark stallion and rode swiftly to the southern kingdom of Kuntībhoja, the father of Kuntī. Like a proud lion, he strode into the svayaṁvara arena. When the many other kings assembled there saw Pāṇḍu, broad-chested and with eyes like a furious bull, they considered him to be a second Indra. He outshone all the other monarchs like the sun rising in the morning and obscuring the stars. When Kuntī saw the powerful Hastināpura monarch gazing at her, her mind became agitated. Trembling with emotion, she walked slowly toward him and shyly placed the nuptial garland around his neck.",
+    "questions": [
+      {
+        "question": "Which kingdom did Pāṇḍu travel to in order to attend Kuntī's svayaṁvara?",
+        "options": [
+          "The northern kingdom of Pāñcāla",
+          "The southern kingdom of Kuntībhoja",
+          "The western kingdom of Vṛṣṇi",
+          "The eastern kingdom of Magadha"
+        ],
+        "correct_answer": "The southern kingdom of Kuntībhoja",
+        "explanation": "Pāṇḍu rode his stallion to the southern kingdom of Kuntībhoja, who is identified as the father of Kuntī.",
+        "difficulty": "medium",
+        "tags": [
+          "Pāṇḍu",
+          "Kuntī",
+          "Geography"
+        ]
+      },
+      {
+        "question": "Which noble figure was the father of the princess Kuntī?",
+        "options": [
+          "Vicitravīrya",
+          "Kuntībhoja",
+          "Dhṛtarāṣṭra",
+          "Indra"
+        ],
+        "correct_answer": "Kuntībhoja",
+        "explanation": "The text explicitly identifies Kuntībhoja as the father of Kuntī.",
+        "difficulty": "easy",
+        "tags": [
+          "Kuntī",
+          "Dynastic Relationships"
+        ]
+      }
+    ]
+  },
+  "1.1.42": {
+    "paragraph_text": "Although there were many kings and princes desirous of Kuntī’s hand, and although a svayaṁvara would almost always end up in a fight, the kings abandoned any thought of competing with the mighty Pāṇḍu for the princess. Mounting upon their steeds and chariots, they simply returned the way they had come. King Kuntībhoja came down from the royal platform into the arena, his face bright with delight. There could be no better match for his daughter. The king immediately arranged for the wedding ceremony, and he presented Pāṇḍu with gifts of great wealth.",
+    "questions": [
+      {
+        "question": "What reaction did the rival kings and princes have when Pāṇḍu appeared as a suitor for Kuntī at her svayaṁvara?",
+        "options": [
+          "They engaged Pāṇḍu in a violent duel for the hand of the princess",
+          "They challenged the validity of the assembly according to royal law",
+          "They abandoned their pursuit and departed from the arena",
+          "They offered their allegiance to the king of Hastināpura"
+        ],
+        "correct_answer": "They abandoned their pursuit and departed from the arena",
+        "explanation": "The kings and princes, recognizing Pāṇḍu's might, decided against competing for Kuntī's hand and returned the way they had come.",
+        "difficulty": "medium",
+        "tags": [
+          "Mahabharata",
+          "Pandu",
+          "Kunti",
+          "Swayamvara"
+        ]
+      }
+    ]
+  },
+  "1.1.43": {
+    "paragraph_text": "After a few days the couple left for Hastināpura, accompanied by a large retinue bearing many colorful pennants which waved in the breeze. The soldiers beat drums and blew loudly upon their conchshells as they proceeded toward Pāṇḍu’s capital. Seated with Kuntī upon a shining golden chariot and surrounded by Brahmins offering benedictions, Pāṇḍu entered Hastināpura in state.",
+    "questions": []
+  },
+  "1.1.44": {
+    "paragraph_text": "Bhīṣma was overjoyed to see Pāṇḍu married to the gentle and beautiful princess, but he also felt that the king needed another queen. Although Gāndhārī had received the benediction that she would bear a hundred sons, Kuntī had no such boon. Bhīṣma wanted to ensure that the virtuous monarch was blessed with powerful sons. He went personally to the kingdom of Madra to seek the hand of Mādrī for Pāṇḍu. She was under her brother’s, King Śalya’s, protection.",
+    "questions": [
+      {
+        "question": "Which kingdom did Bhīṣma visit to request the hand of Mādrī for King Pāṇḍu?",
+        "options": [
+          "Hastināpura",
+          "Madra",
+          "Indraprastha",
+          "Kuru"
+        ],
+        "correct_answer": "Madra",
+        "explanation": "Bhīṣma traveled personally to the kingdom of Madra to seek Mādrī for Pāṇḍu.",
+        "difficulty": "easy",
+        "tags": [
+          "Bhīṣma",
+          "Pāṇḍu",
+          "Mādrī"
+        ]
+      },
+      {
+        "question": "Under whose protection was the princess Mādrī residing when Bhīṣma sought her hand?",
+        "options": [
+          "Bhīṣma",
+          "King Śalya",
+          "Kuntī",
+          "The Brahmins"
+        ],
+        "correct_answer": "King Śalya",
+        "explanation": "The text states that Mādrī was under the protection of her brother, King Śalya.",
+        "difficulty": "medium",
+        "tags": [
+          "Mādrī",
+          "King Śalya"
+        ]
+      },
+      {
+        "question": "What specific limitation did Kuntī have regarding the bearing of children compared to Gāndhārī?",
+        "options": [
+          "She was incapable of bearing sons",
+          "She lacked a benediction to bear a hundred sons",
+          "She was forbidden from marrying a second queen",
+          "She could only bear daughters"
+        ],
+        "correct_answer": "She lacked a benediction to bear a hundred sons",
+        "explanation": "While Gāndhārī had received a benediction to bear a hundred sons, the text specifies that Kuntī possessed no such boon.",
+        "difficulty": "hard",
+        "tags": [
+          "Kuntī",
+          "Gāndhārī",
+          "Dynastic succession"
+        ]
+      }
+    ]
+  },
+  "1.1.45": {
+    "paragraph_text": "King Śalya received with all honor Bhīṣma and his retinue of ministers, Brahmins and ṛṣis. He brought Gaṅgā’s son into his palace and offered him a seat of white ivory studded with precious gems. Then the king bathed his feet and offered him arghya. His reception completed, Bhīṣma said to King Śalya, “O King, you should know that I am here to seek a maiden. I have heard that you have an illustrious and chaste sister and I have chosen her for King Pāṇḍu. Please tell me if you approve of this arrangement.”",
+    "questions": [
+      {
+        "question": "Which specific item did King Śalya provide for Bhīṣma to sit upon when he arrived at the Madra palace?",
+        "options": [
+          "A golden throne inlaid with lapis lazuli",
+          "A seat of white ivory studded with precious gems",
+          "A cushion made of fine silk and deer skin",
+          "A silver bench carved with images of deities"
+        ],
+        "correct_answer": "A seat of white ivory studded with precious gems",
+        "explanation": "King Śalya honored Bhīṣma by offering him a seat of white ivory studded with precious gems.",
+        "difficulty": "medium",
+        "tags": [
+          "Bhīṣma",
+          "Śalya",
+          "Madra"
+        ]
+      },
+      {
+        "question": "For whom did Bhīṣma formally request the hand of King Śalya’s sister?",
+        "options": [
+          "King Dhṛtarāṣṭra",
+          "King Pāṇḍu",
+          "The sage Vyāsa",
+          "The prince of Hastināpura"
+        ],
+        "correct_answer": "King Pāṇḍu",
+        "explanation": "Bhīṣma specifically stated to King Śalya that he had chosen his sister for King Pāṇḍu.",
+        "difficulty": "easy",
+        "tags": [
+          "Pāṇḍu",
+          "Śalya",
+          "Marriage"
+        ]
+      }
+    ]
+  },
+  "1.1.46": {
+    "paragraph_text": "King Śalya replied that the Kuru house was more than worthy of being allied with his house. There was, however, an ancient custom in his family that no girl could be given in marriage unless the suitor offered a tribute.",
+    "questions": [
+      {
+        "question": "What requirement did King Śalya stipulate must be met by a suitor before he would allow his sister to be given in marriage?",
+        "options": [
+          "The suitor must win a archery contest",
+          "The suitor must offer a tribute",
+          "The suitor must provide a dowry of one thousand gold coins",
+          "The suitor must prove his lineage extends to the gods"
+        ],
+        "correct_answer": "The suitor must offer a tribute",
+        "explanation": "King Śalya stated that an ancient family custom required a suitor to offer a tribute before any girl could be given in marriage.",
+        "difficulty": "medium",
+        "tags": [
+          "King Śalya",
+          "Marriage customs",
+          "Kuru dynasty"
+        ]
+      }
+    ]
+  },
+  "1.1.47": {
+    "paragraph_text": "Bhīṣma had already heard of this custom because it dated back to the great Brahmā himself. He had come prepared and thus replied to Śalya, “There is no fault in this custom as it has the approval of the self-born creator, Brahmā. Therefore, please accept the gifts I have brought in exchange for the princess.”",
+    "questions": [
+      {
+        "question": "According to Bhīṣma, which celestial being established the ancient custom of requiring a tribute for a bride in the family of King Śalya?",
+        "options": [
+          "Indra",
+          "Brahmā",
+          "Viṣṇu",
+          "Śiva"
+        ],
+        "correct_answer": "Brahmā",
+        "explanation": "Bhīṣma states that the custom of requiring a tribute for marriage was approved by the self-born creator, Brahmā.",
+        "difficulty": "easy",
+        "tags": [
+          "Bhīṣma",
+          "Śalya",
+          "Brahmā"
+        ]
+      }
+    ]
+  },
+  "1.1.48": {
+    "paragraph_text": "Bhīṣma’s men then carried in heaps of gold coins, pearls, corals and gems of various colors, and set them before Śalya. Bhīṣma also presented the king with hundreds of elephants, horses and chariots.",
+    "questions": [
+      {
+        "question": "What items did Bhīṣma present to Śalya as a bridal gift for the princess?",
+        "options": [
+          "Gold coins, pearls, corals, gems, elephants, horses, and chariots",
+          "Fine silks, spices, land grants, and temple offerings",
+          "Grain supplies, silver vessels, and armored infantry",
+          "Religious scrolls, ritual incense, and ivory carvings"
+        ],
+        "correct_answer": "Gold coins, pearls, corals, gems, elephants, horses, and chariots",
+        "explanation": "Bhīṣma presented Śalya with heaps of gold coins, pearls, corals, gems of various colors, as well as hundreds of elephants, horses, and chariots.",
+        "difficulty": "medium",
+        "tags": [
+          "Bhīṣma",
+          "Śalya",
+          "Marriage Customs"
+        ]
+      }
+    ]
+  },
+  "1.1.49": {
+    "paragraph_text": "Śalya received all the wealth with a delighted heart. He then gave Mādrī to Bhīṣma, who then soon returned to Hastināpura and performed the wedding ceremony.",
+    "questions": [
+      {
+        "question": "Which relative of Śalya was given to Bhīṣma as part of the arrangement between the two kings?",
+        "options": [
+          "Ambikā",
+          "Ambālikā",
+          "Mādrī",
+          "Satyavatī"
+        ],
+        "correct_answer": "Mādrī",
+        "explanation": "After receiving the wealth, Śalya gave Mādrī to Bhīṣma.",
+        "difficulty": "medium",
+        "tags": [
+          "dynastic",
+          "Mahabharata"
+        ]
+      }
+    ]
+  },
+  "1.1.50": {
+    "paragraph_text": "Pāṇḍu established each of his wives in their own splendid palaces and gave himself up to enjoyment with them both. He sported in the palace groves and gardens, appearing like a celestial with two beautiful consorts.",
+    "questions": []
   }
 }

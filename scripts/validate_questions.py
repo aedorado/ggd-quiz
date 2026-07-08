@@ -146,7 +146,7 @@ def main():
     print(f"Saving rejected output to: {rejected_output_path}")
 
     for idx, (verse_id, verse_data) in enumerate(questions_data.items(), start=1):
-        verse_text = verse_data["verse_text"]
+        verse_text = verse_data.get("verse_text") or verse_data.get("paragraph_text")
         questions = verse_data["questions"]
         
         print(f"[{idx}/{total_verses}] Validating Verse {verse_id} ({len(questions)} questions)...")

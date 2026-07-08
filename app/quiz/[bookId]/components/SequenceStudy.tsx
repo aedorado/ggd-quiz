@@ -20,7 +20,7 @@ interface VerseItem {
 interface SequenceStudyProps {
   bookId: string;
   bookTitle: string;
-  rawQuestionsData: Record<string, { verse_text: string; questions: RawQuestion[] }>;
+  rawQuestionsData: Record<string, { verse_text?: string; paragraph_text?: string; questions: RawQuestion[] }>;
   playCorrectSound: () => void;
   playWrongSound: () => void;
   triggerParticles: () => void;
@@ -93,7 +93,7 @@ export default function SequenceStudy({
     const items = Object.entries(rawQuestionsData)
       .map(([verseNumber, val]) => ({
         verseNumber,
-        verseText: val.verse_text,
+        verseText: val.verse_text || val.paragraph_text || "",
         questions: val.questions || [],
       }))
       .sort((a, b) => compareVerseNumbers(a.verseNumber, b.verseNumber));

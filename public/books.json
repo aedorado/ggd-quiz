@@ -122,7 +122,7 @@
     "accent": "#9E1B1B",
     "status": "ready",
     "href": "/quiz/mbk",
-    "featured": true,
+    "featured": false,
     "subtitle": "Retold by Kṛṣṇa Dharma dasa",
     "quiz_desc": "Five questions testing key characters, dynastic details, and events of the Mahabharata.",
     "input_file": "public/mbk/mbk.json",

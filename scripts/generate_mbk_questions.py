@@ -18,7 +18,7 @@ RESPONSE_SCHEMA = {
     "properties": {
         "questions": {
             "type": "ARRAY",
-            "description": "List of high-quality quiz questions testing details of the scriptural prose.",
+            "description": "List of high-quality quiz questions. Maximize quantity: generate as many distinct, non-trivial questions as possible (e.g., 3 to 6 or more for dense paragraphs, fewer for simpler ones, and 0 for purely trivial/narrative ones). CRITICAL: All questions MUST be strictly derivable ONLY from the main paragraph; do NOT use context from the previous/next paragraphs.",
             "items": {
                 "type": "OBJECT",
                 "required": ["question", "options", "correct_answer", "explanation", "difficulty", "tags"],
@@ -57,6 +57,13 @@ RESPONSE_SCHEMA = {
 
 PROMPT_TEMPLATE = """You are an expert scriptural educator creating educational quiz questions for a closed-book study tool on the Mahabharata.
 
+CRITICAL WARNING: CONTEXT LEAKAGE IS A SEVERE FAILURE
+- YOU MUST ONLY USE THE TARGET TEXT IN <MAIN_PARAGRAPH_TARGET> TO GENERATE QUESTIONS, CORRECT ANSWERS, OPTIONS, AND EXPLANATIONS.
+- DO NOT USE ANY FACTS, NAMES, EVENTS, OR NUMBERS FROM <PREVIOUS_PARAGRAPH_CONTEXT> OR <NEXT_PARAGRAPH_CONTEXT>.
+- THE PREVIOUS AND NEXT CONTEXT PARAGRAPHS ARE ONLY PROVIDED FOR PRONOUN RESOLUTION (E.G., TO KNOW WHO "SHE" OR "HE" REFERS TO). THEY MUST NOT BE USED TO OBTAIN FACTS FOR QUESTIONS.
+- IF A FACT (E.G., "seven years of marriage") IS NOT EXPLICITLY STATED IN <MAIN_PARAGRAPH_TARGET>, DO NOT INCLUDE IT, EVEN IF IT IS MENTIONED IN <NEXT_PARAGRAPH_CONTEXT>.
+- IF <MAIN_PARAGRAPH_TARGET> HAS FEW OR NO UNIQUE FACTS, GENERATE FEWER QUESTIONS (OR 0 QUESTIONS). DO NOT ATTEMPT TO FILL A QUOTA BY STEALING FACTS FROM THE CONTEXT PARAGRAPHS.
+
 BOOK CONTEXT:
 This is Mahabharata, retold by Kṛṣṇa Dharma dasa.
 
@@ -89,6 +96,12 @@ COMPARE THESE STYLES:
 STRICT NO-TRIVIALITY RULE:
 - Do NOT test trivial narrative descriptions, minor actions, vocabulary, or basic adjectives (e.g. "What did Ambikā peer into?" -> "The mirror").
 - If a paragraph contains only generic narrative transitions or descriptions without any non-trivial scriptural, historical, or dynastic facts, you MUST return an empty list of questions (`"questions": []`). Do not force questions.
+
+QUANTITY RULE:
+- Maximize the number of questions generated. If the paragraph contains multiple distinct details, historical facts, genealogies, names, vows, interactions, or causes/effects, mine every single unique, non-trivial point to generate as many distinct, high-quality questions as possible (typically aim for 3 to 6 or more questions for rich paragraphs).
+- Do not stop at a default of 1 or 2 questions. Be highly thorough and cover every distinct detail.
+- CRITICAL: Under no circumstances should any question, correct option, distractor, or explanation rely on information from the PREVIOUS or NEXT paragraphs. If the MAIN PARAGRAPH target text does not contain enough facts to generate 3 to 6 questions, ONLY generate questions for the facts that are explicitly in the main paragraph. If the main paragraph has no non-trivial facts, you MUST return an empty list of questions (`"questions": []`). Do NOT use the surrounding context paragraphs to generate questions.
+- If a paragraph is simple or contains no non-trivial scriptural, historical, or dynastic facts, you may generate 0 questions, but for informative paragraphs, you should be exhaustive.
 
 <PREVIOUS_PARAGRAPH_CONTEXT>
 {previous_paragraph}
@@ -128,7 +141,7 @@ def main():
     parser.add_argument("--chapter", type=str, help="Process a specific chapter (e.g., '1.1')")
     parser.add_argument("--limit", type=int, default=10, help="Limit number of paragraphs to process (default: 10, ignored if --all is set)")
     parser.add_argument("--rpm", type=int, default=15, help="Rate limit for requests per minute (default: 15)")
-    parser.add_argument("--model", type=str, default="gemini-2.5-flash", help="Gemini model to use (default: gemini-2.5-flash)")
+    parser.add_argument("--model", type=str, default="gemini-3.1-flash-lite", help="Gemini model to use (default: gemini-2.5-flash)")
     parser.add_argument("--overwrite", action="store_true", help="Overwrite existing completed paragraphs")
     args = parser.parse_args()
 
